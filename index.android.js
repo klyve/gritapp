@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,9 +5,8 @@ import {
   Text,
   View,
   Dimensions,
-  TouchableHighlight,
-  ScrollView,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 
 //Constants
@@ -26,78 +19,87 @@ function person(){
   this.friends = [];
 }
 
-var me = new person();
-  me.name = "Jørgen";
-  me.picturePath = "http://facebookcraze.com/wp-content/uploads/2009/12/funny_profile_pic_for_facebook_rape.jpg";
+function post(){
+  this.uploader;
+  this.picturePath;
+  this.likes = [];
+  this.comments = [];
+}
 
-var friend1 = new person();
-  friend1.name = "Atbin";
-  friend1.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/13450786_1166169403435324_6701603115698877888_n.jpg?oh=8deb29a29e5d8a0a74a7bf5527317fea&oe=588AD4EE";
+function comment(){
+  this.text;
+  this.author;
+}
 
-var friend2 = new person();
-  friend2.name = "Bjarte";
-  friend2.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/534545_10151000508639230_719468928_n.jpg?oh=2dfc2295927eb46651e733279090a26d&oe=589533F5";
+// People
+var p1 = new person();
+  p1.name = "Jørgen";
+  p1.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/13346786_857665671010201_2266055122162485673_n.jpg?oh=3f226097634b0e47ece99497b2df9811&oe=589C8849";
 
-  var friend3 = new person();
-    friend3.name = "Henrik";
-    friend3.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
+var p2 = new person();
+  p2.name = "Atbin";
+  p2.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/13450786_1166169403435324_6701603115698877888_n.jpg?oh=8deb29a29e5d8a0a74a7bf5527317fea&oe=588AD4EE";
 
-var friend4 = new person();
-  friend4.name = "Karoline";
-  friend4.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/12541098_1218109328203241_3639725756279389260_n.jpg?oh=d72325b4e0cb78a1baddbe70d3e2950a&oe=58D1DCDC";
+var p3 = new person();
+  p3.name = "Bjarte";
+  p3.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/534545_10151000508639230_719468928_n.jpg?oh=2dfc2295927eb46651e733279090a26d&oe=589533F5";
 
-var friend5 = new person();
-  friend5.name = "Morten";
-  friend5.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/11892209_1180715341944580_8031166336427477610_n.jpg?oh=bc73eba1c5d4c2815d3f2d4f464c251a&oe=58CD8ADD";
+var p4 = new person();
+  p4.name = "Henrik";
+  p4.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
 
-me.friends.push(friend1);
-me.friends.push(friend2);
-me.friends.push(friend3);
-me.friends.push(friend4);
-me.friends.push(friend5);
+var p5 = new person();
+  p5.nap1 = "Karoline";
+  p5.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/12541098_1218109328203241_3639725756279389260_n.jpg?oh=d72325b4e0cb78a1baddbe70d3e2950a&oe=58D1DCDC";
+
+var p6 = new person();
+  p6.name = "Morten";
+  p6.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/11892209_1180715341944580_8031166336427477610_n.jpg?oh=bc73eba1c5d4c2815d3f2d4f464c251a&oe=58CD8ADD";
+
+
+// Comments
+var c1 = new comment()
+  c1.text = "Så søøt!";
+  c1.author = p2;
+
+var c2 = new comment()
+  c2.text = "Hva heter den?";
+  c2.author = p2;
+
+var c3 = new comment()
+  c3.text = "Nommen <3";
+  c3.author = p4;
+
+
+// Posts
+var pst = new post()
+  pst.uploader = p1;
+  pst.picturePath = "https://pbs.twimg.com/profile_images/562466745340817408/_nIu8KHX.jpeg";
+  pst.likes = [p2,p3,p5]
+  pst.comments = [c1,c2,c3];
+
+
 
 export default class social extends Component {
   render() {
-
-    let showFriends = me.friends.map((a,b) => {
-        return <TouchableHighlight
-               onPress = {() => {}}
-               key = {b}
-               activeOpacity={71 / 100}
-               underlayColor={"rgb(210,210,210)"}
-               style={styles.friendButton}>
-                <View style={styles.friends}>
-                  <Image style={styles.friendImage} source={{uri: a.picturePath}}></Image>
-                  <Text style={styles.friendText}> {a.name}</Text>
-                </View>
-               </TouchableHighlight>
-      })
-
     return (
       <View style={styles.container}>
 
-        <View style={styles.navBar}>
+        <View style={styles.body}>
+          <View style ={styles.title}>
+            <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}></Image>
+            <Text style={styles.titleText}> {pst.uploader.name} </Text>
+            <Image style={styles.exitButton} source={require('./Resources/icons/kryss.png')}></Image>
+          </View>
+
+          <ScrollView style={styles.scroll}>
+            <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
+
+            <View style={styles.likeBar}></View>
+
+          </ScrollView>
+
         </View>
-
-        <ScrollView>
-          <TouchableHighlight style={styles.meButton}>
-            <View style={styles.me}>
-              <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
-              <Text style={styles.meText}> {me.name}</Text>
-              <Image style={styles.settingsButton} source={require('./Resources/icons/cogWheelGreen.png')}></Image>
-            </View>
-          </TouchableHighlight>
-
-
-          <TouchableHighlight style={styles.addButton}>
-            <View style={styles.add}>
-              <Text style={styles.addText}> ADD A FRIEND </Text>
-            </View>
-          </TouchableHighlight>
-
-          {showFriends}
-
-        </ScrollView>
 
       </View>
     );
@@ -106,92 +108,56 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
-    backgroundColor: '#f0f0f0',
-  },
-  navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-    backgroundColor: '#2ecc71',
+    flex: 1,
+    backgroundColor: '#559955',
+    justifyContent: 'center',
     alignItems: 'center',
   },
-
-
-  meButton: {
-    height: DEVICE_HEIGHT / 6,
-    width: DEVICE_WIDTH,
+  body: {
+    height: DEVICE_HEIGHT - (DEVICE_HEIGHT / 6),
+    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
+    backgroundColor: '#ffffff',
   },
-  addButton: {
+  title: {
     height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-  },
-  friendButton: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
-    marginBottom: DEVICE_HEIGHT / 500,
-  },
-  settingsButton: {
-    height: DEVICE_HEIGHT / 25,
-    width: DEVICE_HEIGHT / 25,
-    position: 'absolute',
-    top: DEVICE_HEIGHT / 15,
-    right: DEVICE_HEIGHT / 25,
-  },
-
-
-  me: {
-    height: DEVICE_HEIGHT / 6,
-    width: DEVICE_WIDTH,
+    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
   },
-  add: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-    flexDirection: 'column',
-    alignItems: 'center',
+  scroll: {
     backgroundColor: '#f0f0f0',
   },
-  friends: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    flexDirection: 'row',
+  likeBar:{
+    height: DEVICE_HEIGHT / 10,
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'blue',
   },
 
 
-  myImage: {
-    marginLeft: DEVICE_HEIGHT / 50,
-    width: DEVICE_HEIGHT / 8,
-    height: DEVICE_HEIGHT / 8,
-    borderRadius: 50,
-  },
-  friendImage: {
-    marginLeft: DEVICE_HEIGHT / 50,
+  peopleImage: {
     width: DEVICE_HEIGHT / 12,
     height: DEVICE_HEIGHT / 12,
+    marginLeft: DEVICE_WIDTH / 80,
     borderRadius: 50,
   },
+  currentImage: {
+    height: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
+    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
+  },
 
 
-  meText: {
-    padding: 5,
-    paddingLeft: 20,
+  exitButton: {
+    position: 'absolute',
+    height: DEVICE_HEIGHT / 15,
+    width: DEVICE_HEIGHT / 15,
+    right: DEVICE_HEIGHT / 38,
+    marginTop: DEVICE_HEIGHT / 50,
+  },
+
+
+  titleText: {
+    paddingLeft: DEVICE_HEIGHT / 50,
     fontSize: 25,
-  },
-  friendText: {
-    padding: 5,
-    paddingLeft: 20,
-    fontSize: 20,
-  },
-  addText: {
-    paddingTop: DEVICE_HEIGHT / 30,
-    fontSize: 20,
-    textAlign: 'center',
   },
 });
 
