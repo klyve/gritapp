@@ -85,7 +85,7 @@ export default class social extends Component {
 
           <TouchableHighlight style={styles.addButton}>
             <View style={styles.add}>
-              <Text style={styles.addText}> ADD A FRIEND </Text>
+              <Text style={styles.addText}> ADD FRIEND </Text>
             </View>
           </TouchableHighlight>
 
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH / 1.04,
     marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
-    marginBottom: DEVICE_HEIGHT / 500,
+    marginBottom: DEVICE_HEIGHT / 200,
   },
   settingsButton: {
     height: DEVICE_HEIGHT / 25,
