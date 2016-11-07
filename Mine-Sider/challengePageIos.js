@@ -51,9 +51,6 @@ challenges.push(slange);
 challenges.push(mus);
 challenges.push(fisk);
 
-
-
-
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -78,7 +75,7 @@ export default class social extends Component {
         <ScrollView style = {styles.bodyContainer}>
 
         <View style = {styles.description}>
-          <Text style = {styles.descriptionHeader}>Description</Text>
+          <Text style = {styles.descriptionHeader}>Challenge Name</Text>
           <Text style = {styles.descriptionParagraph}>Her kommer det noe funfact om din challenge blah blah  blah  blah  blah blah blah lorem ipsum blah blah blah... </Text>
         </View>
 
@@ -109,7 +106,7 @@ export default class social extends Component {
 const styles = StyleSheet.create({
   container: {
     height: DEVICE_HEIGHT,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F0F0F0',
   },
   navbar: {
     backgroundColor: '#2ecc71',
@@ -124,13 +121,16 @@ const styles = StyleSheet.create({
     height: DEVICE_HEIGHT - (DEVICE_HEIGHT / 11),
   },
   description: {
+    width: DEVICE_WIDTH,
     height: DEVICE_HEIGHT / 5.8,
     backgroundColor: 'white',
     alignItems: 'center',
     marginTop: -(DEVICE_HEIGHT / 200),
+    marginBottom: 5,
   },
   descriptionHeader: {
-    fontSize: 18,
+    fontSize: 22,
+    fontWeight: 'bold',
     paddingBottom: DEVICE_HEIGHT / 50,
     paddingTop: DEVICE_WIDTH / 30,
     opacity: 0.7,
@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
   image: {
     width:  DEVICE_WIDTH / 2.1,
     height:  DEVICE_WIDTH / 2.1,
-    backgroundColor: 'orange',
-    margin: DEVICE_WIDTH / 100,
+    backgroundColor: '#2ecc71',
+    margin: DEVICE_WIDTH / 300,
   },
   bottomBar: {
     width: DEVICE_WIDTH,
