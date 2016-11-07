@@ -54,22 +54,12 @@ export default class Friends extends Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <TouchableHighlight style={styles.meButton}>
-            <View style={styles.me}>
-              <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
-              <Text style={styles.meText}> {me.name}</Text>
-            </View>
-          </TouchableHighlight>
+          <View style={{height: 400, width: 200, backgroundColor: 'blue'}}>
 
+          </View>
+          <View style={{height: 400, width: 200, backgroundColor: 'red'}}>
 
-          <TouchableHighlight style={styles.addButton}>
-            <View style={styles.add}>
-              <Text style={styles.addText}> ADD FRIEND </Text>
-            </View>
-          </TouchableHighlight>
-
-          {showFriends}
-
+          </View>
         </ScrollView>
 
       </View>
