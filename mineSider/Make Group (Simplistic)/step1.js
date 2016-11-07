@@ -28,7 +28,7 @@ export default class social extends Component {
           onPress = {() => {}}
           style = {styles.button}
           >
-              <Text style = {styles.buttonText}>Create</Text>
+              <Text style = {styles.buttonText}>Private Group</Text>
           </TouchableHighlight>
 
           <TouchableHighlight
@@ -37,7 +37,7 @@ export default class social extends Component {
           onPress = {() => {}}
           style = {styles.button}
           >
-              <Text style = {styles.buttonText}>Join</Text>
+              <Text style = {styles.buttonText}>Public Group</Text>
           </TouchableHighlight>
 
         </View>
