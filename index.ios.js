@@ -2,21 +2,8 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Switch,
 } from 'react-native'
 
+import Main from './app'
 
-export default class social extends Component {
-  render() {
-    return (
-      <View>
-        <Text>Hello</Text>
-      </View>
-    );
-  }
-}
-
-AppRegistry.registerComponent('social', () => social);
+AppRegistry.registerComponent('social', () => Main);
