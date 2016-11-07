@@ -50,16 +50,40 @@ me.friends.push(friend5);
 
 export default class Friends extends Component {
   render() {
+    // <Image style={styles.settingsButton} source={require('./Resources/icons/cogWheelGreen.png')}></Image>
+    let showFriends = me.friends.map((a,b) => {
+        return <TouchableHighlight
+               onPress = {() => {}}
+               key = {b}
+               activeOpacity={71 / 100}
+               underlayColor={"rgb(210,210,210)"}
+               style={styles.friendButton}>
+                <View style={styles.friends}>
+                  <Image style={styles.friendImage} source={{uri: a.picturePath}}></Image>
+                  <Text style={styles.friendText}> {a.name}</Text>
+                </View>
+               </TouchableHighlight>
+      })
 
     return (
       <View style={styles.container}>
         <ScrollView>
-          <View style={{height: 400, width: 200, backgroundColor: 'blue'}}>
+          <TouchableHighlight style={styles.meButton}>
+            <View style={styles.me}>
+              <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
+              <Text style={styles.meText}> {me.name}</Text>
+            </View>
+          </TouchableHighlight>
 
-          </View>
-          <View style={{height: 400, width: 200, backgroundColor: 'red'}}>
 
-          </View>
+          <TouchableHighlight style={styles.addButton}>
+            <View style={styles.add}>
+              <Text style={styles.addText}> ADD FRIEND </Text>
+            </View>
+          </TouchableHighlight>
+
+          {showFriends}
+
         </ScrollView>
 
       </View>

@@ -13,8 +13,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 
 export default styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#f0f0f0',
   },
   navBar: {
