@@ -26,8 +26,7 @@ export default class social extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           onPress = {() => {}}
-          style = {styles.button}
-          >
+          style = {styles.button}>
               <Text style = {styles.buttonText}>Create</Text>
           </TouchableHighlight>
 
@@ -35,13 +34,10 @@ export default class social extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           onPress = {() => {}}
-          style = {styles.button}
-          >
+          style = {styles.button}>
               <Text style = {styles.buttonText}>Join</Text>
           </TouchableHighlight>
-
         </View>
-
       </View>
     );
   }

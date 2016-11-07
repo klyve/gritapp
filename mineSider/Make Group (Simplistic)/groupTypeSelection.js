@@ -28,7 +28,7 @@ export default class social extends Component {
           onPress = {() => {}}
           style = {styles.button}
           >
-              <Text style = {styles.buttonText}>Private Group</Text>
+              <Text style = {styles.publicButtonText}>Public</Text>
           </TouchableHighlight>
 
           <TouchableHighlight
@@ -37,7 +37,7 @@ export default class social extends Component {
           onPress = {() => {}}
           style = {styles.button}
           >
-              <Text style = {styles.buttonText}>Public Group</Text>
+              <Text style = {styles.privateButtonText}>Private</Text>
           </TouchableHighlight>
 
         </View>
@@ -68,8 +68,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: DEVICE_WIDTH / 50,
   },
-  buttonText: {
-    color: '#2ecc71',
+  publicButtonText: {
+    color: '#3498db',
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  privateButtonText: {
+    color: '#c0392b',
     fontSize: 28,
     fontWeight: 'bold',
   },
