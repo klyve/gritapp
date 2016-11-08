@@ -34,8 +34,7 @@ export default class SwipeView extends Component {
 
   render() {
     //const { state, actions } = this.props;
-    console.log("Running")
-    console.log(this.props)
+    
     return (
       <View>
       <Swiper
@@ -49,8 +48,10 @@ export default class SwipeView extends Component {
 
         <View style={styles.slide2}>
           <MainHeader
-            color="red"
-            title="Friends"
+            color="green"
+            title="Profile"
+            rightBtn="circle-o"
+            right={() => { this.btnPress(1) }}
            />
           <View style={styles.contentView}>
             <Friends />
@@ -59,9 +60,11 @@ export default class SwipeView extends Component {
 
         <View>
           <MainHeader
-            leftBtn="Test"
-            title="Home page"
-            rightBtn="Create"
+            leftBtn="user"
+            rightBtn="plus"
+            title="Main"
+            right={() => { this.btnPress(1) }}
+            left={() => { this.btnPress(-1) }}
           />
           <View style={styles.contentView}>
             <Dashboard />
@@ -69,7 +72,12 @@ export default class SwipeView extends Component {
         </View>
 
         <View style={styles.slide3}>
-          <MainHeader color="orange" />
+          <MainHeader
+            color="green"
+            title="Group"
+            leftBtn="circle-o"
+            left={() => { this.btnPress(-1) }}
+          />
           <View style={styles.contentView}>
             <CreateOrJoinGroup />
           </View>

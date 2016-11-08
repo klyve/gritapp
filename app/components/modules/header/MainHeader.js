@@ -8,7 +8,8 @@ import {
   Switch,
   TouchableHighlight
 } from 'react-native'
-import Icon from 'react-native-elements';
+
+import { Icon } from 'react-native-elements'
 
 import styles from './styles/MainHeader';
 
@@ -24,18 +25,39 @@ export default class MainHeader extends Component {
 
   }
 
+  createIcon(style, text, fn) {
+    return (
+      <View style={style}>
+        <Icon
+          name={text}
+          type='font-awesome'
+          color='#fff'
+          onPress={fn}
+        />
+      </View>
+    )
+  }
   renderLeftBtn() {
     if(!this.props.leftBtn)
       return false;
-    return (
-      <Text>Left button</Text>
-    )
+    return this.createIcon(styles.leftAlign, this.props.leftBtn, this.props.left);
   }
   renderRightBtn() {
     if(!this.props.rightBtn)
       return false;
+
+    return this.createIcon(styles.rightAlign, this.props.rightBtn, this.props.right);
+  }
+
+  renderTitle() {
+    if(!this.props.title)
+      return false;
     return (
-      <Text>Right button</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.titleText}>
+          {this.props.title}
+        </Text>
+      </View>
     )
   }
 
@@ -49,8 +71,8 @@ export default class MainHeader extends Component {
 
     return (
       <View style={this.style}>
+        {this.renderTitle()}
         {this.renderLeftBtn()}
-        {title}
         {this.renderRightBtn()}
       </View>
     )
