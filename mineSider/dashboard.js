@@ -15,6 +15,7 @@ import {
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
 function Group(){
   this.name = "";
@@ -81,9 +82,11 @@ export default class social extends Component {
         <View style={styles.navBar}>
         </View>
 
-        <ScrollView style={styles.scrollView}>
-          {showGroups}
-        </ScrollView>
+        <View style={styles.body}>
+          <ScrollView>
+            {showGroups}
+          </ScrollView>
+        </View>
 
       </View>
     );
@@ -92,16 +95,19 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container : {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#f0f0f0',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#2ecc71',
     alignItems: 'center',
   },
+  body: {
+    flex: 7,
+    marginTop: 5,
+  },
+
   group: {
     height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH / 1.04,
@@ -109,6 +115,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+
   groupImage: {
     marginLeft: DEVICE_HEIGHT / 50,
     width: DEVICE_HEIGHT / 12,
@@ -117,6 +124,8 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.5)',
     borderRadius: 50,
   },
+
+
   unreadDot: {
     position: 'absolute',
     left: DEVICE_HEIGHT / 15,
@@ -129,6 +138,8 @@ const styles = StyleSheet.create({
   noUnreadDot: {
     opacity: 0,
   },
+
+
   unreadDotNumber: {
     fontSize: 16,
     color: 'white',
@@ -140,15 +151,11 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     fontSize: 20,
   },
-  scrollView: {
-    flexDirection: 'column',
-    marginTop: DEVICE_HEIGHT / 100,
-  },
   button: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
-    marginBottom: DEVICE_HEIGHT / 100,
+    marginTop: MARGIN / 2,
+    marginBottom: MARGIN / 2,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
   },
 });
 

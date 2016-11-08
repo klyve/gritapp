@@ -13,6 +13,7 @@ import {
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
 function person(){
   this.name = "";
@@ -73,25 +74,26 @@ export default class social extends Component {
         <View style={styles.navBar}>
         </View>
 
-        <ScrollView>
-          <TouchableHighlight style={styles.meButton}>
-            <View style={styles.me}>
-              <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
-              <Text style={styles.meText}> {me.name}</Text>
-              <Image style={styles.settingsButton} source={require('./Resources/icons/cogWheelGreen.png')}></Image>
-            </View>
-          </TouchableHighlight>
+        <View style={styles.body}>
+          <ScrollView style={{flex: 1,}}>
+            <TouchableHighlight style={styles.meButton}>
+              <View style={styles.me}>
+                <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
+                <Text style={styles.meText}> {me.name}</Text>
+              </View>
+            </TouchableHighlight>
 
 
-          <TouchableHighlight style={styles.addButton}>
-            <View style={styles.add}>
-              <Text style={styles.addText}> ADD FRIEND </Text>
-            </View>
-          </TouchableHighlight>
+            <TouchableHighlight style={styles.addButton}>
+              <View style={styles.add}>
+                <Text style={styles.addText}> ADD FRIEND </Text>
+              </View>
+            </TouchableHighlight>
 
-          {showFriends}
+            {showFriends}
 
-        </ScrollView>
+          </ScrollView>
+        </View>
 
       </View>
     );
@@ -100,75 +102,66 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#f0f0f0',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#2ecc71',
     alignItems: 'center',
   },
-
-
+  body: {
+    flex: 7,
+  },
   meButton: {
-    height: DEVICE_HEIGHT / 6,
-    width: DEVICE_WIDTH,
+    flex: 1,
+    backgroundColor: 'red',
   },
   addButton: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
+    flex: 1,
   },
   friendButton: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
-    marginBottom: DEVICE_HEIGHT / 200,
-  },
-  settingsButton: {
-    height: DEVICE_HEIGHT / 25,
-    width: DEVICE_HEIGHT / 25,
-    position: 'absolute',
-    top: DEVICE_HEIGHT / 15,
-    right: DEVICE_HEIGHT / 25,
+    flex: 1,
+    marginBottom: MARGIN / 2,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
   },
 
 
   me: {
-    height: DEVICE_HEIGHT / 6,
-    width: DEVICE_WIDTH,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#ffffff',
+    paddingTop: MARGIN,
+    paddingBottom: MARGIN,
   },
   add: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
+    paddingTop: MARGIN * 2,
+    paddingBottom: MARGIN * 2,
   },
   friends: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
+    paddingTop: MARGIN,
+    paddingBottom: MARGIN,
   },
 
 
   myImage: {
-    marginLeft: DEVICE_HEIGHT / 50,
-    width: DEVICE_HEIGHT / 8,
-    height: DEVICE_HEIGHT / 8,
+    marginLeft: MARGIN * 2,
+    width: 100,
+    height: 100,
     borderRadius: 50,
   },
   friendImage: {
-    marginLeft: DEVICE_HEIGHT / 50,
-    width: DEVICE_HEIGHT / 12,
-    height: DEVICE_HEIGHT / 12,
-    borderRadius: 50,
+    marginLeft: MARGIN * 2,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
 
 
@@ -183,7 +176,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   addText: {
-    paddingTop: DEVICE_HEIGHT / 30,
     fontSize: 20,
     textAlign: 'center',
   },
