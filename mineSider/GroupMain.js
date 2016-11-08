@@ -13,6 +13,7 @@ import {
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
 // Blueprints
 function Group(){
@@ -20,6 +21,7 @@ function Group(){
   this.picturePath = "";
   this.description = "";
   this.currentChallenges = [];
+  this.public;
 }
 
 function Challenge(){
@@ -35,7 +37,8 @@ function Challenge(){
 var currentGroup = new Group();
   currentGroup.name = "Pølsefest";
   currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
-  currentGroup.description = "Vi liker milfs...";
+  currentGroup.description = "Vi liker pølser, de er best";
+  currentGroup.public = false;
 
 
 var chall1 = new Challenge();
@@ -43,7 +46,7 @@ var chall1 = new Challenge();
   chall1.timeLeft = "9d";
   chall1.picturePath = "https://static.pexels.com/photos/96918/pexels-photo-96918.jpeg";
 
-var chall2 = new Challenge();
+var chall2 = new Challenge()
   chall2.name = "Spis en busemann :o";
   chall2.timeLeft = "43m";
   chall2.picturePath = "https://i.ytimg.com/vi/aMIqjaYfWFw/maxresdefault.jpg";
@@ -62,13 +65,15 @@ var chall4 = new Challenge();
 var challenges =[chall1, chall2, chall3, chall4];
 
 
-
-
 export default class social extends Component {
   render() {
 
+    let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
+
     let showChallenges = challenges.map((a,b) => {
-        return <TouchableHighlight
+        return (
+              <TouchableHighlight
                onPress = {() => {}}
                key = {b}
                activeOpacity={71 / 100}
@@ -82,28 +87,54 @@ export default class social extends Component {
                   <Text style={styles.challengeTimeLeftText}> {a.timeLeft}</Text>
                 </View>
                </TouchableHighlight>
-      })
+      )})
+
+
 
     return (
       <View style={styles.container}>
 
-        <View style={styles.navBar}>
-        </View>
+        <View style={[styles.navBar, groupBannerColor]}/>
 
-        <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+        <View style={styles.body}>
 
-        <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
+          <View style={styles.groupImageView}>
+            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+          </View>
 
-        <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+          <View style={{flex: 1, marginTop: -60,}}>
+            <View style={styles.groupInfo}>
+              <Text style={[styles.groupTitleText, groupTitleColor]}>{currentGroup.name}</Text>
 
-        <Text> </Text>
+              <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+            </View>
 
-        <View style={{backgroundColor: '#f0f0f0', width: DEVICE_WIDTH, alignItems: 'center', paddingTop: DEVICE_HEIGHT/100,}}>
-          <ScrollView>
+            <View style={styles.tabs}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <Text style={styles.groupTabText}>Leaderboard</Text>
+                </View>
 
-            {showChallenges}
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <Text style={styles.groupTabText}>Challenges</Text>
+                </View>
 
-          </ScrollView>
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <Text style={styles.groupTabText}>Members</Text>
+                </View>
+              </View>
+
+              <View style={{flex: 12, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
+                <ScrollView>
+
+                  {showGroups}
+
+                </ScrollView>
+              </View>
+
+            </View>
+          </View>
+
         </View>
 
       </View>
@@ -113,38 +144,35 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
-    alignItems: 'center',
+    flex: 1,
     backgroundColor: '#ffffff',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-    backgroundColor: '#2ecc71',
+    flex: 1,
+  },
+  body: {
+    flex: 7,
+  },
+  groupImageView: {
     alignItems: 'center',
   },
-  groupBG:{
-    backgroundColor: '#ffffff',
+  groupInfo: {
     alignItems: 'center',
-    width: DEVICE_WIDTH,
+    paddingBottom: MARGIN*2,
   },
-  challengeBody: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white',
+  tabs: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
   },
 
 
   groupImage: {
-    width: DEVICE_WIDTH / 2.5,
-    height: DEVICE_WIDTH / 2.5,
-    borderRadius: DEVICE_WIDTH / 3,
-    marginTop: - DEVICE_WIDTH / 8,
+    height: 160,
+    width: 160,
+    borderRadius: 80,
     borderWidth: 8,
     borderColor: '#ffffff',
+    top: -60,
   },
   challengeImage: {
     width: DEVICE_HEIGHT / 12,
@@ -154,12 +182,22 @@ const styles = StyleSheet.create({
   },
 
 
+  challengeBody: {
+    height: DEVICE_HEIGHT / 8,
+    width: DEVICE_WIDTH / 1.04,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+  },
   groupTitleText:{
     fontSize: 30,
-    color: '#2ecc71',
   },
   groupDescriptionText: {
     fontSize: 16,
+  },
+  groupTabText: {
+    fontSize: 16,
+    color: '#bbbbbb'
   },
   challengeTitleText: {
     fontSize: 18,
@@ -172,11 +210,25 @@ const styles = StyleSheet.create({
     top: DEVICE_HEIGHT / 20,
   },
 
-
   challengeButton: {
     height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH / 1.04,
     marginBottom: DEVICE_HEIGHT / 100,
+  },
+
+
+  blueBannerColor: {
+    backgroundColor: '#3498db',
+  },
+  blueTextColor: {
+    color: '#3498db',
+  },
+
+  redBannerColor: {
+    backgroundColor: '#c0392b',
+  },
+  redTextColor: {
+    color: '#c0392b',
   },
 });
 

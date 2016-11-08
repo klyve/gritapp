@@ -24,8 +24,6 @@ function Group(){
   this.unread = 0;
 }
 
-var groups = [];
-
 // Testdata
 var ntnu = new Group();
   ntnu.name = "NTNU";
@@ -46,9 +44,7 @@ var polse = new Group();
   polse.unread = 143;
 
 // Legger inn testdata
-groups.push(ntnu);
-groups.push(gjovik);
-groups.push(polse);
+var groups = [ntnu, gjovik, polse];
 
 export default class social extends Component {
 
@@ -71,7 +67,9 @@ export default class social extends Component {
                   {(a.unread > 99) ? 99 : a.unread}
                 </Text>
               </View>
+
               <Text style={styles.groupText}> {a.name} </Text>
+
           </View>
         </TouchableHighlight>
 
@@ -109,31 +107,27 @@ const styles = StyleSheet.create({
   },
 
   group: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
+    paddingTop: MARGIN,
+    paddingBottom: MARGIN,
   },
 
   groupImage: {
-    marginLeft: DEVICE_HEIGHT / 50,
-    width: DEVICE_HEIGHT / 12,
-    height: DEVICE_HEIGHT / 12,
-    borderWidth: 0,
-    borderColor: 'rgba(0,0,0,0.5)',
-    borderRadius: 50,
+    marginLeft: MARGIN,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
 
 
   unreadDot: {
-    position: 'absolute',
-    left: DEVICE_HEIGHT / 15,
-    top: DEVICE_HEIGHT / 130,
-    width: DEVICE_HEIGHT / 24,
-    height: DEVICE_HEIGHT / 24,
+    width: 28,
+    height: 28,
     backgroundColor: '#ec644b',
-    borderRadius: 50,
+    borderRadius: 14,
+    marginLeft: -14,
   },
   noUnreadDot: {
     opacity: 0,
@@ -143,7 +137,7 @@ const styles = StyleSheet.create({
   unreadDotNumber: {
     fontSize: 16,
     color: 'white',
-    top: DEVICE_HEIGHT / 270,
+    top: 2.5,
     textAlign: 'center',
   },
   groupText: {

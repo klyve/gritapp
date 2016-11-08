@@ -91,7 +91,6 @@ export default class social extends Component {
             </TouchableHighlight>
 
             {showFriends}
-
           </ScrollView>
         </View>
 
@@ -152,13 +151,13 @@ const styles = StyleSheet.create({
 
 
   myImage: {
-    marginLeft: MARGIN * 2,
+    marginLeft: MARGIN,
     width: 100,
     height: 100,
     borderRadius: 50,
   },
   friendImage: {
-    marginLeft: MARGIN * 2,
+    marginLeft: MARGIN,
     width: 60,
     height: 60,
     borderRadius: 30,
