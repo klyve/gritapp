@@ -73,9 +73,6 @@ ntnu7.staus = 'pending';
 ntnu7.senderName = 'Henrik';
 ntnu7.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
 
-
-
-
 requests.push(ntnu);
 requests.push(ntnu2);
 requests.push(ntnu3);
@@ -95,7 +92,11 @@ export default class social extends Component {
     let showRequests = this.state.requests.map((a, b) => {
     console.log(a.called)
     return (
-      <View key = {b}>
+      <TouchableHighlight
+      key = {b}
+      onPress={() => {}}
+      activeOpacity={75 / 100}
+      underlayColor={"rgb(210,210,210)"} >
           <View style = {styles.request}>
             <Image
             style = {styles.senderImage}
@@ -103,21 +104,8 @@ export default class social extends Component {
             <Text
             style = {styles.requestText}
             >
-              {a.senderName} invited you to {a.called} ({a.type})
+              {a.called}: invited by {a.senderName}
             </Text>
-          </View>
-          <View style = {styles.buttonContainer}>
-            <TouchableHighlight
-            onPress={(a) => {
-              requests.splice(b,1)
-              this.setState({requests})
-            }}
-            activeOpacity={75 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            style = {styles.acceptButton}>
-              <Text style = {styles.buttonText}>ACCEPT</Text>
-            </TouchableHighlight>
-
             <TouchableHighlight
             onPress={(a) => {
               requests.splice(b,1)
@@ -126,10 +114,13 @@ export default class social extends Component {
             activeOpacity={75 / 100}
             underlayColor={"rgb(210,210,210)"}
             style = {styles.declineButton}>
-              <Text style = {styles.buttonText}>DECLINE</Text>
+            <Image
+            style = {styles.deleteSymbol}
+            source = {require('./images/deleteButton.png')}
+            />
             </TouchableHighlight>
           </View>
-      </View>
+      </TouchableHighlight>
 
     )
   })
@@ -142,6 +133,7 @@ export default class social extends Component {
         <ScrollView style = {styles.requestContainer}>
           {showRequests}
         </ScrollView>
+
         <TouchableHighlight
         onPress={() => {}}
         activeOpacity={75 / 100}
@@ -182,11 +174,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   request: {
-    marginTop: 5,
+    height: 75,
+    margin: 5,
     backgroundColor: 'white',
     width: DEVICE_WIDTH,
     flexDirection: 'row',
-    padding: 5,
     alignItems: 'center',
   },
   senderImage: {
@@ -197,6 +189,7 @@ const styles = StyleSheet.create({
   },
   requestText: {
     marginLeft: 10,
+    width: 280,
   },
   closePage: {
     height: 50,
@@ -205,29 +198,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  buttonContainer: {
-    width: DEVICE_WIDTH,
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginBottom: 5,
-  },
   declineButton: {
-    backgroundColor: '#ec644b',
-    width: DEVICE_WIDTH / 2,
+    width: 10,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
   },
-  acceptButton: {
-    backgroundColor: '#2ecc71',
-    width: DEVICE_WIDTH / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-  },
-  buttonText: {
-    fontWeight: 'normal',
-    fontSize: 12,
+  deleteSymbol: {
+    width: 20,
+    height: 20
   },
 });
 AppRegistry.registerComponent('social', () => social);

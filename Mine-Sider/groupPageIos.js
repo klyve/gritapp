@@ -31,17 +31,60 @@ var ntnu = new Group();
 
 var gjovik = new Group();
   gjovik.name = "Gjøvik";
-  gjovik.picturePath = "http://pilegrimsleden.no/uploads/made/uploads/images/Om/POI/Kommunevaapen/390px-Gjoevik_komm.svg_600_738_s.png";
+  gjovik.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
   gjovik.description = "Vi utfordrer Gjøvik!";
 
 var polse = new Group();
   polse.name = "Pølsefest";
-  polse.picturePath = "http://blog.etundra.com/wp-content/Media/2013/09/sausage_2001253c.jpg";
+  polse.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
   polse.description = "Jeg liker milfs...";
+
+var polse2 = new Group();
+  polse2.name = "Pølsefest";
+  polse2.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
+  polse2.description = "Jeg liker milfs...";
+
+var polse4 = new Group();
+  polse4.name = "Pølsefest";
+  polse4.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
+  polse4.description = "Jeg liker milfs...";
+
+var polse3 = new Group();
+  polse3.name = "Pølsefest";
+  polse3.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
+  polse3.description = "Jeg liker milfs...";
+
+var polse5 = new Group();
+  polse5.name = "Pølsefest";
+  polse5.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
+  polse5.description = "Jeg liker milfs...";
+
+var polse6 = new Group();
+  polse6.name = "Pølsefest";
+  polse6.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
+  polse6.description = "Jeg liker milfs...";
+
+var polse7 = new Group();
+  polse7.name = "Pølsefest";
+  polse7.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
+  polse7.description = "Jeg liker milfs...";
+
+var polse8 = new Group();
+  polse8.name = "Pølsefest";
+  polse8.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
+  polse8.description = "Jeg liker milfs...";
 
 groups.push(ntnu);
 groups.push(gjovik);
 groups.push(polse);
+groups.push(polse2);
+groups.push(polse3);
+groups.push(polse4);
+groups.push(polse5);
+groups.push(polse6);
+groups.push(polse7);
+groups.push(polse8);
+
 
 export default class social extends Component {
 
@@ -64,33 +107,13 @@ export default class social extends Component {
 
     return (
       <View style={styles.container}>
-        <View>
+        <View style = {styles.body}>
             <View style={styles.navBar}></View>
-          <TextInput
-              style={{
-              height:  DEVICE_HEIGHT / 15,
-              width:  DEVICE_WIDTH,
-              borderBottomWidth: 1,
-              textAlign: 'center',
-              fontSize: 20,
-              borderColor: "black",
-              backgroundColor: 'rgba(0,0,0,0)',
-              borderRadius: 10,
-            }}
-            placeholder={"Search "}
-            placeholderTextColor={"rgba(198,198,204,1)"}
-            onChangeText={(text) => {this.setState({text})}}
-            onSubmitEditing={() => {this.setState({text: ''})}}
-            value={(this.state && this.state.text) || ''}
-          />
+
+          <ScrollView style={styles.scrollView}>
+                {showGroups}
+          </ScrollView>
         </View>
-
-        <ScrollView style={styles.scrollView}>
-
-              {showGroups}
-
-        </ScrollView>
-
       </View>
     );
   }
@@ -98,44 +121,40 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container : {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#f5f5f5',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH,
+    flex: 1/10,
+    position: 'relative',
     backgroundColor: '#2ecc71',
     alignItems: 'center',
   },
+  body: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   group: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.06,
-    flexDirection: 'row',
+    flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
+    flexDirection: 'row',
+    margin: 2,
   },
   groupImage: {
-    marginLeft: 10,
-    width: DEVICE_HEIGHT / 10,
-    height: DEVICE_HEIGHT / 10,
-    borderWidth: 0,
-    borderColor: 'rgba(0,0,0,0.5)',
+    height: 60,
+    width: 60,
     borderRadius: 10,
   },
   groupText: {
-    padding: 5,
-    paddingLeft: 20,
     fontSize: 20,
   },
   scrollView: {
+    flex: 1,
     flexDirection: 'column',
   },
   button: {
-    marginBottom: DEVICE_HEIGHT / 60,
-    marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.03),
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.05,
   },
 });
 
