@@ -9,6 +9,7 @@ import {
 export default styles = StyleSheet.create({
   contentView: {
     marginTop: 60,
+    flex: 1,
   },
   slide1: {
     flex: 1,

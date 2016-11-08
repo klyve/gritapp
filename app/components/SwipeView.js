@@ -12,7 +12,9 @@ import {
 import Swiper from 'react-native-swiper';
 import styles from './styles/SwipeView';
 
-import Header from './MainHeader';
+import {
+  MainHeader
+}from './modules';
 import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
@@ -46,21 +48,28 @@ export default class SwipeView extends Component {
       >
 
         <View style={styles.slide2}>
-          <Header />
+          <MainHeader
+            color="red"
+            title="Friends"
+           />
           <View style={styles.contentView}>
             <Friends />
           </View>
         </View>
 
         <View>
-          <Header />
+          <MainHeader
+            leftBtn="Test"
+            title="Home page"
+            rightBtn="Create"
+          />
           <View style={styles.contentView}>
             <Dashboard />
           </View>
         </View>
 
         <View style={styles.slide3}>
-          <Header />
+          <MainHeader color="orange" />
           <View style={styles.contentView}>
             <CreateOrJoinGroup />
           </View>
