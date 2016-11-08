@@ -98,8 +98,14 @@ export default class social extends Component {
           underlayColor={"rgb(210,210,210)"}
           style = {styles.button}>
           <View style={styles.group}>
+            <TouchableHighlight
+            style = {{borderRadius: 30}}
+            onPress={() => {}}
+            activeOpacity={75 / 100}
+            underlayColor={"rgb(210,210,210)"}>
               <Image style={styles.groupImage} source={{uri: a.picturePath}}></Image>
-              <Text style={styles.groupText}> {a.name} </Text>
+            </TouchableHighlight>
+              <Text style={styles.groupText}> {a.name}</Text>
           </View>
         </TouchableHighlight>
 
@@ -109,7 +115,13 @@ export default class social extends Component {
       <View style={styles.container}>
         <View style = {styles.body}>
             <View style={styles.navBar}></View>
-
+            <TouchableHighlight
+            onPress = {() => {}}
+            activeOpacity={71 / 100}
+            underlayColor={"rgb(210,210,210)"}
+            style = {styles.notifications}>
+              <Text style = {styles.notText}>Notifications (7)</Text>
+            </TouchableHighlight>
           <ScrollView style={styles.scrollView}>
                 {showGroups}
           </ScrollView>
@@ -131,20 +143,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#2ecc71',
     alignItems: 'center',
   },
+  notifications: {
+    backgroundColor: '#26a65b',
+    flex: 1/20,
+    justifyContent: 'center',
+  },
+  notText: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center',
+  },
   body: {
     flex: 1,
     justifyContent: 'center',
   },
   group: {
-    flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
     flexDirection: 'row',
     margin: 2,
+    marginLeft: 8,
+    marginRight: 8,
   },
   groupImage: {
-    height: 60,
-    width: 60,
+    height: 70,
+    width: 70,
     borderRadius: 10,
   },
   groupText: {
@@ -154,8 +177,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  button: {
-  },
+
 });
 
 AppRegistry.registerComponent('social', () => social);

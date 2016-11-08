@@ -127,19 +127,17 @@ export default class social extends Component {
     return (
       <View style={styles.container}>
         <View style = {styles.navbar}></View>
-        <View style = {styles.header}>
-          <Text style = {styles.headerText}>Notifications ({requests.length})</Text>
+        <View style = {styles.body}>
+          <ScrollView style = {styles.requestContainer}>
+            {showRequests}
+          </ScrollView>
         </View>
-        <ScrollView style = {styles.requestContainer}>
-          {showRequests}
-        </ScrollView>
-
         <TouchableHighlight
         onPress={() => {}}
         activeOpacity={75 / 100}
         underlayColor={"rgb(210,210,210)"}
         style = {styles.closePage}>
-          <Text>CLOSE</Text>
+          <Text style={styles.closeButtonText}>CLOSE</Text>
         </TouchableHighlight>
       </View>
     );
@@ -148,53 +146,41 @@ export default class social extends Component {
 const styles = StyleSheet.create({
 
   container : {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#f5f5f5',
   },
   navbar: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH,
+    flex: 1/10,
     backgroundColor: '#2ecc71',
     alignItems: 'center',
   },
-  header: {
-    height: 30,
-    backgroundColor: '#26a65b',
-    width: DEVICE_WIDTH,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerText: {
-    fontSize: 18,
-    color: 'white',
+  body: {
+    flex: 1/1.5,
   },
   requestContainer: {
     backgroundColor: '#f5f5f5',
     flexDirection: 'column',
   },
   request: {
-    height: 75,
+    flex: 1/1.1,
     margin: 5,
     backgroundColor: 'white',
-    width: DEVICE_WIDTH,
     flexDirection: 'row',
     alignItems: 'center',
   },
   senderImage: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 15,
     backgroundColor: 'blue',
   },
   requestText: {
     marginLeft: 10,
-    width: 280,
+    width: 260,
   },
   closePage: {
-    height: 50,
-    width: DEVICE_WIDTH,
-    backgroundColor: 'grey',
+    height: 60,
+    backgroundColor: '#26a65b',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -207,6 +193,10 @@ const styles = StyleSheet.create({
   deleteSymbol: {
     width: 20,
     height: 20
+  },
+  closeButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 AppRegistry.registerComponent('social', () => social);

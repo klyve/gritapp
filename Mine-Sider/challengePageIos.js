@@ -61,10 +61,18 @@ export default class social extends Component {
     let all = challenges.map((challenge, i) => {
     console.log(challenge.id)
     return (
-      <Image
-            key = {i}
-            style = {styles.image}
-            source={{uri: challenge.pictureUrl}}></Image>
+      <TouchableHighlight
+      style = {styles.imageButton}
+      key = {i}
+      onPress = {() => {}}
+      activeOpacity={71 / 100}
+      underlayColor={"rgb(210,210,210)"}
+      >
+        <Image
+              key = {i}
+              style = {styles.image}
+              source={{uri: challenge.pictureUrl}}></Image>
+      </TouchableHighlight>
     )
   })
 
@@ -72,23 +80,24 @@ export default class social extends Component {
 
       <View style={styles.container}>
         <View style = {styles.navbar}></View>
-        <ScrollView style = {styles.bodyContainer}>
+        <ScrollView style = {styles.body}>
 
         <View style = {styles.description}>
           <Text style = {styles.descriptionHeader}>Challenge Name</Text>
-          <Text style = {styles.descriptionParagraph}>Her kommer det noe funfact om din challenge blah blah  blah  blah  blah blah blah lorem ipsum blah blah blah... </Text>
+          <Text style = {styles.descriptionParagraph}>
+            Her kommer det noe funfact om din challenge blah blah  blah  blah  blah blah blah lorem ipsum blah blah blah...
+          </Text>
         </View>
 
         <View style = {styles.imageContainer}>
-
           {all}
-
         </View>
 
         </ScrollView>
 
         <View style = {styles.bottomBar}>
           <TouchableHighlight
+          onPress = {() => {}}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}>
 
@@ -105,70 +114,68 @@ export default class social extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
     backgroundColor: '#F0F0F0',
+    justifyContent: 'center',
+    flex: 1,
   },
   navbar: {
     backgroundColor: '#2ecc71',
     opacity: 0.88,
-    height: DEVICE_HEIGHT / 8.2,
-    width: DEVICE_WIDTH,
+    flex: 1/9,
   },
-  bodyContainer: {
-    paddingTop: DEVICE_HEIGHT / 200,
+  body: {
     backgroundColor: '#f7f8fd',
-    width: DEVICE_WIDTH,
-    height: DEVICE_HEIGHT - (DEVICE_HEIGHT / 11),
+    flex: 1/1.1,
   },
   description: {
-    width: DEVICE_WIDTH,
-    height: DEVICE_HEIGHT / 5.8,
+    paddingLeft: 20,
+    paddingRight: 20,
     backgroundColor: 'white',
     alignItems: 'center',
-    marginTop: -(DEVICE_HEIGHT / 200),
     marginBottom: 5,
+    flex: 1/6,
   },
   descriptionHeader: {
+    padding: 10,
     fontSize: 22,
     fontWeight: 'bold',
-    paddingBottom: DEVICE_HEIGHT / 50,
-    paddingTop: DEVICE_WIDTH / 30,
     opacity: 0.7,
   },
   descriptionParagraph: {
-    width: DEVICE_WIDTH / 1.03,
+    padding: 5,
     fontSize: 14,
     textAlign: 'center',
-    paddingLeft: DEVICE_WIDTH / 20,
-    paddingRight: DEVICE_WIDTH / 20,
     opacity: 0.7,
   },
   imageContainer: {
-    width: DEVICE_WIDTH,
-    justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   image: {
-    width:  DEVICE_WIDTH / 2.1,
-    height:  DEVICE_WIDTH / 2.1,
+    height: DEVICE_WIDTH / 2.07,
+    width: DEVICE_WIDTH / 2.07,
     backgroundColor: '#2ecc71',
-    margin: DEVICE_WIDTH / 300,
+  },
+  imageButton: {
+    height: DEVICE_WIDTH / 2.07,
+    width: DEVICE_WIDTH / 2.07,
+    margin: 1,
   },
   bottomBar: {
-    width: DEVICE_WIDTH,
-    height: DEVICE_HEIGHT / 12,
     backgroundColor: 'white',
     borderRadius: 10,
     alignItems: 'center',
+    flex: 1/9,
   },
-  cameraButton: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_HEIGHT / 10,
+cameraButton: {
+    height: 60,
+    width: 60,
   },
   cameraLogo: {
-    height: DEVICE_HEIGHT / 14,
-    width: DEVICE_HEIGHT / 14,
+    height: 60,
+    width: 60,
   },
 });
+
 AppRegistry.registerComponent('social', () => social);
