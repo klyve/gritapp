@@ -12,39 +12,38 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 
 export default styles = StyleSheet.create({
   container : {
-    height: DEVICE_HEIGHT,
     width: DEVICE_WIDTH,
+    height: DEVICE_HEIGHT,
     backgroundColor: '#f0f0f0',
   },
-  navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-    backgroundColor: '#2ecc71',
-    alignItems: 'center',
-  },
-  group: {
+  isPublic: {
     height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH / 1.04,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#3498db',
+  },
+  isPrivate: {
+    height: DEVICE_HEIGHT / 8,
+    width: DEVICE_WIDTH / 1.04,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#c0392b',
   },
   groupImage: {
     marginLeft: DEVICE_HEIGHT / 50,
     width: DEVICE_HEIGHT / 12,
     height: DEVICE_HEIGHT / 12,
-    borderWidth: 0,
-    borderColor: 'rgba(0,0,0,0.5)',
-    borderRadius: 50,
+    borderRadius: 15,
   },
   unreadDot: {
     position: 'absolute',
-    left: DEVICE_HEIGHT / 15,
-    top: DEVICE_HEIGHT / 130,
+    right: DEVICE_HEIGHT / 48,
+    top: ((DEVICE_HEIGHT / 8) - (DEVICE_HEIGHT / 24)) / 2,
     width: DEVICE_HEIGHT / 24,
     height: DEVICE_HEIGHT / 24,
     backgroundColor: '#ec644b',
-    borderRadius: 50,
+    borderRadius: (DEVICE_HEIGHT / 24) / 2,
   },
   noUnreadDot: {
     opacity: 0,
@@ -62,13 +61,12 @@ export default styles = StyleSheet.create({
   },
   scrollView: {
     flexDirection: 'column',
-    marginTop: DEVICE_HEIGHT / 100,
   },
   button: {
     height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH / 1.04,
     marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
-    marginBottom: DEVICE_HEIGHT / 100,
+    marginTop: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
   },
 
 

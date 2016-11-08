@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   navbar: {
+    flex: 1,
     backgroundColor: '#2ecc71',
-    height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH,
   },
   button: {

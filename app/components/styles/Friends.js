@@ -17,8 +17,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#2ecc71',
     alignItems: 'center',
   },
@@ -74,13 +73,13 @@ export default styles = StyleSheet.create({
     marginLeft: DEVICE_HEIGHT / 50,
     width: DEVICE_HEIGHT / 8,
     height: DEVICE_HEIGHT / 8,
-    borderRadius: 50,
+    borderRadius: 20,
   },
   friendImage: {
     marginLeft: DEVICE_HEIGHT / 50,
     width: DEVICE_HEIGHT / 12,
     height: DEVICE_HEIGHT / 12,
-    borderRadius: 50,
+    borderRadius: 15,
   },
 
 
