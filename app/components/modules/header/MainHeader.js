@@ -32,6 +32,7 @@ export default class MainHeader extends Component {
           name={text}
           type='font-awesome'
           color='#fff'
+          underlayColor='transparent'
           onPress={fn}
         />
       </View>
@@ -62,9 +63,6 @@ export default class MainHeader extends Component {
   }
 
   render() {
-    let title     = false;
-    let leftbtn   = false;
-    let rightbtn  = false;
     if(this.props.title) {
       title = <Text>{this.props.title}</Text>
     }
