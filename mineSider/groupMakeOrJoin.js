@@ -13,6 +13,7 @@ import {
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
 export default class social extends Component {
   render() {
@@ -26,7 +27,7 @@ export default class social extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           onPress = {() => {}}
-          style = {styles.button}>
+          style = {styles.buttonCreate}>
               <Text style = {styles.buttonText}>Create</Text>
           </TouchableHighlight>
 
@@ -34,7 +35,7 @@ export default class social extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           onPress = {() => {}}
-          style = {styles.button}>
+          style = {styles.buttonJoin}>
               <Text style = {styles.buttonText}>Join</Text>
           </TouchableHighlight>
         </View>
@@ -44,25 +45,36 @@ export default class social extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#f0f0f0',
   },
   body: {
-    alignItems: 'center',
+    flex: 7,
   },
   navbar: {
     flex: 1,
     backgroundColor: '#2ecc71',
     width: DEVICE_WIDTH,
   },
-  button: {
-    backgroundColor: '#ffffff',
-    height: (DEVICE_HEIGHT - (DEVICE_HEIGHT / 8)) / 2.18,
-    width: DEVICE_WIDTH / 1.04,
+  buttonCreate: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: DEVICE_WIDTH / 50,
+    marginTop: MARGIN,
+    marginBottom: MARGIN / 2,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
+    backgroundColor: '#ffffff'
+  },
+  buttonJoin: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: MARGIN / 2,
+    marginBottom: MARGIN,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
+    backgroundColor: '#ffffff'
   },
   buttonText: {
     color: '#2ecc71',
