@@ -13,6 +13,9 @@ export default styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#f0f0f0',
   },
+  noPadding: {
+    padding: 0,
+  },
   text: {
     color: '#fff',
     fontSize: 30,

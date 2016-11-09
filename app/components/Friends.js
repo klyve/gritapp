@@ -46,7 +46,7 @@ me.friends = [f1,f2,f3,f4,f5];
 
 export default class Friends extends Component {
   render() {
-    // <Image style={styles.settingsButton} source={require('./Resources/icons/cogWheelGreen.png')}></Image>
+
     let showFriends = me.friends.map((a,b) => {
         return <TouchableHighlight
                onPress = {() => {}}
@@ -63,24 +63,27 @@ export default class Friends extends Component {
 
     return (
       <View style={styles.container}>
-        <ScrollView>
-          <TouchableHighlight style={styles.meButton}>
-            <View style={styles.me}>
-              <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
-              <Text style={styles.meText}> {me.name}</Text>
-            </View>
-          </TouchableHighlight>
 
 
-          <TouchableHighlight style={styles.addButton}>
-            <View style={styles.add}>
-              <Text style={styles.addText}> ADD FRIEND </Text>
-            </View>
-          </TouchableHighlight>
+        <View style={styles.body}>
+          <ScrollView style={{flex: 1,}}>
+            <TouchableHighlight style={styles.meButton}>
+              <View style={styles.me}>
+                <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
+                <Text style={styles.meText}> {me.name}</Text>
+              </View>
+            </TouchableHighlight>
 
-          {showFriends}
 
-        </ScrollView>
+            <TouchableHighlight style={styles.addButton}>
+              <View style={styles.add}>
+                <Text style={styles.addText}> ADD FRIEND </Text>
+              </View>
+            </TouchableHighlight>
+
+            {showFriends}
+          </ScrollView>
+        </View>
 
       </View>
     );

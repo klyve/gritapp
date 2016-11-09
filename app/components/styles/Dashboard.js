@@ -15,12 +15,6 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f0f0f0',
   },
-  navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-    backgroundColor: '#2ecc71',
-    alignItems: 'center',
-  },
   group: {
     height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH / 1.04,

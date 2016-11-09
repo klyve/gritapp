@@ -13,10 +13,11 @@ import {
   Blocks,
   BlockFifty,
   MainHeader
-} from './modules';
-import styles from './styles/CreateOrJoinGroup';
+} from '../modules';
 
-export default class CreateOrJoinGroup extends Component {
+import styles from './styles/grouptype';
+
+export default class GroupType extends Component {
   render() {
     return (
       <View style = {styles.container}>
@@ -24,18 +25,18 @@ export default class CreateOrJoinGroup extends Component {
 
           <BlockFifty
             style={{marginBottom: 10}}
-            onPress={() => Actions.grouptype()}
+            onPress={() => Actions.groupname('public')}
           >
             <Text style={styles.buttonText}>
-              Create Group
+              Public
             </Text>
           </BlockFifty>
 
           <BlockFifty
-            onPress={() => console.log("Hello world2")}
+            onPress={() => Actions.groupname('private')}
           >
             <Text style={styles.buttonText}>
-              Join Group
+              Private
             </Text>
           </BlockFifty>
 

@@ -5,8 +5,13 @@ import {Scene, Router} from 'react-native-router-flux';
 
 import * as friendActions from '../actions/friends';
 import SwipeView from '../components/SwipeView';
-import Test from '../components/Test';
 
+// Group modules
+import GroupType from '../components/group/GroupType';
+import GroupName from '../components/group/GroupName';
+
+// Test module
+import Test from '../components/Test';
 
 
 class MainView extends Component {
@@ -22,6 +27,10 @@ class MainView extends Component {
       <Scene key="root">
         <Scene key="swipeview" hideNavBar component={SwipeView} state={state} {...actions} initial={true} />
         <Scene key="test" hideNavBar component={Test} state={state} {...actions}/>
+
+        <Scene key="grouptype" hideNavBar component={GroupType} state={state} {...actions} />
+        <Scene key="groupname" hideNavBar component={GroupName} state={state} {...actions} />
+        
       </Scene>
     </Router>
     );
