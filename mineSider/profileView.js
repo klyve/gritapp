@@ -17,29 +17,20 @@ const MARGIN = 10;
 var groupColor;
 
 // Blueprints
-function Group(){
-  this.name = "";
-  this.picturePath = "";
-  this.description = "";
-  this.currentChallenges = [];
-  this.public;
+function person(){
+  this.name;
+  this.picturePath;
+  this.description;
 }
 
-var currentGroup = new Group();
-  currentGroup.name = "Gjøvik";
-  currentGroup.picturePath = "http://pilegrimsleden.no/uploads/made/uploads/images/Om/POI/Kommunevaapen/390px-Gjoevik_komm.svg_600_738_s.png";
-  currentGroup.description = "Vi utfordrer Gjøvik!";
-  currentGroup.public = true;
-
-
-groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
+var currentPerson = new person();
+  currentPerson .name = "ArabBeauty95";
+  currentPerson.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/13450786_1166169403435324_6701603115698877888_n.jpg?oh=8deb29a29e5d8a0a74a7bf5527317fea&oe=588AD4EE";
+  currentPerson.description = "Hei jeg heter Atbin, jeg liker det meste så kom som du er. Du finner meg på din lokale fest";
 
 
 export default class social extends Component {
   render() {
-
-    let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
-    let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
 
 
     return (
@@ -50,25 +41,24 @@ export default class social extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+            <Image style={styles.groupImage} source={{uri: currentPerson.picturePath}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
+              <Text style={styles.groupTitleText}>{currentPerson.name}</Text>
 
-              <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+              <Text style={styles.groupDescriptionText}>{currentPerson.description}</Text>
             </View>
 
             <View style={styles.tabs}>
 
-              <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
+              <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN/2,}}>
               </View>
 
               <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={{color: groupColor, fontSize: 22, fontWeight: 'bold'}}> JOIN </Text>
+                <Text style={{color: '#2ecc71', fontSize: 22, fontWeight: 'bold', textAlign: 'center'}}> ADD FRIEND </Text>
               </View>
-
 
             </View>
 
@@ -88,7 +78,7 @@ const styles = StyleSheet.create({
   },
   navBar: {
     flex: 1,
-    backgroundColor: groupColor,
+    backgroundColor: '#2ecc71',
   },
   body: {
     flex: 7,
@@ -99,6 +89,8 @@ const styles = StyleSheet.create({
   groupInfo: {
     alignItems: 'center',
     paddingBottom: MARGIN*2,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
   },
   tabs: {
     flex: 1,
@@ -118,12 +110,15 @@ const styles = StyleSheet.create({
 
   groupTitleText:{
     fontSize: 30,
-    color: groupColor,
+    color: '#2ecc71',
+    paddingTop: MARGIN,
   },
   groupDescriptionText: {
-    fontSize: 16,
+    fontSize: 18,
+    paddingTop: MARGIN*2,
     textAlign: 'center',
   },
+
 });
 
 AppRegistry.registerComponent('social', () => social);

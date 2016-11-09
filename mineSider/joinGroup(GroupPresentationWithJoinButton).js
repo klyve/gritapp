@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
   },
   groupDescriptionText: {
     fontSize: 16,
+    textAlign: 'center',
   },
-
 });
 
 AppRegistry.registerComponent('social', () => social);

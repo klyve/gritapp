@@ -80,20 +80,26 @@ export default class social extends Component {
 
       <View style={styles.container}>
         <View style = {styles.navbar}></View>
-        <ScrollView style = {styles.body}>
 
-        <View style = {styles.description}>
-          <Text style = {styles.descriptionHeader}>Challenge Name</Text>
-          <Text style = {styles.descriptionParagraph}>
-            Her kommer det noe funfact om din challenge blah blah  blah  blah  blah blah blah lorem ipsum blah blah blah...
-          </Text>
+        <View style={styles.body}>
+
+          <ScrollView>
+
+          <View style = {styles.description}>
+            <Text style = {styles.descriptionHeader}>Challenge Name</Text>
+            <Text style = {styles.descriptionParagraph}>
+              Her kommer det noe funfact om din challenge blah blah  blah  blah  blah blah blah lorem ipsum blah blah blah...
+            </Text>
+          </View>
+
+          <View style = {styles.imageContainer}>
+            {all}
+          </View>
+
+          </ScrollView>
+
         </View>
 
-        <View style = {styles.imageContainer}>
-          {all}
-        </View>
-
-        </ScrollView>
 
       </View>
     );
@@ -108,11 +114,11 @@ const styles = StyleSheet.create({
   navbar: {
     backgroundColor: '#2ecc71',
     opacity: 0.88,
-    flex: 1/9,
+    flex: 1,
   },
   body: {
     backgroundColor: '#f7f8fd',
-    flex: 1/1.1,
+    flex: 7,
   },
   description: {
     paddingLeft: 20,
@@ -126,7 +132,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 22,
     fontWeight: 'bold',
-    opacity: 0.7,
+    color: '#2ecc71',
   },
   descriptionParagraph: {
     padding: 5,

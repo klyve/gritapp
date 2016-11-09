@@ -240,6 +240,7 @@ const styles = StyleSheet.create({
   },
   groupDescriptionText: {
     fontSize: 16,
+    textAlign: 'center',
   },
   groupTabText: {
     fontSize: 16,
