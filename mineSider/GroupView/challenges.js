@@ -14,6 +14,7 @@ import {
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 10;
+var groupColor;
 
 // Blueprints
 function Group(){
@@ -44,7 +45,7 @@ var currentGroup = new Group();
 var chall1 = new Challenge();
   chall1.name = "Vakreste blomst";
   chall1.timeLeft = "9d";
-  chall1.picturePath = "https://static.pexels.com/photos/96918/pexels-photo-96918.jpeg";
+  chall1.picturePath = "http://plusquotes.com/images/quotes-img/flowers-482575_960_720.jpg";
 
 var chall2 = new Challenge()
   chall2.name = "Spis en busemann :o";
@@ -63,6 +64,8 @@ var chall4 = new Challenge();
 
 
 var challenges =[chall1, chall2, chall3, chall4];
+
+groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
 
 
 export default class social extends Component {
@@ -94,7 +97,7 @@ export default class social extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={[styles.navBar, groupBannerColor]}/>
+        <View style={styles.navBar}/>
 
         <View style={styles.body}>
 
@@ -104,7 +107,7 @@ export default class social extends Component {
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={[styles.groupTitleText, groupTitleColor]}>{currentGroup.name}</Text>
+              <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
 
               <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
             </View>
@@ -116,7 +119,7 @@ export default class social extends Component {
                 </View>
 
                 <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
-                  <Text style={styles.groupTabText}>Challenges</Text>
+                  <Text style={{color: groupColor, fontSize: 16,}}>Challenges</Text>
                 </View>
 
                 <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
@@ -127,7 +130,7 @@ export default class social extends Component {
               <View style={{flex: 12, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
                 <ScrollView>
 
-                  {showGroups}
+                  {showChallenges}
 
                 </ScrollView>
               </View>
@@ -149,6 +152,7 @@ const styles = StyleSheet.create({
   },
   navBar: {
     flex: 1,
+    backgroundColor: groupColor,
   },
   body: {
     flex: 7,
@@ -175,22 +179,23 @@ const styles = StyleSheet.create({
     top: -60,
   },
   challengeImage: {
-    width: DEVICE_HEIGHT / 12,
-    height: DEVICE_HEIGHT / 12,
-    marginLeft: DEVICE_WIDTH / 80,
-    borderRadius: 50,
+    width: 60,
+    height: 60,
+    marginLeft: MARGIN,
+    borderRadius: 30,
   },
 
 
   challengeBody: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#ffffff',
+    paddingTop: MARGIN,
+    paddingBottom: MARGIN,
   },
   groupTitleText:{
     fontSize: 30,
+    color: groupColor,
   },
   groupDescriptionText: {
     fontSize: 16,
@@ -201,34 +206,20 @@ const styles = StyleSheet.create({
   },
   challengeTitleText: {
     fontSize: 18,
-    marginLeft: DEVICE_WIDTH / 30,
+    marginLeft: MARGIN,
   },
   challengeTimeLeftText: {
     position: 'absolute',
     fontSize: 16,
-    right: DEVICE_WIDTH / 30,
-    top: DEVICE_HEIGHT / 20,
+    right: MARGIN,
+    top: MARGIN * 3,
   },
+
 
   challengeButton: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    marginBottom: DEVICE_HEIGHT / 100,
-  },
-
-
-  blueBannerColor: {
-    backgroundColor: '#3498db',
-  },
-  blueTextColor: {
-    color: '#3498db',
-  },
-
-  redBannerColor: {
-    backgroundColor: '#c0392b',
-  },
-  redTextColor: {
-    color: '#c0392b',
+    marginBottom: MARGIN,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
   },
 });
 
