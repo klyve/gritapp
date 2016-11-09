@@ -13,6 +13,7 @@ import {
 // Dive width and height
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
 function request() {
   this.called = "";
@@ -21,8 +22,6 @@ function request() {
   this.senderName = "";
   this.senderImgPath = "";
 }
-
-var requests = [];
 
 var ntnu = new request();
   ntnu.called = "NTNU Gjøvik";
@@ -73,13 +72,9 @@ ntnu7.staus = 'pending';
 ntnu7.senderName = 'Henrik';
 ntnu7.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
 
-requests.push(ntnu);
-requests.push(ntnu2);
-requests.push(ntnu3);
-requests.push(ntnu4);
-requests.push(ntnu5);
-requests.push(ntnu6);
-requests.push(ntnu7);
+
+var requests = [ntnu, ntnu2, ntnu3, ntnu4, ntnu5, ntnu6, ntnu7];
+
 
 export default class social extends Component {
   constructor() {
@@ -90,35 +85,36 @@ export default class social extends Component {
   }
   render() {
     let showRequests = this.state.requests.map((a, b) => {
-    console.log(a.called)
-    return (
-      <TouchableHighlight
-      key = {b}
-      onPress={() => {}}
-      activeOpacity={75 / 100}
-      underlayColor={"rgb(210,210,210)"} >
-          <View style = {styles.request}>
-            <Image
-            style = {styles.senderImage}
-            source = {{uri: a.senderImgPath}}/>
-            <Text
-            style = {styles.requestText}
-            >
-              {a.called}: invited by {a.senderName}
-            </Text>
-          </View>
-      </TouchableHighlight>
+      return (
+        <TouchableHighlight
+        key = {b}
+        onPress={() => {}}
+        activeOpacity={75 / 100}
+        underlayColor={"rgb(210,210,210)"}
+        style = { styles.button }>
+            <View style = {styles.request}>
+              <Image style = {styles.senderImage} source = {{uri: a.senderImgPath}}/>
 
-    )
-  })
+              <Text style = {styles.requestText}>
+                {a.called}: invited by {a.senderName}
+              </Text>
+
+            </View>
+        </TouchableHighlight>
+
+      )
+    })
     return (
       <View style={styles.container}>
+
         <View style = {styles.navbar}></View>
+
         <View style = {styles.body}>
           <ScrollView style = {styles.requestContainer}>
             {showRequests}
           </ScrollView>
         </View>
+
         <TouchableHighlight
         onPress={() => {}}
         activeOpacity={75 / 100}
@@ -126,6 +122,8 @@ export default class social extends Component {
         style = {styles.closePage}>
           <Text style={styles.closeButtonText}>CLOSE</Text>
         </TouchableHighlight>
+
+
       </View>
     );
   }
@@ -134,24 +132,26 @@ const styles = StyleSheet.create({
 
   container : {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
   },
   navbar: {
-    flex: 1/10,
+    flex: 1,
     backgroundColor: '#2ecc71',
     alignItems: 'center',
   },
   body: {
-    flex: 1/1.5,
+    flex: 6.2,
   },
   requestContainer: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
     flexDirection: 'column',
   },
   request: {
-    flex: 1/1.1,
-    margin: 5,
-    backgroundColor: 'white',
+    paddingTop: MARGIN,
+    paddingBottom: MARGIN,
+    paddingLeft: MARGIN,
+    paddingRight: MARGIN,
+    backgroundColor: '#ffffff',
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     width: 260,
   },
   closePage: {
-    height: 60,
+    flex: 0.8,
     backgroundColor: '#26a65b',
     justifyContent: 'center',
     alignItems: 'center',
@@ -183,6 +183,11 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  button: {
+    marginTop: MARGIN / 2,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
   },
 });
 
