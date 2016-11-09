@@ -13,7 +13,7 @@ import Swiper from 'react-native-swiper';
 import styles from './styles/SwipeView';
 
 import {
-  MainHeader
+  MainHeader,
 }from './modules';
 import Dashboard from './Dashboard';
 import Friends from './Friends';
@@ -34,7 +34,7 @@ export default class SwipeView extends Component {
 
   render() {
     //const { state, actions } = this.props;
-    
+
     return (
       <View>
       <Swiper
@@ -46,7 +46,7 @@ export default class SwipeView extends Component {
         index={1}
       >
 
-        <View style={styles.slide2}>
+        <View style={styles.slide1}>
           <MainHeader
             color="green"
             title="Profile"
@@ -58,7 +58,7 @@ export default class SwipeView extends Component {
           </View>
         </View>
 
-        <View>
+        <View style={styles.slide2}>
           <MainHeader
             leftBtn="user"
             rightBtn="plus"
@@ -79,7 +79,9 @@ export default class SwipeView extends Component {
             left={() => { this.btnPress(-1) }}
           />
           <View style={styles.contentView}>
-            <CreateOrJoinGroup />
+            <CreateOrJoinGroup
+              navigator={this.props.navigator}
+            />
           </View>
         </View>
 

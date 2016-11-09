@@ -12,8 +12,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 
 export default styles = StyleSheet.create({
   container : {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#f0f0f0',
   },
   navBar: {
@@ -62,13 +61,11 @@ export default styles = StyleSheet.create({
   },
   scrollView: {
     flexDirection: 'column',
-    marginTop: DEVICE_HEIGHT / 100,
   },
   button: {
     height: DEVICE_HEIGHT / 8,
     width: DEVICE_WIDTH / 1.04,
-    marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
-    marginBottom: DEVICE_HEIGHT / 100,
+    marginBottom: 5,
   },
 
 

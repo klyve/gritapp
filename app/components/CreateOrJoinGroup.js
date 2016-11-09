@@ -7,6 +7,12 @@ import {
   TouchableHighlight,
   ScrollView,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+
+import {
+  Blocks,
+  BlockFifty
+} from './modules';
 
 import styles from './styles/CreateOrJoinGroup';
 
@@ -14,27 +20,26 @@ export default class CreateOrJoinGroup extends Component {
   render() {
     return (
       <View style = {styles.container}>
+        <Blocks>
 
-        <View style = {styles.body}>
-          <TouchableHighlight
-          activeOpacity={71 / 100}
-          underlayColor={"rgb(210,210,210)"}
-          onPress = {() => {}}
-          style = {styles.button}
+          <BlockFifty
+            style={{marginBottom: 10}}
+            onPress={() => Actions.test()}
           >
-              <Text style = {styles.buttonText}>Create</Text>
-          </TouchableHighlight>
+            <Text style={styles.buttonText}>
+              Create Group
+            </Text>
+          </BlockFifty>
 
-          <TouchableHighlight
-          activeOpacity={71 / 100}
-          underlayColor={"rgb(210,210,210)"}
-          onPress = {() => {}}
-          style = {styles.button}
+          <BlockFifty
+            onPress={() => console.log("Hello world2")}
           >
-              <Text style = {styles.buttonText}>Join</Text>
-          </TouchableHighlight>
+            <Text style={styles.buttonText}>
+              Join Group
+            </Text>
+          </BlockFifty>
 
-        </View>
+        </Blocks>
 
       </View>
     );
