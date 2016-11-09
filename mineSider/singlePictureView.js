@@ -14,6 +14,7 @@ import {
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
 // persons (TESTDATA)
 function Person(){
@@ -113,20 +114,7 @@ export default class social extends Component {
                 </View>
                </TouchableHighlight>
       })
-      // Filters out non-friend likes, and returns an array of friend likers - max 4 friends
-      let friendsConfirmed = pst.likes.filter((a) => {
-        for (let i = 0; i < me.friends.length; i++){
-          if (a == me.friends[i] && inc < 4){
-            inc++;
-            return true;
-          }
-        }})
-      // Returns image tags for friend likers based on friendsConfirmed
-      let friendLikes = friendsConfirmed.map((a,b) => {
-            return <Image key = {b} style={styles.likers} source={{uri: a.picturePath}}></Image>
-      })
 
-      console.log(friendLikes);
 
     return (
       <View style={styles.container}>
@@ -134,34 +122,31 @@ export default class social extends Component {
           <View style ={styles.title}>
             <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}></Image>
             <Text style={styles.titleText}> {pst.uploader.name} </Text>
-            <Image style={styles.exitButton} source={require('./Resources/icons/kryss.png')}></Image>
           </View>
 
+          <View style={{flex: 7,}}>
+            <ScrollView style={styles.scroll}>
+              <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
 
-          <ScrollView style={styles.scroll}>
-            <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
-
-            <View style={styles.likeBar}>
-              {friendLikes}
-
-              <Text style={{fontSize: 18}}> + {pst.likes.length - friendLikes.length} </Text>
-
-              <Image style={styles.likeButton} source={require('./Resources/icons/likeIcon.png')}></Image>
-            </View>
+              <View style={styles.likeBar}>
+                <Text style={{fontSize: 30}}> {pst.likes.length}</Text>
+              </View>
 
 
-            <TouchableHighlight
-            onPress = {() => {}}
-            style = {styles.commentBar}>
-              <Text style = {{fontSize: 20, textAlign: 'center',}}>
-                ADD COMMENT
-              </Text>
-            </TouchableHighlight>
+              <TouchableHighlight
+              onPress = {() => {}}
+              style = {styles.commentBar}>
+                <Text style = {{fontSize: 20, textAlign: 'center',}}>
+                  ADD COMMENT
+                </Text>
+              </TouchableHighlight>
 
-            {showComments}
+              {showComments}
 
 
-          </ScrollView>
+            </ScrollView>
+          </View>
+
         </View>
       </View>
     );
@@ -176,13 +161,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   body: {
-    height: DEVICE_HEIGHT - (DEVICE_HEIGHT / 6),
-    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
+    flex: 1,
+    marginLeft: MARGIN * 2,
+    marginRight: MARGIN * 2,
+    marginTop: MARGIN * 4,
+    marginBottom: MARGIN * 4,
     backgroundColor: '#ffffff',
   },
   title: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -190,66 +177,44 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
   likeBar: {
-    height: DEVICE_HEIGHT / 10,
+    height: 60,
     alignItems: 'center',
+    justifyContent: 'center',
     flexDirection: 'row',
     backgroundColor: '#ffffff',
   },
-  likers: {
-    width: DEVICE_HEIGHT / 22,
-    height: DEVICE_HEIGHT / 22,
-    marginLeft: DEVICE_WIDTH / 80,
-    borderRadius: 50,
-  },
   commentBar:{
-    height: DEVICE_HEIGHT / 10,
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
   commentBody: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
-    marginBottom: DEVICE_HEIGHT / 200,
+    marginBottom: MARGIN / 2,
   },
 
 
   peopleImage: {
-    width: DEVICE_HEIGHT / 12,
-    height: DEVICE_HEIGHT / 12,
-    marginLeft: DEVICE_WIDTH / 80,
-    borderRadius: 50,
+    width: 60,
+    height: 60,
+    marginTop: MARGIN,
+    marginBottom: MARGIN,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
+    borderRadius: 30,
   },
   currentImage: {
-    height: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
-    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
-  },
-
-
-  exitButton: {
-    position: 'absolute',
-    height: DEVICE_HEIGHT / 15,
-    width: DEVICE_HEIGHT / 15,
-    right: DEVICE_HEIGHT / 38,
-    marginTop: DEVICE_HEIGHT / 50,
-  },
-  likeButton: {
-    position: 'absolute',
-    top: DEVICE_HEIGHT / 70,
-    right: DEVICE_HEIGHT / 36,
-    height: DEVICE_HEIGHT / 15,
-    width: DEVICE_HEIGHT / 15,
+    height: 400,
+    width: 400,
   },
 
 
   titleText: {
-    paddingLeft: DEVICE_HEIGHT / 50,
     fontSize: 25,
   },
   commentText: {
-    marginLeft: DEVICE_WIDTH / 50,
     fontSize: 14,
   },
 });

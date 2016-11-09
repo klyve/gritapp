@@ -13,6 +13,8 @@ import {
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
+var groupColor;
 
 // Blueprints
 function Group(){
@@ -20,6 +22,7 @@ function Group(){
   this.picturePath = "";
   this.description = "";
   this.currentChallenges = [];
+  this.public;
 }
 
 function Challenge(){
@@ -33,35 +36,65 @@ function Challenge(){
 
 
 var currentGroup = new Group();
-  currentGroup.name = ">Groupname<";
-  currentGroup.picturePath = "https://d13yacurqjgara.cloudfront.net/users/527271/screenshots/1937289/samsungcam.png";
+  currentGroup.name = "MyGroupname";
+  currentGroup.picturePath = "http://www.freeiconspng.com/uploads/camera-icon-google-images-24.jpg";
   currentGroup.description = "...";
+  currentGroup.public = false;
 
+groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
 
 
 export default class social extends Component {
   render() {
 
+    let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
+
+
 
     return (
       <View style={styles.container}>
 
-        <View style={styles.navBar}>
-        </View>
+        <View style={styles.navBar}/>
 
-        <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+        <View style={styles.body}>
 
-        <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
+          <View style={styles.groupImageView}>
+            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+          </View>
 
-        <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+          <View style={{flex: 1, marginTop: -60,}}>
+            <View style={styles.groupInfo}>
+              <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
 
-        <Text> </Text>
+              <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+            </View>
 
-        <View style={{backgroundColor: '#f0f0f0', width: DEVICE_WIDTH, height: DEVICE_HEIGHT, alignItems: 'center', paddingTop: DEVICE_HEIGHT/100,}}>
+            <View style={styles.tabs}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <Text style={styles.groupTabText}>Leaderboard</Text>
+                </View>
 
-          <View style={{marginTop: 10,}}></View>
-          <Text style={{fontSize: 18,}}> Looks rather lonely 😶 </Text>
-          <Text style={{fontSize: 18,}}> What about inviting som friends? </Text>
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <Text style={{color: groupColor, fontSize: 16,}}>Challenges</Text>
+                </View>
+
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <Text style={styles.groupTabText}>Members</Text>
+                </View>
+              </View>
+
+              <View style={{flex: 12, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
+                <ScrollView>
+
+
+
+                </ScrollView>
+              </View>
+
+            </View>
+          </View>
 
         </View>
 
@@ -72,70 +105,79 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
-    alignItems: 'center',
+    flex: 1,
     backgroundColor: '#ffffff',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-    backgroundColor: '#2ecc71',
+    flex: 1,
+    backgroundColor: groupColor,
+  },
+  body: {
+    flex: 7,
+  },
+  groupImageView: {
     alignItems: 'center',
   },
-  groupBG:{
-    backgroundColor: '#ffffff',
+  groupInfo: {
     alignItems: 'center',
-    width: DEVICE_WIDTH,
+    paddingBottom: MARGIN*2,
   },
-  challengeBody: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white',
+  tabs: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
   },
 
 
   groupImage: {
-    width: DEVICE_WIDTH / 2.5,
-    height: DEVICE_WIDTH / 2.5,
-    borderRadius: DEVICE_WIDTH / 3,
-    marginTop: - DEVICE_WIDTH / 8,
+    height: 160,
+    width: 160,
+    borderRadius: 80,
     borderWidth: 8,
     borderColor: '#ffffff',
+    top: -60,
   },
   challengeImage: {
-    width: DEVICE_HEIGHT / 12,
-    height: DEVICE_HEIGHT / 12,
-    marginLeft: DEVICE_WIDTH / 80,
-    borderRadius: 50,
+    width: 60,
+    height: 60,
+    marginLeft: MARGIN,
+    borderRadius: 30,
   },
 
 
+  challengeBody: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    paddingTop: MARGIN,
+    paddingBottom: MARGIN,
+  },
   groupTitleText:{
     fontSize: 30,
-    color: '#2ecc71',
+    color: groupColor,
   },
   groupDescriptionText: {
     fontSize: 16,
   },
+  groupTabText: {
+    fontSize: 16,
+    color: '#bbbbbb'
+  },
   challengeTitleText: {
     fontSize: 18,
-    marginLeft: DEVICE_WIDTH / 30,
+    marginLeft: MARGIN,
   },
   challengeTimeLeftText: {
     position: 'absolute',
     fontSize: 16,
-    right: DEVICE_WIDTH / 30,
-    top: DEVICE_HEIGHT / 20,
+    right: MARGIN,
+    top: MARGIN * 3,
   },
 
 
   challengeButton: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    marginBottom: DEVICE_HEIGHT / 100,
+    marginBottom: MARGIN,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
   },
 });
 

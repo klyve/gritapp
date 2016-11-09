@@ -14,8 +14,9 @@ import {
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
-var groups = [];
+var groups;
 var searchUp;
 
 // Blueprints
@@ -45,10 +46,8 @@ var polse = new Group();
   polse.picturePath = "http://blog.etundra.com/wp-content/Media/2013/09/sausage_2001253c.jpg";
   polse.description = "Jeg liker milfs...";
 
-groups.push(ntnu);
-groups.push(ntnu1);
-groups.push(gjovik);
-groups.push(polse);
+
+groups = [ntnu, ntnu1, gjovik, polse];
 
 export default class social extends Component {
 
@@ -77,32 +76,36 @@ export default class social extends Component {
       <View style={styles.container}>
         <View style={styles.navBar}></View>
 
-        <TextInput
-        style={styles.searchBar}
-        placeholder={'Search'}
-        placeholderTextColor={'#999999'}
-        onChangeText={(text) => {
-          searchUp = text;  // SEARCH TO SERVER FOR FILTERING
+        <View style={styles.body}>
 
-          // LOCAL SEARCH FOR TESTING
-          let match = [];
+          <TextInput
+          style={styles.searchBar}
+          placeholder={'Search'}
+          placeholderTextColor={'#999999'}
+          onChangeText={(text) => {
+            searchUp = text;  // SEARCH TO SERVER FOR FILTERING
 
-          if (text == '') {
-            match = [];
-          } else {
-            groups.map((a) => {
-              if ((a.name.search(text) != -1) && (match.indexOf(a) == -1)) {
-                match.push(a);
-              }
-            })
-          }
-          this.setState({showGroups: match});
-        }}
-        />
+            // LOCAL SEARCH FOR TESTING
+            let match = [];
 
-        <ScrollView>
-          {searchedGroups}
-        </ScrollView>
+            if (text == '') {
+              match = [];
+            } else {
+              groups.map((a) => {
+                if ((a.name.search(text) != -1) && (match.indexOf(a) == -1)) {
+                  match.push(a);
+                }
+              })
+            }
+            this.setState({showGroups: match});
+          }}
+          />
+
+          <ScrollView>
+            {searchedGroups}
+          </ScrollView>
+
+        </View>
 
       </View>
     );
@@ -111,34 +114,35 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#f0f0f0',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
+    flex: 1,
     backgroundColor: '#2ecc71',
     alignItems: 'center',
+  },
+  body: {
+    flex: 7,
+    backgroundColor: '#f0f0f0',
   },
   searchBar: {
     fontSize: 20,
     textAlign: 'center',
   },
   group: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
   },
   groupImage: {
-    marginLeft: DEVICE_HEIGHT / 50,
-    width: DEVICE_HEIGHT / 12,
-    height: DEVICE_HEIGHT / 12,
-    borderWidth: 0,
-    borderColor: 'rgba(0,0,0,0.5)',
-    borderRadius: 50,
+    marginTop: MARGIN,
+    marginBottom: MARGIN,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
   groupText: {
     padding: 5,
@@ -146,10 +150,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   button: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    marginLeft: DEVICE_WIDTH - (DEVICE_WIDTH / 1.02),
-    marginBottom: DEVICE_HEIGHT / 100,
+    marginBottom: MARGIN / 2,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
   },
 });
 

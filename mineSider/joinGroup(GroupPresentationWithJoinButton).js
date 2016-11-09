@@ -7,49 +7,73 @@ import {
   Dimensions,
   TouchableHighlight,
   Image,
+  ScrollView,
 } from 'react-native';
-
-console.disableYellowBox = true;
 
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
+var groupColor;
 
 // Blueprints
 function Group(){
   this.name = "";
   this.picturePath = "";
   this.description = "";
+  this.currentChallenges = [];
+  this.public;
 }
 
 var currentGroup = new Group();
   currentGroup.name = "Gjøvik";
   currentGroup.picturePath = "http://pilegrimsleden.no/uploads/made/uploads/images/Om/POI/Kommunevaapen/390px-Gjoevik_komm.svg_600_738_s.png";
   currentGroup.description = "Vi utfordrer Gjøvik!";
+  currentGroup.public = true;
 
+
+groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
 
 
 export default class social extends Component {
   render() {
+
+    let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
+
+
     return (
       <View style={styles.container}>
-        <View style={styles.navBar}></View>
 
-        <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+        <View style={styles.navBar}/>
 
-          <Text style={styles.groupTitleText}>
-            {currentGroup.name}
-          </Text>
+        <View style={styles.body}>
 
-        <View style={styles.groupDescription}>
-          <Text style={styles.groupDescriptionText}>
-            {currentGroup.description}
-          </Text>
-          <Text> </Text>
-        </View>
+          <View style={styles.groupImageView}>
+            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+          </View>
 
-        <View style={{flex: 1, justifyContent: 'center', width: DEVICE_WIDTH, height: DEVICE_HEIGHT / 8, alignItems: 'center', backgroundColor: '#f0f0f0'}}>
-          <Text style={{color: '#2ecc71', fontSize: 22, position: 'absolute', bottom: DEVICE_HEIGHT / 10, left: DEVICE_HEIGHT / 3.8}}>JOIN</Text>
+          <View style={{flex: 1, marginTop: -60,}}>
+            <View style={styles.groupInfo}>
+              <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
+
+              <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+            </View>
+
+            <View style={styles.tabs}>
+
+              <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
+              </View>
+
+              <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <Text style={{color: groupColor, fontSize: 22, fontWeight: 'bold'}}> JOIN </Text>
+              </View>
+
+
+            </View>
+
+          </View>
+
         </View>
 
       </View>
@@ -59,44 +83,47 @@ export default class social extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: DEVICE_HEIGHT,
-    width: DEVICE_WIDTH,
-    alignItems: 'center',
+    flex: 1,
     backgroundColor: '#ffffff',
   },
   navBar: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH,
-    backgroundColor: '#2ecc71',
+    flex: 1,
+    backgroundColor: groupColor,
+  },
+  body: {
+    flex: 7,
+  },
+  groupImageView: {
     alignItems: 'center',
   },
-  groupImage: {
-    width: DEVICE_WIDTH / 2.5,
-    height: DEVICE_WIDTH / 2.5,
-    borderRadius: DEVICE_WIDTH / 3,
-    marginTop: - DEVICE_WIDTH / 10,
-    borderWidth: 10,
-    borderColor: '#ffffff',
+  groupInfo: {
+    alignItems: 'center',
+    paddingBottom: MARGIN*2,
   },
-  groupDescription: {
-    marginTop: DEVICE_WIDTH / 15,
+  tabs: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
+  },
+
+
+  groupImage: {
+    height: 160,
+    width: 160,
+    borderRadius: 80,
+    borderWidth: 8,
+    borderColor: '#ffffff',
+    top: -60,
+  },
+
+
+  groupTitleText:{
+    fontSize: 30,
+    color: groupColor,
   },
   groupDescriptionText: {
     fontSize: 16,
   },
-  groupTitleText:{
-    fontSize: 30,
-    color: '#2ecc71',
-  },
-  joinGroupText: {
-    fontSize: 25,
-    color: '#2ecc71',
-  },
-  JoinGroup: {
-    position: 'absolute',
-    left: DEVICE_WIDTH / 2 - 30,
-    bottom: DEVICE_HEIGHT / 10,
-  }
+
 });
 
 AppRegistry.registerComponent('social', () => social);

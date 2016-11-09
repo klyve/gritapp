@@ -67,8 +67,7 @@ var currentGroup = new Group();
     f5.score = 13;
 
 
-var top3 = [f4, f2, f3];
-var rest = [f5, f1];
+var rest = [f1,f2,f3,f4,f5];
 
 groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
 
@@ -79,38 +78,18 @@ export default class social extends Component {
     let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
     let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
 
-    let showTop3 = top3.map((a,b) => {
-        return (
-              <TouchableHighlight
-               onPress = {() => {}}
-               key = {b}
-               activeOpacity={71 / 100}
-               underlayColor={"rgb(210,210,210)"}
-               style={styles.top3PersonButton}>
-                <View style={styles.top3PersonBody}>
-                  <Image style={styles.top3PersonImage} source={{uri: a.picturePath}}></Image>
-
-                  <Text style={styles.friendText}> {a.name}</Text>
-
-                  <Text style={styles.scoreText}> {a.score}</Text>
-                </View>
-               </TouchableHighlight>
-      )})
-
-      let showRest = rest.map((a,b) => {
+      let showMembers = rest.map((a,b) => {
           return (
                 <TouchableHighlight
                  onPress = {() => {}}
                  key = {b}
                  activeOpacity={71 / 100}
                  underlayColor={"rgb(210,210,210)"}
-                 style={styles.restPersonButton}>
-                  <View style={styles.restPersonBody}>
-                    <Image style={styles.restPersonImage} source={{uri: a.picturePath}}></Image>
+                 style={styles.personButton}>
+                  <View style={styles.personBody}>
+                    <Image style={styles.personImage} source={{uri: a.picturePath}}></Image>
 
                     <Text style={styles.friendText}> {a.name}</Text>
-
-                    <Text style={styles.restScoreText}> {a.score}</Text>
                   </View>
                  </TouchableHighlight>
         )})
@@ -151,11 +130,7 @@ export default class social extends Component {
               <View style={{flex: 12, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
                 <ScrollView>
 
-                  {showTop3}
-
-                  <Text> </Text>
-
-                  {showRest}
+                  {showMembers}
 
                 </ScrollView>
               </View>
@@ -204,13 +179,7 @@ const styles = StyleSheet.create({
     borderColor: '#ffffff',
     top: -60,
   },
-  top3PersonImage: {
-    width: 60,
-    height: 60,
-    marginLeft: MARGIN,
-    borderRadius: 30,
-  },
-  restPersonImage: {
+  personImage: {
     width: 40,
     height: 40,
     marginLeft: MARGIN,
@@ -218,14 +187,7 @@ const styles = StyleSheet.create({
   },
 
 
-  top3PersonBody: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    paddingTop: MARGIN,
-    paddingBottom: MARGIN,
-  },
-  restPersonBody: {
+  personBody: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#ffffff',
@@ -249,26 +211,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: MARGIN,
   },
-  scoreText: {
-    position: 'absolute',
-    fontSize: 16,
-    right: MARGIN,
-    top: MARGIN * 3,
-  },
-  restScoreText: {
-    position: 'absolute',
-    fontSize: 16,
-    right: MARGIN,
-    top: MARGIN * 2,
-  },
 
-
-  top3PersonButton: {
-    marginBottom: MARGIN,
-    marginLeft: MARGIN,
-    marginRight: MARGIN,
-  },
-  restPersonButton: {
+  personButton: {
     marginBottom: MARGIN / 2,
     marginLeft: MARGIN,
     marginRight: MARGIN,
