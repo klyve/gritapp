@@ -26,7 +26,7 @@ export default class Dashboard extends Component {
     }
   }
   gotoGroup(groupId) {
-      Actions.groupdashboard(groups[groupId])
+      Actions.groupdashboard(this.state.groups[groupId])
   }
 
   showNotifications() {
