@@ -20,12 +20,17 @@ export default class MainHeader extends Component {
 
     this.style = [styles.header];
     this.style.push(styles[this.props.color] || styles.green);
+    if(this.props.large)
+      this.style.push(styles.large);
 
   }
 
   createIcon(style, text, fn) {
+    const iconStyles = [style]
+    if(this.props.large)
+      iconStyles.push(styles.iconLarge)
     return (
-      <View style={style}>
+      <View style={iconStyles}>
         <Icon
           name={text}
           type='font-awesome'

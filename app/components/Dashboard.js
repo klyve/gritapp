@@ -53,7 +53,7 @@ groups.push(polse);
 export default class Dashboard extends Component {
 
   gotoGroup(groupId) {
-      Actions.groupdashboard(groups[i])
+      Actions.groupdashboard(groups[groupId])
   }
 
   render() {
@@ -63,7 +63,7 @@ export default class Dashboard extends Component {
       let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
       return (
         <FriendBlock
-          onPress={() => {gotoGroup(b)}}
+          onPress={() => {this.gotoGroup(b)}}
           image={a.picturePath}
           name={a.name}
           unread={a.unread}

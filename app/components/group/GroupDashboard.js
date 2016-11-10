@@ -4,151 +4,183 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TextInput,
-  Dimensions,
   TouchableHighlight,
-} from 'react-native'
-const DEVICE_WIDTH = Dimensions.get('window').width
-const DEVICE_HEIGHT = Dimensions.get('window').height
+  Image,
+  ScrollView,
+} from 'react-native';
+import Swiper from 'react-native-swiper';
 
-function person (){//The object containing the userinfo during registration
-  this.nick;
-  this.pic;
+import {
+  MainHeader,
+  Blocks,
+  FriendBlock
+} from '../modules'
+import GroupChallenges from './GroupChallenges';
+import GroupLeaderboard from './GroupLeaderboard';
+import GroupMembers from './GroupMembers';
+import styles from './styles/groupdashboard';
+
+var groupColor;
+
+// Blueprints
+function Group(){
+  this.name = "";
+  this.picturePath = "";
+  this.description = "";
+  this.currentChallenges = [];
+  this.public;
 }
+var currentGroup = new Group();
+  currentGroup.name = "Pølsefest";
+  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
+  currentGroup.description = "Vi liker pølser, de er best";
+  currentGroup.public = false;
 
-function createUser (usr,nick, pic)
-{
-  usr.nick = nick;
-  usr.pic = pic;
-  console.log(arguments)
-}
-
-
-
- var newUser = new person();
-
+groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
+const MARGIN = 10;
 
 export default class GroupDashboard extends Component {
 
-  constructor(props)
-  {
-    super()
-    this.state={text: ''}
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      activeTab: 1
+    }
+  }
+  onMomentumScrollEnd(e, state, context) {
+    console.log(state)
+    this.setState({
+      activeTab: state.index
+    })
+  }
+
+  gotoSlide(index) {
+    this.refs.swiper.scrollBy(index - this.state.activeTab)
   }
 
   render() {
-    const type = this.props.data || 'public';
-    const style = [styles.container]
-    if(type == 'public')
-      style.push(styles.publicgroup);
-    else
-      style.push(styles.privategroup);
+
+    let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
+
+
+    let tabStyles = []
+    tabStyles.push([styles.tabText])
+    tabStyles.push([styles.tabText])
+    tabStyles.push([styles.tabText])
+
+    tabStyles[this.state.activeTab].push(styles.tabFocus)
+
 
     return (
-      <View style={style}>
-        <TextInput
-          underlineColorAndroid='rgba(0,0,0,0)'
-          style={styles.textInput}
-          placeholder={"Choose Group Name"}
-          placeholderTextColor={"#dadfe1"}
-          textColor
-          onChangeText={(text) => {
-            if(text.length > 13)
-            {
-              alert("Group name must be 3-13 chars")
-            }
-            this.setState({text})}}
-          onSubmitEditing={(event) => {
-            createUser(newUser,this.state.text,'placeholder')
-            if(this.state.text.length < 3 || this.state.text.length > 13)
-            {
-              alert("Nickname must be 3-13 chars")
-            }else {
-              alert("NICK IS OK")
-              createUser(newUser,this.state.text,'placeholder')
-            }}}
-            //this.setState({text: ''})
-          value={(this.state && this.state.text) || ''}
+      <View style={styles.container}>
+
+        <MainHeader
+          color="red"
+          title="Profile"
+          leftBtn="chevron-left"
+          rightBtn="cog"
+          right={() => { this.btnPress(1) }}
+          large
         />
-        <TouchableHighlight style={styles.confirm}
-          onPress={() =>{
-            if(this.state.text.length < 3 || this.state.text.length > 13)
-            {
-              alert("Group name must be 3-13 chars")
-            }else {
-              alert("NICK IS OK")
-              createUser(newUser,this.state.text,'placeholder')//
-            }}
 
-          }
-          activeOpacity={75 / 100}
-          underlayColor={"rgb(210,210,210)"}>
-          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Next</Text>
-        </TouchableHighlight>
+        <View style={styles.body}>
 
-        <Text style={styles.bottomText}>
-          Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Curabitur
-          id elementum turpis, elementum convallis elit.
-          Ut interdum porttitor consequat. Cras sagittis
-          auctor libero sit amet viverra.
-        </Text>
-        <Text style={styles.topText}>
-          Choose a groupname with 3-13 characters
-        </Text>
+          <View style={styles.groupImageView}>
+            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+          </View>
+
+          <View style={{flex: 1, marginTop: -60,}}>
+            <View style={styles.groupInfo}>
+              <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
+
+              <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+            </View>
+
+
+            <View style={styles.tabs}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+
+
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <TouchableHighlight
+                    onPress={() => this.gotoSlide(0)}
+                    activeOpacity={71 / 100}
+                    underlayColor='transparent'
+                  >
+                    <Text style={tabStyles[0]}>Leaderboard</Text>
+                  </TouchableHighlight>
+
+                </View>
+
+
+                <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                  <TouchableHighlight
+                    onPress={() => this.gotoSlide(1)}
+                    activeOpacity={71 / 100}
+                    underlayColor='transparent'
+                  >
+                    <Text style={tabStyles[1]}>Challenges</Text>
+                  </TouchableHighlight>
+                </View>
+
+                  <View style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}>
+                    <TouchableHighlight
+                      onPress={() => this.gotoSlide(2)}
+                      activeOpacity={71 / 100}
+                      underlayColor='transparent'
+                    >
+                      <Text style={tabStyles[2]}>Members</Text>
+                    </TouchableHighlight>
+                  </View>
+
+              </View>
+
+
+
+
+              <View style={{flex: 12, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
+
+                <Swiper
+                  ref={"swiper"}
+                  style={styles.wrapper}
+                  showsButtons={false}
+                  showsPagination={false}
+                  loop={false}
+                  index={this.state.activeTab}
+                  onMomentumScrollEnd ={ (e, state, context) => this.onMomentumScrollEnd(e,state,context)}
+                >
+                <View>
+                  <ScrollView>
+                    <GroupLeaderboard />
+                  </ScrollView>
+                </View>
+                <View>
+                  <ScrollView>
+                    <GroupChallenges />
+                  </ScrollView>
+                </View>
+
+                <View>
+                  <ScrollView>
+                    <GroupMembers />
+                  </ScrollView>
+                </View>
+
+
+
+                </Swiper>
+
+
+              </View>
+
+            </View>
+          </View>
+
+        </View>
 
       </View>
     );
   }
-  }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: DEVICE_WIDTH,
-
-  },
-  publicgroup: {
-    backgroundColor: '#3498db',
-  },
-  privategroup: {
-    backgroundColor: '#c0392b',
-  },
-  textInput: {
-      fontSize: 30,
-      color: "#eeeeee",
-      textAlign: 'center',
-      margin: 10,
-      height: 60,
-      paddingLeft: 20,
-      width: 100,
-      borderWidth: 0,
-      borderColor: "rgba(0,0,0,0.74)",
-      width: DEVICE_WIDTH,
-      textAlign: 'left',
-      alignItems: 'center',
-
-    },
-    confirm: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      padding: 10,
-    },
-    bottomText: {
-      position: 'absolute',
-      bottom: 0,
-      textAlign: 'left',
-      padding: 10,
-      color: "#eeeeee",
-    },
-    topText: {
-      position: 'absolute',
-      top: 0,
-      textAlign: 'left',
-      padding: 15,
-      color: "#eeeeee",
-    }
-});
+}

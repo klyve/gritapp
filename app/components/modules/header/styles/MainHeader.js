@@ -15,6 +15,12 @@ export default styles = StyleSheet.create({
     height: 60,
     padding: 20,
   },
+  large: {
+    height: 80,
+  },
+  iconLarge: {
+    marginTop: 15,
+  },
   leftAlign: {
     position: 'absolute',
     left: 0,
