@@ -47,11 +47,23 @@ export default class GroupDashboard extends Component {
     super(props)
 
     this.state = {
-      activeTab: 1
+      activeTab: 1,
+      name: 'test',
+      image: '',
+      description: 'Hello world',
     }
   }
+  componentDidMount() {
+
+    fetch('http://localhost:3000/api/groups')
+      .then((response) => response.json())
+      .then((json) => {
+
+        this.setState(json);
+      })
+  }
+
   onMomentumScrollEnd(e, state, context) {
-    console.log(state)
     this.setState({
       activeTab: state.index
     })
@@ -90,14 +102,14 @@ export default class GroupDashboard extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+            <Image style={styles.groupImage} source={{uri: this.state.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
+              <Text style={styles.groupTitleText}>{this.state.name}</Text>
 
-              <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+              <Text style={styles.groupDescriptionText}>{this.state.description}</Text>
             </View>
 
 
