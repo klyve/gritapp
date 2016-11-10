@@ -29,4 +29,22 @@ export default styles = StyleSheet.create({
     paddingLeft: 20,
     fontSize: 20,
   },
+
+  unreadDot: {
+    position: 'absolute',
+    backgroundColor: '#ec644b',
+    right: 10,
+    top: 25,
+    width: 30,
+    height: 30,
+    borderRadius: 30,
+    overflow: 'hidden',
+  },
+  unreadDotNumber: {
+    marginTop: 5,
+    fontSize: 16,
+    borderRadius: 50,
+    color: 'white',
+    textAlign: 'center',
+  },
 })

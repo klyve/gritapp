@@ -10,8 +10,6 @@ import {
 
 import {
   Blocks,
-  BlockBasic,
-  BlockFifty,
   FriendBlock
 } from './modules'
 

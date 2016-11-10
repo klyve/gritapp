@@ -29,7 +29,7 @@ function createUser (usr,nick, pic)
  var newUser = new person();
 
 
-export default class GroupName extends Component {
+export default class GroupDashboard extends Component {
 
   constructor(props)
   {

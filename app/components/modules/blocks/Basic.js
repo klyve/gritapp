@@ -20,7 +20,7 @@ export default class BlockBasic extends Component {
       <TouchableHighlight
         activeOpacity={71 / 100}
         underlayColor='transparent'
-        
+
         onPress = {() => {this.props.onPress()}}
         style={styles.blockStyle}
       >

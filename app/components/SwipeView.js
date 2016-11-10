@@ -43,7 +43,7 @@ export default class SwipeView extends Component {
         showsButtons={false}
         showsPagination={false}
         loop={false}
-        index={0}
+        index={1}
       >
 
         <View style={styles.slide1}>
@@ -66,7 +66,7 @@ export default class SwipeView extends Component {
             right={() => { this.btnPress(1) }}
             left={() => { this.btnPress(-1) }}
           />
-          <View style={styles.contentView}>
+          <View style={[styles.contentView, styles.noPadding]}>
             <Dashboard />
           </View>
         </View>

@@ -9,6 +9,11 @@ import {
   TextInput,
   Image
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import {
+  Blocks,
+  FriendBlock
+} from './modules'
 
 import styles from './styles/Dashboard';
 
@@ -47,29 +52,24 @@ groups.push(polse);
 
 export default class Dashboard extends Component {
 
+  gotoGroup(groupId) {
+      Actions.groupdashboard(groups[i])
+  }
+
   render() {
 
     let showGroups = groups.map((a,b) => {
 
       let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
-      return <TouchableHighlight
-        onPress = {() => {}}
-        key = {b}
-        activeOpacity={71 / 100}
-        underlayColor={"rgb(210,210,210)"}
-        style = { [styles.button] }>
-        <View style={styles.group}>
-            <Image style={styles.groupImage} source={{uri: a.picturePath}}></Image>
-
-            <View style={itemstyles}>
-              <Text style={styles.unreadDotNumber}>
-                {(a.unread > 99) ? 99 : a.unread}
-              </Text>
-            </View>
-            <Text style={styles.groupText}> {a.name} </Text>
-        </View>
-      </TouchableHighlight>
-
+      return (
+        <FriendBlock
+          onPress={() => {gotoGroup(b)}}
+          image={a.picturePath}
+          name={a.name}
+          unread={a.unread}
+          key={b}
+        />
+      )
     })
 
     return (
