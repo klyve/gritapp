@@ -32,7 +32,7 @@ export default class CreateOrJoinGroup extends Component {
           </BlockFifty>
 
           <BlockFifty
-            onPress={() => console.log("Hello world2")}
+            onPress={() => Actions.groupsearch()}
           >
             <Text style={styles.buttonText}>
               Join Group
