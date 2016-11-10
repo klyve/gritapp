@@ -56,6 +56,21 @@ export default class Dashboard extends Component {
       Actions.groupdashboard(groups[groupId])
   }
 
+  renderNotifications() {
+    let notifications = 13;
+    if(notifications <= 0)
+      return false;
+
+    return (
+      <TouchableHighlight style={styles.notifications}
+        onPress={() => alert("Notifications")}
+      >
+        <Text style={styles.notificationsText}>Notifications {notifications}</Text>
+      </TouchableHighlight>
+    )
+
+  }
+
   render() {
 
     let showGroups = groups.map((a,b) => {
@@ -74,6 +89,7 @@ export default class Dashboard extends Component {
 
     return (
       <View style={styles.container}>
+        {this.renderNotifications()}
         <ScrollView style={styles.scrollView}>
           {showGroups}
         </ScrollView>

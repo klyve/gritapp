@@ -63,4 +63,15 @@ export default styles = StyleSheet.create({
   },
 
 
+  notifications: {
+    backgroundColor: '#26a65b',
+    padding: 15,
+  },
+  notificationsText: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center',
+  }
+
+
 })
