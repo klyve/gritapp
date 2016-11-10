@@ -53,7 +53,7 @@ export default styles = StyleSheet.create({
     overflow: 'hidden',
   },
   numberItem: {
-    width: 30,
+    width: 50,
     height: 30,
   },
   number: {

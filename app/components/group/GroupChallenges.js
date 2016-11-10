@@ -48,7 +48,7 @@ export default class GroupChallenges extends Component {
             onPress={() => {console.log("CLicked")}}
             image={a.picturePath}
             name={a.name}
-            unread={a.timeLeft}
+            points={a.timeLeft}
             key={b}
           />
       )})

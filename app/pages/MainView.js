@@ -27,12 +27,12 @@ class MainView extends Component {
     return (
       <Router>
       <Scene key="root">
-        <Scene key="swipeview" hideNavBar component={SwipeView} state={state} {...actions}  />
+        <Scene key="swipeview" hideNavBar component={SwipeView} state={state} {...actions} initial={true}/>
         <Scene key="test" hideNavBar component={Test} state={state} {...actions}/>
 
         <Scene key="grouptype" hideNavBar component={GroupType} state={state} {...actions} />
         <Scene key="groupname" hideNavBar component={GroupName} state={state} {...actions} />
-        <Scene key="groupdashboard" hideNavBar component={GroupDashboard} state={state} {...actions} initial={true}/>
+        <Scene key="groupdashboard" hideNavBar component={GroupDashboard} state={state} {...actions}/>
 
       </Scene>
     </Router>

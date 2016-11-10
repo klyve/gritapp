@@ -15,6 +15,8 @@ import {
   Blocks,
   FriendBlock
 } from '../modules'
+
+import { Actions } from 'react-native-router-flux';
 import GroupChallenges from './GroupChallenges';
 import GroupLeaderboard from './GroupLeaderboard';
 import GroupMembers from './GroupMembers';
@@ -81,7 +83,7 @@ export default class GroupDashboard extends Component {
           title="Profile"
           leftBtn="chevron-left"
           rightBtn="cog"
-          right={() => { this.btnPress(1) }}
+          left={() => { Actions.pop() }}
           large
         />
 
