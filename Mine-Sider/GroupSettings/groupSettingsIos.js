@@ -9,7 +9,8 @@ import {
   Image,
   ScrollView,
   Switch,
-  Alert
+  Alert,
+  TextInput,
 } from 'react-native';
 
 //Constants
@@ -33,6 +34,15 @@ var currentGroup = new Group();
   currentGroup.public = false;
 
 export default class social extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: currentGroup.name,
+    };
+    this.state2 = {
+      text: currentGroup.description,
+    };
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -53,22 +63,34 @@ export default class social extends Component {
               borderBottomWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Group Name</Text>
-            <Text style = {styles.settingsTextRight}>{currentGroup.name}</Text>
-            <Image
-            source = {require('./images/deleteButton.png')}
-            style = {styles.settingsButton}/>
+            <TextInput
+            style = {[styles.settingsTextRight, {marginLeft: 50}]}
+            value = {this.state.text}
+            onChangeText={(text) => this.setState({text})}
+            editable = {true}
+            maxLength = {16}
+            />
           </View>
           {/*Settings nr 2*/}
-          <View style = {[
-            styles.setting,
-            {
-              borderBottomWidth: 3,
-            }]}>
+          <View style = {[styles.setting,{borderBottomWidth: 3,}]}>
             <Text style = {styles.settingsTextLeft}>Description</Text>
-            <Text style = {[styles.settingsTextRight, {}]}>"Sausages"</Text>
-            <Image
-            source = {require('./images/deleteButton.png')}
-            style = {styles.settingsButton}/>
+            <TextInput
+            style = {styles.settingsTextRight}
+            value = {this.state2.text}
+            onChangeText={(text) => this.setState({text})}
+            editable = {false}
+            maxLength = {16}
+            />
+            <TouchableHighlight
+            activeOpacity={71 / 100}
+            underlayColor={"rgb(210,210,210)"}
+            onPress = {() => {}}
+            style = {styles.settingsButton}>
+              <Image
+              style = {{height: 20, width: 20,}}
+              source = {require('./images/deleteButton.png')}
+              />
+            </TouchableHighlight>
           </View>
           {/*Settings nr 3*/}
           <View style = {[
@@ -78,9 +100,16 @@ export default class social extends Component {
               borderBottomWidth: 1,
             }]}>
             <Text style = {[styles.settingsTextLeft,{width: 300}]}>Manage members</Text>
-            <Image
-            source = {require('./images/deleteButton.png')}
-            style = {styles.settingsButton}/>
+            <TouchableHighlight
+            activeOpacity={71 / 100}
+            underlayColor={"rgb(210,210,210)"}
+            onPress = {() => {}}
+            style = {[styles.settingsButton, {marginLeft: 35}]}>
+              <Image
+              style = {{height: 20, width: 20,}}
+              source = {require('./images/deleteButton.png')}
+              />
+            </TouchableHighlight>
           </View>
           {/*Settings nr 4*/}
           <View style = {[
@@ -88,21 +117,18 @@ export default class social extends Component {
             {
               borderBottomWidth: 3,
             }]}>
-            <Text style = {styles.settingsTextLeft}>Public/Private</Text>
+            <Text style = {styles.settingsTextLeft}>Public</Text>
             <Switch
           value={(this.state && this.state.switchValue) || false}
             onValueChange={(value) => {
               this.setState({switchValue: value})
             }}
             // Color props are iOS-only
-            // thumbTintColor={'white'} // Removes shadow
+            // thumbTintColor={'white'} // Removes shadows
             tintColor={"rgba(230,230,230,1)"}
             onTintColor={"rgba(68,219,94,1)"}
             style = {styles.switch}
           />
-            <Image
-            source = {require('./images/deleteButton.png')}
-            style = {styles.settingsButton}/>
           </View>
           {/*Settings nr 5*/}
           <View style = {[
@@ -123,15 +149,13 @@ export default class social extends Component {
             onTintColor={"rgba(68,219,94,1)"}
             style = {styles.switch}
           />
-            <Image
-            source = {require('./images/deleteButton.png')}
-            style = {styles.settingsButton}/>
+
           </View>
           {/*Settings nr 6*/}
           <TouchableHighlight
           onPress = {() => {
           Alert.alert(
-            'Warning: ',
+            'Warning',
             'Are you sure you want to leave this group?',
             [
               {text: 'Yes', onPress: () => console.log('Yes pressed')},
@@ -142,6 +166,8 @@ export default class social extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           style = {{
+              marginTop: 90,
+              borderTopWidth: 1,
               borderBottomWidth: 1,
               borderColor: 'rgba(0,0,0,0.3)',
               alignItems: 'center',
@@ -212,12 +238,11 @@ const styles = StyleSheet.create({
   settingsTextRight: {
     color: 'grey',
     fontSize: 18,
-    width: 100,
+    width: 135,
   },
   settingsButton: {
     width: 20,
     height: 20,
-    marginLeft: 20,
   },
   switch: {
     marginLeft: 100,

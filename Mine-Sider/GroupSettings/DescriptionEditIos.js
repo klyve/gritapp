@@ -22,15 +22,15 @@ export default class social extends Component {
     return (
       <View style = {styles.container}>
         <NavigationBar
-           title={{ title: 'Bio', tintColor: 'black', }}
+           title={{ title: 'Group description', tintColor: 'black', }}
            leftButton={{ title: 'Cancel', }}
            rightButton={{ title: 'Save', }}
            style={styles.navbar}
-           statusBar={{ tintColor: "white", }}
+           statusBar={{ tintColor: "#2ecc71", }}
          />
          <View style = {styles.body}>
             <View style = {styles.header}>
-              <Text style = {{fontSize: 16, paddingLeft: 20, width: 300, color: 'grey'}}>Turn bio on/off</Text>
+              <Text style = {{fontSize: 16, paddingLeft: 20, width: 300, color: 'grey'}}>Show description on/off</Text>
                 <Switch
                 value={(this.state && this.state.switchValue) || false}
                 onValueChange={(value) => {
