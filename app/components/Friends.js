@@ -84,13 +84,15 @@ export default class Friends extends Component {
         <SearchBar
           containerStyle={styles.searchContainer}
           inputStyle={styles.searchInput}
+          ref={"search"}
+          textInputRef={"searchbar"}
           icon={{
             color: '#86939e',
             name: 'search',
             style: styles.searchIcon
           }}
           lightTheme
-          onChangeText={() => console.log('Hello world')}
+          onChangeText={() => console.log("this.refs")}
           placeholder='Type Here...' />
 
           <View style={styles.searchClose}>
@@ -102,6 +104,10 @@ export default class Friends extends Component {
       </View>
     )
 
+  }
+  componentDidUpdate() {
+    if(this.refs.search)
+      this.refs.search.refs.searchbar.focus()
   }
 
   render() {
