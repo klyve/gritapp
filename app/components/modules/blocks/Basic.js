@@ -16,15 +16,13 @@ export default class BlockBasic extends Component {
 
 
   render() {
-    let style = [styles.blockStyle];
-    if(this.props.style)
-      style.push(this.props.style)
     return (
       <TouchableHighlight
-      activeOpacity={71 / 100}
-      underlayColor='transparent'
-      onPress = {() => {this.props.onPress()}}
-      style={style}
+        activeOpacity={71 / 100}
+        underlayColor='transparent'
+        
+        onPress = {() => {this.props.onPress()}}
+        style={styles.blockStyle}
       >
         <View >
           {this.props.children}

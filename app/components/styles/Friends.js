@@ -40,15 +40,9 @@ export default styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
+    height: 60,
     paddingTop: MARGIN * 2,
     paddingBottom: MARGIN * 2,
-  },
-  friends: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    paddingTop: MARGIN,
-    paddingBottom: MARGIN,
   },
 
 
@@ -58,26 +52,44 @@ export default styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
   },
-  friendImage: {
-    marginLeft: MARGIN,
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-  },
 
 
   meText: {
     padding: 5,
     paddingLeft: 20,
     fontSize: 25,
-  },
-  friendText: {
-    padding: 5,
-    paddingLeft: 20,
-    fontSize: 20,
+
   },
   addText: {
+    color: '#999',
     fontSize: 20,
     textAlign: 'center',
   },
+
+
+
+  searchContainer: {
+    backgroundColor: '#f0f0f0',
+    height: 60,
+    borderColor: 'transparent',
+  },
+  searchInput: {
+    backgroundColor: 'transparent',
+    height: 45,
+    fontSize: 18,
+    marginLeft: 20,
+    borderColor: 'transparent',
+  },
+  searchIcon: {
+    marginTop: 5,
+    fontSize: 18,
+  },
+  searchClose: {
+    position: 'absolute',
+    right: 20,
+    top: 20,
+  },
+
+
+
 })

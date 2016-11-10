@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
   View,
-  Dimensions,
   TouchableHighlight,
   ScrollView,
   Image
 } from 'react-native';
+
+import {
+  Blocks,
+  BlockBasic,
+  BlockFifty,
+  FriendBlock
+} from './modules'
+
+import {
+  SearchBar,
+  Icon
+} from 'react-native-elements'
 
 import styles from './styles/Friends';
 
@@ -45,20 +55,66 @@ var f5 = new person();
 me.friends = [f1,f2,f3,f4,f5];
 
 export default class Friends extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchbar: false
+    }
+  }
+
+  changeBar(state) {
+    this.setState({
+      searchbar: state
+    })
+  }
+
+  renderSearch() {
+    if(!this.state.searchbar) {
+      return (
+          <TouchableHighlight style={styles.addButton}
+            onPress={() => this.changeBar(true)}
+          >
+            <View style={styles.add}>
+              <Text style={styles.addText}> ADD FRIEND </Text>
+            </View>
+          </TouchableHighlight>
+      )
+    }
+    return (
+      <View>
+        <SearchBar
+          containerStyle={styles.searchContainer}
+          inputStyle={styles.searchInput}
+          icon={{
+            color: '#86939e',
+            name: 'search',
+            style: styles.searchIcon
+          }}
+          lightTheme
+          onChangeText={() => console.log('Hello world')}
+          placeholder='Type Here...' />
+
+          <View style={styles.searchClose}>
+            <Icon
+              onPress={() => this.changeBar(false)}
+              color={'#999'}
+              name='close' />
+          </View>
+      </View>
+    )
+
+  }
+
   render() {
 
     let showFriends = me.friends.map((a,b) => {
-        return <TouchableHighlight
-               onPress = {() => {}}
-               key = {b}
-               activeOpacity={71 / 100}
-               underlayColor={"rgb(210,210,210)"}
-               style={styles.friendButton}>
-                <View style={styles.friends}>
-                  <Image style={styles.friendImage} source={{uri: a.picturePath}}></Image>
-                  <Text style={styles.friendText}> {a.name}</Text>
-                </View>
-               </TouchableHighlight>
+        return <FriendBlock
+                onPress={() => console.log("Friend number", b)}
+                image={a.picturePath}
+                name={a.name}
+                key={b}
+                />
       })
 
     return (
@@ -74,14 +130,13 @@ export default class Friends extends Component {
               </View>
             </TouchableHighlight>
 
+            <View>
+              {this.renderSearch()}
+            </View>
 
-            <TouchableHighlight style={styles.addButton}>
-              <View style={styles.add}>
-                <Text style={styles.addText}> ADD FRIEND </Text>
-              </View>
-            </TouchableHighlight>
-
-            {showFriends}
+            <Blocks>
+              {showFriends}
+            </Blocks>
           </ScrollView>
         </View>
 
