@@ -55,12 +55,12 @@ export default class GroupDashboard extends Component {
   }
   componentDidMount() {
 
-    fetch('http://localhost:3000/api/groups')
-      .then((response) => response.json())
-      .then((json) => {
-
-        this.setState(json);
-      })
+    // fetch('http://localhost:3000/api/groups')
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //
+    //     this.setState(json);
+    //   })
   }
 
   onMomentumScrollEnd(e, state, context) {
@@ -92,7 +92,6 @@ export default class GroupDashboard extends Component {
 
         <MainHeader
           color="red"
-          title="Profile"
           leftBtn="chevron-left"
           rightBtn="cog"
           left={() => { Actions.pop() }}
