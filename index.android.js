@@ -111,17 +111,23 @@ export default class social extends Component {
 
           <View style={styles.ChallengeDescriptionButton}>
             <View>
-                <Text style={styles.infoText}>
-                  Description
-                </Text>
+                <View>
+                  <Text style={styles.infoText}>
+                    Description
+                  </Text>
+                </View>
 
-                <TextInput
-                  placeholder={'What\'s the challenge about?'}
-                  placeholderTextColor={'#999999'}
-                  underlineColorAndroid={'rgba(0,0,0,0)'}
-                  style={{fontSize: 18, marginLeft: MARGIN * 2}}
-                  onChangeText={(text) => {}}
-                />
+                <View>
+                  <TextInput
+                    placeholder={'What\'s the challenge about?'}
+                    placeholderTextColor={'#999999'}
+                    underlineColorAndroid={'rgba(0,0,0,0)'}
+                    style={{fontSize: 18, marginLeft: MARGIN * 2, marginRight: MARGIN * 2, paddingBottom: 100}}
+                    multiline = {true}
+                    maxLines = {250}
+                    onChangeText={(text) => {}}
+                  />
+                </View>
 
             </View>
           </View>
@@ -129,10 +135,11 @@ export default class social extends Component {
 
           <View style={styles.ChallengeTimeButton}>
             <View>
-                <Text style={styles.infoText}>
-                  Countdown
-                </Text>
+              <Text style={styles.infoText}>
+                Countdown
+              </Text>
             </View>
+
           </View>
 
         </View>
@@ -193,14 +200,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   ChallengeDescriptionButton: {
-    flex: 1,
+    flex: 2,
     marginBottom: MARGIN / 2,
     marginLeft: MARGIN,
     marginRight: MARGIN,
     backgroundColor: '#ffffff',
   },
   ChallengeTimeButton: {
-    flex: 2,
+    flex: 1,
+    flexDirection: 'row',
     marginBottom: MARGIN / 2,
     marginLeft: MARGIN,
     marginRight: MARGIN,

@@ -129,10 +129,11 @@ export default class social extends Component {
 
           <View style={styles.ChallengeTimeButton}>
             <View>
-                <Text style={styles.infoText}>
-                  Countdown
-                </Text>
+              <Text style={styles.infoText}>
+                Countdown
+              </Text>
             </View>
+
           </View>
 
         </View>
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   ChallengeDescriptionBody: {
-    flex: 1,
+    flex: 2,
     marginBottom: MARGIN / 2,
     marginLeft: MARGIN,
     marginRight: MARGIN,
@@ -193,14 +194,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   ChallengeDescriptionButton: {
-    flex: 1,
+    flex: 2,
     marginBottom: MARGIN / 2,
     marginLeft: MARGIN,
     marginRight: MARGIN,
     backgroundColor: '#ffffff',
   },
   ChallengeTimeButton: {
-    flex: 2,
+    flex: 1,
+    flexDirection: 'row',
     marginBottom: MARGIN / 2,
     marginLeft: MARGIN,
     marginRight: MARGIN,
@@ -220,6 +222,7 @@ const styles = StyleSheet.create({
   infoText: {
     fontSize: 22,
     marginTop: MARGIN,
+    marginBottom: MARGIN,
     marginLeft: MARGIN,
     fontWeight: 'bold',
   },
