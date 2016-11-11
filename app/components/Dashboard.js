@@ -55,13 +55,12 @@ class Dashboard extends Component {
   }
   componentWillMount() {
     let { dispatch } = this.props
-    // dispatch({type:"WORKS"})
     dispatch(groups.getUserGroups());
   }
 
   render() {
 
-    let showGroups = this.state.groups.map((a,b) => {
+    let showGroups = this.props.groups.map((a,b) => {
 
       let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
       return (
@@ -74,13 +73,11 @@ class Dashboard extends Component {
         />
       )
     })
-    console.log(this.props)
     return (
       <View style={styles.container}>
         {this.renderNotifications()}
         <ScrollView style={styles.scrollView}>
           {showGroups}
-          {this.props.groups.map((i) => <Text key={i}>Hello</Text>)}
         </ScrollView>
       </View>
     );
