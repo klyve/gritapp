@@ -15,8 +15,9 @@ import {
 
 import { Actions } from 'react-native-router-flux';
 import {
+  MainHeader,
   Blocks,
-  FriendBlock
+  FriendBlock,
 } from '../../modules'
 
 import styles from './styles/groupsettingsmain';
@@ -52,7 +53,12 @@ export default class GroupSettingsMain extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.navBar}/>
+      <MainHeader
+        color="green"
+        leftBtn="chevron-left"
+        left={() => { Actions.pop() }}
+        large
+      />
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>

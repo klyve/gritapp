@@ -78,12 +78,7 @@ export default class Friends extends Component {
     }
     return (
       <View>
-      <MainHeader
-        color="green"
-        leftBtn="chevron-left"
-        left={() => { Actions.pop() }}
-        large
-      />
+
         <SearchBar
           containerStyle={styles.searchContainer}
           inputStyle={styles.searchInput}

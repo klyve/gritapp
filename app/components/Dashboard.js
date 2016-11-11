@@ -13,8 +13,9 @@ import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
+  MainHeader,
   Blocks,
-  FriendBlock
+  FriendBlock,
 } from './modules'
 
 import * as groups from '../actions/groups'
@@ -37,7 +38,7 @@ class Dashboard extends Component {
   }
 
   showNotifications() {
-
+    Actions.notifications()
   }
 
   renderNotifications() {
