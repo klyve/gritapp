@@ -63,7 +63,7 @@ challenges.push(fisk);
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
-export default class social extends Component {
+export default class ChallengePage extends Component {
   render() {
 
     let all = challenges.map((challenge, i) => {
