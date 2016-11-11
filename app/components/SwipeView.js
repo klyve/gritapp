@@ -23,6 +23,7 @@ export default class SwipeView extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props)
   }
 
 
@@ -79,9 +80,7 @@ export default class SwipeView extends Component {
             left={() => { this.btnPress(-1) }}
           />
           <View style={styles.contentView}>
-            <CreateOrJoinGroup
-              navigator={this.props.navigator}
-            />
+            <CreateOrJoinGroup />
           </View>
         </View>
 
