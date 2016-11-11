@@ -74,12 +74,13 @@ class Dashboard extends Component {
         />
       )
     })
-
+    console.log(this.props)
     return (
       <View style={styles.container}>
         {this.renderNotifications()}
         <ScrollView style={styles.scrollView}>
           {showGroups}
+          {this.props.groups.map((i) => <Text key={i}>Hello</Text>)}
         </ScrollView>
       </View>
     );
@@ -88,6 +89,6 @@ class Dashboard extends Component {
 
 
 export default connect(state => ({
-    state: state.counter
+    groups: state.groups.groups
   })
 )(Dashboard);
