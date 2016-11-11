@@ -62,7 +62,7 @@ export default class SwipeView extends Component {
         <View style={styles.slide2}>
           <MainHeader
             leftBtn="user"
-            rightBtn="plus"
+            rightText="plus"
             title="Main"
             right={() => { this.btnPress(1) }}
             left={() => { this.btnPress(-1) }}

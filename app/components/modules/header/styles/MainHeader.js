@@ -28,6 +28,27 @@ export default styles = StyleSheet.create({
     width: 50,
     height: 50,
   },
+  leftAlignText: {
+    position: 'absolute',
+    left: 0,
+    padding: 5,
+    paddingLeft: 10,
+    width: 100,
+    height: 50,
+  },
+  rightAlignText: {
+    position: 'absolute',
+    right: 0,
+    padding: 5,
+    paddingRight: 10,
+    width: 100,
+    height: 50,
+  },
+  headerText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
+  },
 
   rightAlign: {
     position: 'absolute',

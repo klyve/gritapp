@@ -13,9 +13,15 @@ import GroupJoin from '../components/group/GroupJoin';
 
 import GroupDashboard from '../components/group/GroupDashboard';
 
+import LoginView from '../components/user/LoginView';
+import RegisterView from '../components/user/RegisterView';
 
 const scenes = Actions.create(
   <Scene key="root">
+
+    <Scene key="loginview" hideNavBar component={LoginView}/>
+    <Scene key="registerview" hideNavBar component={RegisterView} />
+
     <Scene key="swipeview" hideNavBar component={SwipeView} initial={true}/>
 
     <Scene key="groupsearch" hideNavBar component={GroupSearch} />
