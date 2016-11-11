@@ -10,17 +10,22 @@ import {
   Image
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   Blocks,
   FriendBlock
 } from './modules'
 
+
+
 import styles from './styles/Dashboard';
 
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props)
+    console.log(this.props)
     this.state = {
       groups: [],
     }
@@ -46,13 +51,16 @@ export default class Dashboard extends Component {
       </TouchableHighlight>
     )
   }
-
+  componentWillMount() {
+    // console.log("Hello ")
+    // fetch('https://google.com')
+    //   .then(response => console.log("CALLED"))
+    // console.log("BYE")
+  }
   componentDidMount() {
-    fetch('http://localhost:3000/api/groups')
-      .then((response) => response.json())
-      .then((json) => {
-        this.setState(json);
-      })
+    // fetch('http://6d5a13c7.ngrok.io/api/groups')
+    //   .then((response) => response.json())
+    //   .then((json) => this.setState(json))
   }
 
   render() {
@@ -81,3 +89,14 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+
+export default connect(state => ({
+    state: state.counter
+  }),
+  (dispatch) => {
+    dispatch({type:"Test"})
+    return ({
+    actions: bindActionCreators(dispatch)
+  })}
+)(Dashboard);

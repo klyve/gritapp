@@ -53,6 +53,7 @@ export default class GroupDashboard extends Component {
       description: 'Hello world',
     }
   }
+
   componentDidMount() {
 
     // fetch('http://localhost:3000/api/groups')
@@ -61,6 +62,7 @@ export default class GroupDashboard extends Component {
     //
     //     this.setState(json);
     //   })
+
   }
 
   onMomentumScrollEnd(e, state, context) {
@@ -91,7 +93,7 @@ export default class GroupDashboard extends Component {
       <View style={styles.container}>
 
         <MainHeader
-          color="red"
+          color="green"
           leftBtn="chevron-left"
           rightBtn="cog"
           left={() => { Actions.pop() }}

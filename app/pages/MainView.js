@@ -23,6 +23,7 @@ class MainView extends Component {
 
   render() {
     const { state, actions } = this.props;
+
     return (
       <Router>
       <Scene key="root">
