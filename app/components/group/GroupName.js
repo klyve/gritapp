@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -9,10 +10,10 @@ import {
   Dimensions,
   TouchableHighlight,
 } from 'react-native'
-const DEVICE_WIDTH = Dimensions.get('window').width
-const DEVICE_HEIGHT = Dimensions.get('window').height
+import styles from './styles/groupname';
 
 function person (){//The object containing the userinfo during registration
+  this.userID;
   this.nick;
   this.pic;
 }
@@ -21,12 +22,15 @@ function createUser (usr,nick, pic)
 {
   usr.nick = nick;
   usr.pic = pic;
-  console.log(arguments)
+  usr.userID = Math.floor((Math.random() * 100000) + 1);
+  console.log(arguments);
+  return usr
 }
 
 
 
  var newUser = new person();
+ const USERNAMEREGEX = /^[a-zA-Z0-9\-_]*$/;
 
 
 export default class GroupName extends Component {
@@ -51,19 +55,20 @@ export default class GroupName extends Component {
           underlineColorAndroid='rgba(0,0,0,0)'
           style={styles.textInput}
           placeholder={"Choose Group Name"}
-          placeholderTextColor={"#dadfe1"}
+          placeholderTextColor={'rgba(255,255,255,0.4)'}
           textColor
           onChangeText={(text) => {
-            if(text.length > 13)
-            {
-              alert("Group name must be 3-13 chars")
+            if(!USERNAMEREGEX.test(text)){
+              alert("Illegal character")
+              return
             }
-            this.setState({text})}}
+            if(text.length < 13 )
+              this.setState({text})}}
           onSubmitEditing={(event) => {
             createUser(newUser,this.state.text,'placeholder')
-            if(this.state.text.length < 3 || this.state.text.length > 13)
+            if(this.state.text.length < 3 || this.state.text.length > 16)
             {
-              alert("Nickname must be 3-13 chars")
+              alert("Nickname must be 3-16 chars")
             }else {
               alert("NICK IS OK")
               createUser(newUser,this.state.text,'placeholder')
@@ -73,18 +78,26 @@ export default class GroupName extends Component {
         />
         <TouchableHighlight style={styles.confirm}
           onPress={() =>{
-            if(this.state.text.length < 3 || this.state.text.length > 13)
+            if(this.state.text.length < 3 || this.state.text.length > 16)
             {
-              alert("Group name must be 3-13 chars")
+              alert("Nickname must be 3-16 chars")
             }else {
-              alert("NICK IS OK")
-              createUser(newUser,this.state.text,'placeholder')//
-            }}
-
-          }
+              createUser(newUser,this.state.text,'placeholder')
+            }
+          }}
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
+
           <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Next</Text>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.previous}
+          onPress={() =>{
+
+          }}
+          activeOpacity={75 / 100}
+          underlayColor={"rgb(210,210,210)"}>
+
+          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Previous</Text>
         </TouchableHighlight>
 
         <Text style={styles.bottomText}>
@@ -102,53 +115,3 @@ export default class GroupName extends Component {
     );
   }
   }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: DEVICE_WIDTH,
-
-  },
-  publicgroup: {
-    backgroundColor: '#3498db',
-  },
-  privategroup: {
-    backgroundColor: '#c0392b',
-  },
-  textInput: {
-      fontSize: 30,
-      color: "#eeeeee",
-      textAlign: 'center',
-      margin: 10,
-      height: 60,
-      paddingLeft: 20,
-      width: 100,
-      borderWidth: 0,
-      borderColor: "rgba(0,0,0,0.74)",
-      width: DEVICE_WIDTH,
-      textAlign: 'left',
-      alignItems: 'center',
-
-    },
-    confirm: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      padding: 10,
-    },
-    bottomText: {
-      position: 'absolute',
-      bottom: 0,
-      textAlign: 'left',
-      padding: 10,
-      color: "#eeeeee",
-    },
-    topText: {
-      position: 'absolute',
-      top: 0,
-      textAlign: 'left',
-      padding: 15,
-      color: "#eeeeee",
-    }
-});

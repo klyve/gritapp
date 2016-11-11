@@ -128,6 +128,13 @@ export default class Friends extends Component {
               <View style={styles.me}>
                 <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
                 <Text style={styles.meText}> {me.name}</Text>
+                <View style = {styles.cogIcon}>
+                  <Icon
+                    name='cog'
+                    type='font-awesome'
+                    color='black'
+                  />
+                </View>
               </View>
             </TouchableHighlight>
 
