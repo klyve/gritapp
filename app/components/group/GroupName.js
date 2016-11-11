@@ -11,6 +11,7 @@ import {
   TouchableHighlight,
 } from 'react-native'
 import styles from './styles/groupname';
+import { Actions } from 'react-native-router-flux';
 
 function person (){//The object containing the userinfo during registration
   this.userID;
@@ -62,7 +63,7 @@ export default class GroupName extends Component {
               alert("Illegal character")
               return
             }
-            if(text.length < 13 )
+            if(text.length < 16 )
               this.setState({text})}}
           onSubmitEditing={(event) => {
             createUser(newUser,this.state.text,'placeholder')
@@ -70,7 +71,6 @@ export default class GroupName extends Component {
             {
               alert("Nickname must be 3-16 chars")
             }else {
-              alert("NICK IS OK")
               createUser(newUser,this.state.text,'placeholder')
             }}}
             //this.setState({text: ''})
@@ -92,7 +92,7 @@ export default class GroupName extends Component {
         </TouchableHighlight>
         <TouchableHighlight style={styles.previous}
           onPress={() =>{
-
+            Actions.pop()
           }}
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
