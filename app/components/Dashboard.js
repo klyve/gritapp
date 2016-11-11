@@ -33,7 +33,7 @@ class Dashboard extends Component {
     }
   }
   gotoGroup(groupId) {
-      Actions.groupdashboard(this.state.groups[groupId])
+      Actions.groupdashboard(this.props.groups[groupId])
   }
 
   showNotifications() {
