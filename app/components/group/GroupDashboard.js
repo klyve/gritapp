@@ -86,6 +86,7 @@ export default class GroupDashboard extends Component {
           leftBtn="chevron-left"
           rightBtn="cog"
           left={() => { Actions.pop() }}
+          right={() => {Actions.groupsettingsmain()}}
           large
         />
 

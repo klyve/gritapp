@@ -10,7 +10,6 @@ import {
   ScrollView,
   TouchableHighlight,
 } from 'react-native';
-
 import { Actions } from 'react-native-router-flux';
 import { Icon } from 'react-native-router-flux';
 import {

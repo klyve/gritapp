@@ -11,6 +11,10 @@ import GroupName from '../components/group/GroupName';
 import GroupSearch from '../components/group/GroupSearch';
 import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
+import GroupSettingsMain from '../components/group/groupsettings/GroupSettingsMain';
+import Notifications from '../components/Notifications';
+
+import Profile from '../components/Profile';
 
 import ChallengePage from '../components/challenge/ChallengePage';
 import SinglePictureView from '../components/challenge/SinglePictureView';
@@ -33,6 +37,10 @@ const scenes = Actions.create(
     <Scene key="singlepictureview" hideNavBar component={SinglePictureView}/>
     <Scene key="profilesettingsmain" hideNavBar component={ProfileSettingsMain}/>
     <Scene key="profilebioedit" hideNavBar component={ProfileBioEdit}/>
+    <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
+
+    <Scene key="profile" hideNavBar component={Profile}/>
+    <Scene key="notifications" hideNavBar component={Notifications}/>
 
   </Scene>
 );
