@@ -60,20 +60,24 @@ class Dashboard extends Component {
   }
 
   render() {
+    let showGroups;
+    if(this.props.groups) {
+       showGroups = this.props.groups.map((a,b) => {
 
-    let showGroups = this.props.groups.map((a,b) => {
-
-      let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
-      return (
-        <FriendBlock
-          onPress={() => {this.gotoGroup(b)}}
-          image={a.image}
-          name={a.name}
-          unread={a.unread}
-          key={b}
-        />
-      )
-    })
+        let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
+        return (
+          <FriendBlock
+            onPress={() => {this.gotoGroup(b)}}
+            image={a.image}
+            name={a.name}
+            unread={a.unread}
+            key={b}
+          />
+        )
+      })
+    } else {
+      showGroups = false;
+    }
     return (
       <View style={styles.container}>
         {this.renderNotifications()}
