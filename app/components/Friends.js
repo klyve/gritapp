@@ -123,7 +123,6 @@ export default class Friends extends Component {
     return (
       <View style={styles.container}>
 
-
         <View style={styles.body}>
           <ScrollView style={{flex: 1,}}>
             <TouchableHighlight style={styles.meButton}>
@@ -132,7 +131,7 @@ export default class Friends extends Component {
                 <Text style={styles.meText}> {me.name}</Text>
                 <TouchableHighlight
                 onPress = {() => {
-                  Actions.settingsmain();
+                  Actions.profilesettingsmain();
                 }}
                 activeOpacity={71 / 100}
                 underlayColor={"rgb(210,210,210)"}>
