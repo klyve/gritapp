@@ -14,8 +14,6 @@ import GroupJoin from '../components/group/GroupJoin';
 
 import GroupDashboard from '../components/group/GroupDashboard';
 
-// Test module
-import Test from '../components/Test';
 
 
 class MainView extends Component {
@@ -26,11 +24,11 @@ class MainView extends Component {
 
   render() {
     const { state, actions } = this.props;
+
     return (
       <Router>
       <Scene key="root">
         <Scene key="swipeview" hideNavBar component={SwipeView} state={state} {...actions} initial={true}/>
-        <Scene key="test" hideNavBar component={Test} state={state} {...actions}/>
 
         <Scene key="groupsearch" hideNavBar component={GroupSearch} state={state} {...actions} />
         <Scene key="groupjoin" hideNavBar component={GroupJoin} state={state} {...actions} />
