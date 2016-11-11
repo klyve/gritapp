@@ -12,11 +12,12 @@ import {
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-router-flux';
 import {
   Blocks,
   FriendBlock
-} from './modules'
-import styles from './styles/challengeView';
+} from '../modules'
+import styles from './styles/challengePage';
 
 
 function Challenge(){
@@ -72,7 +73,9 @@ export default class ChallengePage extends Component {
       <TouchableHighlight
       style = {styles.imageButton}
       key = {i}
-      onPress = {() => {}}
+      onPress = {() => {
+        Actions.singlepictureview();
+      }}
       activeOpacity={71 / 100}
       underlayColor={"rgb(210,210,210)"}
       >
@@ -108,12 +111,7 @@ export default class ChallengePage extends Component {
           onPress = {() => {}}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}>
-
-              <Image
-                style = {styles.cameraLogo}
-                resizeMode={"contain"}
-                source={require('./images/camera1.png')}
-              />
+            <Text>Camera</Text>
           </TouchableHighlight>
         </View>
       </View>

@@ -11,7 +11,9 @@ import GroupName from '../components/group/GroupName';
 import GroupSearch from '../components/group/GroupSearch';
 import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
+
 import ChallengePage from '../components/challenge/ChallengePage';
+import SinglePictureView from '../components/challenge/SinglePictureView';
 
 
 const scenes = Actions.create(
@@ -24,6 +26,7 @@ const scenes = Actions.create(
     <Scene key="groupname" hideNavBar component={GroupName} />
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>
     <Scene key="challengepage" hideNavBar component={ChallengePage}/>
+    <Scene key="singlepictureview" hideNavBar component={SinglePictureView}/>
 
   </Scene>
 );
