@@ -54,7 +54,9 @@ export default class GroupMembers extends Component {
     let top = rest.map((a,b) => {
         return (
           <FriendBlock
-            onPress={() => {console.log("CLicked")}}
+            onPress={() => {
+              Actions.profile()
+            }}
             image={a.picturePath}
             name={a.name}
             key={b}

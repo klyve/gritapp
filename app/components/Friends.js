@@ -5,9 +5,9 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
-  Image
+  Image,
 } from 'react-native';
-
+import { Actions } from 'react-native-router-flux';
 import {
   Blocks,
   FriendBlock
@@ -19,7 +19,6 @@ import {
 } from 'react-native-elements'
 
 import styles from './styles/Friends';
-
 function person(){
   this.name = "";
   this.picturePath = "";
@@ -111,7 +110,9 @@ export default class Friends extends Component {
 
     let showFriends = me.friends.map((a,b) => {
         return <FriendBlock
-                onPress={() => console.log("Friend number", b)}
+                onPress={() => {
+                  Actions.profile()
+                }}
                 image={a.picturePath}
                 name={a.name}
                 key={b}

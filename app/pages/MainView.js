@@ -10,8 +10,9 @@ import GroupType from '../components/group/GroupType';
 import GroupName from '../components/group/GroupName';
 import GroupSearch from '../components/group/GroupSearch';
 import GroupJoin from '../components/group/GroupJoin';
-
 import GroupDashboard from '../components/group/GroupDashboard';
+
+import Profile from '../components/Profile';
 
 
 const scenes = Actions.create(
@@ -23,6 +24,8 @@ const scenes = Actions.create(
     <Scene key="grouptype" hideNavBar component={GroupType} />
     <Scene key="groupname" hideNavBar component={GroupName} />
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>
+
+    <Scene key="profile" hideNavBar component={Profile}/>
 
   </Scene>
 );
