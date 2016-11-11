@@ -24,7 +24,7 @@ export default class GroupType extends Component {
       <View style = {styles.container}>
         <MainHeader
           color="green"
-          title="Profile"
+          title="Group type"
           leftBtn="chevron-left"
           left={() => { Actions.pop() }}
          />
