@@ -21,7 +21,7 @@ export default class BlockFifty extends Component {
       activeOpacity={71 / 100}
       underlayColor='transparent'
       onPress = {() => {this.props.onPress()}}
-      style={styles.blockStyle}
+      style={[styles.blockStyle, (this.props.style || {})]}
       >
         <View >
           {this.props.children}

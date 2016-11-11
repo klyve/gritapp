@@ -22,12 +22,10 @@ export default styles = StyleSheet.create({
     flex: 1,
   },
   friendButton: {
-    flex: 1,
     marginBottom: MARGIN / 2,
     marginLeft: MARGIN,
     marginRight: MARGIN,
   },
-
 
   me: {
     flexDirection: 'row',
@@ -44,30 +42,22 @@ export default styles = StyleSheet.create({
     paddingTop: MARGIN * 2,
     paddingBottom: MARGIN * 2,
   },
-
-
   myImage: {
     marginLeft: MARGIN,
     width: 100,
     height: 100,
     borderRadius: 50,
   },
-
-
   meText: {
     padding: 5,
     paddingLeft: 20,
     fontSize: 25,
-
   },
   addText: {
     color: '#999',
     fontSize: 20,
     textAlign: 'center',
   },
-
-
-
   searchContainer: {
     backgroundColor: '#f0f0f0',
     height: 60,
@@ -89,7 +79,5 @@ export default styles = StyleSheet.create({
     right: 20,
     top: 20,
   },
-
-
 
 })
