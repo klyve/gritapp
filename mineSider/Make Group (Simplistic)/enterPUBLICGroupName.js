@@ -44,7 +44,7 @@ export default class social extends Component {
           underlineColorAndroid='rgba(0,0,0,0)'
           style={styles.textInput}
           placeholder={"Choose Group Name"}
-          placeholderTextColor={"#dadfe1"}
+          placeholderTextColor={'rgba(255,255,255,0.4)'}
           textColor
           onChangeText={(text) => {
             if(text.length > 13)
@@ -66,18 +66,26 @@ export default class social extends Component {
         />
         <TouchableHighlight style={styles.confirm}
           onPress={() =>{
-            if(this.state.text.length < 3 || this.state.text.length > 13)
+            if(this.state.text.length < 3 || this.state.text.length > 16)
             {
-              alert("Group name must be 3-13 chars")
+              alert("Groupname must be 3-16 chars")
             }else {
-              alert("NICK IS OK")
-              createUser(newUser,this.state.text,'placeholder')//
-            }}
-
-          }
+              createGroup(newGroup,this.state.text,'placeholder')
+            }
+          }}
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
+
           <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Next</Text>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.previous}
+          onPress={() =>{
+
+          }}
+          activeOpacity={75 / 100}
+          underlayColor={"rgb(210,210,210)"}>
+
+          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Previous</Text>
         </TouchableHighlight>
 
         <Text style={styles.bottomText}>
@@ -86,9 +94,6 @@ export default class social extends Component {
           id elementum turpis, elementum convallis elit.
           Ut interdum porttitor consequat. Cras sagittis
           auctor libero sit amet viverra.
-        </Text>
-        <Text style={styles.topText}>
-          Choose a groupname with 3-13 characters
         </Text>
 
       </View>
@@ -119,6 +124,12 @@ const styles = StyleSheet.create({
       alignItems: 'center',
 
     },
+    previous: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      padding: 10,
+    },
     confirm: {
       position: 'absolute',
       top: 0,
@@ -132,13 +143,6 @@ const styles = StyleSheet.create({
       padding: 10,
       color: "#eeeeee",
     },
-    topText: {
-      position: 'absolute',
-      top: 0,
-      textAlign: 'left',
-      padding: 15,
-      color: "#eeeeee",
-    }
 });
 
 AppRegistry.registerComponent('social', () => social);
