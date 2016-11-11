@@ -11,6 +11,7 @@ import {
   TouchableHighlight,
 } from 'react-native'
 import styles from './styles/groupname';
+import { Actions } from 'react-native-router-flux';
 
 function person (){//The object containing the userinfo during registration
   this.userID;
@@ -91,7 +92,7 @@ export default class GroupName extends Component {
         </TouchableHighlight>
         <TouchableHighlight style={styles.previous}
           onPress={() =>{
-
+            Actions.pop()
           }}
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
