@@ -12,25 +12,25 @@ import {
   TouchableHighlight,
 } from 'react-native'
 
-function group (){//The object containing the userinfo during registration
-  this.groupID;
-  this.groupName;
+function person (){//The object containing the userinfo during registration
+  this.userID;
+  this.nick;
   this.pic;
 }
 
-function createGroup (grp, groupName, pic)
+function createUser (usr,nick, pic)
 {
-  grp.groupName = groupName;
-  grp.pic = pic;
-  grp.groupID = Math.floor((Math.random() * 100000) + 1);
+  usr.nick = nick;
+  usr.pic = pic;
+  usr.userID = Math.floor((Math.random() * 100000) + 1);
   console.log(arguments);
-  return grp
+  return usr
 }
 
 
 
- var newGroup = new group();
- const GROUPNAMEREGEX = /^[a-zA-Z0-9\-_]*$/;
+ var newUser = new person();
+ const USERNAMEREGEX = /^[a-zA-Z0-9\-_]*$/;
 
 export default class social extends Component {
 
@@ -45,29 +45,29 @@ export default class social extends Component {
         <View>
 
         <Text style={styles.explanationText}>
-          Private group name
+          Choose a nickname
         </Text>
         <TextInput
           style ={styles.textInput}
           underlineColorAndroid='rgba(0,0,0,0)'
-          placeholder={"Enter groupname"}
-          placeholderTextColor={'rgba(255,255,255,0.4)'}
+          placeholder={"Enter nickname"}
+          placeholderTextColor={"#aaaaaa"}
           textColor
           onChangeText={(text) => {
-            if(!GROUPNAMEREGEX.test(text)){
+            if(!USERNAMEREGEX.test(text)){
               alert("Illegal character")
               return
             }
-            if(text.length < 16 )
+            if(text.length < 13 )
               this.setState({text})}}
 
 
           onSubmitEditing={(event) => {
-            if(this.state.text.length < 3 || this.state.text.length > 16)
+            if(this.state.text.length < 3 || this.state.text.length > 13)
             {
-              alert("Groupname must be 3-16 chars")
+              alert("Nickname must be 3-13 chars")
             }else {
-              createGroup(newGroup,this.state.text,'placeholder')
+              createUser(newUser,this.state.text,'placeholder')
             }}}
 
             //this.setState({text: ''})
@@ -76,17 +76,17 @@ export default class social extends Component {
         </View>
         <TouchableHighlight style={styles.confirm}
           onPress={() =>{
-            if(this.state.text.length < 3 || this.state.text.length > 16)
+            if(this.state.text.length < 3 || this.state.text.length > 13)
             {
-              alert("Groupname must be 3-16 chars")
+              alert("Nickname must be 3-13 chars")
             }else {
-              createGroup(newGroup,this.state.text,'placeholder')
+              createUser(newUser,this.state.text,'placeholder')
             }
           }}
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
 
-          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Next</Text>
+          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Previous</Text>
         </TouchableHighlight>
         <TouchableHighlight style={styles.previous}
           onPress={() =>{
@@ -95,7 +95,7 @@ export default class social extends Component {
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
 
-          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Previous</Text>
+          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Next</Text>
         </TouchableHighlight>
         <View style={styles.bottomTextView}>
         <Text style={styles.bottomText}>
@@ -115,14 +115,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#c0392b',
+    backgroundColor: '#3498db',
 
   },
   textInput: {
       flex: 1,
       flexDirection: 'row',
       fontSize: 30,
-      color: '#eeeeee',
+      color: "#eeeeee",
       textAlign: 'center',
       margin: 10,
       height: 60,
@@ -135,16 +135,16 @@ const styles = StyleSheet.create({
       color: "#eeeeee",
 
     },
-    previous: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      padding: 10,
-    },
     confirm: {
       position: 'absolute',
       top: 0,
       right: 0,
+      padding: 10,
+    },
+    previous: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
       padding: 10,
     },
     bottomText: {
