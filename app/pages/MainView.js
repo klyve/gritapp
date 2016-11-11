@@ -12,6 +12,7 @@ import GroupSearch from '../components/group/GroupSearch';
 import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
 import GroupSettingsMain from '../components/group/groupSettings/GroupSettingsMain';
+import Notifications from '../components/Notifications';
 
 import Profile from '../components/Profile';
 
@@ -28,6 +29,8 @@ const scenes = Actions.create(
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
 
     <Scene key="profile" hideNavBar component={Profile}/>
+    <Scene key="notifications" hideNavBar component={Notifications}/>
+
 
   </Scene>
 );

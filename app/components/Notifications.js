@@ -9,10 +9,8 @@ import {
   TouchableHighlight,
   Image,
 } from 'react-native';
-
-// Dive width and height
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
+import styles from './styles/notifications';
+import { Actions } from 'react-native-router-flux';
 
 function request() {
   this.called = "";
@@ -81,7 +79,7 @@ requests.push(ntnu5);
 requests.push(ntnu6);
 requests.push(ntnu7);
 
-export default class social extends Component {
+export default class Notifications extends Component {
   constructor() {
     super();
     this.state = {
@@ -114,10 +112,7 @@ export default class social extends Component {
             activeOpacity={75 / 100}
             underlayColor={"rgb(210,210,210)"}
             style = {styles.declineButton}>
-            <Image
-            style = {styles.deleteSymbol}
-            source = {require('./images/deleteButton.png')}
-            />
+            <Text>X</Text>
             </TouchableHighlight>
           </View>
       </TouchableHighlight>
@@ -133,7 +128,9 @@ export default class social extends Component {
           </ScrollView>
         </View>
         <TouchableHighlight
-        onPress={() => {}}
+        onPress={() => {
+          Actions.pop()
+        }}
         activeOpacity={75 / 100}
         underlayColor={"rgb(210,210,210)"}
         style = {styles.closePage}>
@@ -143,60 +140,3 @@ export default class social extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
-
-  container : {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  navbar: {
-    flex: 1/10,
-    backgroundColor: '#2ecc71',
-    alignItems: 'center',
-  },
-  body: {
-    flex: 1/1.5,
-  },
-  requestContainer: {
-    backgroundColor: '#f5f5f5',
-    flexDirection: 'column',
-  },
-  request: {
-    flex: 1/1.1,
-    margin: 5,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  senderImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 15,
-    backgroundColor: 'blue',
-  },
-  requestText: {
-    marginLeft: 10,
-    width: 260,
-  },
-  closePage: {
-    height: 60,
-    backgroundColor: '#26a65b',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  declineButton: {
-    width: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-  },
-  deleteSymbol: {
-    width: 20,
-    height: 20
-  },
-  closeButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});
-AppRegistry.registerComponent('social', () => social);
