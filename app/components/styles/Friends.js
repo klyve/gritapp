@@ -51,6 +51,7 @@ export default styles = StyleSheet.create({
   meText: {
     padding: 5,
     paddingLeft: 20,
+    width: 200,
     fontSize: 25,
   },
   addText: {
@@ -80,6 +81,6 @@ export default styles = StyleSheet.create({
     top: 20,
   },
   cogIcon: {
-    marginLeft: 90,
+
   },
 })

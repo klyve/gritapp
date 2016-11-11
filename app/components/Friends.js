@@ -8,6 +8,8 @@ import {
   Image
 } from 'react-native';
 
+import { Actions } from 'react-native-router-flux';
+
 import {
   Blocks,
   FriendBlock
@@ -128,13 +130,20 @@ export default class Friends extends Component {
               <View style={styles.me}>
                 <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
                 <Text style={styles.meText}> {me.name}</Text>
-                <View style = {styles.cogIcon}>
-                  <Icon
-                    name='cog'
-                    type='font-awesome'
-                    color='black'
-                  />
-                </View>
+                <TouchableHighlight
+                onPress = {() => {
+                  Actions.settingsmain();
+                }}
+                activeOpacity={71 / 100}
+                underlayColor={"rgb(210,210,210)"}>
+                  <View style = {styles.cogIcon}>
+                    <Icon
+                      name='cog'
+                      type='font-awesome'
+                      color='black'
+                    />
+                  </View>
+                </TouchableHighlight>
               </View>
             </TouchableHighlight>
 

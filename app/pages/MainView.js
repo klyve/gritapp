@@ -14,6 +14,7 @@ import GroupDashboard from '../components/group/GroupDashboard';
 
 import ChallengePage from '../components/challenge/ChallengePage';
 import SinglePictureView from '../components/challenge/SinglePictureView';
+import SettingsMain from '../components/group/groupsettings/SettingsMain';
 
 
 const scenes = Actions.create(
@@ -27,6 +28,7 @@ const scenes = Actions.create(
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>
     <Scene key="challengepage" hideNavBar component={ChallengePage}/>
     <Scene key="singlepictureview" hideNavBar component={SinglePictureView}/>
+    <Scene key="settingsmain" hideNavBar component={SettingsMain}/>
 
   </Scene>
 );
