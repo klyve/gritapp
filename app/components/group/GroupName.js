@@ -62,7 +62,7 @@ export default class GroupName extends Component {
               alert("Illegal character")
               return
             }
-            if(text.length < 13 )
+            if(text.length < 16 )
               this.setState({text})}}
           onSubmitEditing={(event) => {
             createUser(newUser,this.state.text,'placeholder')
@@ -70,7 +70,6 @@ export default class GroupName extends Component {
             {
               alert("Nickname must be 3-16 chars")
             }else {
-              alert("NICK IS OK")
               createUser(newUser,this.state.text,'placeholder')
             }}}
             //this.setState({text: ''})
