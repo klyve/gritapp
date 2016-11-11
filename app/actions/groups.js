@@ -5,7 +5,6 @@ export function getUserGroups() {
       .then(request => request.json())
       .then(json => {
         dispatch({type: "FETCH_USERGROUPS_FULLFILLED", payload: json})
-
       })
   }
 }
