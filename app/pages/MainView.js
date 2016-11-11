@@ -15,7 +15,6 @@ import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
 
 
-
 class MainView extends Component {
 
   constructor(props) {

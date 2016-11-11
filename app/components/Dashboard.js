@@ -50,7 +50,6 @@ class Dashboard extends Component {
         <Text style={styles.notificationsText}>Notifications {notifications}</Text>
       </TouchableHighlight>
     )
-
   }
   componentWillMount() {
     // console.log("Hello ")
