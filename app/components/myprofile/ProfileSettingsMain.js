@@ -9,63 +9,50 @@ import {
   Image,
   ScrollView,
   Switch,
-  Alert,
-  TextInput,
+  Alert
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
 import {
-  MainHeader,
   Blocks,
   FriendBlock,
-} from '../../modules'
+  MainHeader,
+} from '../modules';
+import styles from './styles/ProfileSettingsMain';
 
-
-import styles from './styles/groupsettingsmain';
 
 //Constants
+const DEVICE_HEIGHT = Dimensions.get('window').height;
+const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 10;
 
 // Blueprints
-function Group(){
+function Profile(){
   this.name = "";
   this.picturePath = "";
   this.description = "";
-  this.currentChallenges = [];
-  this.public;
 }
 
-var currentGroup = new Group();
-  currentGroup.name = "Pølsefest";
-  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
-  currentGroup.description = "Vi liker pølser, de er best";
-  currentGroup.public = false;
+var currentGroup = new Profile();
+  currentGroup.name = "Henrik6969";
+  currentGroup.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
+  currentGroup.description = "Stor og lang";
 
-export default class GroupSettingsMain extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: currentGroup.name,
-    };
-    this.state2 = {
-      text: currentGroup.description,
-    };
-  }
+export default class ProfileSettingsMain extends Component {
   render() {
     return (
       <View style={styles.container}>
       <MainHeader
         color="green"
+        title="Profile"
         leftBtn="chevron-left"
         left={() => { Actions.pop() }}
-        large
-      />
+       />
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
             <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
           </View>
-          <Text style={styles.headerText}>Settings</Text>
         </View>
         <View style = {styles.settingsContainer}>
         {/*Settings nr 1*/}
@@ -75,63 +62,64 @@ export default class GroupSettingsMain extends Component {
               borderTopWidth: 1,
               borderBottomWidth: 1,
             }]}>
-            <Text style = {styles.settingsTextLeft}>Group Name</Text>
-            <TextInput
-            style = {[styles.settingsTextRight, {marginLeft: 50}]}
-            value = {this.state.text}
-            onChangeText={(text) => this.setState({text})}
-            editable = {true}
-            maxLength = {16}
-            />
+            <Text style = {styles.settingsTextLeft}>Username</Text>
+            <Text style = {{
+            color: 'grey',
+            fontSize: 18,
+            width: 250,
+            marginLeft: 40,
+            }}>{currentGroup.name}</Text>
+
           </View>
           {/*Settings nr 2*/}
-          <View style = {[styles.setting,{borderBottomWidth: 3,}]}>
-            <Text style = {styles.settingsTextLeft}>Description</Text>
-            <TextInput
-            style = {styles.settingsTextRight}
-            value = {this.state2.text}
-            onChangeText={(text) => this.setState({text})}
-            editable = {false}
-            maxLength = {16}
-            />
-            <TouchableHighlight
-            activeOpacity={71 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            onPress = {() => {}}
-            style = {styles.settingsButton}>
-              <Text>X</Text>
-            </TouchableHighlight>
-          </View>
+          <TouchableHighlight
+          onPress = {() => {
+            Actions.profilebioedit();
+          }}
+          activeOpacity={71 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          style = {[
+            styles.setting,
+            {
+              borderBottomWidth: 3,
+            }]}>
+            <View style = {{flexDirection: 'row',}}>
+              <Text style = {[styles.settingsTextLeft, {width: 230}]}>Bio</Text>
+              <Text style = {[styles.settingsTextRight, {}]}>"14cm +"</Text>
+              <Text>></Text>
+            </View>
+          </TouchableHighlight>
+
           {/*Settings nr 3*/}
-          <View style = {[
+          <TouchableHighlight
+          onPress = {() => {}}
+          activeOpacity={71 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          style = {[
             styles.setting,
             {
               borderTopWidth: 2,
               borderBottomWidth: 1,
             }]}>
-            <Text style = {[styles.settingsTextLeft,{width: 300}]}>Manage members</Text>
-            <TouchableHighlight
-            activeOpacity={71 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            onPress = {() => {}}
-            style = {[styles.settingsButton, {marginLeft: 35}]}>
-              <Text>X</Text>
-            </TouchableHighlight>
-          </View>
+            <View style = {{flexDirection: 'row'}}>
+              <Text style = {[styles.settingsTextLeft,{width: 330}]}>Friend requests</Text>
+              <Text>></Text>
+            </View>
+          </TouchableHighlight>
           {/*Settings nr 4*/}
           <View style = {[
             styles.setting,
             {
               borderBottomWidth: 3,
             }]}>
-            <Text style = {styles.settingsTextLeft}>Public</Text>
+            <Text style = {styles.settingsTextLeft}>Group invites</Text>
             <Switch
-          value={(this.state && this.state.switchValue) || false}
+            value={(this.state && this.state.switchValue) || false}
             onValueChange={(value) => {
               this.setState({switchValue: value})
             }}
             // Color props are iOS-only
-            // thumbTintColor={'white'} // Removes shadows
+            // thumbTintColor={'white'} // Removes shadow
             tintColor={"rgba(230,230,230,1)"}
             onTintColor={"rgba(68,219,94,1)"}
             style = {styles.switch}
@@ -162,8 +150,8 @@ export default class GroupSettingsMain extends Component {
           <TouchableHighlight
           onPress = {() => {
           Alert.alert(
-            'Warning',
-            'Are you sure you want to leave this group?',
+            'Warning: ',
+            'Are you sure you want to log out?',
             [
               {text: 'Yes', onPress: () => console.log('Yes pressed')},
               {text: 'No', onPress: () => console.log('No Pressed')},
@@ -173,17 +161,16 @@ export default class GroupSettingsMain extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           style = {{
-              marginTop: 90,
               borderTopWidth: 1,
-              borderBottomWidth: 1,
               borderColor: 'rgba(0,0,0,0.3)',
               alignItems: 'center',
               justifyContent: 'center',
               height: 50,
+              marginTop: 120,
             }}>
             <Text
             style = {{ color: 'red', fontSize: 18, }}>
-              Leave Group
+              Log out
             </Text>
 
           </TouchableHighlight>

@@ -11,11 +11,12 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-router-flux';
 import {
   Blocks,
   FriendBlock
-} from './modules'
-import styles from './styles/challengeView';
+} from '../modules'
+import styles from './styles/challengePage';
 
 
 function Challenge(){
@@ -62,7 +63,7 @@ challenges.push(fisk);
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
-export default class social extends Component {
+export default class ChallengePage extends Component {
   render() {
 
     let all = challenges.map((challenge, i) => {
@@ -71,7 +72,9 @@ export default class social extends Component {
       <TouchableHighlight
       style = {styles.imageButton}
       key = {i}
-      onPress = {() => {}}
+      onPress = {() => {
+        Actions.singlepictureview();
+      }}
       activeOpacity={71 / 100}
       underlayColor={"rgb(210,210,210)"}
       >
@@ -107,12 +110,7 @@ export default class social extends Component {
           onPress = {() => {}}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}>
-
-              <Image
-                style = {styles.cameraLogo}
-                resizeMode={"contain"}
-                source={require('./images/camera1.png')}
-              />
+            <Text>Camera</Text>
           </TouchableHighlight>
         </View>
       </View>

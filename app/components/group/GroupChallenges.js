@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   ScrollView,
 } from 'react-native';
+
 import { Actions } from 'react-native-router-flux';
 
 import {
@@ -45,7 +46,9 @@ export default class GroupChallenges extends Component {
     let showChallenges = challenges.map((a,b) => {
         return (
           <FriendBlock
-            onPress={() => {console.log("CLicked")}}
+            onPress={() => {
+              Actions.challengepage()
+            }}
             image={a.picturePath}
             name={a.name}
             points={a.timeLeft}

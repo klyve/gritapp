@@ -7,7 +7,9 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
+
 import { Actions } from 'react-native-router-flux';
+
 import {
   MainHeader,
   Blocks,
@@ -124,20 +126,26 @@ export default class Friends extends Component {
     return (
       <View style={styles.container}>
 
-
         <View style={styles.body}>
           <ScrollView style={{flex: 1,}}>
             <TouchableHighlight style={styles.meButton}>
               <View style={styles.me}>
                 <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
                 <Text style={styles.meText}> {me.name}</Text>
-                <View style = {styles.cogIcon}>
-                  <Icon
-                    name='cog'
-                    type='font-awesome'
-                    color='black'
-                  />
-                </View>
+                <TouchableHighlight
+                onPress = {() => {
+                  Actions.profilesettingsmain();
+                }}
+                activeOpacity={71 / 100}
+                underlayColor={"rgb(210,210,210)"}>
+                  <View style = {styles.cogIcon}>
+                    <Icon
+                      name='cog'
+                      type='font-awesome'
+                      color='black'
+                    />
+                  </View>
+                </TouchableHighlight>
               </View>
             </TouchableHighlight>
 

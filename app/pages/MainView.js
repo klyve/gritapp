@@ -16,6 +16,13 @@ import Notifications from '../components/Notifications';
 
 import Profile from '../components/Profile';
 
+import ChallengePage from '../components/challenge/ChallengePage';
+import SinglePictureView from '../components/challenge/SinglePictureView';
+
+import ProfileSettingsMain from '../components/myprofile/ProfileSettingsMain';
+import ProfileBioEdit from '../components/myprofile/ProfileBioEdit';
+
+
 
 const scenes = Actions.create(
   <Scene key="root">
@@ -31,6 +38,10 @@ const scenes = Actions.create(
     <Scene key="profile" hideNavBar component={Profile}/>
     <Scene key="notifications" hideNavBar component={Notifications}/>
 
+    <Scene key="challengepage" hideNavBar component={ChallengePage}/>
+    <Scene key="singlepictureview" hideNavBar component={SinglePictureView}/>
+    <Scene key="profilesettingsmain" hideNavBar component={ProfileSettingsMain}/>
+    <Scene key="profilebioedit" hideNavBar component={ProfileBioEdit}/>
 
   </Scene>
 );

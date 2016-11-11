@@ -11,9 +11,19 @@ import {
   TextInput,
 } from 'react-native';
 
+import { Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-router-flux';
+import {
+  Blocks,
+  FriendBlock
+} from '../modules';
+
+import styles from './styles/SinglePictureView';
+
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const MARGIN = 10;
 
 // persons (TESTDATA)
 function Person(){
@@ -94,7 +104,7 @@ var pst = new Post()
   pst.likes = [p1,p2,p3,p4,p5,p6]
   pst.comments = [c1,c2,c3,c4];
 
-export default class social extends Component {
+export default class SinglePictureView extends Component {
 
   render() {
 
@@ -113,20 +123,7 @@ export default class social extends Component {
                 </View>
                </TouchableHighlight>
       })
-      // Filters out non-friend likes, and returns an array of friend likers - max 4 friends
-      let friendsConfirmed = pst.likes.filter((a) => {
-        for (let i = 0; i < me.friends.length; i++){
-          if (a == me.friends[i] && inc < 4){
-            inc++;
-            return true;
-          }
-        }})
-      // Returns image tags for friend likers based on friendsConfirmed
-      let friendLikes = friendsConfirmed.map((a,b) => {
-            return <Image key = {b} style={styles.likers} source={{uri: a.picturePath}}></Image>
-      })
 
-      console.log(friendLikes);
 
     return (
       <View style={styles.container}>
@@ -134,124 +131,33 @@ export default class social extends Component {
           <View style ={styles.title}>
             <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}></Image>
             <Text style={styles.titleText}> {pst.uploader.name} </Text>
-            <Image style={styles.exitButton} source={require('./Resources/icons/kryss.png')}></Image>
           </View>
 
+          <View style={{flex: 7,}}>
+            <ScrollView style={styles.scroll}>
+              <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
 
-          <ScrollView style={styles.scroll}>
-            <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
-
-            <View style={styles.likeBar}>
-              {friendLikes}
-
-              <Text style={{fontSize: 18}}> + {pst.likes.length - friendLikes.length} </Text>
-
-              <Image style={styles.likeButton} source={require('./Resources/icons/likeIcon.png')}></Image>
-            </View>
+              <View style={styles.likeBar}>
+                <Text style={{fontSize: 30}}> {pst.likes.length}</Text>
+              </View>
 
 
-            <TouchableHighlight
-            onPress = {() => {}}
-            style = {styles.commentBar}>
-              <Text style = {{fontSize: 20, textAlign: 'center',}}>
-                ADD COMMENT
-              </Text>
-            </TouchableHighlight>
+              <TouchableHighlight
+              onPress = {() => {}}
+              style = {styles.commentBar}>
+                <Text style = {{fontSize: 20, textAlign: 'center',}}>
+                  ADD COMMENT
+                </Text>
+              </TouchableHighlight>
 
-            {showComments}
+              {showComments}
 
 
-          </ScrollView>
+            </ScrollView>
+          </View>
+
         </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2ecc71',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  body: {
-    height: DEVICE_HEIGHT - (DEVICE_HEIGHT / 6),
-    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
-    backgroundColor: '#ffffff',
-  },
-  title: {
-    height: DEVICE_HEIGHT / 10,
-    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  scroll: {
-    backgroundColor: '#f0f0f0',
-  },
-  likeBar: {
-    height: DEVICE_HEIGHT / 10,
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: '#ffffff',
-  },
-  likers: {
-    width: DEVICE_HEIGHT / 22,
-    height: DEVICE_HEIGHT / 22,
-    marginLeft: DEVICE_WIDTH / 80,
-    borderRadius: 50,
-  },
-  commentBar:{
-    height: DEVICE_HEIGHT / 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  commentBody: {
-    height: DEVICE_HEIGHT / 8,
-    width: DEVICE_WIDTH / 1.04,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    marginBottom: DEVICE_HEIGHT / 200,
-  },
-
-
-  peopleImage: {
-    width: DEVICE_HEIGHT / 12,
-    height: DEVICE_HEIGHT / 12,
-    marginLeft: DEVICE_WIDTH / 80,
-    borderRadius: 50,
-  },
-  currentImage: {
-    height: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
-    width: DEVICE_WIDTH - (DEVICE_HEIGHT / 25),
-  },
-
-
-  exitButton: {
-    position: 'absolute',
-    height: DEVICE_HEIGHT / 15,
-    width: DEVICE_HEIGHT / 15,
-    right: DEVICE_HEIGHT / 38,
-    marginTop: DEVICE_HEIGHT / 50,
-  },
-  likeButton: {
-    position: 'absolute',
-    top: DEVICE_HEIGHT / 70,
-    right: DEVICE_HEIGHT / 36,
-    height: DEVICE_HEIGHT / 15,
-    width: DEVICE_HEIGHT / 15,
-  },
-
-
-  titleText: {
-    paddingLeft: DEVICE_HEIGHT / 50,
-    fontSize: 25,
-  },
-  commentText: {
-    marginLeft: DEVICE_WIDTH / 50,
-    fontSize: 14,
-  },
-});
-
-AppRegistry.registerComponent('social', () => social);
