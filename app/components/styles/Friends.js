@@ -79,5 +79,7 @@ export default styles = StyleSheet.create({
     right: 20,
     top: 20,
   },
-
+  cogIcon: {
+    marginLeft: 90,
+  },
 })
