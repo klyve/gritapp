@@ -25,7 +25,6 @@ function person(){
   this.picturePath = "";
   this.friends = [];
 }
-
 var me = new person();
   me.name = "Jørgen";
   me.picturePath = "http://facebookcraze.com/wp-content/uploads/2009/12/funny_profile_pic_for_facebook_rape.jpg";
@@ -60,13 +59,11 @@ export default class Friends extends Component {
       searchbar: false
     }
   }
-
   changeBar(state) {
     this.setState({
       searchbar: state
     })
   }
-
   renderSearch() {
     if(!this.state.searchbar) {
       return (
@@ -131,6 +128,13 @@ export default class Friends extends Component {
               <View style={styles.me}>
                 <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
                 <Text style={styles.meText}> {me.name}</Text>
+                <View style = {styles.cogIcon}>
+                  <Icon
+                    name='cog'
+                    type='font-awesome'
+                    color='black'
+                  />
+                </View>
               </View>
             </TouchableHighlight>
 
