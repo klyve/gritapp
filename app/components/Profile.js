@@ -10,7 +10,13 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles/profile';
+import { Actions } from 'react-native-router-flux';
 
+import {
+  MainHeader,
+  Blocks,
+  FriendBlock
+} from './modules'
 var groupColor;
 
 // Blueprints
@@ -33,7 +39,12 @@ export default class Profile extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={styles.navBar}/>
+      <MainHeader
+        color="green"
+        leftBtn="chevron-left"
+        left={() => { Actions.pop() }}
+        large
+      />
 
         <View style={styles.body}>
 
