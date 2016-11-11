@@ -5,10 +5,11 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
-  Image
+  Image,
 } from 'react-native';
-
+import { Actions } from 'react-native-router-flux';
 import {
+  MainHeader,
   Blocks,
   FriendBlock
 } from './modules'
@@ -19,7 +20,6 @@ import {
 } from 'react-native-elements'
 
 import styles from './styles/Friends';
-
 function person(){
   this.name = "";
   this.picturePath = "";
@@ -78,6 +78,12 @@ export default class Friends extends Component {
     }
     return (
       <View>
+      <MainHeader
+        color="green"
+        leftBtn="chevron-left"
+        left={() => { Actions.pop() }}
+        large
+      />
         <SearchBar
           containerStyle={styles.searchContainer}
           inputStyle={styles.searchInput}
@@ -111,7 +117,9 @@ export default class Friends extends Component {
 
     let showFriends = me.friends.map((a,b) => {
         return <FriendBlock
-                onPress={() => console.log("Friend number", b)}
+                onPress={() => {
+                  Actions.profile()
+                }}
                 image={a.picturePath}
                 name={a.name}
                 key={b}

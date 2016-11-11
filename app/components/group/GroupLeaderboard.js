@@ -51,7 +51,9 @@ export default class GroupLeaderboard extends Component {
     let top = top3.map((a,b) => {
         return (
           <FriendBlock
-            onPress={() => {console.log("CLicked")}}
+            onPress={() => {
+              Actions.profile()
+            }}
             image={a.picturePath}
             name={a.name}
             points={a.score}
@@ -61,7 +63,9 @@ export default class GroupLeaderboard extends Component {
       let other = rest.map((a,b) => {
           return (
             <FriendBlock
-              onPress={() => {console.log("CLicked")}}
+              onPress={() => {
+                Actions.profile()
+              }}
               image={a.picturePath}
               name={a.name}
               points={a.score}

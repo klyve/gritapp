@@ -17,13 +17,11 @@ import { Actions } from 'react-native-router-flux';
 import {
   Blocks,
   FriendBlock
-} from './modules'
+} from '../../modules'
 
-import styles from '../../styles/settingsMain';
+import styles from './styles/groupsettingsmain';
 
 //Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 10;
 
 // Blueprints
@@ -41,7 +39,7 @@ var currentGroup = new Group();
   currentGroup.description = "Vi liker pølser, de er best";
   currentGroup.public = false;
 
-export default class social extends Component {
+export default class GroupSettingsMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -94,10 +92,7 @@ export default class social extends Component {
             underlayColor={"rgb(210,210,210)"}
             onPress = {() => {}}
             style = {styles.settingsButton}>
-              <Image
-              style = {{height: 20, width: 20,}}
-              source = {require('./images/deleteButton.png')}
-              />
+              <Text>X</Text>
             </TouchableHighlight>
           </View>
           {/*Settings nr 3*/}
@@ -113,10 +108,7 @@ export default class social extends Component {
             underlayColor={"rgb(210,210,210)"}
             onPress = {() => {}}
             style = {[styles.settingsButton, {marginLeft: 35}]}>
-              <Image
-              style = {{height: 20, width: 20,}}
-              source = {require('./images/deleteButton.png')}
-              />
+              <Text>X</Text>
             </TouchableHighlight>
           </View>
           {/*Settings nr 4*/}
