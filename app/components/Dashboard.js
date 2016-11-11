@@ -17,6 +17,8 @@ import {
   FriendBlock
 } from './modules'
 
+import * as groups from '../actions/groups'
+
 
 
 import styles from './styles/Dashboard';
@@ -53,15 +55,9 @@ class Dashboard extends Component {
 
   }
   componentWillMount() {
-    // console.log("Hello ")
-    // fetch('https://google.com')
-    //   .then(response => console.log("CALLED"))
-    // console.log("BYE")
-  }
-  componentDidMount() {
-    // fetch('http://6d5a13c7.ngrok.io/api/groups')
-    //   .then((response) => response.json())
-    //   .then((json) => this.setState(json))
+    let { dispatch } = this.props
+    // dispatch({type:"WORKS"})
+    dispatch(groups.getUserGroups());
   }
 
   render() {
@@ -72,7 +68,7 @@ class Dashboard extends Component {
       return (
         <FriendBlock
           onPress={() => {this.gotoGroup(b)}}
-          image={a.picturePath}
+          image={a.image}
           name={a.name}
           unread={a.unread}
           key={b}
@@ -94,10 +90,5 @@ class Dashboard extends Component {
 
 export default connect(state => ({
     state: state.counter
-  }),
-  (dispatch) => {
-    dispatch({type:"Test"})
-    return ({
-    actions: bindActionCreators(dispatch)
-  })}
+  })
 )(Dashboard);
