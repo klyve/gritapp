@@ -45,7 +45,6 @@ export default class Dashboard extends Component {
         <Text style={styles.notificationsText}>Notifications {notifications}</Text>
       </TouchableHighlight>
     )
-
   }
 
   componentDidMount() {

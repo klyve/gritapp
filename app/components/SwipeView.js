@@ -43,7 +43,7 @@ export default class SwipeView extends Component {
         showsButtons={false}
         showsPagination={false}
         loop={false}
-        index={1}
+        index={2}
       >
 
         <View style={styles.slide1}>
