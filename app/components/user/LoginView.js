@@ -65,7 +65,8 @@ export default class LoginView extends Component {
     try {
       token = await AsyncStorage.getItem("@accesstoken:key")
       if (token !== null){
-        Actions.swipeview();
+        Actions.swipeview({type: 'reset'});
+
         return true;
       }
     }catch(error) {
@@ -88,6 +89,7 @@ export default class LoginView extends Component {
                         style={[styles.input, styles.whiteFont]}
                         placeholder="Phone number"
                         placeholderTextColor="#FFF"
+                        underlineColorAndroid='rgba(0,0,0,0)'
                         value={this.state.username}
                         onChangeText={(text) => {
                           this.setState({
@@ -103,6 +105,7 @@ export default class LoginView extends Component {
                         style={[styles.input, styles.whiteFont]}
                         placeholder="Pasword"
                         placeholderTextColor="#FFF"
+                        underlineColorAndroid='rgba(0,0,0,0)'
                         value={this.state.password}
                         onChangeText={(text) => {
                           this.setState({
