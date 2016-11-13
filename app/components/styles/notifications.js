@@ -34,8 +34,7 @@ export default styles = StyleSheet.create({
   senderImage: {
     width: 60,
     height: 60,
-    borderRadius: 15,
-    backgroundColor: 'blue',
+    borderRadius: 30,
   },
   requestText: {
     marginLeft: 10,
