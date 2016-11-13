@@ -61,7 +61,8 @@ class Dashboard extends Component {
 
   render() {
     let showGroups;
-    if(this.props.groups) {
+    console.log(this.props.groups.length)
+    if(this.props.groups.length > 0) {
        showGroups = this.props.groups.map((a,b) => {
 
         let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
