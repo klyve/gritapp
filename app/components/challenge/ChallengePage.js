@@ -1,4 +1,3 @@
-import NavigationBar from 'react-native-navbar'
 import React, { Component } from 'react';
 import {
   AppRegistry,

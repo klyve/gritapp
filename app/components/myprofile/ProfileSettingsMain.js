@@ -9,7 +9,8 @@ import {
   Image,
   ScrollView,
   Switch,
-  Alert
+  Alert,
+  AsyncStorage
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
@@ -39,6 +40,17 @@ var currentGroup = new Profile();
   currentGroup.description = "Stor og lang";
 
 export default class ProfileSettingsMain extends Component {
+
+  async logOut() {
+      try {
+        await AsyncStorage.removeItem("@accesstoken:key");
+        Actions.loginview({type: 'reset'});
+      }catch(error) {
+        console.log(error);
+      }
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -153,7 +165,7 @@ export default class ProfileSettingsMain extends Component {
             'Warning: ',
             'Are you sure you want to log out?',
             [
-              {text: 'Yes', onPress: () => console.log('Yes pressed')},
+              {text: 'Yes', onPress: () => this.logOut()},
               {text: 'No', onPress: () => console.log('No Pressed')},
             ]
           )
