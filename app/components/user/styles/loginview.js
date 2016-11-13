@@ -23,6 +23,7 @@ export default styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
+    opacity: 0.5,
     resizeMode: 'cover', // or 'stretch'
   },
   bgImageWrapper: {

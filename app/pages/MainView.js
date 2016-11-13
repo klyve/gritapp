@@ -29,10 +29,10 @@ import RegisterView from '../components/user/RegisterView';
 const scenes = Actions.create(
   <Scene key="root">
 
-    <Scene key="loginview" hideNavBar component={LoginView}/>
+    <Scene key="loginview" hideNavBar component={LoginView} initial={true}/>
     <Scene key="registerview" hideNavBar component={RegisterView} />
 
-    <Scene key="swipeview" hideNavBar component={SwipeView} initial={true}/>
+    <Scene key="swipeview" hideNavBar component={SwipeView}/>
 
     <Scene key="groupsearch" hideNavBar component={GroupSearch} />
     <Scene key="groupjoin" hideNavBar component={GroupJoin} />
