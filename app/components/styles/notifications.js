@@ -7,18 +7,13 @@ import {
 
 
 export default styles = StyleSheet.create({
-
   container : {
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  navbar: {
-    flex: 1/10,
-    backgroundColor: '#2ecc71',
-    alignItems: 'center',
-  },
   body: {
-    flex: 1/1.5,
+    marginTop: 60,
+    flex: 1,
   },
   requestContainer: {
     backgroundColor: '#f5f5f5',

@@ -10,6 +10,7 @@ import {
   Image,
 } from 'react-native';
 import {
+  MainHeader,
   Blocks,
   FriendBlock
 } from './modules';
@@ -45,7 +46,9 @@ var ntnu3 = new request();
   ntnu3.senderName = 'Jørgen';
   ntnu3.senderImgPath = "http://facebookcraze.com/wp-content/uploads/2009/12/funny_profile_pic_for_facebook_rape.jpg";
 
+
 var requests = [ntnu, ntnu2, ntnu3];
+
 
 
 export default class Notifications extends Component {
@@ -57,65 +60,35 @@ export default class Notifications extends Component {
   }
   render() {
     let showRequests = this.state.requests.map((a, b) => {
-    console.log(a.called)
-    return (
-
-      <FriendBlock
-        onPress={() => {}}
-        image={a.senderImgPath}
-        name={a.called}
-        key={b}
-        small
-      />
-
-      /*
-
-      <TouchableHighlight
-      key = {b}
-      onPress={() => {}}
-      activeOpacity={75 / 100}
-      underlayColor={"rgb(210,210,210)"} >
-          <View style = {styles.request}>
-            <Image
-            style = {styles.senderImage}
-            source = {{uri: a.senderImgPath}}/>
-            <Text
-            style = {styles.requestText}
-            >
-              {a.called}: invited by {a.senderName}
-            </Text>
-            <TouchableHighlight
-            onPress={(a) => {
-              requests.splice(b,1)
-              this.setState({requests})
-            }}
-            activeOpacity={75 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            style = {styles.declineButton}>
-            <Text>X</Text>
-            </TouchableHighlight>
-          </View>
-      </TouchableHighlight>
-
-      */
-
-    )
+      return (
+        <FriendBlock
+          onPress={() => {}}
+          image={a.senderImgPath}
+          name={a.called}
+          key={b}
+          small
+        />
+      )
   })
     return (
       <View style={styles.container}>
-        <View style = {styles.navbar}></View>
+        <MainHeader
+          title="Invites"
+        />
         <View style = {styles.body}>
           <ScrollView style = {styles.requestContainer}>
             {showRequests}
           </ScrollView>
         </View>
+
         <TouchableHighlight
-        onPress={() => {
-          Actions.pop()
-        }}
-        activeOpacity={75 / 100}
-        underlayColor={"rgb(210,210,210)"}
-        style = {styles.closePage}>
+          onPress={() => {
+            Actions.pop()
+          }}
+          activeOpacity={75 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          style = {styles.closePage}
+        >
           <Text style={styles.closeButtonText}>CLOSE</Text>
         </TouchableHighlight>
       </View>

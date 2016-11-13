@@ -28,11 +28,11 @@ import styles from './styles/Dashboard';
 class Dashboard extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
     this.state = {
       groups: [],
     }
   }
+
   gotoGroup(groupId) {
       Actions.groupdashboard(this.props.groups[groupId])
   }
@@ -43,6 +43,7 @@ class Dashboard extends Component {
 
   renderNotifications() {
     let notifications = 13;
+
     if(notifications <= 0)
       return false;
 
@@ -50,7 +51,7 @@ class Dashboard extends Component {
       <TouchableHighlight style={styles.notifications}
         onPress={() => this.showNotifications()}
       >
-        <Text style={styles.notificationsText}>Notifications {notifications}</Text>
+        <Text style={styles.notificationsText}>New Invites: {notifications}</Text>
       </TouchableHighlight>
     )
   }
