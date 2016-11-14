@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
+import {HEADER_HEIGHT} from '../constants';
 
 
 
@@ -12,7 +13,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   body: {
-    marginTop: 60,
+    marginTop: HEADER_HEIGHT,
     flex: 1,
   },
   requestContainer: {
