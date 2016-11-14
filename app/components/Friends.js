@@ -133,11 +133,12 @@ export default class Friends extends Component {
                 <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
                 <Text style={styles.meText}> {me.name}</Text>
                 <TouchableHighlight
-                onPress = {() => {
-                  Actions.profilesettingsmain();
-                }}
-                activeOpacity={71 / 100}
-                underlayColor={"rgb(210,210,210)"}>
+                  onPress = {() => {
+                    Actions.profilesettingsmain();
+                  }}
+                  activeOpacity={71 / 100}
+                  underlayColor={"rgb(210,210,210)"}
+                >
                   <View style = {styles.cogIcon}>
                     <Icon
                       name='cog'

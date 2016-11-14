@@ -5,7 +5,8 @@ import {
   StyleSheet,
 } from 'react-native'
 
-const MARGIN = 10;
+import {MARGIN} from '../constants'
+
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -37,6 +38,7 @@ export default styles = StyleSheet.create({
   add: {
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#f0f0f0',
     height: 60,
     paddingTop: MARGIN * 2,

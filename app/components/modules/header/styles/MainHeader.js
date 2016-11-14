@@ -24,14 +24,14 @@ export default styles = StyleSheet.create({
   },
   leftAlign: {
     position: 'absolute',
-    left: 17,
+    left: 18,
     padding: 5,
     width: 50,
     height: 50,
   },
   rightAlign: {
     position: 'absolute',
-    right: 17,
+    right: 18,
     padding: 5,
     width: 50,
     height: 50,

@@ -42,7 +42,7 @@ class Dashboard extends Component {
   }
 
   renderNotifications() {
-    let notifications = 13;
+    let notifications = 3;
 
     if(notifications <= 0)
       return false;
