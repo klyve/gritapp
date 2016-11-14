@@ -16,7 +16,8 @@ import {
   MainHeader,
   Blocks,
   FriendBlock
-} from './modules'
+} from './modules';
+
 var groupColor;
 
 // Blueprints

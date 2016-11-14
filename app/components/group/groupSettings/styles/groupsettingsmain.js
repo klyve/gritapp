@@ -3,6 +3,9 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
+import {
+  HEADER_HEIGHT
+} from '../../../constants';
 
 export default styles = StyleSheet.create({
 
@@ -10,13 +13,10 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  navBar: {
-    flex: 1/7,
-    backgroundColor: '#3fc380',
-  },
   body: {
     flex: 1/3,
     alignItems: 'center',
+    marginTop: HEADER_HEIGHT,
   },
   groupImageView: {
     alignItems: 'center',

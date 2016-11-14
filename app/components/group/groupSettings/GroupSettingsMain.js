@@ -58,7 +58,6 @@ export default class GroupSettingsMain extends Component {
         color="green"
         leftBtn="chevron-left"
         left={() => { Actions.pop() }}
-        large
       />
         <View style={styles.body}>
 
