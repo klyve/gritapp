@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
 } from 'react-native'
-import {HEADER_HEIGHT} from '../../../constants'
+import {HEADER_HEIGHT, HEADER_PADDING} from '../../../constants'
 
 
 export default styles = StyleSheet.create({
@@ -14,7 +14,7 @@ export default styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: HEADER_HEIGHT,
-    padding: 22,
+    padding: HEADER_PADDING,
   },
   large: {
     height: 80,
