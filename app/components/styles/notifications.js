@@ -10,14 +10,14 @@ import {HEADER_HEIGHT} from '../constants';
 export default styles = StyleSheet.create({
   container : {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
   },
   body: {
     marginTop: HEADER_HEIGHT,
     flex: 1,
   },
   requestContainer: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
     flexDirection: 'column',
   },
   request: {
