@@ -24,7 +24,14 @@ export default styles = StyleSheet.create({
   },
   leftAlign: {
     position: 'absolute',
-    left: 0,
+    left: 17,
+    padding: 5,
+    width: 50,
+    height: 50,
+  },
+  rightAlign: {
+    position: 'absolute',
+    right: 17,
     padding: 5,
     width: 50,
     height: 50,
@@ -49,14 +56,6 @@ export default styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
-  },
-
-  rightAlign: {
-    position: 'absolute',
-    right: 0,
-    padding: 5,
-    width: 50,
-    height: 50,
   },
   titleContainer: {
     position: 'absolute',
