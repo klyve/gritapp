@@ -33,7 +33,7 @@ export default class LoginView extends Component {
   signIn() {
     let password = hash.sha256().update(this.state.password).digest('hex');
     let username = this.state.username;
-    fetch('https://525b0c44.ngrok.io/api/user/auth', {
+    fetch('https://dd25c333.ngrok.io/api/user/auth', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
