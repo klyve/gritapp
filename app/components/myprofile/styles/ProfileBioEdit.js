@@ -23,6 +23,7 @@ export default styles = StyleSheet.create({
     flex: 1/10,
     flexDirection: 'row',
     borderColor: 'black',
+    marginTop: 20,
   },
   textInput: {
     paddingTop: 10,

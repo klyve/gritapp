@@ -98,7 +98,7 @@ export default class ProfileSettingsMain extends Component {
             <View style = {{flexDirection: 'row',}}>
               <Text style = {[styles.settingsTextLeft, {width: 230}]}>Bio</Text>
               <Text style = {[styles.settingsTextRight, {}]}>"14cm +"</Text>
-              <Text>></Text>
+              <Text></Text>
             </View>
           </TouchableHighlight>
 
@@ -178,7 +178,7 @@ export default class ProfileSettingsMain extends Component {
               alignItems: 'center',
               justifyContent: 'center',
               height: 50,
-              marginTop: 120,
+              marginTop: 45,
             }}>
             <Text
             style = {{ color: 'red', fontSize: 18, }}>
