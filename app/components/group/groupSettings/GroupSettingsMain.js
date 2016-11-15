@@ -17,7 +17,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   MainHeader,
   Blocks,
-  FriendBlock,
+  FriendBlock
 } from '../../modules'
 
 
