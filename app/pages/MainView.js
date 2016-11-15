@@ -11,7 +11,7 @@ import GroupName from '../components/group/GroupName';
 import GroupSearch from '../components/group/GroupSearch';
 import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
-import GroupSettingsMain from '../components/group/groupSettings/GroupSettingsMain';
+import GroupSettingsMain from '../components/group/groupsettings/GroupSettingsMain';
 import Notifications from '../components/Notifications';
 
 import Profile from '../components/Profile';
@@ -26,6 +26,8 @@ import ProfileBioEdit from '../components/myprofile/ProfileBioEdit';
 import LoginView from '../components/user/LoginView';
 import RegisterView from '../components/user/RegisterView';
 
+import Signup from '../components/user/signup';
+
 const scenes = Actions.create(
   <Scene key="root">
 
@@ -39,6 +41,7 @@ const scenes = Actions.create(
     <Scene key="grouptype" hideNavBar component={GroupType} />
     <Scene key="groupname" hideNavBar component={GroupName} />
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>
+
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
 
     <Scene key="profile" hideNavBar component={Profile}/>
@@ -48,6 +51,8 @@ const scenes = Actions.create(
     <Scene key="singlepictureview" hideNavBar component={SinglePictureView}/>
     <Scene key="profilesettingsmain" hideNavBar component={ProfileSettingsMain}/>
     <Scene key="profilebioedit" hideNavBar component={ProfileBioEdit}/>
+
+    <Scene key="signup" hideNavBar component={Signup}/>
 
   </Scene>
 );
