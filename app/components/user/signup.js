@@ -17,9 +17,9 @@ import {
   BlockFifty,
   MainHeader
 } from '../modules';
-import styles from './styles/loginview';
+import styles from './styles/signup';
 const ACCESS_TOKEN = '';
-export default class LoginView extends Component {
+export default class sigup extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -87,7 +87,7 @@ export default class LoginView extends Component {
                     <Image style={styles.inputUsername} source={{uri: 'https://i.imgur.com/iVVVMRX.png'}}/>
                     <TextInput
                         style={[styles.input, styles.whiteFont]}
-                        placeholder="Phone number"
+                        placeholder="Nickname"
                         placeholderTextColor="#FFF"
                         underlineColorAndroid='rgba(0,0,0,0)'
                         value={this.state.username}
@@ -114,8 +114,25 @@ export default class LoginView extends Component {
                         }}
                     />
                 </View>
-                <View style={styles.forgotContainer}>
-                    <Text style={styles.greyFont}>Forgot Password</Text>
+                <View style={styles.inputContainer}>
+                    <Image style={styles.inputPassword} source={{uri: 'https://i.imgur.com/ON58SIG.png'}}/>
+                    <TextInput
+                        password={true}
+                        style={[styles.input, styles.whiteFont]}
+                        placeholder="Confirm password"
+                        placeholderTextColor="#FFF"
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        value={this.state.password}
+                        onChangeText={(text) => {
+                          this.setState({
+                            password: text
+                          })
+                        }}
+                    />
+                </View>
+
+                <View style = {styles.warningContainer}>
+                  <Text style = {[styles.whiteFont, styles.warning]}>Nickname must contain 3 to 16 characters.</Text>
                 </View>
             </View>
             <TouchableHighlight
@@ -124,18 +141,9 @@ export default class LoginView extends Component {
               }}>
               <View style={styles.signin}>
 
-                  <Text style={styles.whiteFont}>Sign In</Text>
+                  <Text style={styles.whiteFont}>Next</Text>
               </View>
 
-            </TouchableHighlight>
-            <TouchableHighlight
-            style = {styles.signup}
-            onPress = {() => {
-              Actions.signup();
-            }}>
-            <View style={styles.signup}>
-                <Text style={styles.greyFont}>Dont have an account?<Text style={styles.whiteFont}>  Sign Up</Text></Text>
-            </View>
             </TouchableHighlight>
         </View>
     );

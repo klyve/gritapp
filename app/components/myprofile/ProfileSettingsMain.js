@@ -114,8 +114,18 @@ export default class ProfileSettingsMain extends Component {
               borderBottomWidth: 1,
             }]}>
             <View style = {{flexDirection: 'row'}}>
-              <Text style = {[styles.settingsTextLeft,{width: 330}]}>Friend requests</Text>
-              <Text>></Text>
+              <Text style = {[styles.settingsTextLeft,{}]}>Friend requests</Text>
+              <Switch
+              value={(this.state && this.state.switchValue3) || false}
+              onValueChange={(value) => {
+                this.setState({switchValue3: value})
+              }}
+              // Color props are iOS-only
+              // thumbTintColor={'white'} // Removes shadow
+              tintColor={"rgba(230,230,230,1)"}
+              onTintColor={"rgba(68,219,94,1)"}
+              style = {styles.switch}
+            />
             </View>
           </TouchableHighlight>
           {/*Settings nr 4*/}
