@@ -55,7 +55,6 @@ export default class LoginView extends Component {
     try {
       await AsyncStorage.setItem("@accesstoken:key", token);
       Actions.swipeview({type: 'reset'});
-      //this.getToken();
     }catch(error) {
       console.log(error);
     }
