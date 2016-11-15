@@ -23,7 +23,7 @@ export default class CreateOrJoinGroup extends Component {
         <Blocks>
 
           <BlockFifty
-            style={{marginBottom: 10}}
+            style={{marginBottom: 5}}
             onPress={() => Actions.grouptype()}
           >
             <Text style={styles.buttonText}>
@@ -32,6 +32,7 @@ export default class CreateOrJoinGroup extends Component {
           </BlockFifty>
 
           <BlockFifty
+            style={{marginTop: 5, marginBottom: 25}}
             onPress={() => Actions.groupsearch()}
           >
             <Text style={styles.buttonText}>
