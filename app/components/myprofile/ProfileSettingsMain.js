@@ -45,6 +45,8 @@ export default class ProfileSettingsMain extends Component {
       try {
         await AsyncStorage.removeItem("@accesstoken:key");
         Actions.loginview({type: 'reset'});
+
+        
       }catch(error) {
         console.log(error);
       }
