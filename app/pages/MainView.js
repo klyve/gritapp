@@ -23,9 +23,17 @@ import ProfileSettingsMain from '../components/myprofile/ProfileSettingsMain';
 import ProfileBioEdit from '../components/myprofile/ProfileBioEdit';
 
 
+import LoginView from '../components/user/LoginView';
+import RegisterView from '../components/user/RegisterView';
+
+import Signup from '../components/user/signup';
 
 const scenes = Actions.create(
   <Scene key="root">
+
+    <Scene key="loginview" hideNavBar component={LoginView}/>
+    <Scene key="registerview" hideNavBar component={RegisterView} />
+
     <Scene key="swipeview" hideNavBar component={SwipeView} initial={true}/>
 
     <Scene key="groupsearch" hideNavBar component={GroupSearch} />
@@ -33,14 +41,18 @@ const scenes = Actions.create(
     <Scene key="grouptype" hideNavBar component={GroupType} />
     <Scene key="groupname" hideNavBar component={GroupName} />
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>
-    <Scene key="challengepage" hideNavBar component={ChallengePage}/>
-    <Scene key="singlepictureview" hideNavBar component={SinglePictureView}/>
-    <Scene key="profilesettingsmain" hideNavBar component={ProfileSettingsMain}/>
-    <Scene key="profilebioedit" hideNavBar component={ProfileBioEdit}/>
+
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
 
     <Scene key="profile" hideNavBar component={Profile}/>
     <Scene key="notifications" hideNavBar component={Notifications}/>
+
+    <Scene key="challengepage" hideNavBar component={ChallengePage}/>
+    <Scene key="singlepictureview" hideNavBar component={SinglePictureView}/>
+    <Scene key="profilesettingsmain" hideNavBar component={ProfileSettingsMain}/>
+    <Scene key="profilebioedit" hideNavBar component={ProfileBioEdit}/>
+
+    <Scene key="signup" hideNavBar component={Signup}/>
 
   </Scene>
 );

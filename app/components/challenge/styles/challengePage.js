@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
+import { HEADER_HEIGHT } from '../../constants'
 
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -14,14 +15,10 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
-  navbar: {
-    backgroundColor: '#2ecc71',
-    opacity: 0.88,
-    flex: 1/9,
-  },
   body: {
     backgroundColor: '#f7f8fd',
     flex: 1/1.1,
+    marginTop: HEADER_HEIGHT,
   },
   description: {
     paddingLeft: 20,

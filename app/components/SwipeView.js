@@ -6,8 +6,10 @@ import {
   Text,
   View,
   Switch,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage,
 } from 'react-native'
+import { Actions } from 'react-native-router-flux';
 
 import Swiper from 'react-native-swiper';
 import styles from './styles/SwipeView';
@@ -24,8 +26,23 @@ export default class SwipeView extends Component {
   constructor(props) {
     super(props);
     console.log(props)
-  }
 
+    this.navigateIfNoToken();
+  }
+  async navigateIfNoToken() {
+    let token;
+    try {
+      token = await AsyncStorage.getItem("@accesstoken:key")
+      if (token == null){
+        console.log("No token!");
+        Actions.loginview({type: 'reset'});
+        return true;
+      }
+    }catch(error) {
+      console.log(error)
+      return false;
+    }
+  }
 
   btnPress(index) {
     //console.log(this._swiper.scrollBy(1))
@@ -44,7 +61,7 @@ export default class SwipeView extends Component {
         showsButtons={false}
         showsPagination={false}
         loop={false}
-        index={0}
+        index={1}
       >
 
         <View style={styles.slide1}>

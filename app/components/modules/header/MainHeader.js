@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableHighlight
 } from 'react-native'
 
 import { Icon } from 'react-native-elements'
@@ -41,16 +42,36 @@ export default class MainHeader extends Component {
       </View>
     )
   }
+  createText(style, text, fn, align) {
+    const iconStyles = [style]
+    if(this.props.large)
+      iconStyles.push(styles.iconLarge)
+    return (
+      <TouchableHighlight
+        underlayColor='transparent'
+        onPress={fn}
+        style={iconStyles}
+      >
+        <Text style={[styles.headerText, {textAlign: align}]}>{text}</Text>
+      </TouchableHighlight>
+
+    )
+  }
   renderLeftBtn() {
-    if(!this.props.leftBtn)
+    if(!this.props.leftBtn && !this.props.leftText)
       return false;
-    return this.createIcon(styles.leftAlign, this.props.leftBtn, this.props.left);
+    if(this.props.leftBtn)
+      return this.createIcon(styles.leftAlign, this.props.leftBtn, this.props.left);
+    if(this.props.leftText)
+      return this.createText(styles.leftAlignText, this.props.leftText, this.props.left, 'left');
   }
   renderRightBtn() {
-    if(!this.props.rightBtn)
+    if(!this.props.rightBtn && !this.props.rightText)
       return false;
-
-    return this.createIcon(styles.rightAlign, this.props.rightBtn, this.props.right);
+    if(this.props.rightBtn)
+      return this.createIcon(styles.rightAlign, this.props.rightBtn, this.props.right);
+    if(this.props.rightText)
+      return this.createText(styles.rightAlignText, this.props.rightText, this.props.right, 'right');
   }
 
   renderTitle() {

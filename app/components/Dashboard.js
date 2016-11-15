@@ -28,11 +28,11 @@ import styles from './styles/Dashboard';
 class Dashboard extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
     this.state = {
       groups: [],
     }
   }
+
   gotoGroup(groupId) {
       Actions.groupdashboard(this.props.groups[groupId])
   }
@@ -42,7 +42,8 @@ class Dashboard extends Component {
   }
 
   renderNotifications() {
-    let notifications = 13;
+    let notifications = 3;
+
     if(notifications <= 0)
       return false;
 
@@ -50,7 +51,7 @@ class Dashboard extends Component {
       <TouchableHighlight style={styles.notifications}
         onPress={() => this.showNotifications()}
       >
-        <Text style={styles.notificationsText}>Notifications {notifications}</Text>
+        <Text style={styles.notificationsText}>New Invites: {notifications}</Text>
       </TouchableHighlight>
     )
   }
@@ -60,20 +61,25 @@ class Dashboard extends Component {
   }
 
   render() {
+    let showGroups;
+    console.log(this.props.groups.length)
+    if(this.props.groups.length > 0) {
+       showGroups = this.props.groups.map((a,b) => {
 
-    let showGroups = this.props.groups.map((a,b) => {
-
-      let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
-      return (
-        <FriendBlock
-          onPress={() => {this.gotoGroup(b)}}
-          image={a.image}
-          name={a.name}
-          unread={a.unread}
-          key={b}
-        />
-      )
-    })
+        let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
+        return (
+          <FriendBlock
+            onPress={() => {this.gotoGroup(b)}}
+            image={a.image}
+            name={a.name}
+            unread={a.unread}
+            key={b}
+          />
+        )
+      })
+    } else {
+      showGroups = false;
+    }
     return (
       <View style={styles.container}>
         {this.renderNotifications()}

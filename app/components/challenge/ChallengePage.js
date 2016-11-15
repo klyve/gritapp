@@ -1,4 +1,3 @@
-import NavigationBar from 'react-native-navbar'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -13,6 +12,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { Icon } from 'react-native-router-flux';
 import {
+  MainHeader,
   Blocks,
   FriendBlock
 } from '../modules'
@@ -89,7 +89,11 @@ export default class ChallengePage extends Component {
     return (
 
       <View style={styles.container}>
-        <View style = {styles.navbar}></View>
+        <MainHeader
+          color="green"
+          leftBtn="chevron-left"
+          left={() => { Actions.pop() }}
+        />
         <ScrollView style = {styles.body}>
 
         <View style = {styles.description}>

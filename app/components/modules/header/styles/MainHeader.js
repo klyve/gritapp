@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
 } from 'react-native'
+import {HEADER_HEIGHT, HEADER_PADDING} from '../../../constants'
 
 
 export default styles = StyleSheet.create({
@@ -12,8 +13,8 @@ export default styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: 60,
-    padding: 20,
+    height: HEADER_HEIGHT,
+    padding: HEADER_PADDING,
   },
   large: {
     height: 80,
@@ -23,18 +24,38 @@ export default styles = StyleSheet.create({
   },
   leftAlign: {
     position: 'absolute',
-    left: 0,
+    left: 18,
     padding: 5,
     width: 50,
     height: 50,
   },
-
   rightAlign: {
     position: 'absolute',
-    right: 0,
+    right: 18,
     padding: 5,
     width: 50,
     height: 50,
+  },
+  leftAlignText: {
+    position: 'absolute',
+    left: 0,
+    padding: 5,
+    paddingLeft: 10,
+    width: 100,
+    height: 50,
+  },
+  rightAlignText: {
+    position: 'absolute',
+    right: 0,
+    padding: 5,
+    paddingRight: 10,
+    width: 100,
+    height: 50,
+  },
+  headerText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
   },
   titleContainer: {
     position: 'absolute',

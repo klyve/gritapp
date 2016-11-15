@@ -25,9 +25,9 @@ export default styles = StyleSheet.create({
     borderRadius: 30,
   },
   friendImageSmall: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
   friendText: {
     padding: 5,

@@ -9,6 +9,11 @@ import {
   TouchableHighlight,
   Image,
 } from 'react-native';
+import {
+  MainHeader,
+  Blocks,
+  FriendBlock
+} from './modules';
 import styles from './styles/notifications';
 import { Actions } from 'react-native-router-flux';
 
@@ -20,8 +25,6 @@ function request() {
   this.senderImgPath = "";
 }
 
-var requests = [];
-
 var ntnu = new request();
   ntnu.called = "NTNU Gjøvik";
   ntnu.type = 'group';
@@ -30,54 +33,23 @@ var ntnu = new request();
   ntnu.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
 
 var ntnu2 = new request();
-  ntnu2.called = "NTNU Gjøvik";
+  ntnu2.called = "Pølsefest";
   ntnu2.type = 'group';
   ntnu2.staus = 'pending';
   ntnu2.senderName = 'Henrik';
   ntnu2.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
 
 var ntnu3 = new request();
-  ntnu3.called = "#Dic4Pic";
+  ntnu3.called = "Pied Piper 2.0";
   ntnu3.type = 'Challenge';
   ntnu3.staus = 'accepted';
   ntnu3.senderName = 'Jørgen';
   ntnu3.senderImgPath = "http://facebookcraze.com/wp-content/uploads/2009/12/funny_profile_pic_for_facebook_rape.jpg";
 
-var ntnu4 = new request();
-ntnu4.called = "NTNU Gjøvik";
-ntnu4.type = 'group';
-ntnu4.staus = 'pending';
-ntnu4.senderName = 'Henrik';
-ntnu4.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
 
-var ntnu5 = new request();
-ntnu5.called = "NTNU Gjøvik";
-ntnu5.type = 'group';
-ntnu5.staus = 'pending';
-ntnu5.senderName = 'Henrik';
-ntnu5.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
+var requests = [ntnu, ntnu2, ntnu3];
 
-var ntnu6 = new request();
-ntnu6.called = "NTNU Gjøvik";
-ntnu6.type = 'group';
-ntnu6.staus = 'pending';
-ntnu6.senderName = 'Henrik';
-ntnu6.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
 
-var ntnu7 = new request();
-ntnu7.called = "NTNU Gjøvik";
-ntnu7.type = 'group';
-ntnu7.staus = 'pending';
-ntnu7.senderName = 'Henrik';
-ntnu7.senderImgPath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
-
-requests.push(ntnu);
-requests.push(ntnu2);
-requests.push(ntnu3);
-requests.push(ntnu4);
-requests.push(ntnu5);
-requests.push(ntnu6);
-requests.push(ntnu7);
 
 export default class Notifications extends Component {
   constructor() {
@@ -88,52 +60,35 @@ export default class Notifications extends Component {
   }
   render() {
     let showRequests = this.state.requests.map((a, b) => {
-    console.log(a.called)
-    return (
-      <TouchableHighlight
-      key = {b}
-      onPress={() => {}}
-      activeOpacity={75 / 100}
-      underlayColor={"rgb(210,210,210)"} >
-          <View style = {styles.request}>
-            <Image
-            style = {styles.senderImage}
-            source = {{uri: a.senderImgPath}}/>
-            <Text
-            style = {styles.requestText}
-            >
-              {a.called}: invited by {a.senderName}
-            </Text>
-            <TouchableHighlight
-            onPress={(a) => {
-              requests.splice(b,1)
-              this.setState({requests})
-            }}
-            activeOpacity={75 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            style = {styles.declineButton}>
-            <Text>X</Text>
-            </TouchableHighlight>
-          </View>
-      </TouchableHighlight>
-
-    )
+      return (
+        <FriendBlock
+          onPress={() => {}}
+          image={a.senderImgPath}
+          name={a.called}
+          key={b}
+          small
+        />
+      )
   })
     return (
       <View style={styles.container}>
-        <View style = {styles.navbar}></View>
+        <MainHeader
+          title="Invites"
+        />
         <View style = {styles.body}>
           <ScrollView style = {styles.requestContainer}>
             {showRequests}
           </ScrollView>
         </View>
+
         <TouchableHighlight
-        onPress={() => {
-          Actions.pop()
-        }}
-        activeOpacity={75 / 100}
-        underlayColor={"rgb(210,210,210)"}
-        style = {styles.closePage}>
+          onPress={() => {
+            Actions.pop()
+          }}
+          activeOpacity={75 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          style = {styles.closePage}
+        >
           <Text style={styles.closeButtonText}>CLOSE</Text>
         </TouchableHighlight>
       </View>
