@@ -9,7 +9,7 @@ export default function groups(state = initialState, action = {}) {
     case 'PAGE_CHANGE':
       return {
         ...state,
-        route.current: action.payload.route
+        route: action.payload
       };
     break;
     default:

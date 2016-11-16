@@ -6,8 +6,8 @@ export function redirectAuth({ getState }) {
 
     // Call the next dispatch method in the middleware chain.
     let returnValue = next(action)
-    
-    //console.log('AUTH: state after dispatch', getState())
+
+    console.log('AUTH: state after dispatch', getState())
 
     // This will likely be the action itself, unless
     // a middleware further in chain changed it.
