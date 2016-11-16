@@ -49,7 +49,6 @@ export default class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
-    console.log(this.props)
   }
 
 

@@ -10,9 +10,6 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f0f0f0',
   },
-  scrollView: {
-    flexDirection: 'column',
-  },
   notifications: {
     backgroundColor: '#26a65b',
     padding: 15,

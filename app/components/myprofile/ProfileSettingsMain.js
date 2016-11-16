@@ -95,7 +95,6 @@ export default class ProfileSettingsMain extends Component {
             <View style = {{flexDirection: 'row',}}>
               <Text style = {styles.settingsTextLeft}>Bio</Text>
               <Text style = {styles.settingsTextRight}>Bio preview</Text>
-
             </View>
           </TouchableHighlight>
 
