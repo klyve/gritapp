@@ -24,6 +24,7 @@ export default styles = StyleSheet.create({
     flex: .08,
     flexDirection: 'row',
     borderColor: 'black',
+    marginTop: 20,
   },
   textInput: {
     padding: 10,

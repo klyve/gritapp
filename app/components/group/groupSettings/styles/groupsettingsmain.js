@@ -14,7 +14,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   body: {
-    flex: 1/3,
+    flex: 1/4,
     alignItems: 'center',
     marginTop: HEADER_HEIGHT,
   },
@@ -43,7 +43,7 @@ export default styles = StyleSheet.create({
     paddingLeft: 15,
     backgroundColor: '#ffffff',
     flexDirection: 'row',
-    height: 50,
+    height: 60,
     borderColor: 'rgba(0,0,0,0.3)',
   },
   settingsTextLeft: {

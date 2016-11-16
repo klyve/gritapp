@@ -32,7 +32,7 @@ export default class GroupType extends Component {
           <Blocks>
 
             <BlockFifty
-              style={{marginBottom: 10}}
+              style={{marginTop: 10,marginBottom: 5}}
               onPress={() => Actions.groupname('public')}
             >
               <Text style={styles.buttonText}>
@@ -41,6 +41,7 @@ export default class GroupType extends Component {
             </BlockFifty>
 
             <BlockFifty
+              style={{marginTop: 5}}
               onPress={() => Actions.groupname('private')}
             >
               <Text style={styles.buttonText}>

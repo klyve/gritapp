@@ -45,6 +45,8 @@ export default class ProfileSettingsMain extends Component {
       try {
         await AsyncStorage.removeItem("@accesstoken:key");
         Actions.loginview({type: 'reset'});
+
+
       }catch(error) {
         console.log(error);
       }
@@ -93,6 +95,7 @@ export default class ProfileSettingsMain extends Component {
             <View style = {{flexDirection: 'row',}}>
               <Text style = {styles.settingsTextLeft}>Bio</Text>
               <Text style = {styles.settingsTextRight}>Bio preview</Text>
+
             </View>
           </TouchableHighlight>
 
@@ -182,7 +185,7 @@ export default class ProfileSettingsMain extends Component {
               alignItems: 'center',
               justifyContent: 'center',
               height: 50,
-              marginTop: 120,
+              marginTop: 45,
             }}>
             <Text
             style = {{ color: 'red', fontSize: 18, }}>

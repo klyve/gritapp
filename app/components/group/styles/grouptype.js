@@ -4,7 +4,8 @@ import {
   StyleSheet,
 } from 'react-native'
 import {
-  MARGIN
+  MARGIN,
+  HEADER_HEIGHT
 } from '../../constants'
 
 export default styles = StyleSheet.create({
@@ -19,7 +20,7 @@ export default styles = StyleSheet.create({
    fontWeight: 'bold',
  },
  blockContainer: {
-   marginTop: 70,
+   marginTop: HEADER_HEIGHT,
    flex: 1,
    margin: MARGIN
  }

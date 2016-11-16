@@ -172,13 +172,13 @@ export default class GroupSettingsMain extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           style = {{
-              marginTop: 90,
+              marginTop:65,
               borderTopWidth: 1,
               borderBottomWidth: 1,
               borderColor: 'rgba(0,0,0,0.3)',
               alignItems: 'center',
               justifyContent: 'center',
-              height: 50,
+              height: 60,
             }}>
             <Text
             style = {{ color: 'red', fontSize: 18, }}>

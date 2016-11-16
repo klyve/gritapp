@@ -4,10 +4,6 @@ import {
   Dimensions,
 } from 'react-native'
 
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
-
 export default styles = StyleSheet.create({
 
   container: {
@@ -15,7 +11,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   body: {
-    marginTop: 65,
+    marginTop: 80,
     borderTopWidth: 2,
     borderColor: '#ffffff',
     alignItems: 'center',
