@@ -10,13 +10,9 @@ import {
   AsyncStorage,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
-
 import Swiper from 'react-native-swiper';
 import styles from './styles/SwipeView';
-
-import {
-  MainHeader,
-}from './modules';
+import { MainHeader }from './modules';
 import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
@@ -25,7 +21,6 @@ export default class SwipeView extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
 
     this.navigateIfNoToken();
   }

@@ -16,12 +16,9 @@ import {
   MainHeader,
   Blocks,
   FriendBlock,
-} from './modules'
+} from './modules';
 
-import * as groups from '../actions/groups'
-
-
-
+import * as groups from '../actions/groups';
 import styles from './styles/Dashboard';
 
 
