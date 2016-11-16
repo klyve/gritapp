@@ -76,6 +76,9 @@ export default styles = StyleSheet.create({
   red: {
     backgroundColor: '#c0392b',
   },
+  blue: {
+    backgroundColor: '#2574a9',
+  },
   orange: {
     backgroundColor: 'orange'
   }

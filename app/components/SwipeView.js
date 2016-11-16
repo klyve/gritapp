@@ -10,14 +10,12 @@ import {
   AsyncStorage,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
+
 import { connect } from 'react-redux';
 
 import Swiper from 'react-native-swiper';
 import styles from './styles/SwipeView';
-
-import {
-  MainHeader,
-}from './modules';
+import { MainHeader }from './modules';
 import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
@@ -50,7 +48,7 @@ class SwipeView extends Component {
         showsButtons={false}
         showsPagination={false}
         loop={false}
-        index={2}
+        index={1}
       >
 
         <View style={styles.slide1}>
