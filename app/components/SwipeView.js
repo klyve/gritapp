@@ -10,6 +10,9 @@ import {
   AsyncStorage,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
+
+import { connect } from 'react-redux';
+
 import Swiper from 'react-native-swiper';
 import styles from './styles/SwipeView';
 import { MainHeader }from './modules';
@@ -17,32 +20,21 @@ import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
 
-export default class SwipeView extends Component {
+
+import * as Route from '../actions/route';
+
+class SwipeView extends Component {
 
   constructor(props) {
     super(props);
-
-    this.navigateIfNoToken();
   }
-  async navigateIfNoToken() {
-    let token;
-    try {
-      token = await AsyncStorage.getItem("@accesstoken:key")
-      if (token == null){
-        console.log("No token!");
-        Actions.loginview({type: 'reset'});
-        return true;
-      }
-    }catch(error) {
-      console.log(error)
-      return false;
-    }
+  componentWillMount() {
+    //this.props.dispatch(Route.to('notifications'));
   }
 
   btnPress(index) {
     //console.log(this._swiper.scrollBy(1))
     this.refs.swiper.scrollBy(index)
-
   }
 
   render() {
@@ -102,3 +94,9 @@ export default class SwipeView extends Component {
     );
   }
 }
+
+
+export default connect(state => ({
+    state
+  })
+)(SwipeView);

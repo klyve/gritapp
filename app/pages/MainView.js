@@ -3,6 +3,9 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import {Actions, Scene, Router} from 'react-native-router-flux';
 
+
+
+// Homescreen
 import SwipeView from '../components/SwipeView';
 
 // Group modules
@@ -61,6 +64,7 @@ class MainView extends Component {
 
   constructor(props) {
     super(props);
+
   }
 
   render() {
