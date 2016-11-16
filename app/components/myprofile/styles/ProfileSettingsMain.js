@@ -15,15 +15,16 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   body: {
+    flex: .5,
     marginTop: 60,
     borderTopWidth: 2,
     borderColor: '#ffffff',
     alignItems: 'center',
-    backgroundColor: '#3fc380',
+    backgroundColor: '#3ecc71',
     paddingBottom: 10,
   },
   groupImageView: {
-    backgroundColor: '#3fc380',
+    backgroundColor: '#3ecc71',
     alignItems: 'center',
   },
   groupImage: {
@@ -40,7 +41,7 @@ export default styles = StyleSheet.create({
     fontSize: 18,
     textDecorationLine: 'underline',
     color: '#ffffff',
-    backgroundColor: '#3fc380',
+    backgroundColor: '#3ecc71',
   },
   settingsContainer: {
     backgroundColor: 'white',
