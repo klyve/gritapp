@@ -15,8 +15,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   body: {
-    flex: .5,
-    marginTop: 60,
+    marginTop: 65,
     borderTopWidth: 2,
     borderColor: '#ffffff',
     alignItems: 'center',
@@ -45,12 +44,15 @@ export default styles = StyleSheet.create({
   },
   settingsContainer: {
     backgroundColor: 'white',
+    flex: .7,
   },
   setting: {
+    flex: .3,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 15,
     backgroundColor: '#ffffff',
-    flexDirection: 'row',
     height: 50,
     borderColor: 'rgba(0,0,0,0.3)',
   },
@@ -60,16 +62,12 @@ export default styles = StyleSheet.create({
     width: 200,
   },
   settingsTextRight: {
+    width: 180,
     color: 'grey',
     fontSize: 18,
-    width: 100,
-  },
-  settingsButton: {
-    width: 20,
-    height: 20,
-    marginLeft: 20,
   },
   switch: {
-    marginLeft: 100,
+    width: 200,
+    marginLeft: 90,
   },
 })

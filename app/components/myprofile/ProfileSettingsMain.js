@@ -75,12 +75,7 @@ export default class ProfileSettingsMain extends Component {
               borderBottomWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Username</Text>
-            <Text style = {{
-            color: 'grey',
-            fontSize: 18,
-            width: 250,
-            marginLeft: 40,
-            }}>{currentGroup.name}</Text>
+            <Text style = {styles.settingsTextRight}>{currentGroup.name}</Text>
 
           </View>
           {/*Settings nr 2*/}
@@ -96,9 +91,8 @@ export default class ProfileSettingsMain extends Component {
               borderBottomWidth: 3,
             }]}>
             <View style = {{flexDirection: 'row',}}>
-              <Text style = {[styles.settingsTextLeft, {width: 230}]}>Bio</Text>
-              <Text style = {[styles.settingsTextRight, {}]}>"14cm +"</Text>
-              <Text>></Text>
+              <Text style = {styles.settingsTextLeft}>Bio</Text>
+              <Text style = {styles.settingsTextRight}>Bio preview</Text>
             </View>
           </TouchableHighlight>
 
@@ -113,8 +107,8 @@ export default class ProfileSettingsMain extends Component {
               borderTopWidth: 2,
               borderBottomWidth: 1,
             }]}>
-            <View style = {{flexDirection: 'row'}}>
-              <Text style = {[styles.settingsTextLeft,{}]}>Friend requests</Text>
+            <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style = {styles.settingsTextLeft}>Friend requests</Text>
               <Switch
               value={(this.state && this.state.switchValue3) || false}
               onValueChange={(value) => {
