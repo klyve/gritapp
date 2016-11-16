@@ -24,7 +24,8 @@ export default class sigup extends Component {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      confirmPassword: '',
     }
 
     this.navigateIfToken();
