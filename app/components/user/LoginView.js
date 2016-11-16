@@ -31,13 +31,9 @@ class LoginView extends Component {
   signIn() {
     this.props.dispatch(user.loginUser(this.state.username, this.state.password));
   }
-  async storeToken(token) {
-    try {
-      await AsyncStorage.setItem("@accesstoken:key", token);
-      Actions.swipeview({type: 'reset'});
-    }catch(error) {
-      console.log(error);
-    }
+
+  componentWillMount() {
+    this.props.dispatch(Route.ifSignedIn())
   }
   async navigateIfToken() {
     let token;
@@ -99,7 +95,7 @@ class LoginView extends Component {
             </View>
             <TouchableHighlight
               onPress={() => {
-                this.props.dispatch(Route.to('LoginView'));
+                this.signIn()
               }}>
               <View style={styles.signin}>
 

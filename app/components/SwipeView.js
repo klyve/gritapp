@@ -29,30 +29,14 @@ class SwipeView extends Component {
 
   constructor(props) {
     super(props);
-
-    this.navigateIfNoToken();
   }
   componentWillMount() {
-    this.props.dispatch(Route.to('notifications'));
-  }
-  async navigateIfNoToken() {
-    let token;
-    try {
-      token = await AsyncStorage.getItem("@accesstoken:key")
-      if (token == null){
-        Actions.loginview({type: 'reset'});
-        return true;
-      }
-    }catch(error) {
-      console.log(error)
-      return false;
-    }
+    //this.props.dispatch(Route.to('notifications'));
   }
 
   btnPress(index) {
     //console.log(this._swiper.scrollBy(1))
     this.refs.swiper.scrollBy(index)
-
   }
 
   render() {
