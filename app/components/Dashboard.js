@@ -12,14 +12,14 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as groups from '../actions/groups';
+import styles from './styles/Dashboard';
 import {
   MainHeader,
   Blocks,
   FriendBlock,
 } from './modules';
 
-import * as groups from '../actions/groups';
-import styles from './styles/Dashboard';
 
 
 class Dashboard extends Component {
@@ -80,8 +80,10 @@ class Dashboard extends Component {
     return (
       <View style={styles.container}>
         {this.renderNotifications()}
-        <ScrollView style={styles.scrollView}>
-          {showGroups}
+        <ScrollView>
+          <Blocks>
+            {showGroups}
+          </Blocks>
         </ScrollView>
       </View>
     );

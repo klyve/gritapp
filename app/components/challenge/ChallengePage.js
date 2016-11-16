@@ -17,6 +17,7 @@ import {
   FriendBlock
 } from '../modules'
 import styles from './styles/challengePage';
+import SinglePictureView from './SinglePictureView';
 
 
 function Challenge(){
@@ -25,8 +26,6 @@ function Challenge(){
   this.pictureUrl = "";
   this.id = "";
 }
-
-var challenges = [];
 
 var elefant = new Challenge();
   elefant.pictureUrl = "http://knysnaelephantpark.co.za/wp-content/uploads/2015/02/Elephant.png";
@@ -52,16 +51,7 @@ var fisk = new Challenge();
   fisk.pictureUrl = "http://i.imgur.com/prm1a8l.jpg";
   fisk.id = Math.floor(Math.random() * 100000);
 
-challenges.push(elefant);
-challenges.push(hund);
-challenges.push(katt);
-challenges.push(slange);
-challenges.push(mus);
-challenges.push(fisk);
-
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
+var challenges = [elefant, hund, katt, slange, mus, fisk];
 
 export default class ChallengePage extends Component {
   render() {
@@ -87,13 +77,15 @@ export default class ChallengePage extends Component {
   })
 
     return (
-
+      <View style={{flex: 1}}>
       <View style={styles.container}>
+
         <MainHeader
           color="green"
           leftBtn="chevron-left"
           left={() => { Actions.pop() }}
         />
+
         <ScrollView style = {styles.body}>
 
         <View style = {styles.description}>
@@ -117,7 +109,16 @@ export default class ChallengePage extends Component {
             <Text>Camera</Text>
           </TouchableHighlight>
         </View>
+
       </View>
+
+        <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
+          <SinglePictureView>
+          </SinglePictureView>
+        </View>
+
+      </View>
+
     );
   }
 }

@@ -126,38 +126,40 @@ export default class SinglePictureView extends Component {
 
 
     return (
-      <View style={styles.container}>
-        <View style={styles.body}>
-          <View style ={styles.title}>
-            <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}></Image>
-            <Text style={styles.titleText}> {pst.uploader.name} </Text>
-          </View>
+        <View style={styles.container}>
 
-          <View style={{flex: 7,}}>
-            <ScrollView style={styles.scroll}>
-              <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
+          <View style={styles.body}>
+            <View style ={styles.title}>
+              <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}></Image>
+              <Text style={styles.titleText}> {pst.uploader.name} </Text>
+            </View>
 
-              <View style={styles.likeBar}>
-                <Text style={{fontSize: 30}}> {pst.likes.length}</Text>
-              </View>
+            <View style={{flex: 7,}}>
+              <ScrollView style={styles.scroll}>
+                <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
 
-
-              <TouchableHighlight
-              onPress = {() => {}}
-              style = {styles.commentBar}>
-                <Text style = {{fontSize: 20, textAlign: 'center',}}>
-                  ADD COMMENT
-                </Text>
-              </TouchableHighlight>
-
-              {showComments}
+                <View style={styles.likeBar}>
+                  <Text style={{fontSize: 30}}> {pst.likes.length}</Text>
+                </View>
 
 
-            </ScrollView>
+                <TouchableHighlight
+                onPress = {() => {}}
+                style = {styles.commentBar}>
+                  <Text style = {{fontSize: 20, textAlign: 'center',}}>
+                    ADD COMMENT
+                  </Text>
+                </TouchableHighlight>
+
+                {showComments}
+
+
+              </ScrollView>
+            </View>
+
           </View>
 
         </View>
-      </View>
     );
   }
 }
