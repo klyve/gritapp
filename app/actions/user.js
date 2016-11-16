@@ -1,5 +1,8 @@
 import hash from 'hash.js';
 import { Actions } from 'react-native-router-flux';
+import {
+  AsyncStorage,
+} from 'react-native';
 
 export function registerUser(data) {
   return function(dispatch) {
@@ -27,6 +30,36 @@ export function registerUser(data) {
   }
 }
 
+// async function storeToken(token) {
+//   try {
+//     await AsyncStorage.setItem("@accesstoken:key", token);
+//   }catch(error) {
+//     console.log(error);
+//   }
+// }
+// async function deleteToken() {
+//   try {
+//     await
+//   }catch(error) {
+//     console.log(error);
+//   }
+// }
+export function logoutUser() {
+
+  return function(dispatch) {
+    AsyncStorage.removeItem("@accesstoken:key").then(() => {
+      console.log("Removed token");
+      dispatch({
+        type: 'USER_LOGOUT',
+        payload: {
+          token: false,
+        }
+      })
+    })
+
+  }
+}
+
 
 export function loginUser(username, password) {
 
@@ -47,7 +80,6 @@ export function loginUser(username, password) {
     .then((json) => {
       if(json.status && json.status == 200) {
         dispatch({type: "USER_LOGIN_SUCCESS", payload: json})
-        Actions.swipeview({type: 'reset'});
       }else {
         dispatch({type: "USER_LOGIN_ERROR", payload: json})
       }

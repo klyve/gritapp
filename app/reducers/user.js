@@ -7,20 +7,7 @@ const initialState = {
 };
 
 
-async function storeToken(token) {
-  try {
-    await AsyncStorage.setItem("@accesstoken:key", token);
-  }catch(error) {
-    console.log(error);
-  }
-}
-async function deleteToken() {
-  try {
-    await AsyncStorage.removeItem("@accesstoken:key");
-  }catch(error) {
-    console.log(error);
-  }
-}
+
 
 export default function groups(state = initialState, action = {}) {
   switch (action.type) {

@@ -7,13 +7,16 @@ export function redirectAuth({ dispatch, getState }) {
     //console.log('AUTH: will dispatch', action, getState())
     let state = getState();
     let token = state.user.token;
+
     if(action.type == "PAGE_CHANGE") {
       if(whitelist.indexOf(action.payload.current) < 0 && !token) {
         action.payload.current = "loginview";
       }
     }
+
     if(action.type == "PAGE_CHANGE_LOGGEDIN" || action.type == "USER_CHANGED") {
-      let current = state.route.current;
+
+      let current = state.route.route.current;
       if(whitelist.indexOf(action.payload.current) >= 0 && token) {
         action.payload.current = "swipeview";
       }else if(whitelist.indexOf(current) >= 0 && token) {
