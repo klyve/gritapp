@@ -10,9 +10,8 @@ import {
   AsyncStorage,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import * as Route from '../../actions/route';
 
-import { Actions, Scene } from 'react-native-router-flux';
 import * as user from '../../actions/user';
 import {
   Blocks,
@@ -20,7 +19,6 @@ import {
   MainHeader
 } from '../modules';
 import styles from './styles/loginview';
-const ACCESS_TOKEN = '';
 class LoginView extends Component {
   constructor(props) {
     super(props)
@@ -28,9 +26,6 @@ class LoginView extends Component {
       username: '',
       password: ''
     }
-    console.log(Actions, Scene);
-//    console.log(this.props)
-    this.navigateIfToken();
   }
 
   signIn() {
@@ -104,7 +99,7 @@ class LoginView extends Component {
             </View>
             <TouchableHighlight
               onPress={() => {
-                this.signIn();
+                this.props.dispatch(Route.to('LoginView'));
               }}>
               <View style={styles.signin}>
 
@@ -115,7 +110,7 @@ class LoginView extends Component {
             <TouchableHighlight
             style = {styles.signup}
             onPress = {() => {
-              Actions.signup();
+              this.props.dispatch(Route.to('signup'));
             }}>
             <View style={styles.signup}>
                 <Text style={styles.greyFont}>Dont have an account?<Text style={styles.whiteFont}>  Sign Up</Text></Text>

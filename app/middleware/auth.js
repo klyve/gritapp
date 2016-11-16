@@ -1,16 +1,18 @@
-import { Route } from '../actions/Router';
-
+let whitelist = [
+  'loginview',
+  'signup'
+]
 export function redirectAuth({ getState }) {
   return (next) => (action) => {
     //console.log('AUTH: will dispatch', action, getState())
+    let state = getState();
+    console.log(state);
+    if(action.type == "PAGE_CHANGE") {
+      if(whitelist.indexOf(action.payload.current) < 0) {
+        action.payload.current = "loginview";
+      }
+    }
 
-    // Call the next dispatch method in the middleware chain.
-    let returnValue = next(action)
-
-    console.log('AUTH: state after dispatch', getState())
-
-    // This will likely be the action itself, unless
-    // a middleware further in chain changed it.
-    return returnValue
+    return next(action)
   }
 }
