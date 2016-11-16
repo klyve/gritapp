@@ -23,7 +23,7 @@ import {
 import styles from './styles/groupsearch';
 
 var groups;
-var searchUp;
+var search;
 
 // Blueprints
 function Group(){
@@ -93,15 +93,15 @@ export default class GroupSearch extends Component {
             placeholder='Enter Group name...'
             lightTheme
             onChangeText={(text) => {
-              searchUp = text;
-
               let match = [];
+
+              search = text.toUpperCase();
 
               if (text == '') {
                 match = [];
               } else {
                 groups.map((a) => {
-                  if ((a.name.search(text) != -1) && (match.indexOf(a) == -1)) {
+                  if ((a.name.search(search) != -1) && (match.indexOf(a) == -1)) {
                     match.push(a);
                   }
                 })
