@@ -9,9 +9,11 @@ import {
   TextInput,
   AsyncStorage,
 } from 'react-native';
-import hash from 'hash.js';
-import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { Actions, Scene } from 'react-native-router-flux';
+import * as user from '../../actions/user';
 import {
   Blocks,
   BlockFifty,
@@ -19,37 +21,20 @@ import {
 } from '../modules';
 import styles from './styles/loginview';
 const ACCESS_TOKEN = '';
-export default class LoginView extends Component {
+class LoginView extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: '',
       password: ''
     }
-
+    console.log(Actions, Scene);
+//    console.log(this.props)
     this.navigateIfToken();
   }
 
   signIn() {
-    let password = hash.sha256().update(this.state.password).digest('hex');
-    let username = this.state.username;
-    fetch('https://dd25c333.ngrok.io/api/user/auth', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username, password
-      })
-    })
-    .then((data) => data.json())
-    .then((json) => {
-      console.log(json)
-      if(json.status && json.status == 200) {
-        this.storeToken(json.token);
-      }
-    })
+    this.props.dispatch(user.loginUser(this.state.username, this.state.password));
   }
   async storeToken(token) {
     try {
@@ -140,3 +125,8 @@ export default class LoginView extends Component {
     );
   }
 }
+
+export default connect(state => ({
+    user: state.user.user
+  })
+)(LoginView);

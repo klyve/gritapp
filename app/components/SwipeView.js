@@ -25,7 +25,7 @@ export default class SwipeView extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
+    //console.log(props)
 
     this.navigateIfNoToken();
   }
@@ -34,7 +34,6 @@ export default class SwipeView extends Component {
     try {
       token = await AsyncStorage.getItem("@accesstoken:key")
       if (token == null){
-        console.log("No token!");
         Actions.loginview({type: 'reset'});
         return true;
       }

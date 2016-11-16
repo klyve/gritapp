@@ -8,6 +8,9 @@ import {
   ScrollView,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as user from '../../actions/user';
 
 import {
   Blocks,
@@ -16,7 +19,7 @@ import {
 } from '../modules';
 import styles from './styles/registerview';
 
-export default class RegisterView extends Component {
+class RegisterView extends Component {
   render() {
     return (
       <View style = {styles.container}>
@@ -45,3 +48,8 @@ export default class RegisterView extends Component {
     );
   }
 }
+
+export default connect(state => ({
+    state
+  })
+)(RegisterView);

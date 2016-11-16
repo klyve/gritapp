@@ -3,6 +3,9 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import {Actions, Scene, Router} from 'react-native-router-flux';
 
+
+
+// Homescreen
 import SwipeView from '../components/SwipeView';
 
 // Group modules
@@ -11,7 +14,7 @@ import GroupName from '../components/group/GroupName';
 import GroupSearch from '../components/group/GroupSearch';
 import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
-import GroupSettingsMain from '../components/group/groupsettings/GroupSettingsMain';
+import GroupSettingsMain from '../components/group/groupSettings/GroupSettingsMain';
 import Notifications from '../components/Notifications';
 
 import Profile from '../components/Profile';
@@ -61,6 +64,7 @@ class MainView extends Component {
 
   constructor(props) {
     super(props);
+
   }
 
   render() {
