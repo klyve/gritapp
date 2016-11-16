@@ -9,7 +9,6 @@ import {
   Switch,
 } from 'react-native';
 
-
 import { Actions } from 'react-native-router-flux';
 import {
   Blocks,
@@ -19,21 +18,16 @@ import {
 import styles from './styles/ProfileBioEdit';
 
 export default class ProfileBioEdit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: 'Press to edit',
-    };
-  }
   render() {
     return (
       <View style = {styles.container}>
         <MainHeader
           color="green"
           title="Biography"
-          leftBtn="Cancel"
-          rightBtn="Save"
+          leftText="Cancel"
+          rightText="Save"
           left={() => { Actions.pop() }}
+          right={() => { Actions.pop() }}
          />
          <View style = {styles.body}>
             <View style = {styles.header}>
@@ -49,12 +43,17 @@ export default class ProfileBioEdit extends Component {
                 onTintColor={"rgba(68,219,94,1)"}/>
             </View>
            <TextInput
-             value = {this.state.text}
-             multiline = {true}
-             onChangeText={(text) => this.setState({text})}
-             editable = {true}
-             maxLength = {250}
-             style = {styles.textInput}
+            defaultValue = ' '
+            placeholder={'Type here'}
+            onPress = {() => {
+              text = '';
+            }}
+            placeholderTextColor={"rgba(198,198,204,1)"}
+            value={(this.state && this.state.text) || ''}
+            multiline = {true}
+            onChangeText={(text) => this.setState({text})}
+            maxLength = {250}
+            style = {styles.textInput}
            />
          </View>
        </View>
