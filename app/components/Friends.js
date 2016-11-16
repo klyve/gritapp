@@ -80,7 +80,6 @@ export default class Friends extends Component {
     }
     return (
       <View>
-
         <SearchBar
           containerStyle={styles.searchContainer}
           inputStyle={styles.searchInput}
@@ -127,7 +126,7 @@ export default class Friends extends Component {
       <View style={styles.container}>
 
         <View style={styles.body}>
-          <ScrollView style={{flex: 1,}}>
+          <ScrollView>
             <TouchableHighlight style={styles.meButton}>
               <View style={styles.me}>
                 <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>

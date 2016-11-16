@@ -9,5 +9,6 @@ import {
 export default styles = StyleSheet.create({
   container: {
     flex: 2,
+    marginBottom: 20,
   }
 })
