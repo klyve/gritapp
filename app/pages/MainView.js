@@ -47,7 +47,7 @@ const scenes = Actions.create(
 
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
 
-    <Scene key="profile" hideNavBar component={Profile}/>
+    <Scene key="profile" hideNavBar component={Profile} />
     <Scene key="notifications" hideNavBar component={Notifications}/>
 
     <Scene key="challengepage" hideNavBar component={ChallengePage}/>

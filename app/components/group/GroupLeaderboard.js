@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
+
 import {
   Blocks,
-  FriendBlock
+  FriendBlock,
+  TopBlock,
 } from '../modules';
 import styles from './styles/groupchallenges';
 
@@ -50,6 +52,19 @@ export default class GroupLeaderboard extends Component {
   render() {
     let top = top3.map((a,b) => {
         return (
+          <TopBlock
+            onPress={() => {
+              Actions.profile()
+            }}
+            image={a.picturePath}
+            name={a.name}
+            points={a.score}
+            key={b}
+            large
+          />
+    )})
+    let other = rest.map((a,b) => {
+        return (
           <FriendBlock
             onPress={() => {
               Actions.profile()
@@ -58,32 +73,16 @@ export default class GroupLeaderboard extends Component {
             name={a.name}
             points={a.score}
             key={b}
+            small
           />
       )})
-      let other = rest.map((a,b) => {
-          return (
-            <FriendBlock
-              onPress={() => {
-                Actions.profile()
-              }}
-              image={a.picturePath}
-              name={a.name}
-              points={a.score}
-              key={b}
-              small
-            />
-        )})
     return (
       <View>
-        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
-          TOP 3
-        </Text>
+        <View style={{padding: 23}}/>
 
         {top}
 
-        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
-          TOP 50
-        </Text>
+        <View style={{padding: 23}}/>
 
         {other}
       </View>
