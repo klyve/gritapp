@@ -43,7 +43,7 @@ const scenes = Actions.create(
     <Scene key="groupjoin" hideNavBar component={GroupJoin}/>
     <Scene key="grouptype" hideNavBar component={GroupType} />
     <Scene key="groupname" hideNavBar component={GroupName} />
-    <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>
+    <Scene key="groupdashboard" hideNavBar component={GroupDashboard} />
 
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
 

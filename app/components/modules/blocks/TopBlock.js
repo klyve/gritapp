@@ -13,6 +13,7 @@ import {
 } from '../'
 
 import styles from './styles/top';
+import { Icon } from 'react-native-elements';
 
 export default class TopBlock extends Component {
 
@@ -66,7 +67,19 @@ export default class TopBlock extends Component {
         onPress={this.props.onPress}
       >
       <View style={styles.friends}>
+        <View style={{padding: 10}}>
+          <Icon
+            name={this.props.trophy}
+            type='font-awesome'
+            color={this.props.trophyColor}
+            size={40}
+            underlayColor='transparent'
+            onPress={() => {}}
+          />
+        </View>
+
         <Image style={imageStyles} source={{uri: this.props.image}}></Image>
+
         <Text style={styles.friendText}> {this.props.name}</Text>
         {this.renderMeta()}
 

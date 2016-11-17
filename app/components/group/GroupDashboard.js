@@ -150,19 +150,19 @@ export default class GroupDashboard extends Component {
                   index={this.state.activeTab}
                   onMomentumScrollEnd ={ (e, state, context) => this.onMomentumScrollEnd(e, state, context) }
                 >
-                  <View style={{marginBottom: 310 /* spaghetti bolognese */}}>
+                  <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
                       <GroupLeaderboard />
                     </ScrollView>
                   </View>
 
-                  <View style={{marginBottom: 310 /* spaghetti bolognese */}}>
+                  <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
                       <GroupChallenges />
                     </ScrollView>
                   </View>
 
-                  <View style={{marginBottom: 300 /* spaghetti bolognese */}}>
+                  <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
                       <GroupMembers />
                     </ScrollView>
