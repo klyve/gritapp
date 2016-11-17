@@ -28,8 +28,8 @@ class SwipeView extends Component {
   constructor(props) {
     super(props);
   }
-  componentWillMount() {
-    //this.props.dispatch(Route.to('notifications'));
+  componentDidMount() {
+    this.props.dispatch(Route.signedIn());
   }
 
   btnPress(index) {

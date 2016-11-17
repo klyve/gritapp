@@ -23,7 +23,6 @@ export default function groups(state = initialState, action = {}) {
       }
     break;
     case 'USER_LOGIN_SUCCESS':
-      storeToken(action.payload.token);
       return {
         ...state,
         user: action.payload,

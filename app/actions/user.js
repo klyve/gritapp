@@ -29,21 +29,6 @@ export function registerUser(data) {
 
   }
 }
-
-// async function storeToken(token) {
-//   try {
-//     await AsyncStorage.setItem("@accesstoken:key", token);
-//   }catch(error) {
-//     console.log(error);
-//   }
-// }
-// async function deleteToken() {
-//   try {
-//     await
-//   }catch(error) {
-//     console.log(error);
-//   }
-// }
 export function logoutUser() {
 
   return function(dispatch) {
@@ -79,7 +64,9 @@ export function loginUser(username, password) {
     .then((data) => data.json())
     .then((json) => {
       if(json.status && json.status == 200) {
-        dispatch({type: "USER_LOGIN_SUCCESS", payload: json})
+        AsyncStorage.setItem("@accesstoken:key", json.token).then(() => {
+          dispatch({type: "USER_LOGIN_SUCCESS", payload: json})
+        })
       }else {
         dispatch({type: "USER_LOGIN_ERROR", payload: json})
       }

@@ -21,7 +21,6 @@ async function getToken() {
 export function to(route, props = {}) {
   console.log("Route to ", route);
   return function(dispatch) {
-
     dispatch({
       type: 'PAGE_CHANGE',
       payload: {
@@ -32,7 +31,13 @@ export function to(route, props = {}) {
 
   }
 }
-
+export function signedIn() {
+  return function(dispatch) {
+    dispatch({
+      type: 'REQUIRE_AUTH'
+    })
+  }
+}
 export function ifSignedIn() {
   return function(dispatch) {
 
