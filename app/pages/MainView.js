@@ -49,11 +49,11 @@ const scenes = Actions.create(
     <Scene key="groupjoin" hideNavBar component={GroupJoin}/>
     <Scene key="grouptype" hideNavBar component={GroupType} />
     <Scene key="groupname" hideNavBar component={GroupName} />
-    <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>
+    <Scene key="groupdashboard" hideNavBar component={GroupDashboard} />
 
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
 
-    <Scene key="profile" hideNavBar component={Profile}/>
+    <Scene key="profile" hideNavBar component={Profile} />
     <Scene key="notifications" hideNavBar component={Notifications}/>
 
     <Scene key="challengepage" hideNavBar component={ChallengePage}/>

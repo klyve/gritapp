@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
+
 import {
   Blocks,
-  FriendBlock
+  FriendBlock,
+  TopBlock,
 } from '../modules';
 import styles from './styles/groupchallenges';
 
@@ -44,46 +46,67 @@ var f5 = new person();
   f5.score = 13;
 
 
-var top3 = [f4, f2, f3];
-var rest = [f5, f1];
+var lead = [f4, f2, f3, f5, f1];
 export default class GroupLeaderboard extends Component {
   render() {
-    let top = top3.map((a,b) => {
-        return (
-          <FriendBlock
+    let other = [];
+
+    for (let i = 3; i < lead.length; i ++){
+      other.push(
+        <FriendBlock
+          onPress={() => {
+            Actions.profile()
+          }}
+          image={lead[i].picturePath}
+          name={lead[i].name}
+          points={lead[i].score}
+          key={i}
+          small
+        />
+      )
+    }
+
+    return (
+      <View>
+        <View style={{padding: 23}}/>
+
+          <TopBlock
             onPress={() => {
               Actions.profile()
             }}
-            image={a.picturePath}
-            name={a.name}
-            points={a.score}
-            key={b}
+            trophy='trophy'
+            trophyColor='gold'
+            image={lead[0].picturePath}
+            name={lead[0].name}
+            points={lead[0].score}
+            large
           />
-      )})
-      let other = rest.map((a,b) => {
-          return (
-            <FriendBlock
-              onPress={() => {
-                Actions.profile()
-              }}
-              image={a.picturePath}
-              name={a.name}
-              points={a.score}
-              key={b}
-              small
-            />
-        )})
-    return (
-      <View>
-        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
-          TOP 3
-        </Text>
 
-        {top}
+          <TopBlock
+            onPress={() => {
+              Actions.profile()
+            }}
+            trophy='trophy'
+            trophyColor='silver'
+            image={lead[1].picturePath}
+            name={lead[1].name}
+            points={lead[1].score}
+            large
+          />
 
-        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
-          TOP 50
-        </Text>
+          <TopBlock
+            onPress={() => {
+              Actions.profile()
+            }}
+            trophy='trophy'
+            trophyColor='#A75B10'
+            image={lead[2].picturePath}
+            name={lead[2].name}
+            points={lead[2].score}
+            large
+          />
+
+        <View style={{padding: 23}}/>
 
         {other}
       </View>
