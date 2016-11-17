@@ -14,7 +14,7 @@ import GroupName from '../components/group/GroupName';
 import GroupSearch from '../components/group/GroupSearch';
 import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
-import GroupSettingsMain from '../components/group/groupSettings/GroupSettingsMain';
+import GroupSettingsMain from '../components/group/groupsettings/GroupSettingsMain';
 import Notifications from '../components/Notifications';
 
 import Profile from '../components/Profile';
@@ -30,6 +30,7 @@ import LoginView from '../components/user/LoginView';
 import RegisterView from '../components/user/RegisterView';
 
 import Signup from '../components/user/signup';
+import DescriptionEdit from '../components/group/groupsettings/DescriptionEdit';
 
 const scenes = Actions.create(
   <Scene key="root">
@@ -56,6 +57,8 @@ const scenes = Actions.create(
     <Scene key="profilebioedit" hideNavBar component={ProfileBioEdit}/>
 
     <Scene key="signup" hideNavBar component={Signup}/>
+
+    <Scene key="descriptionedit" hideNavBar component={DescriptionEdit}/>
 
   </Scene>
 );
