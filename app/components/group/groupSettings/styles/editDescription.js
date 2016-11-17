@@ -4,12 +4,7 @@ import {
   Dimensions,
 } from 'react-native'
 
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
-
 export default styles = StyleSheet.create({
-
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
@@ -19,9 +14,9 @@ export default styles = StyleSheet.create({
     flex: .8,
   },
   header: {
-    marginTop: 30,
+    marginTop: 60,
     alignItems: 'center',
-    flex: .08,
+    flex: .095,
     flexDirection: 'row',
     borderColor: 'black',
     marginTop: 20,
