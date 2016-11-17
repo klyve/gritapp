@@ -54,10 +54,6 @@ export default styles = StyleSheet.create({
     paddingTop: MARGIN,
     paddingBottom: MARGIN,
   },
-  groupTitleText:{
-    fontSize: 30,
-    color: groupColor,
-  },
   groupDescriptionText: {
     fontSize: 16,
     textAlign: 'center',
@@ -90,7 +86,4 @@ export default styles = StyleSheet.create({
   tabText: {
     fontSize: 16,
   },
-  tabFocus: {
-    color: 'red',
-  }
 })

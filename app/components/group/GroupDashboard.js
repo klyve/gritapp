@@ -41,9 +41,10 @@ var currentGroup = new Group();
   currentGroup.name = "Pølsefest";
   currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
   currentGroup.description = "Vi liker pølser, de er best";
-  currentGroup.public = false;
+  currentGroup.public = true;
 
-groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
+groupColor = (currentGroup.public) ? 'blue' : 'red';
+groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
 export default class GroupDashboard extends Component {
 
@@ -73,13 +74,13 @@ export default class GroupDashboard extends Component {
     let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
     let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
-    tabStyles[this.state.activeTab].push(styles.tabFocus)
+    tabStyles[this.state.activeTab].push({color: groupColorHex})
 
     return (
       <View style={styles.container}>
 
         <MainHeader
-          color="green"
+          color={groupColor}
           leftBtn="chevron-left"
           rightBtn="cog"
           left={() => { Actions.pop() }}
@@ -94,7 +95,7 @@ export default class GroupDashboard extends Component {
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{this.props.name}</Text>
+              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.name}</Text>
 
               <Text style={styles.groupDescriptionText}>{this.props.bio}</Text>
             </View>
