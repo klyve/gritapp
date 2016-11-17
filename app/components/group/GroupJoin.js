@@ -15,10 +15,10 @@ import {
   FriendBlock
 } from '../modules'
 import { Actions } from 'react-native-router-flux';
+import styles from './styles/groupjoin';
 
 //Constants
 const MARGIN = 10;
-var groupColor;
 
 // Blueprints
 function Group(){
@@ -36,24 +36,20 @@ var currentGroup = new Group();
   currentGroup.public = true;
 
 
-groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
+  var groupColor = (currentGroup.public) ? 'blue' : 'red';
+  var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
 
 export default class GroupJoin extends Component {
   render() {
 
-    let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
-    let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
-
 
     return (
       <View style={styles.container}>
         <MainHeader
-          color="red"
-          title="Profile"
+          color={groupColor}
           leftBtn="chevron-left"
           left={() => { Actions.pop() }}
-          large
         />
 
         <View style={styles.body}>
@@ -64,7 +60,7 @@ export default class GroupJoin extends Component {
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{currentGroup.name}</Text>
+              <Text style={{fontSize: 30, color: groupColorHex}}>{currentGroup.name}</Text>
 
               <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
             </View>
@@ -74,9 +70,11 @@ export default class GroupJoin extends Component {
               <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
               </View>
 
-              <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={{color: groupColor, fontSize: 22, fontWeight: 'bold'}}> JOIN </Text>
-              </View>
+              <TouchableHighlight
+              onPress={() => {alert(">INSERT JOIN-FUNCTION HERE<")}}
+              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <Text style={{color: groupColorHex, fontSize: 22, fontWeight: 'bold'}}> JOIN </Text>
+              </TouchableHighlight>
 
 
             </View>

@@ -27,8 +27,6 @@ import GroupLeaderboard from './GroupLeaderboard';
 import GroupMembers from './GroupMembers';
 import styles from './styles/groupdashboard';
 
-var groupColor;
-
 // Blueprints
 function Group(){
   this.name = "";
@@ -43,8 +41,8 @@ var currentGroup = new Group();
   currentGroup.description = "Vi liker pølser, de er best";
   currentGroup.public = true;
 
-groupColor = (currentGroup.public) ? 'blue' : 'red';
-groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
+var groupColor = (currentGroup.public) ? 'blue' : 'red';
+var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
 export default class GroupDashboard extends Component {
 

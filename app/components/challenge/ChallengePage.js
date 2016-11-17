@@ -52,18 +52,51 @@ var fisk = new Challenge();
   fisk.id = Math.floor(Math.random() * 100000);
 
 var challenges = [elefant, hund, katt, slange, mus, fisk];
+var showSinglePictureTag = [];
+var dim = 1;
 
 export default class ChallengePage extends Component {
+
+  constructor(props){
+    super(props)
+
+    showSinglePictureTag = [];
+    dim = 1;
+
+    this.state={
+      showSingle: false,
+    }
+  }
+
+  showSinglePictureView(challenge){
+
+      showSinglePictureTag =
+      <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
+      <SinglePictureView />
+      </View> ;
+
+      dim = 0.18;
+
+      this.setState({showSingle: true});
+
+      /*
+
+        Vi burde legge inn dette i en action, så kan vi ta Action.pop()
+        fra SinglePictureView komponenten når de trykker på exit. 
+
+      */
+  }
+
+
   render() {
 
     let all = challenges.map((challenge, i) => {
-    console.log(challenge.id)
     return (
       <TouchableHighlight
       style = {styles.imageButton}
       key = {i}
       onPress = {() => {
-        Actions.singlepictureview();
+        this.showSinglePictureView(challenge)
       }}
       activeOpacity={71 / 100}
       underlayColor={"rgb(210,210,210)"}
@@ -77,8 +110,8 @@ export default class ChallengePage extends Component {
   })
 
     return (
-      <View style={{flex: 1}}>
-      <View style={styles.container}>
+      <View style={{flex: 1, backgroundColor: 'black'}}>
+      <View style={[styles.container, {opacity: dim}]}>
 
         <MainHeader
           color="green"
@@ -112,10 +145,7 @@ export default class ChallengePage extends Component {
 
       </View>
 
-        <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
-          <SinglePictureView>
-          </SinglePictureView>
-        </View>
+      {showSinglePictureTag}
 
       </View>
 
