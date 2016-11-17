@@ -26,6 +26,7 @@ class LoginView extends Component {
       username: '',
       password: ''
     }
+
   }
 
   signIn() {

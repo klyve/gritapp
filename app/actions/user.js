@@ -61,11 +61,11 @@ export function logoutUser() {
 }
 
 
-export function loginUser(username, password) {
-
+export function loginUser(username, pwd) {
   return function(dispatch) {
     dispatch({type: "USER_LOGIN_START"})
-    let password = hash.sha256().update(password).digest('hex');
+    console.log(username, pwd)
+    let password = hash.sha256().update(pwd).digest('hex');
     fetch('https://dd25c333.ngrok.io/api/user/auth', {
       method: 'POST',
       headers: {
