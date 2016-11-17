@@ -4,31 +4,34 @@ import {
   Dimensions,
 } from 'react-native'
 
+//Constants
+const DEVICE_HEIGHT = Dimensions.get('window').height;
+const DEVICE_WIDTH = Dimensions.get('window').width;
+
 export default styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
-  navbar: {
-    height: 70,
-    backgroundColor: "#2ecc71",
-  },
   body: {
-    flex: 1/1.1,
+    marginTop: 60,
+    flex: .8,
   },
   header: {
+    marginTop: 30,
     alignItems: 'center',
-    flex: 1/10,
+    flex: .08,
     flexDirection: 'row',
     borderColor: 'black',
+    marginTop: 20,
   },
   textInput: {
-    paddingTop: 10,
-    paddingLeft: 20,
+    padding: 10,
+    flex: .8,
     color: 'grey',
     textAlign: 'left',
     fontSize: 18,
-    flex: 1/1.1,
     borderBottomWidth: 2,
     borderWidth: 1,
     borderColor: 'black',

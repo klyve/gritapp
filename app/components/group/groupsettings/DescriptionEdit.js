@@ -1,4 +1,3 @@
-import NavigationBar from 'react-native-navbar'
 
 import React, { Component } from 'react';
 import {
@@ -13,32 +12,28 @@ import {
 
 import { Actions } from 'react-native-router-flux';
 import {
+  MainHeader,
   Blocks,
   FriendBlock
 } from '../../modules'
 
 import styles from './styles/editDescription';
 
-export default class social extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: 'Press to edit',
-    };
-  }
+export default class DescriptionEdit extends Component {
   render() {
     return (
       <View style = {styles.container}>
-        <NavigationBar
-           title={{ title: 'Group description', tintColor: 'black', }}
-           leftButton={{ title: 'Cancel', }}
-           rightButton={{ title: 'Save', }}
-           style={styles.navbar}
-           statusBar={{ tintColor: "#2ecc71", }}
+        <MainHeader
+          color="green"
+          title="Biography"
+          leftText="Cancel"
+          rightText="Save"
+          left={() => { Actions.pop() }}
+          right={() => { Actions.pop() }}
          />
          <View style = {styles.body}>
             <View style = {styles.header}>
-              <Text style = {{fontSize: 16, paddingLeft: 20, width: 300, color: 'grey'}}>Show description on/off</Text>
+              <Text style = {{fontSize: 16, paddingLeft: 20, width: 300, color: 'grey'}}>Turn bio on/off</Text>
                 <Switch
                 value={(this.state && this.state.switchValue) || false}
                 onValueChange={(value) => {
@@ -50,12 +45,17 @@ export default class social extends Component {
                 onTintColor={"rgba(68,219,94,1)"}/>
             </View>
            <TextInput
-             value = {this.state.text}
-             multiline = {true}
-             onChangeText={(text) => this.setState({text})}
-             editable = {true}
-             maxLength = {250}
-             style = {styles.textInput}
+            defaultValue = ' '
+            placeholder={'Type here'}
+            onPress = {() => {
+              text = '';
+            }}
+            placeholderTextColor={"rgba(198,198,204,1)"}
+            value={(this.state && this.state.text) || ''}
+            multiline = {true}
+            onChangeText={(text) => this.setState({text})}
+            maxLength = {250}
+            style = {styles.textInput}
            />
          </View>
        </View>
