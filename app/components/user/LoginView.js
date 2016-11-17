@@ -26,15 +26,16 @@ class LoginView extends Component {
       username: '',
       password: ''
     }
+
   }
 
   signIn() {
     this.props.dispatch(user.loginUser(this.state.username, this.state.password));
   }
 
-  componentWillMount() {
-    this.props.dispatch(Route.ifSignedIn())
-  }
+  // componentWillMount() {
+  //   this.props.dispatch(Route.ifSignedIn())
+  // }
   async navigateIfToken() {
     let token;
     try {

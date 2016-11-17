@@ -8,6 +8,7 @@ import {
   Image,
 } from 'react-native';
 
+import * as Route from '../actions/route';
 import { Actions } from 'react-native-router-flux';
 
 import {
@@ -60,6 +61,7 @@ export default class Friends extends Component {
     this.state = {
       searchbar: false
     }
+    console.log(this.props);
   }
   changeBar(state) {
     this.setState({
@@ -133,7 +135,7 @@ export default class Friends extends Component {
                 <Text style={styles.meText}> {me.name}</Text>
                 <TouchableHighlight
                   onPress = {() => {
-                    Actions.profilesettingsmain();
+                    this.props.dispatch(Route.to("profilesettingsmain"));
                   }}
                   activeOpacity={71 / 100}
                   underlayColor={"rgb(210,210,210)"}

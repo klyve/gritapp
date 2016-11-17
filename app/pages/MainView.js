@@ -32,13 +32,18 @@ import RegisterView from '../components/user/RegisterView';
 import Signup from '../components/user/signup';
 import DescriptionEdit from '../components/group/groupsettings/DescriptionEdit';
 
+
+import Loadingscreen from '../components/Loadingscreen';
+
+
 const scenes = Actions.create(
   <Scene key="root">
+    <Scene key="loading" hideNavBar component={Loadingscreen} initial={true}/>
+    <Scene key="swipeview" hideNavBar component={SwipeView}/>
 
     <Scene key="loginview" hideNavBar component={LoginView}/>
     <Scene key="registerview" hideNavBar component={RegisterView} />
 
-    <Scene key="swipeview" hideNavBar component={SwipeView} initial={true} />
 
     <Scene key="groupsearch" hideNavBar component={GroupSearch} />
     <Scene key="groupjoin" hideNavBar component={GroupJoin}/>

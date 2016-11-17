@@ -12,8 +12,11 @@ import {
   Alert,
   AsyncStorage
 } from 'react-native';
-
+//import * as Route from '../../actions/route';
+import * as User from '../../actions/user';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
 import {
   Blocks,
   FriendBlock,
@@ -39,18 +42,18 @@ var currentGroup = new Profile();
   currentGroup.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
   currentGroup.description = "Stor og lang";
 
-export default class ProfileSettingsMain extends Component {
+class ProfileSettingsMain extends Component {
+  constructor(props) {
+    super(props);
+    this.props.dispatch({
+      type: 'PROFILE_PAGE',
+      payload: {
 
-  async logOut() {
-      try {
-        await AsyncStorage.removeItem("@accesstoken:key");
-        Actions.loginview({type: 'reset'});
-
-
-      }catch(error) {
-        console.log(error);
       }
-
+    })
+  }
+  logOut() {
+      this.props.dispatch(User.logoutUser());
   }
 
   render() {
@@ -200,3 +203,8 @@ export default class ProfileSettingsMain extends Component {
     );
   }
 }
+
+export default connect(state => ({
+    state
+})
+)(ProfileSettingsMain);

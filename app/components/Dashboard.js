@@ -12,7 +12,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as groups from '../actions/groups';
+import * as Groups from '../actions/groups';
 import styles from './styles/Dashboard';
 import {
   MainHeader,
@@ -22,12 +22,16 @@ import {
 
 
 
-class Dashboard extends Component {
+export default class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.state = {
       groups: [],
     }
+
+  }
+  componentWillMount() {
+    this.props.dispatch(Groups.getUserGroups());
   }
 
   gotoGroup(groupId) {
@@ -52,14 +56,9 @@ class Dashboard extends Component {
       </TouchableHighlight>
     )
   }
-  componentWillMount() {
-    let { dispatch } = this.props
-    dispatch(groups.getUserGroups());
-  }
 
   render() {
     let showGroups;
-    console.log(this.props.groups.length)
     if(this.props.groups.length > 0) {
        showGroups = this.props.groups.map((a,b) => {
 
@@ -89,9 +88,3 @@ class Dashboard extends Component {
     );
   }
 }
-
-
-export default connect(state => ({
-    groups: state.groups.groups
-  })
-)(Dashboard);
