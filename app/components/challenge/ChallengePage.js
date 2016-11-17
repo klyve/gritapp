@@ -70,6 +70,12 @@ export default class ChallengePage extends Component {
 
   showSinglePictureView(challenge){
 
+      // WARNING WARNING WARNING WARNING WARNING WARNING
+
+      // SPAGHETTI AHEAD! SPAGHETTI AHEAD! SPAGHETTI AHEAD!
+
+
+
       showSinglePictureTag =
       <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
       <SinglePictureView />
@@ -82,7 +88,7 @@ export default class ChallengePage extends Component {
       /*
 
         Vi burde legge inn dette i en action, så kan vi ta Action.pop()
-        fra SinglePictureView komponenten når de trykker på exit. 
+        fra SinglePictureView komponenten når de trykker på exit.
 
       */
   }
