@@ -31,7 +31,6 @@ export default function groups(state = initialState, action = {}) {
     break;
 
     case 'USER_LOGOUT':
-      deleteToken(action.payload.token);
       return {
         ...state,
         user: [],

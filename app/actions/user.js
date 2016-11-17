@@ -29,11 +29,26 @@ export function registerUser(data) {
 
   }
 }
+
+export function getToken() {
+  return function(dispatch) {
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+      dispatch({
+        type: 'USER_CHANGED',
+        payload: {
+          token: ((token == null)?false:token),
+        }
+      })
+
+    })
+  }
+}
+
 export function logoutUser() {
 
   return function(dispatch) {
     AsyncStorage.removeItem("@accesstoken:key").then(() => {
-      console.log("Removed token");
+
       dispatch({
         type: 'USER_LOGOUT',
         payload: {
@@ -65,7 +80,14 @@ export function loginUser(username, password) {
     .then((json) => {
       if(json.status && json.status == 200) {
         AsyncStorage.setItem("@accesstoken:key", json.token).then(() => {
-          dispatch({type: "USER_LOGIN_SUCCESS", payload: json})
+          dispatch({type: "USER_CHANGED", payload: json})
+          // dispatch({
+          //   type: 'PAGE_CHANGE',
+          //   payload: {
+          //     current: 'swipeview',
+          //     props: {type: 'reset'}
+          //   }
+          // })
         })
       }else {
         dispatch({type: "USER_LOGIN_ERROR", payload: json})

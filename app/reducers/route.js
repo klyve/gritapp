@@ -10,13 +10,9 @@ const initialState = {
 export default function groups(state = initialState, action = {}) {
   switch (action.type) {
     case 'PAGE_CHANGE':
-      console.log(action.payload.current)
       let route = action.payload.current;
-      if(typeof Actions[route] == 'function') {
-        Actions[route](action.payload.props);
-      }else {
-        console.log("Not a function");
-      }
+      //Actions.swipeview();
+      console.log(route);
       return {
         ...state,
         current: action.payload.current,

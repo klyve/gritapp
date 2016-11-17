@@ -43,7 +43,15 @@ var currentGroup = new Profile();
   currentGroup.description = "Stor og lang";
 
 class ProfileSettingsMain extends Component {
+  constructor(props) {
+    super(props);
+    this.props.dispatch({
+      type: 'PROFILE_PAGE',
+      payload: {
 
+      }
+    })
+  }
   logOut() {
       this.props.dispatch(User.logoutUser());
   }
@@ -197,6 +205,6 @@ class ProfileSettingsMain extends Component {
 }
 
 export default connect(state => ({
-    user: state.user.user
-  })
+    state
+})
 )(ProfileSettingsMain);

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import {View } from 'react-native';
 import { connect } from 'react-redux';
 import * as Route from '../actions/route';
+import * as User from '../actions/user';
 
 
 class Loadingscreen extends Component {
   componentWillMount() {
-    this.props.dispatch(Route.to("swipeview"));
+    this.props.dispatch(User.getToken());
+    //this.props.dispatch(Route.to("swipeview"));
   }
   render() {
     return (
