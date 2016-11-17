@@ -19,13 +19,28 @@ import {
 import styles from './styles/challengePage';
 import SinglePictureView from './SinglePictureView';
 
-
+// Blueprints
 function Challenge(){
   this.comment = "";
   this.commentSender = "";
   this.pictureUrl = "";
   this.id = "";
 }
+function Group(){
+  this.name = "";
+  this.picturePath = "";
+  this.description = "";
+  this.currentChallenges = [];
+  this.public;
+}
+
+
+var currentGroup = new Group();
+  currentGroup.name = "Pølsefest";
+  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
+  currentGroup.description = "Vi liker pølser, de er best";
+  currentGroup.public = false;
+
 
 var elefant = new Challenge();
   elefant.pictureUrl = "http://knysnaelephantpark.co.za/wp-content/uploads/2015/02/Elephant.png";
@@ -52,18 +67,58 @@ var fisk = new Challenge();
   fisk.id = Math.floor(Math.random() * 100000);
 
 var challenges = [elefant, hund, katt, slange, mus, fisk];
+var showSinglePictureTag = [];
+
+var groupColor = (currentGroup.public) ? 'blue' : 'red';
+var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
 export default class ChallengePage extends Component {
+
+  constructor(props){
+    super(props)
+
+    showSinglePictureTag = [];
+
+    this.state={
+      showSingleOrNot: false,
+    }
+  }
+
+  showSinglePictureView(challenge){
+
+      // WARNING WARNING WARNING WARNING WARNING WARNING
+
+      // SPAGHETTI AHEAD! SPAGHETTI AHEAD! SPAGHETTI AHEAD!
+
+      // TEST PURPOSE ONLY! TEST PURPOSE ONLY! TEST PURPOSE ONLY!
+
+
+
+      showSinglePictureTag =
+      <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
+      <SinglePictureView />
+      </View> ;
+
+      this.setState({showSingleOrNot: true});
+      /*
+
+        Vi burde legge inn dette i en action, så kan vi ta Action.pop()
+        fra SinglePictureView komponenten når de trykker på exit. eller når
+        android brukere trykker "tilbake".
+
+      */
+  }
+
+
   render() {
 
     let all = challenges.map((challenge, i) => {
-    console.log(challenge.id)
     return (
       <TouchableHighlight
       style = {styles.imageButton}
       key = {i}
       onPress = {() => {
-        Actions.singlepictureview();
+        this.showSinglePictureView(challenge)
       }}
       activeOpacity={71 / 100}
       underlayColor={"rgb(210,210,210)"}
@@ -81,7 +136,7 @@ export default class ChallengePage extends Component {
       <View style={styles.container}>
 
         <MainHeader
-          color="green"
+          color={groupColor}
           leftBtn="chevron-left"
           left={() => { Actions.pop() }}
         />
@@ -112,10 +167,7 @@ export default class ChallengePage extends Component {
 
       </View>
 
-        <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
-          <SinglePictureView>
-          </SinglePictureView>
-        </View>
+      {showSinglePictureTag}
 
       </View>
 

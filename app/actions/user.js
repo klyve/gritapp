@@ -1,5 +1,8 @@
 import hash from 'hash.js';
 import { Actions } from 'react-native-router-flux';
+import {
+  AsyncStorage,
+} from 'react-native';
 
 export function registerUser(data) {
   return function(dispatch) {
@@ -27,12 +30,42 @@ export function registerUser(data) {
   }
 }
 
+export function getToken() {
+  return function(dispatch) {
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+      dispatch({
+        type: 'USER_CHANGED',
+        payload: {
+          token: ((token == null)?false:token),
+        }
+      })
 
-export function loginUser(username, password) {
+    })
+  }
+}
+
+export function logoutUser() {
 
   return function(dispatch) {
+    AsyncStorage.removeItem("@accesstoken:key").then(() => {
+
+      dispatch({
+        type: 'USER_LOGOUT',
+        payload: {
+          token: false,
+        }
+      })
+    })
+
+  }
+}
+
+
+export function loginUser(username, pwd) {
+  return function(dispatch) {
     dispatch({type: "USER_LOGIN_START"})
-    let password = hash.sha256().update(password).digest('hex');
+    console.log(username, pwd)
+    let password = hash.sha256().update(pwd).digest('hex');
     fetch('https://dd25c333.ngrok.io/api/user/auth', {
       method: 'POST',
       headers: {
@@ -46,8 +79,16 @@ export function loginUser(username, password) {
     .then((data) => data.json())
     .then((json) => {
       if(json.status && json.status == 200) {
-        dispatch({type: "USER_LOGIN_SUCCESS", payload: json})
-        Actions.swipeview({type: 'reset'});
+        AsyncStorage.setItem("@accesstoken:key", json.token).then(() => {
+          dispatch({type: "USER_CHANGED", payload: json})
+          // dispatch({
+          //   type: 'PAGE_CHANGE',
+          //   payload: {
+          //     current: 'swipeview',
+          //     props: {type: 'reset'}
+          //   }
+          // })
+        })
       }else {
         dispatch({type: "USER_LOGIN_ERROR", payload: json})
       }

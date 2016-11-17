@@ -63,11 +63,12 @@ export default class GroupMembers extends Component {
             small
           />
       )})
+
     return (
-      <View>
-        <Blocks>
+      <View style={{paddingTop: 5}}>
+      <Blocks>
           {top}
-        </Blocks>
+      </Blocks>
       </View>
     );
   }

@@ -7,20 +7,7 @@ const initialState = {
 };
 
 
-async function storeToken(token) {
-  try {
-    await AsyncStorage.setItem("@accesstoken:key", token);
-  }catch(error) {
-    console.log(error);
-  }
-}
-async function deleteToken() {
-  try {
-    await AsyncStorage.removeItem("@accesstoken:key");
-  }catch(error) {
-    console.log(error);
-  }
-}
+
 
 export default function groups(state = initialState, action = {}) {
   switch (action.type) {
@@ -36,7 +23,6 @@ export default function groups(state = initialState, action = {}) {
       }
     break;
     case 'USER_LOGIN_SUCCESS':
-      storeToken(action.payload.token);
       return {
         ...state,
         user: action.payload,
@@ -45,7 +31,6 @@ export default function groups(state = initialState, action = {}) {
     break;
 
     case 'USER_LOGOUT':
-      deleteToken(action.payload.token);
       return {
         ...state,
         user: [],

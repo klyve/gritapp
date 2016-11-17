@@ -28,9 +28,7 @@ class SwipeView extends Component {
   constructor(props) {
     super(props);
   }
-  componentWillMount() {
-    //this.props.dispatch(Route.to('notifications'));
-  }
+
 
   btnPress(index) {
     //console.log(this._swiper.scrollBy(1))
@@ -39,7 +37,6 @@ class SwipeView extends Component {
 
   render() {
     //const { state, actions } = this.props;
-
     return (
       <View>
       <Swiper
@@ -59,7 +56,9 @@ class SwipeView extends Component {
             right={() => { this.btnPress(1) }}
            />
           <View style={[styles.contentView, styles.noPadding]}>
-            <Friends />
+            <Friends
+              {...this.props}
+            />
           </View>
         </View>
 
@@ -72,7 +71,9 @@ class SwipeView extends Component {
             left={() => { this.btnPress(-1) }}
           />
           <View style={[styles.contentView, styles.noPadding]}>
-            <Dashboard />
+            <Dashboard
+              {...this.props}
+            />
           </View>
         </View>
 
@@ -97,6 +98,6 @@ class SwipeView extends Component {
 
 
 export default connect(state => ({
-    state
+    groups: state.groups.groups
   })
 )(SwipeView);
