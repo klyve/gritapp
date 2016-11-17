@@ -37,10 +37,10 @@ const scenes = Actions.create(
     <Scene key="loginview" hideNavBar component={LoginView}/>
     <Scene key="registerview" hideNavBar component={RegisterView} />
 
-    <Scene key="swipeview" hideNavBar component={SwipeView} initial={true}/>
+    <Scene key="swipeview" hideNavBar component={SwipeView} initial={true} />
 
     <Scene key="groupsearch" hideNavBar component={GroupSearch} />
-    <Scene key="groupjoin" hideNavBar component={GroupJoin} />
+    <Scene key="groupjoin" hideNavBar component={GroupJoin}/>
     <Scene key="grouptype" hideNavBar component={GroupType} />
     <Scene key="groupname" hideNavBar component={GroupName} />
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard}/>

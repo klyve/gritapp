@@ -75,11 +75,17 @@ export default class GroupLeaderboard extends Component {
         )})
     return (
       <View>
-        <Blocks>
-          {top}
-          <View style={{height: 30}}/>
-          {other}
-        </Blocks>
+        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+          TOP 3
+        </Text>
+
+        {top}
+
+        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+          TOP 50
+        </Text>
+
+        {other}
       </View>
     );
   }
