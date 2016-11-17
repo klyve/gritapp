@@ -39,7 +39,7 @@ var currentGroup = new Group();
   currentGroup.name = "Pølsefest";
   currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
   currentGroup.description = "Vi liker pølser, de er best";
-  currentGroup.public = true;
+  currentGroup.public = false;
 
 var groupColor = (currentGroup.public) ? 'blue' : 'red';
 var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
