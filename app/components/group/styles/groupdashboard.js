@@ -31,7 +31,6 @@ export default styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
 
-
   groupImage: {
     height: 160,
     width: 160,

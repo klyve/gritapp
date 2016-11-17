@@ -16,6 +16,11 @@ import {
   FriendBlock
 } from '../modules'
 
+import {
+  MARGIN,
+  HEADER_HEIGHT
+} from '../constants';
+
 import { Actions } from 'react-native-router-flux';
 import GroupChallenges from './GroupChallenges';
 import GroupLeaderboard from './GroupLeaderboard';
@@ -39,7 +44,6 @@ var currentGroup = new Group();
   currentGroup.public = false;
 
 groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
-const MARGIN = 10;
 
 export default class GroupDashboard extends Component {
 
@@ -67,15 +71,9 @@ export default class GroupDashboard extends Component {
 
     let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
     let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
-
-
-    let tabStyles = []
-    tabStyles.push([styles.tabText])
-    tabStyles.push([styles.tabText])
-    tabStyles.push([styles.tabText])
+    let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
     tabStyles[this.state.activeTab].push(styles.tabFocus)
-
 
     return (
       <View style={styles.container}>
@@ -143,36 +141,33 @@ export default class GroupDashboard extends Component {
 
 
 
-              <View style={{flex: 12, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
+              <View style={{flex: 12, backgroundColor: '#f0f0f0'}}>
 
                 <Swiper
                   ref={"swiper"}
-                  style={styles.wrapper}
                   showsButtons={false}
                   showsPagination={false}
                   loop={false}
                   index={this.state.activeTab}
-                  onMomentumScrollEnd ={ (e, state, context) => this.onMomentumScrollEnd(e,state,context)}
+                  onMomentumScrollEnd ={ (e, state, context) => this.onMomentumScrollEnd(e, state, context) }
                 >
-                <View>
-                  <ScrollView>
-                    <GroupLeaderboard />
-                  </ScrollView>
-                </View>
-                <View>
-                  <ScrollView>
-                    <GroupChallenges />
-                  </ScrollView>
-                </View>
+                  <View style={{marginBottom: 310 /* spaghetti bolognese */}}>
+                    <ScrollView>
+                      <GroupLeaderboard />
+                    </ScrollView>
+                  </View>
 
-                <View>
-                  <ScrollView>
-                    <GroupMembers />
-                  </ScrollView>
-                </View>
+                  <View style={{marginBottom: 310 /* spaghetti bolognese */}}>
+                    <ScrollView>
+                      <GroupChallenges />
+                    </ScrollView>
+                  </View>
 
-
-
+                  <View style={{marginBottom: 300 /* spaghetti bolognese */}}>
+                    <ScrollView>
+                      <GroupMembers />
+                    </ScrollView>
+                  </View>
                 </Swiper>
 
 
