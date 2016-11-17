@@ -40,10 +40,13 @@ var chall4 = new Challenge();
   chall4.name = "Si hei";
   chall4.timeLeft = "3d";
   chall4.picturePath = "https://a2ua.com/hello/hello-009.jpg";
-var challenges =[chall1, chall2, chall3, chall4];
+
+var open =[chall1, chall2, chall3, chall4];
+var closed =[chall1, chall1, chall1, chall1];
+
 export default class GroupChallenges extends Component {
   render() {
-    let showChallenges = challenges.map((a,b) => {
+    let showOpen = open.map((a,b) => {
         return (
           <FriendBlock
             onPress={() => {
@@ -55,11 +58,32 @@ export default class GroupChallenges extends Component {
             key={b}
           />
       )})
+
+      let showClosed = closed.map((a,b) => {
+          return (
+            <FriendBlock
+              onPress={() => {
+                Actions.challengepage()
+              }}
+              image={a.picturePath}
+              name={a.name}
+              points={a.timeLeft}
+              key={b}
+            />
+        )})
     return (
       <View>
-        <Blocks>
-          {showChallenges}
-        </Blocks>
+        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+          ACTIVE CHALLENGES
+        </Text>
+
+        {showOpen}
+
+        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+          CLOSED CHALLENGES
+        </Text>
+
+        {showClosed}
       </View>
     );
   }

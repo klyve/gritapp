@@ -23,9 +23,6 @@ import {
 
 import styles from './styles/groupsettingsmain';
 
-//Constants
-const MARGIN = 10;
-
 // Blueprints
 function Group(){
   this.name = "";
@@ -38,7 +35,7 @@ function Group(){
 var currentGroup = new Group();
   currentGroup.name = "Pølsefest";
   currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
-  currentGroup.description = "Vi liker pølser, de er best";
+  currentGroup.description = "Vi liker pølser";
   currentGroup.public = false;
 
 export default class GroupSettingsMain extends Component {
@@ -84,23 +81,24 @@ export default class GroupSettingsMain extends Component {
             />
           </View>
           {/*Settings nr 2*/}
-          <View style = {[styles.setting,{borderBottomWidth: 3,}]}>
-            <Text style = {styles.settingsTextLeft}>Description</Text>
-            <TextInput
-            style = {styles.settingsTextRight}
-            value = {this.state2.text}
-            onChangeText={(text) => this.setState({text})}
-            editable = {false}
-            maxLength = {16}
-            />
-            <TouchableHighlight
-            activeOpacity={71 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            onPress = {() => {}}
-            style = {styles.settingsButton}>
-              <Text>X</Text>
-            </TouchableHighlight>
-          </View>
+          <TouchableHighlight
+          activeOpacity={71 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          onPress = {() => {
+            Actions.descriptionedit();
+          }}
+          >
+            <View style = {[styles.setting,{borderBottomWidth: 3,}]}>
+              <Text style = {styles.settingsTextLeft}>Description</Text>
+              <TextInput
+              style = {styles.settingsTextRight}
+              value = {this.state2.text}
+              onChangeText={(text) => this.setState({text})}
+              editable = {false}
+              maxLength = {16}
+              />
+            </View>
+          </TouchableHighlight>
           {/*Settings nr 3*/}
           <View style = {[
             styles.setting,
@@ -125,7 +123,7 @@ export default class GroupSettingsMain extends Component {
             }]}>
             <Text style = {styles.settingsTextLeft}>Public</Text>
             <Switch
-          value={(this.state && this.state.switchValue) || false}
+            value={(this.state && this.state.switchValue) || false}
             onValueChange={(value) => {
               this.setState({switchValue: value})
             }}

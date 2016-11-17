@@ -31,7 +31,6 @@ export default styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
 
-
   groupImage: {
     height: 160,
     width: 160,
@@ -54,10 +53,6 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingTop: MARGIN,
     paddingBottom: MARGIN,
-  },
-  groupTitleText:{
-    fontSize: 30,
-    color: groupColor,
   },
   groupDescriptionText: {
     fontSize: 16,
@@ -91,7 +86,4 @@ export default styles = StyleSheet.create({
   tabText: {
     fontSize: 16,
   },
-  tabFocus: {
-    color: 'red',
-  }
 })
