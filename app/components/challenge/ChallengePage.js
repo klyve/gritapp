@@ -19,13 +19,28 @@ import {
 import styles from './styles/challengePage';
 import SinglePictureView from './SinglePictureView';
 
-
+// Blueprints
 function Challenge(){
   this.comment = "";
   this.commentSender = "";
   this.pictureUrl = "";
   this.id = "";
 }
+function Group(){
+  this.name = "";
+  this.picturePath = "";
+  this.description = "";
+  this.currentChallenges = [];
+  this.public;
+}
+
+
+var currentGroup = new Group();
+  currentGroup.name = "Pølsefest";
+  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
+  currentGroup.description = "Vi liker pølser, de er best";
+  currentGroup.public = false;
+
 
 var elefant = new Challenge();
   elefant.pictureUrl = "http://knysnaelephantpark.co.za/wp-content/uploads/2015/02/Elephant.png";
@@ -53,7 +68,9 @@ var fisk = new Challenge();
 
 var challenges = [elefant, hund, katt, slange, mus, fisk];
 var showSinglePictureTag = [];
-var dim = 1;
+
+var groupColor = (currentGroup.public) ? 'blue' : 'red';
+var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
 export default class ChallengePage extends Component {
 
@@ -61,10 +78,9 @@ export default class ChallengePage extends Component {
     super(props)
 
     showSinglePictureTag = [];
-    dim = 1;
 
     this.state={
-      showSingle: false,
+      showSingleOrNot: false,
     }
   }
 
@@ -74,6 +90,8 @@ export default class ChallengePage extends Component {
 
       // SPAGHETTI AHEAD! SPAGHETTI AHEAD! SPAGHETTI AHEAD!
 
+      // TEST PURPOSE ONLY! TEST PURPOSE ONLY! TEST PURPOSE ONLY!
+
 
 
       showSinglePictureTag =
@@ -81,14 +99,12 @@ export default class ChallengePage extends Component {
       <SinglePictureView />
       </View> ;
 
-      dim = 0.18;
-
-      this.setState({showSingle: true});
-
+      this.setState({showSingleOrNot: true});
       /*
 
         Vi burde legge inn dette i en action, så kan vi ta Action.pop()
-        fra SinglePictureView komponenten når de trykker på exit.
+        fra SinglePictureView komponenten når de trykker på exit. eller når
+        android brukere trykker "tilbake".
 
       */
   }
@@ -116,11 +132,11 @@ export default class ChallengePage extends Component {
   })
 
     return (
-      <View style={{flex: 1, backgroundColor: 'black'}}>
-      <View style={[styles.container, {opacity: dim}]}>
+      <View style={{flex: 1}}>
+      <View style={styles.container}>
 
         <MainHeader
-          color="green"
+          color={groupColor}
           leftBtn="chevron-left"
           left={() => { Actions.pop() }}
         />

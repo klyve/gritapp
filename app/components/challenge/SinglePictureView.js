@@ -12,7 +12,8 @@ import {
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
-import { Icon } from 'react-native-router-flux';
+// import { Icon } from 'react-native-router-flux';
+import { Icon } from 'react-native-elements'
 import {
   Blocks,
   FriendBlock
@@ -132,6 +133,12 @@ export default class SinglePictureView extends Component {
             <View style ={styles.title}>
               <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}></Image>
               <Text style={styles.titleText}> {pst.uploader.name} </Text>
+              <Icon
+                name='user'
+                type='font-awesome'
+                color='#000'
+                underlayColor='transparent'
+              />
             </View>
 
             <View style={{flex: 7,}}>
