@@ -13,7 +13,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   Blocks,
   FriendBlock,
-  TopBlock,
+  LeadBlock,
 } from '../modules';
 import styles from './styles/groupchallenges';
 
@@ -46,14 +46,14 @@ var f5 = new person();
   f5.score = 13;
 
 
-var lead = [f4, f2, f3, f5, f1];
+var lead = [f4, f2, f3, f5, f1, f1, f1, f1, f1, f1, f1, f1, f1, f1, f1, f1];
 export default class GroupLeaderboard extends Component {
   render() {
     let other = [];
 
     for (let i = 3; i < lead.length; i ++){
       other.push(
-        <FriendBlock
+        <LeadBlock
           onPress={() => {
             Actions.profile()
           }}
@@ -62,6 +62,7 @@ export default class GroupLeaderboard extends Component {
           points={lead[i].score}
           key={i}
           small
+          place={i+1}
         />
       )
     }
@@ -70,7 +71,7 @@ export default class GroupLeaderboard extends Component {
       <View>
         <View style={{padding: 23}}/>
 
-          <TopBlock
+          <LeadBlock
             onPress={() => {
               Actions.profile()
             }}
@@ -82,7 +83,7 @@ export default class GroupLeaderboard extends Component {
             large
           />
 
-          <TopBlock
+          <LeadBlock
             onPress={() => {
               Actions.profile()
             }}
@@ -94,12 +95,12 @@ export default class GroupLeaderboard extends Component {
             large
           />
 
-          <TopBlock
+          <LeadBlock
             onPress={() => {
               Actions.profile()
             }}
             trophy='trophy'
-            trophyColor='#A75B10'
+            trophyColor='#cd8c32'
             image={lead[2].picturePath}
             name={lead[2].name}
             points={lead[2].score}
