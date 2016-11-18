@@ -53,7 +53,7 @@ class LoginView extends Component {
 
     return (
       <View style={styles.container}>
-            <Image style={styles.bg} source={{uri: 'https://i.imgur.com/xlQ56UK.jpg'}} />
+            <Image style={styles.bg} source={require('../../../images/Guy.jpg')} />
             <View style={styles.header}>
                 <Image style={styles.mark} source={{uri: 'https://i.imgur.com/da4G0Io.png'}} />
             </View>
