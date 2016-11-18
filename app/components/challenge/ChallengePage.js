@@ -48,7 +48,7 @@ var elefant = new Challenge();
 
 var hund = new Challenge();
   hund.pictureUrl = "http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg";
-  hund.id = Math.floor(Math.random() * 100000);
+  hund.id = Math.floor(Math.random() * 100000);this.prop
 
 var katt = new Challenge();
   katt.pictureUrl = "http://www.agria.no/imagevault/publishedmedia/zfl838orwjwg72jkzerz/gra-katt-vit-bakgrund.jpg";
@@ -83,12 +83,7 @@ export default class ChallengePage extends Component {
       showSingleOrNot: false,
     }
   }
-  closeSinglePicture() {
-    console.log("Closing picture")
-    this.setState({
-      showSingleOrNot: false,
-    })
-  }
+
   showSinglePictureView(challenge){
 
       // WARNING WARNING WARNING WARNING WARNING WARNING
@@ -101,7 +96,10 @@ export default class ChallengePage extends Component {
 
       showSinglePictureTag =
       <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
-      <SinglePictureView close={() => {this.closeSinglePicture()}} />
+      <SinglePictureView
+        picture={challenge.pictureUrl}
+        close={() => {this.closeSinglePictureView()}}
+      />
       </View> ;
 
       this.setState({showSingleOrNot: true});
@@ -114,9 +112,15 @@ export default class ChallengePage extends Component {
       */
   }
 
+  closeSinglePictureView() {
+    this.setState({
+      showSingleOrNot: false,
+    })
+  }
 
   render() {
-    let SingleView = (!this.state.showSingleOrNot) ? false : showSinglePictureTag;
+
+    let singlePicture = (!this.state.showSingleOrNot ? false : showSinglePictureTag);
     let all = challenges.map((challenge, i) => {
     return (
       <TouchableHighlight
@@ -172,7 +176,7 @@ export default class ChallengePage extends Component {
 
       </View>
 
-      {SingleView}
+      {singlePicture}
 
       </View>
 

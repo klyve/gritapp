@@ -10,36 +10,36 @@ import {
   Dimensions,
   TouchableHighlight,
 } from 'react-native'
+import { connect } from 'react-redux';
+
 import styles from './styles/groupname';
 import { Actions } from 'react-native-router-flux';
 
-function person (){//The object containing the userinfo during registration
-  this.userID;
-  this.nick;
-  this.pic;
-}
-
-function createUser (usr,nick, pic)
-{
-  usr.nick = nick;
-  usr.pic = pic;
-  usr.userID = Math.floor((Math.random() * 100000) + 1);
-  console.log(arguments);
-  return usr
-}
 
 
 
- var newUser = new person();
- const USERNAMEREGEX = /^[a-zA-Z0-9\-_ ]*$/;
 
 
-export default class GroupName extends Component {
+
+
+const USERNAMEREGEX = /^[a-zA-Z0-9\-_ ]*$/;
+
+class GroupName extends Component {
 
   constructor(props)
   {
-    super()
+    super(props)
     this.state={text: ''}
+  }
+
+  createGroup() {
+    console.log(this.props)
+    let data = {
+      name: this.state.text,
+      type: this.props.data,
+      owner: this.props.user.token
+    }
+    console.log(data);
   }
 
   render() {
@@ -61,34 +61,25 @@ export default class GroupName extends Component {
           style={styles.textInput}
           placeholder={"Choose Group Name"}
           placeholderTextColor={'rgba(255,255,255,0.4)'}
-          autoFocus ='true'
+          autoFocus={true}
           onChangeText={(text) => {
             if(!USERNAMEREGEX.test(text)){
               alert("Illegal character")
               return
             }
             if(text.length <= 16 )
-              this.setState({text})}}
-          onSubmitEditing={(event) => {
-            createUser(newUser,this.state.text,'placeholder')
-            if(this.state.text.length < 3 || this.state.text.length > 16)
-            {
-              alert("Nickname must be 3-16 chars")
-            }else {
-              createUser(newUser,this.state.text,'placeholder')
-            }}}
+              this.setState({text})
+          }}
+          onSubmitEditing={() => {
+            this.createGroup()
+          }}
             //this.setState({text: ''})
           value={(this.state && this.state.text) || ''}
         />
         </View>
         <TouchableHighlight style={styles.confirm}
           onPress={() =>{
-            if(this.state.text.length < 3 || this.state.text.length > 16)
-            {
-              alert("Nickname must be 3-16 chars")
-            }else {
-              createUser(newUser,this.state.text,'placeholder')
-            }
+            this.createGroup()
           }}
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
@@ -118,3 +109,8 @@ export default class GroupName extends Component {
     );
   }
   }
+
+export default connect(state => ({
+    user: state.user
+  })
+)(GroupName);
