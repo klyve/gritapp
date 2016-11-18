@@ -29,6 +29,8 @@ export default class ChallengeCamera extends Component {
             style={styles.preview}
             aspect={Camera.constants.Aspect.fit}
             captureTarget={Camera.constants.CaptureTarget.temp}
+            captureAudio={false}
+
             type={this.state.camType}
             mirrorImage={this.state.mirror}
           >
