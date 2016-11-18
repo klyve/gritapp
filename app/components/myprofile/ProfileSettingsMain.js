@@ -24,12 +24,6 @@ import {
 } from '../modules';
 import styles from './styles/ProfileSettingsMain';
 
-
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
-const MARGIN = 10;
-
 // Blueprints
 function Profile(){
   this.name = "";
@@ -70,6 +64,7 @@ class ProfileSettingsMain extends Component {
           <View style={styles.groupImageView}>
             <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
           </View>
+          <Text style = {styles.headerText}>Profile Settings</Text>
         </View>
         <View style = {styles.settingsContainer}>
         {/*Settings nr 1*/}

@@ -4,22 +4,26 @@ import {
   Dimensions,
 } from 'react-native'
 
+//Constants
+const DEVICE_HEIGHT = Dimensions.get('window').height;
+const DEVICE_WIDTH = Dimensions.get('window').width;
+
 export default styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
   body: {
     marginTop: 60,
-    flex: .8,
+    flex: .9,
   },
   header: {
-    marginTop: 60,
+    marginTop: 30,
+    height: 60,
     alignItems: 'center',
-    flex: .095,
     flexDirection: 'row',
     borderColor: 'black',
-    marginTop: 20,
   },
   textInput: {
     padding: 10,
