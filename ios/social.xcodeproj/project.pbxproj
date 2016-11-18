@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -169,6 +170,7 @@
 			remoteInfo = RCTText;
 		};
 		91B033FF1DDF548F00FEAC2A /* PBXContainerItemProxy */ = {
+
 			isa = PBXContainerItemProxy;
 			containerPortal = 64B4B08C604D460797798549 /* RCTCamera.xcodeproj */;
 			proxyType = 2;
@@ -430,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				91B034001DDF548F00FEAC2A /* libRCTCamera.a */,
+
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -508,7 +511,8 @@
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
-					ProductGroup = 91B033FB1DDF548D00FEAC2A /* Products */;
+
+					ProductGroup = 91B034291DDF54F300FEAC2A /* Products */;
 					ProjectRef = 64B4B08C604D460797798549 /* RCTCamera.xcodeproj */;
 				},
 				{
@@ -692,6 +696,7 @@
 			fileType = archive.ar;
 			path = libRCTCamera.a;
 			remoteRef = 91B033FF1DDF548F00FEAC2A /* PBXContainerItemProxy */;
+
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -10,7 +10,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Icon } from 'react-native-router-flux';
+import { Icon } from 'react-native-elements';
 import {
   MainHeader,
   Blocks,
@@ -178,8 +178,17 @@ export default class ChallengePage extends Component {
             Actions.challengecamera({camera: (picture) => {this.handlePicture(picture)}})
           }}
           activeOpacity={71 / 100}
-          underlayColor={"rgb(210,210,210)"}>
-            <Text>Camera</Text>
+          underlayColor={"rgb(210,210,210)"}
+          >
+            <View>
+              <Icon
+                name='camera'
+                type='font-awesome'
+                color='#888888'
+                underlayColor='transparent'
+                size={40}
+              />
+            </View>
           </TouchableHighlight>
         </View>
 
