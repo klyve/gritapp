@@ -7,7 +7,8 @@ import {
   ScrollView,
   TouchableHighlight,
   TextInput,
-  Image
+  Image,
+  ActivityIndicator,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
@@ -25,17 +26,21 @@ import {
 export default class Dashboard extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       groups: [],
+      loading: false,
     }
 
   }
   componentWillMount() {
     this.props.dispatch(Groups.getUserGroups());
+    this.setState({loading: true})
+
   }
 
   gotoGroup(groupId) {
-      Actions.groupdashboard(this.props.groups[groupId])
+    Actions.groupdashboard(this.props.groups[groupId])
   }
 
   showNotifications() {
@@ -58,7 +63,26 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    let showGroups;
+    let showGroups  = [];
+    let showLoading = [];
+
+    if (showGroups.length == 0 && this.state.loading){
+      showLoading =
+                    <ActivityIndicator
+                      animating={true}
+                      style={{
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              padding: 8,
+                              height: 80
+                            }}
+                      size="large"
+                      color="#2ecc71"
+                    /> ;
+    } else {
+      showGroups = [];
+    }
+
     if(this.props.groups.length > 0) {
        showGroups = this.props.groups.map((a,b) => {
 
@@ -73,13 +97,21 @@ export default class Dashboard extends Component {
           />
         )
       })
+
+      if (showLoading.length != 0)
+        this.setState({loading: false})
+
     } else {
-      showGroups = false;
+      showGroups = [];
     }
+
+
     return (
       <View style={styles.container}>
         {this.renderNotifications()}
         <ScrollView>
+          {showLoading}
+
           <Blocks>
             {showGroups}
           </Blocks>

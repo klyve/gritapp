@@ -19,6 +19,7 @@ import {
   MainHeader
 } from '../modules';
 import styles from './styles/loginview';
+import { Icon } from 'react-native-elements';
 class LoginView extends Component {
   constructor(props) {
     super(props)
@@ -53,65 +54,121 @@ class LoginView extends Component {
 
     return (
       <View style={styles.container}>
-            <Image style={styles.bg} source={require('../../../images/Guy.jpg')} />
-            <View style={styles.header}>
-                <Image style={styles.mark} source={{uri: 'https://i.imgur.com/da4G0Io.png'}} />
-            </View>
-            <View style={styles.inputs}>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputUsername} source={{uri: 'https://i.imgur.com/iVVVMRX.png'}}/>
-                    <TextInput
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Phone number"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.state.username}
-                        onChangeText={(text) => {
-                          this.setState({
-                            username: text,
-                          })
-                        }}
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputPassword} source={{uri: 'https://i.imgur.com/ON58SIG.png'}}/>
-                    <TextInput
-                        password={true}
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Pasword"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.state.password}
-                        onChangeText={(text) => {
-                          this.setState({
-                            password: text
-                          })
-                        }}
-                    />
-                </View>
-                <View style={styles.forgotContainer}>
-                    <Text style={styles.greyFont}>Forgot Password</Text>
-                </View>
-            </View>
-            <View style = {styles.buttonContainer}>
-              <TouchableHighlight
-                onPress={() => {
-                  this.signIn()
-                }}>
-                <View style={styles.signin}>
-                    <Text style={styles.whiteFont}>Sign In</Text>
-                </View>
+          <Image style={styles.bg} source={require('../../../images/Guy.jpg')} />
 
-              </TouchableHighlight>
-              <TouchableHighlight
-              onPress = {() => {
-                this.props.dispatch(Route.to('signup'));
-              }}>
-              <View style={styles.signup}>
-                  <Text style={styles.whiteFont}>Sign Up</Text>
-              </View>
-              </TouchableHighlight>
+
+
+
+
+
+          <View style={styles.logoView}>
+              <Image style={styles.logo} source={{uri: 'https://i.imgur.com/da4G0Io.png'}} />
+          </View>
+
+
+
+
+
+
+          <View style={styles.inputs}>
+            <View style={{width: 30}}>
+              <Icon
+                size={30}
+                name='phone'
+                type='font-awesome'
+                color='#ffffff'
+                underlayColor='transparent'
+              />
             </View>
+
+            <TextInput
+              style={styles.input}
+              placeholder="Phone Number"
+              placeholderTextColor="#fff"
+              underlineColorAndroid='rgba(0,0,0,0)'
+
+              value={this.state.username}
+
+              onChangeText={(text) => {
+                this.setState({
+                  username: text,
+                })
+              }}
+              onSubmitEditing={(event) => {
+                this.refs.pass.focus();
+              }}
+            />
+          </View>
+
+          <View style={styles.inputs}>
+            <View style={{width: 30}}>
+              <Icon
+                size={30}
+                name='lock'
+                type='font-awesome'
+                color='#ffffff'
+                underlayColor='transparent'
+              />
+            </View>
+
+            <TextInput
+              ref='pass'
+              secureTextEntry={true}
+              style={styles.input}
+              placeholder="Password"
+              placeholderTextColor="#fff"
+              underlineColorAndroid='rgba(0,0,0,0)'
+
+              value={this.state.password}
+
+              onChangeText={(text) => {
+                this.setState({
+                  password: text
+                })
+              }}
+            />
+          </View>
+
+
+
+
+
+
+
+          <View style={styles.forgotContainer}>
+
+            <TouchableHighlight onPress={() => {alert("VI TRENGER EN GLEMT PASSORD FUNKSJON")}}>
+              <Text style={{color: '#fff', opacity: 0.67, fontSize: 16,}}>
+                Forgot Password?
+              </Text>
+            </TouchableHighlight>
+          </View>
+
+
+
+
+
+
+          <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              onPress={() => {
+                this.signIn()
+              }}>
+              <View style={styles.signin}>
+                  <Text style={{color: '#fff'}}>Log In</Text>
+              </View>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+            onPress = {() => {
+              this.props.dispatch(Route.to('signup'));
+            }}>
+            <View style={styles.signup}>
+                <Text style={{color: '#fff'}}>Sign Up</Text>
+            </View>
+            </TouchableHighlight>
+          </View>
+
         </View>
     );
   }

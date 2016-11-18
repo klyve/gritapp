@@ -31,7 +31,7 @@ function createUser (usr,nick, pic)
 
 
  var newUser = new person();
- const USERNAMEREGEX = /^[a-zA-Z0-9\-_]*$/;
+ const USERNAMEREGEX = /^[a-zA-Z0-9\-_ ]*$/;
 
 
 export default class GroupName extends Component {
@@ -52,18 +52,22 @@ export default class GroupName extends Component {
 
     return (
       <View style={style}>
+      <View>
+      <Text style={styles.explanationText}>
+        Choose a groupname with 3-16 characters
+      </Text>
         <TextInput
           underlineColorAndroid='rgba(0,0,0,0)'
           style={styles.textInput}
           placeholder={"Choose Group Name"}
           placeholderTextColor={'rgba(255,255,255,0.4)'}
-          textColor
+          autoFocus ='true'
           onChangeText={(text) => {
             if(!USERNAMEREGEX.test(text)){
               alert("Illegal character")
               return
             }
-            if(text.length < 16 )
+            if(text.length <= 16 )
               this.setState({text})}}
           onSubmitEditing={(event) => {
             createUser(newUser,this.state.text,'placeholder')
@@ -76,6 +80,7 @@ export default class GroupName extends Component {
             //this.setState({text: ''})
           value={(this.state && this.state.text) || ''}
         />
+        </View>
         <TouchableHighlight style={styles.confirm}
           onPress={() =>{
             if(this.state.text.length < 3 || this.state.text.length > 16)
@@ -99,7 +104,7 @@ export default class GroupName extends Component {
 
           <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Previous</Text>
         </TouchableHighlight>
-
+        <View style={styles.bottomTextView}>
         <Text style={styles.bottomText}>
           Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Curabitur
@@ -107,9 +112,7 @@ export default class GroupName extends Component {
           Ut interdum porttitor consequat. Cras sagittis
           auctor libero sit amet viverra.
         </Text>
-        <Text style={styles.topText}>
-          Choose a groupname with 3-13 characters
-        </Text>
+        </View>
 
       </View>
     );
