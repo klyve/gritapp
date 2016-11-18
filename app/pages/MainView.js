@@ -23,6 +23,7 @@ import Profile from '../components/Profile';
 
 import ChallengePage from '../components/challenge/ChallengePage';
 import SinglePictureView from '../components/challenge/SinglePictureView';
+import ChallengeCamera from '../components/challenge/ChallengeCamera';
 
 import ProfileSettingsMain from '../components/myprofile/ProfileSettingsMain';
 import ProfileBioEdit from '../components/myprofile/ProfileBioEdit';
@@ -52,6 +53,7 @@ const scenes = Actions.create(
     <Scene key="grouptype" hideNavBar component={GroupType} />
     <Scene key="groupname" hideNavBar component={GroupName} />
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard} />
+    <Scene key="challengecamera" hideNavBar component ={ChallengeCamera} />
 
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
     <Scene key="managemembers" hideNavBar component={ManageMembers}/>
