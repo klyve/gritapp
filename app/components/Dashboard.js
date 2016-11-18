@@ -77,6 +77,7 @@ export default class Dashboard extends Component {
                               height: 80
                             }}
                       size="large"
+                      color="#2ecc71"
                     /> ;
     } else {
       showGroups = [];
