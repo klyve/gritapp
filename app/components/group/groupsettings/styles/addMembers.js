@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
+import { MARGIN, HEADER_HEIGHT } from '../../../constants';
 
 
 export default styles = StyleSheet.create({
@@ -12,7 +13,7 @@ export default styles = StyleSheet.create({
   },
   body: {
     alignItems: 'center',
-    marginTop: 90,
+    marginTop: HEADER_HEIGHT,
   },
   groupImageView: {
     alignItems: 'center',
@@ -41,8 +42,8 @@ export default styles = StyleSheet.create({
     width: 380,
     borderBottomWidth: 2,
     borderColor: 'lightgrey',
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
     flexDirection: 'row',
   },
   editButton: {
@@ -58,14 +59,14 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   friendImage: {
-    marginLeft: 10,
+    marginLeft: MARGIN,
     width: 60,
     height: 60,
     borderRadius: 30,
   },
   friendText: {
-    padding: 5,
-    paddingLeft: 20,
+    padding: MARGIN / 2,
+    paddingLeft: MARGIN * 2,
     fontSize: 20,
     width: 250,
   },
