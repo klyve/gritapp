@@ -15,6 +15,8 @@ import {
   MainHeader
 } from './modules';
 import styles from './styles/CreateOrJoinGroup';
+import { MARGIN } from './constants';
+
 
 export default class CreateOrJoinGroup extends Component {
   render() {
@@ -23,7 +25,7 @@ export default class CreateOrJoinGroup extends Component {
         <Blocks>
 
           <BlockFifty
-            style={{marginBottom: 5}}
+            style={{marginBottom: MARGIN / 2}}
             onPress={() => Actions.grouptype()}
           >
             <Text style={styles.buttonText}>
@@ -32,7 +34,7 @@ export default class CreateOrJoinGroup extends Component {
           </BlockFifty>
 
           <BlockFifty
-            style={{marginTop: 5, marginBottom: 25}}
+            style={{marginTop: MARGIN / 2, marginBottom: MARGIN * 2.5}}
             onPress={() => Actions.groupsearch()}
           >
             <Text style={styles.buttonText}>

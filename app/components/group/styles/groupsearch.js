@@ -4,7 +4,8 @@ import {
 } from 'react-native'
 
 import {
-  MARGIN
+  MARGIN,
+  HEADER_HEIGHT
 } from '../../constants';
 
 export default styles = StyleSheet.create({
@@ -14,7 +15,7 @@ export default styles = StyleSheet.create({
   },
   body: {
     flex: .8,
-    marginTop: 80,
+    marginTop: HEADER_HEIGHT,
     backgroundColor: '#f0f0f0',
   },
   searchBar: {
@@ -55,11 +56,11 @@ export default styles = StyleSheet.create({
     backgroundColor: 'transparent',
     height: 45,
     fontSize: 18,
-    marginLeft: 20,
+    marginLeft: MARGIN * 2,
     borderColor: 'transparent',
   },
   searchIcon: {
-    marginTop: 5,
+    marginTop: MARGIN / 2,
     fontSize: 18,
   },
   searchClose: {

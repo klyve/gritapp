@@ -4,14 +4,14 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
 } from 'react-native'
-import {HEADER_HEIGHT} from '../constants';
+import {HEADER_HEIGHT, MARGIN} from '../constants';
 
 
 export default styles = StyleSheet.create({
   contentView: {
     marginTop: HEADER_HEIGHT,
     flex: 1,
-    padding: 10,
+    padding: MARGIN,
     backgroundColor: '#f0f0f0',
   },
   noPadding: {
