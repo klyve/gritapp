@@ -30,7 +30,7 @@ export default styles = StyleSheet.create({
     borderRadius: 20,
   },
   friendText: {
-    padding: 5,
+    padding: MARGIN / 2,
     paddingLeft: 20,
     fontSize: 20,
   },
@@ -38,7 +38,7 @@ export default styles = StyleSheet.create({
   numberContainer: {
     flex: 1,
     position: 'absolute',
-    right: 10,
+    right: MARGIN,
     top: 0,
     bottom: 0,
     flexDirection: 'column',
@@ -58,12 +58,12 @@ export default styles = StyleSheet.create({
   },
   number: {
     color: '#333',
-    marginTop: 5,
+    marginTop: MARGIN / 2,
     fontSize: 16,
     textAlign: 'center',
   },
   unreadDotNumber: {
-    marginTop: 5,
+    marginTop: MARGIN / 2,
     fontSize: 16,
     color: 'white',
     textAlign: 'center',

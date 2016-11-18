@@ -8,6 +8,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { MARGIN } from '../constants';
+
 
 import {
   Blocks,
@@ -65,7 +67,7 @@ export default class GroupMembers extends Component {
       )})
 
     return (
-      <View style={{paddingTop: 5}}>
+      <View style={{paddingTop: MARGIN / 2}}>
       <Blocks>
           {top}
       </Blocks>

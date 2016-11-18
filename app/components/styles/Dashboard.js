@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
 } from 'react-native'
+import { MARGIN } from '../constants';
+
 
 export default styles = StyleSheet.create({
   container : {
@@ -12,7 +14,7 @@ export default styles = StyleSheet.create({
   },
   notifications: {
     backgroundColor: '#26a65b',
-    padding: 15,
+    padding: MARGIN * 1.5,
   },
   notificationsText: {
     color: 'white',

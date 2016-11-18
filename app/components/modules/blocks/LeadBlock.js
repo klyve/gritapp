@@ -14,7 +14,7 @@ import {
 
 import styles from './styles/lead';
 import { Icon } from 'react-native-elements';
-import { MARGIN } from '../../constants';
+import { MARGIN, MARGIN_HEIGHT } from '../../constants';
 
 export default class LeadBlock extends Component {
 
@@ -67,7 +67,7 @@ export default class LeadBlock extends Component {
 
       if (this.props.place){
         iconOrText = [
-          <View style={{marginLeft: 10, marginRight: 10}}>
+          <View style={{marginLeft: MARGIN, marginRight: MARGIN}}>
             <Text style={{fontSize: 25}}>
               {this.props.place}
             </Text>
@@ -77,7 +77,7 @@ export default class LeadBlock extends Component {
 
     } else {
       iconOrText = [
-        <View style={{paddingLeft: 10, PaddingRight: 10}}>
+        <View style={{paddingLeft: MARGIN, PaddingRight: MARGIN}}>
           <Icon
             name={this.props.trophy}
             type='font-awesome'

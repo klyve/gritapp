@@ -5,7 +5,8 @@ import {
 } from 'react-native'
 
 import {
-  MARGIN
+  MARGIN,
+  HEADER_HEIGHT
 } from '../../constants';
 
 export default styles = StyleSheet.create({
@@ -15,7 +16,7 @@ export default styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    marginTop: 80,
+    marginTop: HEADER_HEIGHT,
   },
   groupImageView: {
     alignItems: 'center',
