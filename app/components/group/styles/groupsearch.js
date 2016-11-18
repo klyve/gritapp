@@ -13,7 +13,8 @@ export default styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
   body: {
-    marginTop: 60,
+    flex: .8,
+    marginTop: 80,
     backgroundColor: '#f0f0f0',
   },
   searchBar: {
@@ -45,10 +46,6 @@ export default styles = StyleSheet.create({
     marginLeft: MARGIN,
     marginRight: MARGIN,
   },
-
-
-
-
   searchContainer: {
     backgroundColor: '#f0f0f0',
     height: 60,
@@ -69,5 +66,9 @@ export default styles = StyleSheet.create({
     position: 'absolute',
     right: 20,
     top: 20,
+  },
+
+  results: {
+
   },
 })
