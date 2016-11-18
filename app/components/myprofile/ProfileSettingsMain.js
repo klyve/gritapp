@@ -92,10 +92,7 @@ class ProfileSettingsMain extends Component {
           </TouchableHighlight>
 
           {/*Settings nr 3*/}
-          <TouchableHighlight
-          onPress = {() => {}}
-          activeOpacity={71 / 100}
-          underlayColor={"rgb(210,210,210)"}
+          <View
           style = {[
             styles.setting,
             {
@@ -116,7 +113,7 @@ class ProfileSettingsMain extends Component {
               style = {styles.switch}
             />
             </View>
-          </TouchableHighlight>
+          </View>
           {/*Settings nr 4*/}
           <View style = {styles.setting}>
             <Text style = {styles.settingsTextLeft}>Group invites</Text>
