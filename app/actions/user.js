@@ -24,7 +24,9 @@ export function registerUser(data) {
     .then((json) => {
       if(json.status && json.status == 200) {
         dispatch({type: "USER_REGISTER_SUCCESS", payload: json})
-        dispatch({type: "USER_CHANGED", payload: json})
+        AsyncStorage.setItem("@accesstoken:key", json.token).then(() => {
+          dispatch({type: "USER_CHANGED", payload: json})
+        })
       }else {
         console.log(json)
         dispatch({type: "USER_REGISTER_ERROR", payload: json})
@@ -85,13 +87,7 @@ export function loginUser(username, pwd) {
       if(json.status && json.status == 200) {
         AsyncStorage.setItem("@accesstoken:key", json.token).then(() => {
           dispatch({type: "USER_CHANGED", payload: json})
-          // dispatch({
-          //   type: 'PAGE_CHANGE',
-          //   payload: {
-          //     current: 'swipeview',
-          //     props: {type: 'reset'}
-          //   }
-          // })
+          
         })
       }else {
         dispatch({type: "USER_LOGIN_ERROR", payload: json})
