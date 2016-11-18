@@ -83,7 +83,7 @@ class LoginView extends Component {
 
             <TextInput
               style={styles.input}
-              placeholder="Phone number"
+              placeholder="Phone Number"
               placeholderTextColor="#fff"
               underlineColorAndroid='rgba(0,0,0,0)'
 
@@ -115,7 +115,7 @@ class LoginView extends Component {
               ref='pass'
               secureTextEntry={true}
               style={styles.input}
-              placeholder="Pasword"
+              placeholder="Password"
               placeholderTextColor="#fff"
               underlineColorAndroid='rgba(0,0,0,0)'
 
@@ -155,7 +155,7 @@ class LoginView extends Component {
                 this.signIn()
               }}>
               <View style={styles.signin}>
-                  <Text style={styles.whiteFont}>Log In</Text>
+                  <Text style={{color: '#fff'}}>Log In</Text>
               </View>
             </TouchableHighlight>
 
@@ -164,7 +164,7 @@ class LoginView extends Component {
               this.props.dispatch(Route.to('signup'));
             }}>
             <View style={styles.signup}>
-                <Text style={styles.whiteFont}>Sign Up</Text>
+                <Text style={{color: '#fff'}}>Sign Up</Text>
             </View>
             </TouchableHighlight>
           </View>

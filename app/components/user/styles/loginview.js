@@ -73,22 +73,6 @@ export default styles = StyleSheet.create({
     borderBottomColor: '#CCC',
     borderColor: 'transparent'
   },
-  inputContent: {
-    position: 'absolute',
-    left: 61,
-    right: 0,
-    ...Platform.select({
-      android: {
-        top: 8,
-        height: 40,
-      },
-      ios: {
-        height: 20,
-        top: 15,
-        backgroundColor: 'red',
-      },
-    }),
-},
   input: {
     flex: 1,
     marginLeft: MARGIN * 2,
@@ -100,10 +84,4 @@ export default styles = StyleSheet.create({
     alignItems: 'flex-end',
     padding: MARGIN * 1.5,
   },
-  greyFont: {
-    color: '#D8D8D8'
-  },
-  whiteFont: {
-    color: '#FFF'
-  }
 })
