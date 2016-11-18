@@ -109,7 +109,7 @@ export default class GroupSearch extends Component {
               this.setState({showGroups: match});
             }} />
 
-          <ScrollView>
+          <ScrollView style = {styles.results}>
             {searchedGroups}
           </ScrollView>
 
