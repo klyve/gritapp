@@ -113,6 +113,7 @@ class LoginView extends Component {
 
             <TextInput
               ref='pass'
+              secureTextEntry={true}
               style={styles.input}
               placeholder="Pasword"
               placeholderTextColor="#fff"
