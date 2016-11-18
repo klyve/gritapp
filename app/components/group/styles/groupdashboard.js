@@ -6,7 +6,8 @@ import {
 //Constants
 let groupColor = '#c0392b';
 import {
-  MARGIN
+  MARGIN,
+  HEADER_HEIGHT
 } from '../../constants';
 
 export default styles = StyleSheet.create({
@@ -15,7 +16,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   body: {
-    marginTop: 80,
+    marginTop: HEADER_HEIGHT,
     flex: 1,
   },
   groupImageView: {
@@ -29,7 +30,6 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f0f0f0',
   },
-
 
   groupImage: {
     height: 160,
@@ -53,10 +53,6 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingTop: MARGIN,
     paddingBottom: MARGIN,
-  },
-  groupTitleText:{
-    fontSize: 30,
-    color: groupColor,
   },
   groupDescriptionText: {
     fontSize: 16,
@@ -90,7 +86,4 @@ export default styles = StyleSheet.create({
   tabText: {
     fontSize: 16,
   },
-  tabFocus: {
-    color: 'red', 
-  }
 })

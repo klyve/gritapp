@@ -39,11 +39,6 @@ export default styles = StyleSheet.create({
     top: -60,
   },
 
-
-  groupTitleText:{
-    fontSize: 30,
-    color: groupColor,
-  },
   groupDescriptionText: {
     fontSize: 16,
     textAlign: 'center',

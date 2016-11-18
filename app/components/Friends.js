@@ -7,7 +7,10 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
+
+import * as Route from '../actions/route';
 import { Actions } from 'react-native-router-flux';
+
 import {
   MainHeader,
   Blocks,
@@ -58,6 +61,7 @@ export default class Friends extends Component {
     this.state = {
       searchbar: false
     }
+    console.log(this.props);
   }
   changeBar(state) {
     this.setState({
@@ -78,7 +82,6 @@ export default class Friends extends Component {
     }
     return (
       <View>
-
         <SearchBar
           containerStyle={styles.searchContainer}
           inputStyle={styles.searchInput}
@@ -124,20 +127,27 @@ export default class Friends extends Component {
     return (
       <View style={styles.container}>
 
-
         <View style={styles.body}>
-          <ScrollView style={{flex: 1,}}>
+          <ScrollView>
             <TouchableHighlight style={styles.meButton}>
               <View style={styles.me}>
                 <Image style={styles.myImage} source={{uri: me.picturePath}}></Image>
                 <Text style={styles.meText}> {me.name}</Text>
-                <View style = {styles.cogIcon}>
-                  <Icon
-                    name='cog'
-                    type='font-awesome'
-                    color='black'
-                  />
-                </View>
+                <TouchableHighlight
+                  onPress = {() => {
+                    this.props.dispatch(Route.to("profilesettingsmain"));
+                  }}
+                  activeOpacity={71 / 100}
+                  underlayColor={"rgb(210,210,210)"}
+                >
+                  <View style = {styles.cogIcon}>
+                    <Icon
+                      name='cog'
+                      type='font-awesome'
+                      color='black'
+                    />
+                  </View>
+                </TouchableHighlight>
               </View>
             </TouchableHighlight>
 

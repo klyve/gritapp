@@ -6,36 +6,37 @@ import {
   Text,
   View,
   Switch,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage,
 } from 'react-native'
+import { Actions } from 'react-native-router-flux';
+
+import { connect } from 'react-redux';
 
 import Swiper from 'react-native-swiper';
 import styles from './styles/SwipeView';
-
-import {
-  MainHeader,
-}from './modules';
+import { MainHeader }from './modules';
 import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
 
-export default class SwipeView extends Component {
+
+import * as Route from '../actions/route';
+
+class SwipeView extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
   }
 
 
   btnPress(index) {
     //console.log(this._swiper.scrollBy(1))
     this.refs.swiper.scrollBy(index)
-
   }
 
   render() {
     //const { state, actions } = this.props;
-
     return (
       <View>
       <Swiper
@@ -55,7 +56,9 @@ export default class SwipeView extends Component {
             right={() => { this.btnPress(1) }}
            />
           <View style={[styles.contentView, styles.noPadding]}>
-            <Friends />
+            <Friends
+              {...this.props}
+            />
           </View>
         </View>
 
@@ -68,7 +71,9 @@ export default class SwipeView extends Component {
             left={() => { this.btnPress(-1) }}
           />
           <View style={[styles.contentView, styles.noPadding]}>
-            <Dashboard />
+            <Dashboard
+              {...this.props}
+            />
           </View>
         </View>
 
@@ -90,3 +95,9 @@ export default class SwipeView extends Component {
     );
   }
 }
+
+
+export default connect(state => ({
+    groups: state.groups.groups
+  })
+)(SwipeView);

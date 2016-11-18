@@ -12,27 +12,28 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as Groups from '../actions/groups';
+import styles from './styles/Dashboard';
 import {
   MainHeader,
   Blocks,
   FriendBlock,
-} from './modules'
-
-import * as groups from '../actions/groups'
+} from './modules';
 
 
 
-import styles from './styles/Dashboard';
-
-
-class Dashboard extends Component {
+export default class Dashboard extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
     this.state = {
       groups: [],
     }
+
   }
+  componentWillMount() {
+    this.props.dispatch(Groups.getUserGroups());
+  }
+
   gotoGroup(groupId) {
       Actions.groupdashboard(this.props.groups[groupId])
   }
@@ -42,7 +43,8 @@ class Dashboard extends Component {
   }
 
   renderNotifications() {
-    let notifications = 13;
+    let notifications = 3;
+
     if(notifications <= 0)
       return false;
 
@@ -50,43 +52,39 @@ class Dashboard extends Component {
       <TouchableHighlight style={styles.notifications}
         onPress={() => this.showNotifications()}
       >
-        <Text style={styles.notificationsText}>Notifications {notifications}</Text>
+        <Text style={styles.notificationsText}>New Invites: {notifications}</Text>
       </TouchableHighlight>
     )
   }
-  componentWillMount() {
-    let { dispatch } = this.props
-    dispatch(groups.getUserGroups());
-  }
 
   render() {
+    let showGroups;
+    if(this.props.groups.length > 0) {
+       showGroups = this.props.groups.map((a,b) => {
 
-    let showGroups = this.props.groups.map((a,b) => {
-
-      let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
-      return (
-        <FriendBlock
-          onPress={() => {this.gotoGroup(b)}}
-          image={a.image}
-          name={a.name}
-          unread={a.unread}
-          key={b}
-        />
-      )
-    })
+        let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
+        return (
+          <FriendBlock
+            onPress={() => {this.gotoGroup(b)}}
+            image={a.image}
+            name={a.name}
+            unread={a.unread}
+            key={b}
+          />
+        )
+      })
+    } else {
+      showGroups = false;
+    }
     return (
       <View style={styles.container}>
         {this.renderNotifications()}
-        <ScrollView style={styles.scrollView}>
-          {showGroups}
+        <ScrollView>
+          <Blocks>
+            {showGroups}
+          </Blocks>
         </ScrollView>
       </View>
     );
   }
 }
-
-
-export default connect(state => ({
-    groups: state.groups.groups
-  })
-)(Dashboard);

@@ -11,12 +11,14 @@ import {
 } from 'react-native';
 import styles from './styles/profile';
 import { Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-elements';
 
 import {
   MainHeader,
   Blocks,
   FriendBlock
-} from './modules'
+} from './modules';
+
 var groupColor;
 
 // Blueprints
@@ -43,7 +45,6 @@ export default class Profile extends Component {
         color="green"
         leftBtn="chevron-left"
         left={() => { Actions.pop() }}
-        large
       />
 
         <View style={styles.body}>
@@ -64,16 +65,19 @@ export default class Profile extends Component {
               <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: 5,}}>
               </View>
 
-              <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={{color: '#2ecc71', fontSize: 22, fontWeight: 'bold', textAlign: 'center'}}> ADD FRIEND </Text>
+              <View style={{flex: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                  <Icon
+                    name='user-plus'
+                    type='font-awesome'
+                    size={50}
+                    color='#2ecc71'
+                    underlayColor='transparent'
+                    onPress={() => {}}
+                  />
               </View>
-
             </View>
-
           </View>
-
         </View>
-
       </View>
     );
   }

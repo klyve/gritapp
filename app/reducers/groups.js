@@ -5,10 +5,9 @@ const initialState = {
 export default function groups(state = initialState, action = {}) {
   switch (action.type) {
     case 'FETCH_USERGROUPS_FULLFILLED':
-      console.log("Fetched usergorups")
       return {
         ...state,
-        groups: action.payload
+        groups: action.payload.groups
       };
     break;
     default:

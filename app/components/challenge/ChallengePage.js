@@ -1,4 +1,3 @@
-import NavigationBar from 'react-native-navbar'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,21 +10,37 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-router-flux';
 import {
+  MainHeader,
   Blocks,
   FriendBlock
-} from './modules'
-import styles from './styles/challengeView';
+} from '../modules'
+import styles from './styles/challengePage';
+import SinglePictureView from './SinglePictureView';
 
-
+// Blueprints
 function Challenge(){
   this.comment = "";
   this.commentSender = "";
   this.pictureUrl = "";
   this.id = "";
 }
+function Group(){
+  this.name = "";
+  this.picturePath = "";
+  this.description = "";
+  this.currentChallenges = [];
+  this.public;
+}
 
-var challenges = [];
+
+var currentGroup = new Group();
+  currentGroup.name = "Pølsefest";
+  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
+  currentGroup.description = "Vi liker pølser, de er best";
+  currentGroup.public = false;
+
 
 var elefant = new Challenge();
   elefant.pictureUrl = "http://knysnaelephantpark.co.za/wp-content/uploads/2015/02/Elephant.png";
@@ -51,27 +66,65 @@ var fisk = new Challenge();
   fisk.pictureUrl = "http://i.imgur.com/prm1a8l.jpg";
   fisk.id = Math.floor(Math.random() * 100000);
 
-challenges.push(elefant);
-challenges.push(hund);
-challenges.push(katt);
-challenges.push(slange);
-challenges.push(mus);
-challenges.push(fisk);
+var challenges = [elefant, hund, katt, slange, mus, fisk];
+var showSinglePictureTag = [];
 
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
+var groupColor = (currentGroup.public) ? 'blue' : 'red';
+var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
-export default class social extends Component {
+export default class ChallengePage extends Component {
+
+  constructor(props){
+    super(props)
+
+    showSinglePictureTag = [];
+
+    this.state={
+      showSingleOrNot: false,
+    }
+  }
+  closeSinglePicture() {
+    console.log("Closing picture")
+    this.setState({
+      showSingleOrNot: false,
+    })
+  }
+  showSinglePictureView(challenge){
+
+      // WARNING WARNING WARNING WARNING WARNING WARNING
+
+      // SPAGHETTI AHEAD! SPAGHETTI AHEAD! SPAGHETTI AHEAD!
+
+      // TEST PURPOSE ONLY! TEST PURPOSE ONLY! TEST PURPOSE ONLY!
+
+
+
+      showSinglePictureTag =
+      <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
+      <SinglePictureView close={() => {this.closeSinglePicture()}} />
+      </View> ;
+
+      this.setState({showSingleOrNot: true});
+      /*
+
+        Vi burde legge inn dette i en action, så kan vi ta Action.pop()
+        fra SinglePictureView komponenten når de trykker på exit. eller når
+        android brukere trykker "tilbake".
+
+      */
+  }
+
+
   render() {
-
+    let SingleView = (!this.state.showSingleOrNot) ? false : showSinglePictureTag;
     let all = challenges.map((challenge, i) => {
-    console.log(challenge.id)
     return (
       <TouchableHighlight
       style = {styles.imageButton}
       key = {i}
-      onPress = {() => {}}
+      onPress = {() => {
+        this.showSinglePictureView(challenge)
+      }}
       activeOpacity={71 / 100}
       underlayColor={"rgb(210,210,210)"}
       >
@@ -84,9 +137,15 @@ export default class social extends Component {
   })
 
     return (
-
+      <View style={{flex: 1}}>
       <View style={styles.container}>
-        <View style = {styles.navbar}></View>
+
+        <MainHeader
+          color={groupColor}
+          leftBtn="chevron-left"
+          left={() => { Actions.pop() }}
+        />
+
         <ScrollView style = {styles.body}>
 
         <View style = {styles.description}>
@@ -107,15 +166,16 @@ export default class social extends Component {
           onPress = {() => {}}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}>
-
-              <Image
-                style = {styles.cameraLogo}
-                resizeMode={"contain"}
-                source={require('./images/camera1.png')}
-              />
+            <Text>Camera</Text>
           </TouchableHighlight>
         </View>
+
       </View>
+
+      {SingleView}
+
+      </View>
+
     );
   }
 }

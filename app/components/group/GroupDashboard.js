@@ -16,13 +16,16 @@ import {
   FriendBlock
 } from '../modules'
 
+import {
+  MARGIN,
+  HEADER_HEIGHT
+} from '../constants';
+
 import { Actions } from 'react-native-router-flux';
 import GroupChallenges from './GroupChallenges';
 import GroupLeaderboard from './GroupLeaderboard';
 import GroupMembers from './GroupMembers';
 import styles from './styles/groupdashboard';
-
-var groupColor;
 
 // Blueprints
 function Group(){
@@ -38,8 +41,8 @@ var currentGroup = new Group();
   currentGroup.description = "Vi liker pølser, de er best";
   currentGroup.public = false;
 
-groupColor = (currentGroup.public) ? '#3498db' : '#c0392b';
-const MARGIN = 10;
+var groupColor = (currentGroup.public) ? 'blue' : 'red';
+var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
 export default class GroupDashboard extends Component {
 
@@ -49,7 +52,6 @@ export default class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
-    console.log(this.props)
   }
 
 
@@ -68,26 +70,19 @@ export default class GroupDashboard extends Component {
 
     let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
     let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
+    let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
-
-    let tabStyles = []
-    tabStyles.push([styles.tabText])
-    tabStyles.push([styles.tabText])
-    tabStyles.push([styles.tabText])
-
-    tabStyles[this.state.activeTab].push(styles.tabFocus)
-
+    tabStyles[this.state.activeTab].push({color: groupColorHex})
 
     return (
       <View style={styles.container}>
 
         <MainHeader
-          color="green"
+          color={groupColor}
           leftBtn="chevron-left"
           rightBtn="cog"
           left={() => { Actions.pop() }}
           right={() => {Actions.groupsettingsmain()}}
-          large
         />
 
         <View style={styles.body}>
@@ -98,7 +93,7 @@ export default class GroupDashboard extends Component {
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{this.props.name}</Text>
+              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.name}</Text>
 
               <Text style={styles.groupDescriptionText}>{this.props.bio}</Text>
             </View>
@@ -145,36 +140,33 @@ export default class GroupDashboard extends Component {
 
 
 
-              <View style={{flex: 12, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
+              <View style={{flex: 12, backgroundColor: '#f0f0f0'}}>
 
                 <Swiper
                   ref={"swiper"}
-                  style={styles.wrapper}
                   showsButtons={false}
                   showsPagination={false}
                   loop={false}
                   index={this.state.activeTab}
-                  onMomentumScrollEnd ={ (e, state, context) => this.onMomentumScrollEnd(e,state,context)}
+                  onMomentumScrollEnd ={ (e, state, context) => this.onMomentumScrollEnd(e, state, context) }
                 >
-                <View>
-                  <ScrollView>
-                    <GroupLeaderboard />
-                  </ScrollView>
-                </View>
-                <View>
-                  <ScrollView>
-                    <GroupChallenges />
-                  </ScrollView>
-                </View>
+                  <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
+                    <ScrollView>
+                      <GroupLeaderboard />
+                    </ScrollView>
+                  </View>
 
-                <View>
-                  <ScrollView>
-                    <GroupMembers />
-                  </ScrollView>
-                </View>
+                  <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
+                    <ScrollView>
+                      <GroupChallenges />
+                    </ScrollView>
+                  </View>
 
-
-
+                  <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
+                    <ScrollView>
+                      <GroupMembers />
+                    </ScrollView>
+                  </View>
                 </Swiper>
 
 

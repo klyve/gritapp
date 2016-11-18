@@ -3,25 +3,21 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
+import {HEADER_HEIGHT} from '../constants';
 
 
 
 export default styles = StyleSheet.create({
-
   container : {
     flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  navbar: {
-    flex: 1/10,
-    backgroundColor: '#2ecc71',
-    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
   },
   body: {
-    flex: 1/1.5,
+    marginTop: HEADER_HEIGHT,
+    flex: 1,
   },
   requestContainer: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
     flexDirection: 'column',
   },
   request: {
@@ -34,8 +30,7 @@ export default styles = StyleSheet.create({
   senderImage: {
     width: 60,
     height: 60,
-    borderRadius: 15,
-    backgroundColor: 'blue',
+    borderRadius: 30,
   },
   requestText: {
     marginLeft: 10,
