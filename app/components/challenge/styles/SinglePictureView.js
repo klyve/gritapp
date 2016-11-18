@@ -30,6 +30,7 @@ export default styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   scroll: {
     backgroundColor: '#f0f0f0',
@@ -71,8 +72,16 @@ export default styles = StyleSheet.create({
 
   titleText: {
     fontSize: 25,
+    marginLeft: -150,
   },
   commentText: {
     fontSize: 14,
+  },
+  exitButton:
+  {
+    paddingTop: MARGIN,
+    paddingBottom: MARGIN,
+    paddingLeft: MARGIN,
+    paddingRight: MARGIN,
   },
 })
