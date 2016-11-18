@@ -81,6 +81,7 @@ export default class GroupLeaderboard extends Component {
             name={lead[0].name}
             points={lead[0].score}
             large
+            key={0}
           />
 
           <LeadBlock
@@ -92,6 +93,7 @@ export default class GroupLeaderboard extends Component {
             image={lead[1].picturePath}
             name={lead[1].name}
             points={lead[1].score}
+            key={1}
             large
           />
 
@@ -104,6 +106,7 @@ export default class GroupLeaderboard extends Component {
             image={lead[2].picturePath}
             name={lead[2].name}
             points={lead[2].score}
+            key={2}
             large
           />
 
