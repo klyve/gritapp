@@ -49,7 +49,7 @@ var elefant = new Challenge();
 var hund = new Challenge();
   hund.pictureUrl = "http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg";
   hund.id = Math.floor(Math.random() * 100000);
-  
+
 var katt = new Challenge();
   katt.pictureUrl = "http://www.agria.no/imagevault/publishedmedia/zfl838orwjwg72jkzerz/gra-katt-vit-bakgrund.jpg";
   katt.id = Math.floor(Math.random() * 100000);
@@ -146,6 +146,7 @@ export default class ChallengePage extends Component {
 
         <MainHeader
           color={groupColor}
+          title="Challenge Name"
           leftBtn="chevron-left"
           left={() => { Actions.pop() }}
         />
@@ -153,9 +154,9 @@ export default class ChallengePage extends Component {
         <ScrollView style = {styles.body}>
 
         <View style = {styles.description}>
-          <Text style = {styles.descriptionHeader}>Challenge Name</Text>
+          <Text style = {styles.descriptionHeader}>Description</Text>
           <Text style = {styles.descriptionParagraph}>
-            Her kommer det noe funfact om din challenge blah blah  blah  blah  blah blah blah lorem ipsum blah blah blah...
+            Her kommer det noe funfact om din challenge  blah blah blah lorem ipsum blah blah blah...
           </Text>
         </View>
 
