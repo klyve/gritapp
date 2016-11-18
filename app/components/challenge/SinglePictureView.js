@@ -105,6 +105,10 @@ var pst = new Post()
 
 export default class SinglePictureView extends Component {
 
+  constructor(props){
+    super(props)
+  }
+
   render() {
 
     var inc = 0; // Used (in friendsConfirmed) as a barrier to prevent more than 4 friend pictures in the like-bar
@@ -145,7 +149,7 @@ export default class SinglePictureView extends Component {
 
             <View style={{flex: 7,}}>
               <ScrollView style={styles.scroll}>
-                <Image style={styles.currentImage} source={{uri: pst.picturePath}}></Image>
+                <Image style={styles.currentImage} source={{uri: this.props.picture}}></Image>
 
                 <View style={styles.likeBar}>
                   <Text style={{fontSize: 30}}> {pst.likes.length}</Text>
