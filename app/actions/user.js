@@ -8,21 +8,25 @@ export function registerUser(data) {
   return function(dispatch) {
     dispatch({type: "USER_REGISTER_START"})
     data.password = hash.sha256().update(data.password).digest('hex');
+    console.log("REgister user:",data);
     fetch('https://dd25c333.ngrok.io/api/user', {
+
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        data
+        ...data
       })
     })
     .then((data) => data.json())
     .then((json) => {
       if(json.status && json.status == 200) {
         dispatch({type: "USER_REGISTER_SUCCESS", payload: json})
+        dispatch({type: "USER_CHANGED", payload: json})
       }else {
+        console.log(json)
         dispatch({type: "USER_REGISTER_ERROR", payload: json})
       }
     })

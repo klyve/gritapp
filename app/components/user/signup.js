@@ -37,7 +37,12 @@ class Signup extends Component {
   }
 
   registerUser() {
-    this.props.dispatch(this.state.username, this.state.nick, this.state.password)
+
+    this.props.dispatch(user.registerUser({
+        number: this.state.phonenumber,
+        username: this.state.username,
+        password: this.state.password
+      }));
   }
 
   render() {
