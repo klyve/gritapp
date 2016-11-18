@@ -98,6 +98,7 @@ export default class ChallengePage extends Component {
       <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
       <SinglePictureView
         picture={challenge.pictureUrl}
+        close={() => {this.closeSinglePictureView()}}
       />
       </View> ;
 
@@ -111,9 +112,15 @@ export default class ChallengePage extends Component {
       */
   }
 
+  closeSinglePictureView() {
+    this.setState({
+      showSingleOrNot: false,
+    })
+  }
 
   render() {
 
+    let singlePicture = (!this.state.showSingleOrNot ? false : showSinglePictureTag);
     let all = challenges.map((challenge, i) => {
     return (
       <TouchableHighlight
@@ -169,7 +176,7 @@ export default class ChallengePage extends Component {
 
       </View>
 
-      {showSinglePictureTag}
+      {singlePicture}
 
       </View>
 
