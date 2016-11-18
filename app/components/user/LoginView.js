@@ -60,34 +60,38 @@ class LoginView extends Component {
             <View style={styles.inputs}>
                 <View style={styles.inputContainer}>
                     <Image style={styles.inputUsername} source={{uri: 'https://i.imgur.com/iVVVMRX.png'}}/>
-                    <TextInput
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Phone number"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.state.username}
-                        onChangeText={(text) => {
-                          this.setState({
-                            username: text,
-                          })
-                        }}
-                    />
+                    <View style={styles.inputContent}>
+                      <TextInput
+                          style={[styles.input, styles.whiteFont]}
+                          placeholder="Phone number"
+                          placeholderTextColor="#FFF"
+                          underlineColorAndroid='rgba(0,0,0,0)'
+                          value={this.state.username}
+                          onChangeText={(text) => {
+                            this.setState({
+                              username: text,
+                            })
+                          }}
+                      />
+                    </View>
                 </View>
                 <View style={styles.inputContainer}>
                     <Image style={styles.inputPassword} source={{uri: 'https://i.imgur.com/ON58SIG.png'}}/>
-                    <TextInput
-                        password={true}
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Pasword"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.state.password}
-                        onChangeText={(text) => {
-                          this.setState({
-                            password: text
-                          })
-                        }}
-                    />
+                    <View style={styles.inputContent}>
+                      <TextInput
+                          password={true}
+                          style={[styles.input, styles.whiteFont]}
+                          placeholder="Pasword"
+                          placeholderTextColor="#FFF"
+                          underlineColorAndroid='rgba(0,0,0,0)'
+                          value={this.state.password}
+                          onChangeText={(text) => {
+                            this.setState({
+                              password: text
+                            })
+                          }}
+                      />
+                    </View>
                 </View>
                 <View style={styles.forgotContainer}>
                     <Text style={styles.greyFont}>Forgot Password</Text>
