@@ -40,6 +40,7 @@ export default class Dashboard extends Component {
   }
 
   gotoGroup(groupId) {
+    console.log(this.props.groups[groupId]);
     Actions.groupdashboard(this.props.groups[groupId])
   }
 

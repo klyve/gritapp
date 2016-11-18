@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
+import { connect } from 'react-redux';
 
 import {
   MainHeader,
@@ -27,24 +28,9 @@ import GroupLeaderboard from './GroupLeaderboard';
 import GroupMembers from './GroupMembers';
 import styles from './styles/groupdashboard';
 
-// Blueprints
-function Group(){
-  this.name = "";
-  this.picturePath = "";
-  this.description = "";
-  this.currentChallenges = [];
-  this.public;
-}
-var currentGroup = new Group();
-  currentGroup.name = "Pølsefest";
-  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
-  currentGroup.description = "Vi liker pølser, de er best";
-  currentGroup.public = false;
 
-var groupColor = (currentGroup.public) ? 'blue' : 'red';
-var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
-export default class GroupDashboard extends Component {
+class GroupDashboard extends Component {
 
   constructor(props) {
     super(props)
@@ -52,6 +38,8 @@ export default class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
+
+
   }
 
 
@@ -68,8 +56,11 @@ export default class GroupDashboard extends Component {
 
   render() {
 
-    let groupBannerColor = (currentGroup.public) ? styles.blueBannerColor : styles.redBannerColor;
-    let groupTitleColor = (currentGroup.public) ? styles.blueTextColor : styles.redTextColor;
+    let groupBannerColor = (this.props.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (this.props.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
+    let groupColor = (this.props.grouptype == "public") ? 'blue' : 'red';
+    let groupColorHex = (this.props.grouptype == "public") ? '#2574a9' : '#c0392b';
+
     let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
     tabStyles[this.state.activeTab].push({color: groupColorHex})
@@ -181,3 +172,7 @@ export default class GroupDashboard extends Component {
     );
   }
 }
+export default connect(state => ({
+    state
+  })
+)(GroupDashboard);

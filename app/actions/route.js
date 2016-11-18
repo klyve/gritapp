@@ -23,6 +23,7 @@ export function to(route, props = {}) {
   return function(dispatch) {
 
     if(typeof Actions[route] == 'function') {
+      
       Actions[route](props);
     }else {
       console.log("Not a function: ", route);

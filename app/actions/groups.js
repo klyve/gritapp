@@ -1,3 +1,7 @@
+import * as Route from './route';
+import { Actions } from 'react-native-router-flux';
+
+
 export function getUserGroups() {
   return function(dispatch) {
     dispatch({type: "FETCH_USERGROUPS_STARTED"})
@@ -28,6 +32,7 @@ export function createGroup(data) {
     .then((data) => data.json())
     .then((json) => {
       if(json.status && json.status == 200) {
+        dispatch(Route.to("groupdashboard", json.group));
         dispatch({type: "CREATE_GROUP_SUCCESS", payload: json})
       }else {
         dispatch({type: "USER_REGISTER_ERROR", payload: json})
