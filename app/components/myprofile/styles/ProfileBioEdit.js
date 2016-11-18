@@ -16,15 +16,14 @@ export default styles = StyleSheet.create({
   },
   body: {
     marginTop: 60,
-    flex: .8,
+    flex: .9,
   },
   header: {
     marginTop: 30,
+    height: 60,
     alignItems: 'center',
-    flex: .08,
     flexDirection: 'row',
     borderColor: 'black',
-    marginTop: 20,
   },
   textInput: {
     padding: 10,
