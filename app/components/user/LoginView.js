@@ -71,13 +71,15 @@ class LoginView extends Component {
 
 
           <View style={styles.inputs}>
-            <Icon
-              size={30}
-              name='phone'
-              type='font-awesome'
-              color='#ffffff'
-              underlayColor='transparent'
-            />
+            <View style={{width: 30}}>
+              <Icon
+                size={30}
+                name='phone'
+                type='font-awesome'
+                color='#ffffff'
+                underlayColor='transparent'
+              />
+            </View>
 
             <TextInput
               style={styles.input}
@@ -86,30 +88,38 @@ class LoginView extends Component {
               underlineColorAndroid='rgba(0,0,0,0)'
 
               value={this.state.username}
+
               onChangeText={(text) => {
                 this.setState({
                   username: text,
                 })
               }}
+              onSubmitEditing={(event) => {
+                this.refs.pass.focus();
+              }}
             />
           </View>
 
           <View style={styles.inputs}>
-            <Icon
-              size={30}
-              name='lock'
-              type='font-awesome'
-              color='#ffffff'
-              underlayColor='transparent'
-            />
+            <View style={{width: 30}}>
+              <Icon
+                size={30}
+                name='lock'
+                type='font-awesome'
+                color='#ffffff'
+                underlayColor='transparent'
+              />
+            </View>
 
             <TextInput
+              ref='pass'
               style={styles.input}
               placeholder="Pasword"
               placeholderTextColor="#fff"
               underlineColorAndroid='rgba(0,0,0,0)'
 
               value={this.state.password}
+
               onChangeText={(text) => {
                 this.setState({
                   password: text
@@ -127,7 +137,7 @@ class LoginView extends Component {
           <View style={styles.forgotContainer}>
 
             <TouchableHighlight onPress={() => {alert("VI TRENGER EN GLEMT PASSORD FUNKSJON")}}>
-              <Text style={{color: '#fff', opacity: 0.33, fontSize: 16,}}>
+              <Text style={{color: '#fff', opacity: 0.67, fontSize: 16,}}>
                 Forgot Password?
               </Text>
             </TouchableHighlight>
@@ -144,7 +154,7 @@ class LoginView extends Component {
                 this.signIn()
               }}>
               <View style={styles.signin}>
-                  <Text style={styles.whiteFont}>Sign In</Text>
+                  <Text style={styles.whiteFont}>Log In</Text>
               </View>
             </TouchableHighlight>
 
