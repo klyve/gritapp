@@ -66,7 +66,7 @@ class SwipeView extends Component {
           <MainHeader
             leftBtn="user"
             rightBtn="plus"
-            title="Main"
+            title="Grit"
             right={() => { this.btnPress(1) }}
             left={() => { this.btnPress(-1) }}
           />
