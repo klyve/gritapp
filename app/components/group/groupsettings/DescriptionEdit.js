@@ -15,7 +15,13 @@ import {
   MainHeader,
   Blocks,
   FriendBlock
-} from '../../modules'
+} from '../../modules';
+
+import {
+  MARGIN,
+  HEADER_HEIGHT,
+  HEADER_PADDING
+} from '../../constants';
 
 import styles from './styles/editDescription';
 
@@ -33,7 +39,7 @@ export default class DescriptionEdit extends Component {
          />
          <View style = {styles.body}>
             <View style = {styles.header}>
-              <Text style = {{fontSize: 16, paddingLeft: 20, width: 300, color: 'grey'}}>Show description</Text>
+              <Text style = {{fontSize: 16, paddingLeft: MARGIN * 2, width: MARGIN * 30, color: 'grey'}}>Show description</Text>
                 <Switch
                 value={(this.state && this.state.switchValue) || false}
                 onValueChange={(value) => {

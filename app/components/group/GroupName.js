@@ -17,11 +17,6 @@ import { Actions } from 'react-native-router-flux';
 
 import * as Groups from '../../actions/groups';
 
-
-
-
-
-
 const USERNAMEREGEX = /^[a-zA-Z0-9\-_ ]*$/;
 
 class GroupName extends Component {
@@ -39,7 +34,7 @@ class GroupName extends Component {
       token: this.props.user.token
     }
     let cool = this.props.dispatch(Groups.createGroup(data));
-    
+
   }
 
 

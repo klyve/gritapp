@@ -39,9 +39,7 @@ export default class CreateOrJoinGroup extends Component {
               Join Group
             </Text>
           </BlockFifty>
-
         </Blocks>
-
       </View>
     );
   }

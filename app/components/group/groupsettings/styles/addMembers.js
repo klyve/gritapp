@@ -4,6 +4,12 @@ import {
   Dimensions,
 } from 'react-native';
 
+import {
+  MARGIN,
+  HEADER_HEIGHT,
+  HEADER_PADDING
+} from '../../../constants';
+
 
 export default styles = StyleSheet.create({
   container: {
@@ -12,7 +18,7 @@ export default styles = StyleSheet.create({
   },
   body: {
     alignItems: 'center',
-    marginTop: 90,
+    marginTop: HEADER_HEIGHT,
   },
   groupImageView: {
     alignItems: 'center',
@@ -23,51 +29,51 @@ export default styles = StyleSheet.create({
     borderRadius: 80,
     borderWidth: 8,
     borderColor: '#ffffff',
-    top: -60,
+    top: -MARGIN * 6,
   },
   headerText: {
-    marginTop: -50,
+    marginTop: -(MARGIN * 5),
     fontSize: 30,
     color: '#3fc380',
   },
   membersContainer: {
     borderTopWidth: 1,
     borderColor: 'black',
-    marginTop: 20/5,
+    marginTop: (MARGIN * 2)/5,
     flex: 1,
     flexDirection: 'column',
   },
   friendButton: {
-    width: 380,
+    width: MARGIN * 37,
     borderBottomWidth: 2,
     borderColor: 'lightgrey',
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: MARGIN,
+    marginRight: MARGIN,
     flexDirection: 'row',
   },
   editButton: {
-    height: 25,
+    height: 20,
     width: 20,
     borderRadius: 5,
   },
   friends: {
     height: 70,
-    width: 380,
+    width: MARGIN * 37,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#ffffff',
   },
   friendImage: {
-    marginLeft: 10,
+    marginLeft: MARGIN,
     width: 60,
     height: 60,
     borderRadius: 30,
   },
   friendText: {
-    padding: 5,
-    paddingLeft: 20,
+    padding: MARGIN / 2,
+    paddingLeft: MARGIN * 2,
     fontSize: 20,
-    width: 250,
+    width: MARGIN * 25,
   },
   friendTargeted: {
     backgroundColor: '#2ecc71',

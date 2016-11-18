@@ -18,7 +18,7 @@ import {
   Blocks,
   FriendBlock,
   MainHeader,
-} from '../../modules'
+} from '../../modules';
 
 import {
   Icon

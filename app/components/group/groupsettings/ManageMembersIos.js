@@ -18,11 +18,11 @@ import {
   Blocks,
   FriendBlock,
   MainHeader,
-} from '../../modules'
+} from '../../modules';
 
 import {
   Icon
-} from 'react-native-elements'
+} from 'react-native-elements';
 
 import styles from './styles/manageMembers';
 

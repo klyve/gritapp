@@ -21,8 +21,6 @@ import {
   FriendBlock,
 } from './modules';
 
-
-
 export default class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -31,12 +29,10 @@ export default class Dashboard extends Component {
       groups: [],
       loading: false,
     }
-
   }
   componentWillMount() {
     this.props.dispatch(Groups.getUserGroups());
     this.setState({loading: true})
-
   }
 
   gotoGroup(groupId) {
@@ -75,7 +71,7 @@ export default class Dashboard extends Component {
                               alignItems: 'center',
                               justifyContent: 'center',
                               padding: 8,
-                              height: 80
+                              height: 80,
                             }}
                       size="large"
                       color="#2ecc71"
@@ -105,7 +101,6 @@ export default class Dashboard extends Component {
     } else {
       showGroups = [];
     }
-
 
     return (
       <View style={styles.container}>

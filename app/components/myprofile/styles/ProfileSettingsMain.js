@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Dimensions,
-} from 'react-native'
+} from 'react-native';
+
+import {
+  MARGIN,
+  HEADER_HEIGHT,
+  HEADER_PADDING
+} from '../../constants';
 
 export default styles = StyleSheet.create({
   container: {
@@ -11,7 +17,7 @@ export default styles = StyleSheet.create({
   },
   body: {
     alignItems: 'center',
-    marginTop: 90,
+    marginTop: HEADER_HEIGHT,
   },
   groupImageView: {
     alignItems: 'center',
@@ -25,8 +31,8 @@ export default styles = StyleSheet.create({
     top: -60,
   },
   headerText: {
-    marginTop: -50,
-    paddingBottom: 15,
+    marginTop: -(MARGIN*5),
+    paddingBottom: MARGIN * 2,
     fontSize: 30,
     color: '#3fc380',
   },
@@ -37,7 +43,7 @@ export default styles = StyleSheet.create({
   setting: {
     height: 60,
     alignItems: 'center',
-    paddingLeft: 15,
+    paddingLeft: MARGIN,
     backgroundColor: '#ffffff',
     flexDirection: 'row',
     borderColor: 'rgba(0,0,0,0.2)',
@@ -54,7 +60,7 @@ export default styles = StyleSheet.create({
   },
   switch: {
     width: 200,
-    marginLeft: 90,
+    marginLeft: MARGIN * 9,
   },
   logout: {
     height: 60,
@@ -63,10 +69,6 @@ export default styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.3)',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
   },
   redText: {
     color: 'red',

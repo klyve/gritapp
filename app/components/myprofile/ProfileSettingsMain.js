@@ -42,7 +42,6 @@ class ProfileSettingsMain extends Component {
     this.props.dispatch({
       type: 'PROFILE_PAGE',
       payload: {
-
       }
     })
   }
@@ -65,7 +64,7 @@ class ProfileSettingsMain extends Component {
           </View>
           <Text style = {styles.headerText}>Profile Settings</Text>
         </View>
-        <View style = {styles.settingsContainer}>
+        <ScrollView style = {styles.settingsContainer}>
         {/*Settings nr 1*/}
           <View style = {[
             styles.setting,
@@ -168,7 +167,7 @@ class ProfileSettingsMain extends Component {
             <Text style = {styles.redText}>Log out</Text>
 
           </TouchableHighlight>
-        </View>
+        </ScrollView>
       </View>
     );
   }

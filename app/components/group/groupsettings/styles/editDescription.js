@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Dimensions,
-} from 'react-native'
+} from 'react-native';
+
+import {
+  MARGIN,
+  HEADER_HEIGHT,
+  HEADER_PADDING
+} from '../../../constants';
 
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -15,11 +21,11 @@ export default styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   body: {
-    marginTop: 60,
+    marginTop: MARGIN * 6,
     flex: .9,
   },
   header: {
-    marginTop: 30,
+    marginTop: MARGIN * 3,
     height: 60,
     alignItems: 'center',
     flexDirection: 'row',
@@ -28,7 +34,7 @@ export default styles = StyleSheet.create({
     borderColor: 'grey'
   },
   textInput: {
-    padding: 15,
+    padding: MARGIN,
     flex: .8,
     color: 'grey',
     textAlign: 'left',

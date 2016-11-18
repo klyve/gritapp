@@ -18,8 +18,7 @@ import {
   MainHeader,
   Blocks,
   FriendBlock
-} from '../../modules'
-
+} from '../../modules';
 
 import styles from './styles/groupsettingsmain';
 
@@ -63,7 +62,7 @@ export default class GroupSettingsMain extends Component {
           </View>
           <Text style={styles.headerText}>Settings</Text>
         </View>
-        <View style = {styles.settingsContainer}>
+        <ScrollView style = {styles.settingsContainer}>
         {/*Settings nr 1*/}
           <View style = {[
             styles.setting,
@@ -168,9 +167,7 @@ export default class GroupSettingsMain extends Component {
           style = {styles.logout}>
             <Text style = {styles.redText}> Leave Group </Text>
           </TouchableHighlight>
-
-        </View>
-
+        </ScrollView>
       </View>
 
     );
