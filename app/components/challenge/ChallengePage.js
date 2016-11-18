@@ -81,7 +81,20 @@ export default class ChallengePage extends Component {
 
     this.state={
       showSingleOrNot: false,
+      pictures: challenges,
     }
+  }
+
+  handlePicture(picture) {
+    Actions.pop()
+    console.log("Image is",picture)
+    var fisk = new Challenge();
+      fisk.pictureUrl = picture;
+      fisk.id = Math.floor(Math.random() * 100000);
+    challenges.push(fisk)
+    this.setState({
+      pictures: challenges
+    })
   }
 
   showSinglePictureView(challenge){
@@ -98,7 +111,6 @@ export default class ChallengePage extends Component {
       <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
       <SinglePictureView
         picture={challenge.pictureUrl}
-        close={() => {this.closeSinglePictureView()}}
       />
       </View> ;
 
@@ -112,16 +124,10 @@ export default class ChallengePage extends Component {
       */
   }
 
-  closeSinglePictureView() {
-    this.setState({
-      showSingleOrNot: false,
-    })
-  }
 
   render() {
 
-    let singlePicture = (!this.state.showSingleOrNot ? false : showSinglePictureTag);
-    let all = challenges.map((challenge, i) => {
+    let all = this.state.pictures.map((challenge, i) => {
     return (
       <TouchableHighlight
       style = {styles.imageButton}
@@ -168,7 +174,9 @@ export default class ChallengePage extends Component {
 
         <View style = {styles.bottomBar}>
           <TouchableHighlight
-          onPress = {() => {}}
+          onPress = {() => {
+            Actions.challengecamera({camera: (picture) => {this.handlePicture(picture)}})
+          }}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}>
             <Text>Camera</Text>
@@ -177,7 +185,7 @@ export default class ChallengePage extends Component {
 
       </View>
 
-      {singlePicture}
+      {showSinglePictureTag}
 
       </View>
 

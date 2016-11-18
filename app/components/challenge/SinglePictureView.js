@@ -107,6 +107,7 @@ export default class SinglePictureView extends Component {
     super(props)
   }
 
+
   render() {
 
     var inc = 0; // Used (in friendsConfirmed) as a barrier to prevent more than 4 friend pictures in the like-bar
