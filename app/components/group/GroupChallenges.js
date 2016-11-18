@@ -73,6 +73,7 @@ export default class GroupChallenges extends Component {
         )})
     return (
       <View>
+
         <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
           ACTIVE CHALLENGES
         </Text>

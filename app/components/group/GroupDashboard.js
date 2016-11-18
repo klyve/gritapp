@@ -148,6 +148,15 @@ class GroupDashboard extends Component {
                   </View>
 
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
+                  <TouchableHighlight
+                  onPress = {() => { Actions.newchallenge(); }}
+                  activeOpacity={71 / 100}
+                  underlayColor={"rgb(210,210,210)"}
+                  style = {styles.newChallengeButton}>
+                    <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+                      NEW CHALLENGE
+                    </Text>
+                  </TouchableHighlight>
                     <ScrollView>
                       <GroupChallenges />
                     </ScrollView>

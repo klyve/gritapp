@@ -24,10 +24,11 @@ import Profile from '../components/Profile';
 import ChallengePage from '../components/challenge/ChallengePage';
 import SinglePictureView from '../components/challenge/SinglePictureView';
 import ChallengeCamera from '../components/challenge/ChallengeCamera';
+import NewChallenge from '../components/challenge/NewChallenge';
+
 
 import ProfileSettingsMain from '../components/myprofile/ProfileSettingsMain';
 import ProfileBioEdit from '../components/myprofile/ProfileBioEdit';
-
 
 import LoginView from '../components/user/LoginView';
 import RegisterView from '../components/user/RegisterView';
@@ -35,8 +36,8 @@ import RegisterView from '../components/user/RegisterView';
 import Signup from '../components/user/signup';
 import DescriptionEdit from '../components/group/groupsettings/DescriptionEdit';
 
-
 import Loadingscreen from '../components/Loadingscreen';
+
 
 
 const scenes = Actions.create(
@@ -70,6 +71,8 @@ const scenes = Actions.create(
     <Scene key="signup" hideNavBar component={Signup}/>
 
     <Scene key="descriptionedit" hideNavBar component={DescriptionEdit}/>
+
+    <Scene key="newchallenge" hideNavBar component={NewChallenge}/>
 
   </Scene>
 );

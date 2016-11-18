@@ -72,18 +72,15 @@ export default styles = StyleSheet.create({
     right: MARGIN,
     top: MARGIN * 3,
   },
-
-
   challengeButton: {
     marginBottom: MARGIN,
     marginLeft: MARGIN,
     marginRight: MARGIN,
   },
-
-
-
-
   tabText: {
     fontSize: 16,
   },
+  newChallengeButton: {
+    backgroundColor: groupColor,
+  }
 })
