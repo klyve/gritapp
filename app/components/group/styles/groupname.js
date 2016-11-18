@@ -19,8 +19,6 @@ export default styles = StyleSheet.create({
     backgroundColor: '#c0392b',
   },
   textInput: {
-      flex: 1,
-      flexDirection: 'row',
       fontSize: 30,
       color: "#eeeeee",
       textAlign: 'center',
