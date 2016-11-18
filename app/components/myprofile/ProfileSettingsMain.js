@@ -60,7 +60,6 @@ class ProfileSettingsMain extends Component {
         left={() => { Actions.pop() }}
        />
         <View style={styles.body}>
-
           <View style={styles.groupImageView}>
             <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
           </View>
@@ -85,11 +84,7 @@ class ProfileSettingsMain extends Component {
           }}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
-          style = {[
-            styles.setting,
-            {
-              borderBottomWidth: 3,
-            }]}>
+          style = {styles.setting}>
             <View style = {{flexDirection: 'row',}}>
               <Text style = {styles.settingsTextLeft}>Bio</Text>
               <Text style = {styles.settingsTextRight}>Bio preview</Text>
@@ -104,7 +99,7 @@ class ProfileSettingsMain extends Component {
           style = {[
             styles.setting,
             {
-              borderTopWidth: 2,
+              borderTopWidth: 3,
               borderBottomWidth: 1,
             }]}>
             <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -123,11 +118,7 @@ class ProfileSettingsMain extends Component {
             </View>
           </TouchableHighlight>
           {/*Settings nr 4*/}
-          <View style = {[
-            styles.setting,
-            {
-              borderBottomWidth: 3,
-            }]}>
+          <View style = {styles.setting}>
             <Text style = {styles.settingsTextLeft}>Group invites</Text>
             <Switch
             value={(this.state && this.state.switchValue) || false}
@@ -145,7 +136,7 @@ class ProfileSettingsMain extends Component {
           <View style = {[
             styles.setting,
             {
-              borderTopWidth: 2,
+              borderTopWidth: 3,
               borderBottomWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Push notifications</Text>
@@ -176,25 +167,12 @@ class ProfileSettingsMain extends Component {
           }}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
-          style = {{
-              borderTopWidth: 1,
-              borderColor: 'rgba(0,0,0,0.3)',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: 50,
-              marginTop: 45,
-            }}>
-            <Text
-            style = {{ color: 'red', fontSize: 18, }}>
-              Log out
-            </Text>
+          style = {styles.logout}>
+            <Text style = {styles.redText}>Log out</Text>
 
           </TouchableHighlight>
-
         </View>
-
       </View>
-
     );
   }
 }

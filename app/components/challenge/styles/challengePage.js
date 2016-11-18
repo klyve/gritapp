@@ -25,7 +25,7 @@ export default styles = StyleSheet.create({
     paddingRight: 20,
     backgroundColor: 'white',
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: 10,
     flex: 1/6,
   },
   descriptionHeader: {
