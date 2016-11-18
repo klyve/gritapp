@@ -14,6 +14,7 @@ import {
 
 import styles from './styles/lead';
 import { Icon } from 'react-native-elements';
+import { MARGIN } from '../../constants';
 
 export default class LeadBlock extends Component {
 
@@ -59,15 +60,24 @@ export default class LeadBlock extends Component {
 
   render() {
     let imageStyles = [styles.friendImage];
+    let iconOrText = [];
+
     if(this.props.small) {
       imageStyles.push(styles.friendImageSmall)
-    }
-    return (
-      <BlockBasic
-        onPress={this.props.onPress}
-      >
-      <View style={styles.friends}>
-        <View style={{padding: 10}}>
+
+      if (this.props.place){
+        iconOrText = [
+          <View style={{marginLeft: 10, marginRight: 10}}>
+            <Text style={{fontSize: 25}}>
+              {this.props.place}
+            </Text>
+          </View>
+        ]
+      }
+
+    } else {
+      iconOrText = [
+        <View style={{paddingLeft: 10, PaddingRight: 10}}>
           <Icon
             name={this.props.trophy}
             type='font-awesome'
@@ -77,6 +87,16 @@ export default class LeadBlock extends Component {
             onPress={() => {}}
           />
         </View>
+      ]
+    }
+
+    return (
+      <BlockBasic
+        onPress={this.props.onPress}
+      >
+      <View style={styles.friends}>
+
+        {iconOrText}
 
         <Image style={imageStyles} source={{uri: this.props.image}}></Image>
 

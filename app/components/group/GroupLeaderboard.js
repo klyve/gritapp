@@ -46,14 +46,14 @@ var f5 = new person();
   f5.score = 13;
 
 
-var lead = [f4, f2, f3, f5, f1];
+var lead = [f4, f2, f3, f5, f1, f1, f1, f1, f1, f1, f1, f1, f1, f1, f1, f1];
 export default class GroupLeaderboard extends Component {
   render() {
     let other = [];
 
     for (let i = 3; i < lead.length; i ++){
       other.push(
-        <FriendBlock
+        <LeadBlock
           onPress={() => {
             Actions.profile()
           }}
@@ -62,6 +62,7 @@ export default class GroupLeaderboard extends Component {
           points={lead[i].score}
           key={i}
           small
+          place={i+1}
         />
       )
     }
