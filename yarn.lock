@@ -3844,6 +3844,10 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+"react-native-camera@git+https://github.com/lwansbrough/react-native-camera.git":
+  version "0.3.8"
+  resolved "git+https://github.com/lwansbrough/react-native-camera.git#b16ec4ab754a05f18a7954b5cadb39d8edc8130b"
+
 react-native-elements@^0.6.2:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.6.3.tgz#db5d1dc6a3afcc34d08c84c6917189a7e825fac7"
@@ -4989,6 +4993,10 @@ whatwg-encoding@^1.0.1:
 whatwg-fetch@^1.0.0, whatwg-fetch@>=0.10.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-1.0.0.tgz#01c2ac4df40e236aaa18480e3be74bd5c8eb798e"
+
+whatwg-fetch@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-1.1.1.tgz#ac3c9d39f320c6dce5339969d054ef43dd333319"
 
 whatwg-url@^3.0.0:
   version "3.0.0"
