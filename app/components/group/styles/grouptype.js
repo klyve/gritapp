@@ -13,7 +13,6 @@ export default styles = StyleSheet.create({
    flex: 1,
    backgroundColor: '#f0f0f0',
  },
-
  buttonText: {
    color: '#2ecc71',
    fontSize: 28,

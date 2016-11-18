@@ -61,28 +61,21 @@ export default class GroupJoin extends Component {
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
               <Text style={{fontSize: 30, color: groupColorHex}}>{currentGroup.name}</Text>
-
               <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
             </View>
 
             <View style={styles.tabs}>
 
-              <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}>
-              </View>
+              <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}></View>
 
               <TouchableHighlight
               onPress={() => {alert(">INSERT JOIN-FUNCTION HERE<")}}
               style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <Text style={{color: groupColorHex, fontSize: 22, fontWeight: 'bold'}}> JOIN </Text>
               </TouchableHighlight>
-
-
             </View>
-
           </View>
-
         </View>
-
       </View>
     );
   }

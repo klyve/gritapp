@@ -42,7 +42,6 @@ class ProfileSettingsMain extends Component {
     this.props.dispatch({
       type: 'PROFILE_PAGE',
       payload: {
-
       }
     })
   }
@@ -65,7 +64,7 @@ class ProfileSettingsMain extends Component {
           </View>
           <Text style = {styles.headerText}>Profile Settings</Text>
         </View>
-        <View style = {styles.settingsContainer}>
+        <ScrollView style = {styles.settingsContainer}>
         {/*Settings nr 1*/}
           <View style = {[
             styles.setting,
@@ -92,10 +91,7 @@ class ProfileSettingsMain extends Component {
           </TouchableHighlight>
 
           {/*Settings nr 3*/}
-          <TouchableHighlight
-          onPress = {() => {}}
-          activeOpacity={71 / 100}
-          underlayColor={"rgb(210,210,210)"}
+          <View
           style = {[
             styles.setting,
             {
@@ -116,7 +112,7 @@ class ProfileSettingsMain extends Component {
               style = {styles.switch}
             />
             </View>
-          </TouchableHighlight>
+          </View>
           {/*Settings nr 4*/}
           <View style = {styles.setting}>
             <Text style = {styles.settingsTextLeft}>Group invites</Text>
@@ -171,7 +167,7 @@ class ProfileSettingsMain extends Component {
             <Text style = {styles.redText}>Log out</Text>
 
           </TouchableHighlight>
-        </View>
+        </ScrollView>
       </View>
     );
   }

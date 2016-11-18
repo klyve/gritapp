@@ -4,8 +4,9 @@ import {
   Dimensions,
 } from 'react-native'
 import {
+  MARGIN,
   HEADER_HEIGHT,
-  MARGIN
+  HEADER_PADDING
 } from '../../../constants';
 
 export default styles = StyleSheet.create({
@@ -30,7 +31,7 @@ export default styles = StyleSheet.create({
     top: -60,
   },
   headerText: {
-    marginTop: -50,
+    marginTop: -(MARGIN * 5),
     fontSize: 30,
     color: '#3fc380',
   },
@@ -41,7 +42,7 @@ export default styles = StyleSheet.create({
   setting: {
     height: 60,
     alignItems: 'center',
-    paddingLeft: 15,
+    paddingLeft: MARGIN * 2,
     backgroundColor: '#ffffff',
     flexDirection: 'row',
     borderColor: 'rgba(0,0,0,0.2)',
@@ -49,15 +50,15 @@ export default styles = StyleSheet.create({
   settingsTextLeft: {
     color: 'grey',
     fontSize: 18,
-    width: 200,
+    width: MARGIN * 20,
   },
   settingsTextRight: {
     color: 'grey',
     fontSize: 18,
-    width: 135,
+    width: MARGIN * 13.5,
   },
   switch: {
-    marginLeft: 100,
+    marginLeft: MARGIN * 10,
   },
   logout: {
     height: 60,
@@ -66,10 +67,6 @@ export default styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.3)',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
   },
   redText: {
     color: 'red',
