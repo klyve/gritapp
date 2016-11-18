@@ -134,7 +134,7 @@ export default class ManageMembers extends Component {
           leftBtn="chevron-left"
           rightBtn="plus"
           left={() => { Actions.pop() }}
-          right={() => {  }}
+          right={() => { Actions.addmembers() }}
         />
         <View style={styles.body}>
 
