@@ -4,7 +4,8 @@ import {
   Dimensions,
 } from 'react-native'
 import {
-  HEADER_HEIGHT
+  HEADER_HEIGHT,
+  MARGIN
 } from '../../../constants';
 
 export default styles = StyleSheet.create({

@@ -3,6 +3,8 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
+import { MARGIN, HEADER_HEIGHT } from '../../../constants';
+
 
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -12,15 +14,15 @@ export default styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#f0f0f0',
   },
   body: {
-    marginTop: 60,
+    marginTop: HEADER_HEIGHT,
     flex: .9,
   },
   header: {
     marginTop: 30,
-    height: 60,
+    height: HEADER_HEIGHT,
     alignItems: 'center',
     flexDirection: 'row',
     borderColor: 'black',

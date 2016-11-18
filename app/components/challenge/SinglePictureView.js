@@ -19,9 +19,8 @@ import {
 } from '../modules';
 
 import styles from './styles/SinglePictureView';
+import { MARGIN } from '../constants';
 
-//Constants
-const MARGIN = 10;
 
 // persons (TESTDATA)
 function Person(){

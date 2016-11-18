@@ -3,11 +3,11 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
+import { MARGIN } from '../../constants'
 
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
-const MARGIN = 10;
 
 
 export default styles = StyleSheet.create({
