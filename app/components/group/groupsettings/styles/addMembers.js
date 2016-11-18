@@ -4,25 +4,15 @@ import {
   Dimensions,
 } from 'react-native';
 
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  navBar: {
-    flex: 1/5,
-    backgroundColor: '#3fc380',
-  },
   body: {
-    flex: 1/3,
     alignItems: 'center',
-    borderBottomWidth: 2,
-    borderColor: 'lightgrey',
-    backgroundColor: '#ffffff',
+    marginTop: 90,
   },
   groupImageView: {
     alignItems: 'center',
@@ -41,7 +31,9 @@ export default styles = StyleSheet.create({
     color: '#3fc380',
   },
   membersContainer: {
-    marginTop: MARGIN/5,
+    borderTopWidth: 1,
+    borderColor: 'black',
+    marginTop: 20/5,
     flex: 1,
     flexDirection: 'column',
   },
@@ -49,8 +41,8 @@ export default styles = StyleSheet.create({
     width: 380,
     borderBottomWidth: 2,
     borderColor: 'lightgrey',
-    marginLeft: MARGIN,
-    marginRight: MARGIN,
+    marginLeft: 10,
+    marginRight: 10,
     flexDirection: 'row',
   },
   editButton: {
@@ -66,7 +58,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   friendImage: {
-    marginLeft: MARGIN,
+    marginLeft: 10,
     width: 60,
     height: 60,
     borderRadius: 30,

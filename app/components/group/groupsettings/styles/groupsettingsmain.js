@@ -38,11 +38,11 @@ export default styles = StyleSheet.create({
     flex: 1/1.5,
   },
   setting: {
+    height: 60,
     alignItems: 'center',
     paddingLeft: 15,
     backgroundColor: '#ffffff',
     flexDirection: 'row',
-    height: 60,
     borderColor: 'rgba(0,0,0,0.3)',
   },
   settingsTextLeft: {

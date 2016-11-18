@@ -16,15 +16,15 @@ import {
 import { Actions } from 'react-native-router-flux';
 import {
   Blocks,
-  FriendBlock
+  FriendBlock,
+  MainHeader,
 } from '../../modules'
 
-import styles from './styles/manageMembers';
+import {
+  Icon
+} from 'react-native-elements'
 
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
-const MARGIN = 10;
+import styles from './styles/manageMembers';
 
 // Group
 function Group(){
@@ -77,7 +77,7 @@ me.friends.push(friend3);
 me.friends.push(friend4);
 me.friends.push(friend5);
 
-export default class social extends Component {
+export default class ManageMembers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,7 +91,9 @@ export default class social extends Component {
 
     let showFriends = me.friends.map((a,b) => {
         return <TouchableHighlight
-               onPress = {() => {}}
+               onPress = {() => {
+                 Actions.profile();
+               }}
                key = {b}
                activeOpacity={71 / 100}
                underlayColor={"rgb(210,210,210)"}
@@ -104,8 +106,8 @@ export default class social extends Component {
                   underlayColor={"rgb(210,210,210)"}
                   onPress = {() => {
                     Alert.alert(
-                      'Kick/Make admin',
-                      'Do you want to make this member an admin, or kick the member from your group?',
+                      'Edit group member',
+                      'Remove member from group or make member admin',
                       [
                         {text: 'Make admin', onPress: () => console.log('Yes pressed')},
                         {text: 'Kick', onPress: () => console.log('No Pressed')},
@@ -113,19 +115,27 @@ export default class social extends Component {
                     )
                   }}
                   style = {styles.editButton}>
-                    <Image
-                    style = {{height: 20, width: 20,}}
-                    source = {require('./images/deleteButton.png')}
-                    />
+                    <View>
+                      <Icon
+                        name='pencil-square-o'
+                        type='font-awesome'
+                        color='black'
+                      />
+                    </View>
                   </TouchableHighlight>
                 </View>
-
                </TouchableHighlight>
       })
 
     return (
       <View style={styles.container}>
-        <View style={styles.navBar}/>
+        <MainHeader
+          color="green"
+          leftBtn="chevron-left"
+          rightBtn="plus"
+          left={() => { Actions.pop() }}
+          right={() => { Actions.addmembers() }}
+        />
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
