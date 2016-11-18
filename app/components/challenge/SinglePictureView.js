@@ -125,7 +125,7 @@ export default class SinglePictureView extends Component {
 
 
     return (
-        <TouchableHighlight style={styles.container} onPress={()=>{Actions.pop()}}>
+        <TouchableHighlight style={styles.container}>
 
           <View style={styles.body}>
             <View style ={styles.title}>
@@ -136,7 +136,7 @@ export default class SinglePictureView extends Component {
                 type='font-awesome'
                 color='#000'
                 underlayColor='transparent'
-                onPress={()=>{Actions.pop()}}
+                onPress={()=>{this.props.close()}}
               />
             </View>
 

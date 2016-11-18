@@ -83,7 +83,12 @@ export default class ChallengePage extends Component {
       showSingleOrNot: false,
     }
   }
-
+  closeSinglePicture() {
+    console.log("Closing picture")
+    this.setState({
+      showSingleOrNot: false,
+    })
+  }
   showSinglePictureView(challenge){
 
       // WARNING WARNING WARNING WARNING WARNING WARNING
@@ -96,7 +101,7 @@ export default class ChallengePage extends Component {
 
       showSinglePictureTag =
       <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
-      <SinglePictureView />
+      <SinglePictureView close={() => {this.closeSinglePicture()}} />
       </View> ;
 
       this.setState({showSingleOrNot: true});
@@ -111,7 +116,7 @@ export default class ChallengePage extends Component {
 
 
   render() {
-
+    let SingleView = (!this.state.showSingleOrNot) ? false : showSinglePictureTag;
     let all = challenges.map((challenge, i) => {
     return (
       <TouchableHighlight
@@ -167,7 +172,7 @@ export default class ChallengePage extends Component {
 
       </View>
 
-      {showSinglePictureTag}
+      {SingleView}
 
       </View>
 
