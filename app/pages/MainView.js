@@ -16,6 +16,8 @@ import GroupJoin from '../components/group/GroupJoin';
 import GroupDashboard from '../components/group/GroupDashboard';
 import GroupSettingsMain from '../components/group/groupsettings/GroupSettingsMain';
 import Notifications from '../components/Notifications';
+import ManageMembers from '../components/group/groupsettings/ManageMembersIos';
+import AddMembers from '../components/group/groupsettings/AddMembersIos';
 
 import Profile from '../components/Profile';
 
@@ -52,6 +54,8 @@ const scenes = Actions.create(
     <Scene key="groupdashboard" hideNavBar component={GroupDashboard} />
 
     <Scene key="groupsettingsmain" hideNavBar component={GroupSettingsMain}/>
+    <Scene key="managemembers" hideNavBar component={ManageMembers}/>
+    <Scene key="addmembers" hideNavBar component={AddMembers}/>
 
     <Scene key="profile" hideNavBar component={Profile} />
     <Scene key="notifications" hideNavBar component={Notifications}/>

@@ -16,15 +16,16 @@ import {
 import { Actions } from 'react-native-router-flux';
 import {
   Blocks,
-  FriendBlock
+  FriendBlock,
+  MainHeader,
 } from '../../modules'
+
+import {
+  Icon
+} from 'react-native-elements'
 
 import styles from './styles/addMembers';
 
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
-const MARGIN = 10;
 
 // Group
 function Group(){
@@ -99,7 +100,7 @@ me.friends.push(friend8);
 me.friends.push(friend9);
 
 
-export default class social extends Component {
+export default class AddMembers extends Component {
   constructor() {
     super();
     this.state = {
@@ -136,7 +137,13 @@ export default class social extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.navBar}/>
+        <MainHeader
+          color="green"
+          leftBtn="chevron-left"
+          rightBtn="plus"
+          left={() => { Actions.pop() }}
+          right={() => {  }}
+        />
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>

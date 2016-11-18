@@ -73,7 +73,7 @@ export default class GroupSettingsMain extends Component {
             }]}>
             <Text style = {styles.settingsTextLeft}>Group Name</Text>
             <TextInput
-            style = {[styles.settingsTextRight, {marginLeft: 50}]}
+            style = {styles.settingsTextRight}
             value = {this.state.text}
             onChangeText={(text) => this.setState({text})}
             editable = {true}
@@ -100,21 +100,17 @@ export default class GroupSettingsMain extends Component {
             </View>
           </TouchableHighlight>
           {/*Settings nr 3*/}
-          <View style = {[
-            styles.setting,
-            {
-              borderTopWidth: 2,
-              borderBottomWidth: 1,
-            }]}>
-            <Text style = {[styles.settingsTextLeft,{width: 300}]}>Manage members</Text>
-            <TouchableHighlight
-            activeOpacity={71 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            onPress = {() => {}}
-            style = {[styles.settingsButton, {marginLeft: 35}]}>
-              <Text>X</Text>
-            </TouchableHighlight>
-          </View>
+          <TouchableHighlight
+          activeOpacity={71 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          onPress = {() => {
+            Actions.managemembers();
+          }}
+          >
+            <View style = {[styles.setting,{borderBottomWidth: 3,}]}>
+              <Text style = {styles.settingsTextLeft}>Manage members</Text>
+            </View>
+          </TouchableHighlight>
           {/*Settings nr 4*/}
           <View style = {[
             styles.setting,
