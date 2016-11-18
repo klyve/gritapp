@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
 } from 'react-native';
-import { HEADER_HEIGHT } from '../constants';
+import { HEADER_HEIGHT, MARGIN } from '../constants';
 
-const MARGIN = 10
 export default styles = StyleSheet.create({
   container: {
     flex: 1,

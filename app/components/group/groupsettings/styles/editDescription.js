@@ -10,6 +10,7 @@ import {
   HEADER_PADDING
 } from '../../../constants';
 
+
 //Constants
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -18,7 +19,7 @@ export default styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#f0f0f0',
   },
   body: {
     marginTop: MARGIN * 6,

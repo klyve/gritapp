@@ -53,7 +53,7 @@ export default styles = StyleSheet.create({
     borderRadius: 50,
   },
   meText: {
-    marginLeft: -10,
+    marginLeft: -MARGIN,
     width: 200,
     fontSize: 25,
   },
@@ -71,11 +71,11 @@ export default styles = StyleSheet.create({
     backgroundColor: 'transparent',
     height: 45,
     fontSize: 18,
-    marginLeft: 20,
+    marginLeft: MARGIN * 2,
     borderColor: 'transparent',
   },
   searchIcon: {
-    marginTop: 5,
+    marginTop: MARGIN / 2,
     fontSize: 18,
   },
   searchClose: {

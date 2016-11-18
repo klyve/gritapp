@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
+import { MARGIN, HEADER_HEIGHT } from '../../../constants';
 
 import {
   MARGIN,

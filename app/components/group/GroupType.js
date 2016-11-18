@@ -8,6 +8,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { MARGIN, HEADER_HEIGHT } from '../constants';
+
 
 import {
   Blocks,
@@ -32,7 +34,7 @@ export default class GroupType extends Component {
           <Blocks>
 
             <BlockFifty
-              style={{marginTop: 10,marginBottom: 5}}
+              style={{marginTop: MARGIN,marginBottom: MARGIN / 2}}
               onPress={() => Actions.groupname('public')}
             >
               <Text style={styles.buttonText}>
@@ -41,7 +43,7 @@ export default class GroupType extends Component {
             </BlockFifty>
 
             <BlockFifty
-              style={{marginTop: 5}}
+              style={{marginTop: MARGIN / 2}}
               onPress={() => Actions.groupname('private')}
             >
               <Text style={styles.buttonText}>

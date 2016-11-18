@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
-import {HEADER_HEIGHT} from '../constants';
+import {HEADER_HEIGHT, MARGIN} from '../constants';
 
 
 
@@ -33,7 +33,7 @@ export default styles = StyleSheet.create({
     borderRadius: 30,
   },
   requestText: {
-    marginLeft: 10,
+    marginLeft: MARGIN,
     width: 260,
   },
   closePage: {
