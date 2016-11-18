@@ -22,8 +22,6 @@ import {
 import styles from './styles/SinglePictureView';
 
 //Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 10;
 
 // persons (TESTDATA)
@@ -127,17 +125,18 @@ export default class SinglePictureView extends Component {
 
 
     return (
-        <View style={styles.container}>
+        <TouchableHighlight style={styles.container} onPress={()=>{Actions.pop()}}>
 
           <View style={styles.body}>
             <View style ={styles.title}>
-              <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}></Image>
+              <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}/>
               <Text style={styles.titleText}> {pst.uploader.name} </Text>
               <Icon
-                name='user'
+                name='times'
                 type='font-awesome'
                 color='#000'
                 underlayColor='transparent'
+                onPress={()=>{Actions.pop()}}
               />
             </View>
 
@@ -166,7 +165,7 @@ export default class SinglePictureView extends Component {
 
           </View>
 
-        </View>
+        </TouchableHighlight>
     );
   }
 }
