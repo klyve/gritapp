@@ -16,7 +16,9 @@ export default class ChallengeCamera extends Component {
 
     this.state={
       camType: Camera.constants.Type.back,
-      mirror: false,
+      torch: Camera.constants.TorchMode.off,
+      boltColor: 'white',
+      arrowColor: 'white'
     }
   }
   render() {
@@ -27,37 +29,59 @@ export default class ChallengeCamera extends Component {
               this.camera = cam;
             }}
             style={styles.preview}
-            aspect={Camera.constants.Aspect.fit}
+            aspect={Camera.constants.Aspect.fill}
             captureTarget={Camera.constants.CaptureTarget.temp}
             captureAudio={false}
 
             type={this.state.camType}
-            mirrorImage={this.state.mirror}
+            torchMode={this.state.torch}
           >
-          <TouchableHighlight
-            style={styles.capture}
-            onPress={() => {
-              this.takePicture();
-            }}
-          >
-            <View>
+          <View style={styles.capture}>
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+              <View style={{flex: 1}}>
+                <Icon
+                  name='bolt'
+                  type='font-awesome'
+                  color={this.state.boltColor}
+                  underlayColor='transparent'
+                  size={40}
+
+                  onPress={() => {
+                    this.lightToggle();
+                  }}
+                />
+              </View>
+
+              <View style={{flex: 1}}>
+                <Icon
+                  name='camera'
+                  type='font-awesome'
+                  color='white'
+                  underlayColor='transparent'
+                  size={80}
+
+                  onPress={() => {
+                    this.takePicture();
+                  }}
+                />
+              </View>
+
+              <View style={{flex: 1}}>
+                <Icon
+                  name='mail-forward'
+                  type='font-awesome'
+                  color={this.state.arrowColor}
+                  underlayColor='transparent'
+                  size={40}
+                  onPress={() => {
+                    this.typeToggle()
+                  }}
+                />
+              </View>
+
             </View>
-          </TouchableHighlight>
+          </View>
         </Camera>
-
-        <View style={{position: 'absolute', top: 30, left: 30,}}>
-          <Icon
-            name='mail-forward'
-            type='font-awesome'
-            color='#ffffff'
-            underlayColor='transparent'
-            size={40}
-
-            onPress={() => {
-              this.typeToggle()
-            }}
-          />
-        </View>
 
       </View>
     );
@@ -77,14 +101,27 @@ export default class ChallengeCamera extends Component {
     if (this.state.camType == Camera.constants.Type.back){
       this.setState({
                       camType: Camera.constants.Type.front,
-                      mirror: true,
+                      arrowColor: 'gold',
                     })
     } else {
       this.setState({
                       camType: Camera.constants.Type.back,
-                      mirror: false,
+                      arrowColor: 'white'
                     })
+    }
+  }
 
+  lightToggle() {
+    if (this.state.boltColor == 'white'){
+      this.setState({
+                      torch: Camera.constants.TorchMode.on,
+                      boltColor: 'gold',
+                    })
+    } else {
+      this.setState({
+                      torch: Camera.constants.TorchMode.off,
+                      boltColor: 'white'
+                    })
     }
   }
 }
@@ -102,6 +139,7 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 1,
+    alignItems: 'center',
     position: 'absolute',
     bottom: 0,
     left: 0,
