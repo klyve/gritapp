@@ -60,5 +60,7 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Taking pictures</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Test</string>
 </dict>
 </plist>
