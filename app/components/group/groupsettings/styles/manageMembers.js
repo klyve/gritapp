@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Dimensions,
-} from 'react-native'
-
-//Constants
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-const DEVICE_WIDTH = Dimensions.get('window').width;
+} from 'react-native';
 
 export default styles = StyleSheet.create({
 
@@ -14,16 +10,9 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  navBar: {
-    flex: 1/5,
-    backgroundColor: '#3fc380',
-  },
   body: {
-    flex: 1/3,
     alignItems: 'center',
-    borderBottomWidth: 2,
-    borderColor: 'lightgrey',
-    backgroundColor: '#ffffff',
+    marginTop: 90,
   },
   groupImageView: {
     alignItems: 'center',
@@ -42,19 +31,21 @@ export default styles = StyleSheet.create({
     color: '#3fc380',
   },
   membersContainer: {
-    marginTop: MARGIN/5,
-    flex: 1,
+    flex: .6,
+    marginTop: 10/5,
     flexDirection: 'column',
+    borderTopWidth: 1,
+    borderColor: 'black',
   },
   friendButton: {
     borderBottomWidth: 2,
     borderColor: 'lightgrey',
-    marginLeft: MARGIN,
-    marginRight: MARGIN,
+    marginLeft: 10,
+    marginRight: 10,
     flexDirection: 'row',
   },
   editButton: {
-   height: 25,
+   height: 20,
    width: 20,
    borderRadius: 5,
   },
@@ -66,7 +57,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   friendImage: {
-    marginLeft: MARGIN,
+    marginLeft: 10,
     width: 60,
     height: 60,
     borderRadius: 30,
