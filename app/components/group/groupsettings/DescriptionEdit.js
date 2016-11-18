@@ -25,7 +25,7 @@ export default class DescriptionEdit extends Component {
       <View style = {styles.container}>
         <MainHeader
           color="green"
-          title="Biography"
+          title="Description"
           leftText="Cancel"
           rightText="Save"
           left={() => { Actions.pop() }}
@@ -33,7 +33,7 @@ export default class DescriptionEdit extends Component {
          />
          <View style = {styles.body}>
             <View style = {styles.header}>
-              <Text style = {{fontSize: 16, paddingLeft: 20, width: 300, color: 'grey'}}>Turn bio on/off</Text>
+              <Text style = {{fontSize: 16, paddingLeft: 20, width: 300, color: 'grey'}}>Show description</Text>
                 <Switch
                 value={(this.state && this.state.switchValue) || false}
                 onValueChange={(value) => {
