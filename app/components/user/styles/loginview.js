@@ -3,8 +3,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Dimensions,
-  Platform,
+  Dimensions
 } from 'react-native'
 
 import {
@@ -78,25 +77,13 @@ export default styles = StyleSheet.create({
       borderBottomColor: '#CCC',
       borderColor: 'transparent'
     },
-    inputContent: {
+    input: {
       position: 'absolute',
       left: 61,
+      top: 12,
       right: 0,
-      ...Platform.select({
-        android: {
-          top: 8,
-          height: 40,
-        },
-        ios: {
-          height: 20,
-          top: 15,
-          backgroundColor: 'red',
-        },
-      }),
-  },
-    input: {
-      padding: 0,
-      fontSize: 17
+      height: 20,
+      fontSize: 14
     },
     forgotContainer: {
       alignItems: 'flex-end',
