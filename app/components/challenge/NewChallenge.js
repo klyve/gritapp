@@ -25,6 +25,7 @@ import styles from './styles/NewChallenge';
 
 export default class NewChallenge extends Component {
   render() {
+    let timeLimit = "24h"
     return (
       <View style = {styles.container}>
         <MainHeader
@@ -63,6 +64,7 @@ export default class NewChallenge extends Component {
           </View>
           <View style = {styles.time}>
             <Text style = {styles.headerText}>Time limit (optional)</Text>
+            <Text style = {styles.timeLimitText}>{timeLimit}</Text>
           </View>
 
 

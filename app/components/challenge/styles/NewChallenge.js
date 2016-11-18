@@ -43,5 +43,12 @@ export default styles = StyleSheet.create({
     height: 80,
     width: 380,
   },
+  timeLimitText: {
+    backgroundColor: 'lightgrey',
+    height: 40,
+    width: 350,
+    fontSize: 22,
+    padding: MARGIN,
+  }
 
 })
