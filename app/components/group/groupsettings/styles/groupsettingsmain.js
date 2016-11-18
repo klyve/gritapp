@@ -43,7 +43,7 @@ export default styles = StyleSheet.create({
     paddingLeft: 15,
     backgroundColor: '#ffffff',
     flexDirection: 'row',
-    borderColor: 'rgba(0,0,0,0.3)',
+    borderColor: 'rgba(0,0,0,0.2)',
   },
   settingsTextLeft: {
     color: 'grey',
@@ -55,11 +55,24 @@ export default styles = StyleSheet.create({
     fontSize: 18,
     width: 135,
   },
-  settingsButton: {
-    width: 20,
-    height: 20,
-  },
   switch: {
     marginLeft: 100,
   },
+  logout: {
+    height: 60,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: 'rgba(0,0,0,0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  redText: {
+    color: 'red',
+    fontSize: 18,
+    fontWeight: 'bold',
+  }
 })

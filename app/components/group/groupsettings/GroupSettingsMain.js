@@ -107,7 +107,7 @@ export default class GroupSettingsMain extends Component {
             Actions.managemembers();
           }}
           >
-            <View style = {[styles.setting,{borderBottomWidth: 3,}]}>
+            <View style = {styles.setting}>
               <Text style = {styles.settingsTextLeft}>Manage members</Text>
             </View>
           </TouchableHighlight>
@@ -115,7 +115,7 @@ export default class GroupSettingsMain extends Component {
           <View style = {[
             styles.setting,
             {
-              borderBottomWidth: 3,
+              borderTopWidth: 2,
             }]}>
             <Text style = {styles.settingsTextLeft}>Public</Text>
             <Switch
@@ -134,7 +134,7 @@ export default class GroupSettingsMain extends Component {
           <View style = {[
             styles.setting,
             {
-              borderTopWidth: 2,
+              borderTopWidth: 3,
               borderBottomWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Push notifications</Text>
@@ -165,20 +165,8 @@ export default class GroupSettingsMain extends Component {
           }}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
-          style = {{
-              marginTop:65,
-              borderTopWidth: 1,
-              borderBottomWidth: 1,
-              borderColor: 'rgba(0,0,0,0.3)',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: 60,
-            }}>
-            <Text
-            style = {{ color: 'red', fontSize: 18, }}>
-              Leave Group
-            </Text>
-
+          style = {styles.logout}>
+            <Text style = {styles.redText}> Leave Group </Text>
           </TouchableHighlight>
 
         </View>
