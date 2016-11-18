@@ -48,8 +48,8 @@ var elefant = new Challenge();
 
 var hund = new Challenge();
   hund.pictureUrl = "http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg";
-  hund.id = Math.floor(Math.random() * 100000);this.prop
-
+  hund.id = Math.floor(Math.random() * 100000);
+  
 var katt = new Challenge();
   katt.pictureUrl = "http://www.agria.no/imagevault/publishedmedia/zfl838orwjwg72jkzerz/gra-katt-vit-bakgrund.jpg";
   katt.id = Math.floor(Math.random() * 100000);
