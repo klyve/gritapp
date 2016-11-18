@@ -129,15 +129,18 @@ export default class SinglePictureView extends Component {
 
           <View style={styles.body}>
             <View style ={styles.title}>
-              <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}/>
-              <Text style={styles.titleText}> {pst.uploader.name} </Text>
-              <Icon
-                name='times'
-                type='font-awesome'
-                color='#000'
-                underlayColor='transparent'
-                onPress={()=>{Actions.pop()}}
-              />
+                <Image style={styles.peopleImage} source={{uri: pst.uploader.picturePath}}/>
+                <Text style={styles.titleText}> {pst.uploader.name} </Text>
+              <View style={{marginRight: 20}}>
+                <Icon
+                  style={styles.exitButton}
+                  name='times'
+                  type='font-awesome'
+                  color='#000'
+                  underlayColor='transparent'
+                  onPress={()=>{Actions.pop()}}
+                />
+              </View>
             </View>
 
             <View style={{flex: 7,}}>
