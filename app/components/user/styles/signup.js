@@ -26,19 +26,26 @@ export default styles = StyleSheet.create({
         height: windowSize.height
     },
     header: {
-      flex: .2,
+      flex: .3,
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: 'transparent'
     },
     mark: {
-        width: 150,
-        height: 150
+      width: 150,
+      height: 150
+    },
+    buttonContainer: {
+      flex: .2,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     signin: {
-        backgroundColor: '#FF3366',
-        padding: 20,
-        alignItems: 'center'
+      width: 300,
+      backgroundColor: '#2ecc71',
+      padding: 15,
+      margin: 10,
+      alignItems: 'center'
     },
     inputs: {
       flex: .24,
