@@ -10,7 +10,12 @@ import {
   AsyncStorage,
 } from 'react-native';
 import hash from 'hash.js';
+
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+
+import * as user from '../../actions/user';
+
 
 import {
   Blocks,
@@ -18,65 +23,24 @@ import {
   MainHeader
 } from '../modules';
 import styles from './styles/signup';
+
 const ACCESS_TOKEN = '';
-export default class sigup extends Component {
+
+class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: '',
       password: '',
-      confirmPassword: '',
-    }
-
-    this.navigateIfToken();
-  }
-
-  signIn() {
-    let password = hash.sha256().update(this.state.password).digest('hex');
-    let username = this.state.username;
-    fetch('https://dd25c333.ngrok.io/api/user/auth', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username, password
-      })
-    })
-    .then((data) => data.json())
-    .then((json) => {
-      console.log(json)
-      if(json.status && json.status == 200) {
-        this.storeToken(json.token);
-      }
-    })
-  }
-  async storeToken(token) {
-    try {
-      await AsyncStorage.setItem("@accesstoken:key", token);
-      Actions.swipeview({type: 'reset'});
-      //this.getToken();
-    }catch(error) {
-      console.log(error);
+      phonenumber: '',
     }
   }
-  async navigateIfToken() {
-    let token;
-    try {
-      token = await AsyncStorage.getItem("@accesstoken:key")
-      if (token !== null){
-        Actions.swipeview({type: 'reset'});
 
-        return true;
-      }
-    }catch(error) {
-      console.log(error)
-      return false;
-    }
+  registerUser() {
+    this.props.dispatch(this.state.username, this.state.nick, this.state.password)
   }
+
   render() {
-
     return (
       <View style={styles.container}>
             <Image style={styles.bg} source={{uri: 'https://i.imgur.com/xlQ56UK.jpg'}} />
@@ -90,11 +54,26 @@ export default class sigup extends Component {
                         style={[styles.input, styles.whiteFont]}
                         placeholder="Nickname"
                         placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
+                        underlineColorAndroid='#FFF'
                         value={this.state.username}
                         onChangeText={(text) => {
                           this.setState({
                             username: text,
+                          })
+                        }}
+                    />
+                </View>
+                <View style={styles.inputContainer}>
+                    <Image style={styles.inputUsername} source={{uri: 'https://i.imgur.com/iVVVMRX.png'}}/>
+                    <TextInput
+                        style={[styles.input, styles.whiteFont]}
+                        placeholder="Phonenumber"
+                        placeholderTextColor="#FFF"
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        value={this.state.phonenumber}
+                        onChangeText={(text) => {
+                          this.setState({
+                            phonenumber: text,
                           })
                         }}
                     />
@@ -115,38 +94,27 @@ export default class sigup extends Component {
                         }}
                     />
                 </View>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputPassword} source={{uri: 'https://i.imgur.com/ON58SIG.png'}}/>
-                    <TextInput
-                        password={true}
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Confirm password"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.state.password}
-                        onChangeText={(text) => {
-                          this.setState({
-                            password: text
-                          })
-                        }}
-                    />
-                </View>
 
                 <View style = {styles.warningContainer}>
                   <Text style = {[styles.whiteFont, styles.warning]}>Nickname must contain 3 to 16 characters.</Text>
                 </View>
             </View>
-            <TouchableHighlight
-              onPress={() => {
-                this.signIn();
-              }}>
-              <View style={styles.signin}>
-
-                  <Text style={styles.whiteFont}>Next</Text>
-              </View>
-
-            </TouchableHighlight>
+            <View style = {styles.buttonContainer}>
+              <TouchableHighlight
+                onPress={() => {
+                  this.registerUser();
+                }}>
+                <View style={styles.signin}>
+                    <Text style={styles.whiteFont}>Sign In</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
         </View>
     );
   }
 }
+
+export default connect(state => ({
+    state
+  })
+)(Signup);

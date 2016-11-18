@@ -26,7 +26,6 @@ class LoginView extends Component {
       username: '',
       password: ''
     }
-
   }
 
   signIn() {
@@ -94,25 +93,25 @@ class LoginView extends Component {
                     <Text style={styles.greyFont}>Forgot Password</Text>
                 </View>
             </View>
-            <TouchableHighlight
-              onPress={() => {
-                this.signIn()
+            <View style = {styles.buttonContainer}>
+              <TouchableHighlight
+                onPress={() => {
+                  this.signIn()
+                }}>
+                <View style={styles.signin}>
+                    <Text style={styles.whiteFont}>Sign In</Text>
+                </View>
+
+              </TouchableHighlight>
+              <TouchableHighlight
+              onPress = {() => {
+                this.props.dispatch(Route.to('signup'));
               }}>
-              <View style={styles.signin}>
-
-                  <Text style={styles.whiteFont}>Sign In</Text>
+              <View style={styles.signup}>
+                  <Text style={styles.whiteFont}>Sign Up</Text>
               </View>
-
-            </TouchableHighlight>
-            <TouchableHighlight
-            style = {styles.signup}
-            onPress = {() => {
-              this.props.dispatch(Route.to('signup'));
-            }}>
-            <View style={styles.signup}>
-                <Text style={styles.greyFont}>Dont have an account?<Text style={styles.whiteFont}>  Sign Up</Text></Text>
+              </TouchableHighlight>
             </View>
-            </TouchableHighlight>
         </View>
     );
   }
