@@ -29,7 +29,6 @@ export function createGroup(data) {
     .then((json) => {
       if(json.status && json.status == 200) {
         dispatch({type: "CREATE_GROUP_SUCCESS", payload: json})
-        console.log(json)
       }else {
         dispatch({type: "USER_REGISTER_ERROR", payload: json})
       }

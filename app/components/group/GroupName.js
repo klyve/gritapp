@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import styles from './styles/groupname';
 import { Actions } from 'react-native-router-flux';
 
-
+import * as Groups from '../../actions/groups';
 
 
 
@@ -36,9 +36,12 @@ class GroupName extends Component {
     let data = {
       name: this.state.text,
       type: this.props.data,
-      owner: this.props.user.token
+      token: this.props.user.token
     }
+    let cool = this.props.dispatch(Groups.createGroup(data));
+    
   }
+
 
   render() {
     const type = this.props.data || 'public';
