@@ -9,20 +9,17 @@ import {
   TextInput,
   AsyncStorage,
 } from 'react-native';
-import hash from 'hash.js';
-
 import { connect } from 'react-redux';
+import * as Route from '../../actions/route';
 import { Actions } from 'react-native-router-flux';
-
 import * as user from '../../actions/user';
-
-
 import {
   Blocks,
   BlockFifty,
   MainHeader
 } from '../modules';
 import styles from './styles/signup';
+import { Icon } from 'react-native-elements';
 
 const ACCESS_TOKEN = '';
 
@@ -46,74 +43,151 @@ class Signup extends Component {
   }
 
   render() {
+
     return (
       <View style={styles.container}>
-            <Image style={styles.bg} source={require('../../../images/Guy.jpg')} />
-            <View style={styles.header}>
-                <Image style={styles.mark} source={{uri: 'https://i.imgur.com/da4G0Io.png'}} />
-            </View>
-            <View style={styles.inputs}>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputUsername} source={{uri: 'https://i.imgur.com/iVVVMRX.png'}}/>
-                    <TextInput
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Nickname"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='#FFF'
-                        value={this.state.username}
-                        onChangeText={(text) => {
-                          this.setState({
-                            username: text,
-                          })
-                        }}
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputUsername} source={{uri: 'https://i.imgur.com/iVVVMRX.png'}}/>
-                    <TextInput
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Phonenumber"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.state.phonenumber}
-                        onChangeText={(text) => {
-                          this.setState({
-                            phonenumber: text,
-                          })
-                        }}
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputPassword} source={{uri: 'https://i.imgur.com/ON58SIG.png'}}/>
-                    <TextInput
-                        password={true}
-                        style={[styles.input, styles.whiteFont]}
-                        placeholder="Pasword"
-                        placeholderTextColor="#FFF"
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.state.password}
-                        onChangeText={(text) => {
-                          this.setState({
-                            password: text
-                          })
-                        }}
-                    />
-                </View>
+          <Image style={styles.bg} source={require('../../../images/Guy.jpg')} />
 
-                <View style = {styles.warningContainer}>
-                  <Text style = {[styles.whiteFont, styles.warning]}>Nickname must contain 3 to 16 characters.</Text>
-                </View>
+
+
+
+
+
+          <View style={styles.logoView}>
+              <Image style={styles.logo} source={{uri: 'https://i.imgur.com/da4G0Io.png'}} />
+          </View>
+
+
+
+
+          <View style={styles.inputs}>
+            <View style={{width: 30}}>
+              <Icon
+                size={30}
+                name='user'
+                type='font-awesome'
+                color='#ffffff'
+                underlayColor='transparent'
+              />
             </View>
-            <View style = {styles.buttonContainer}>
-              <TouchableHighlight
-                onPress={() => {
-                  this.registerUser();
-                }}>
-                <View style={styles.signin}>
-                    <Text style={styles.whiteFont}>Sign In</Text>
-                </View>
-              </TouchableHighlight>
+
+            <TextInput
+              style={styles.input}
+              placeholder="Nickname"
+              placeholderTextColor="#fff"
+              underlineColorAndroid='rgba(0,0,0,0)'
+
+              value={this.state.username}
+
+              onChangeText={(text) => {
+                this.setState({
+                  username: text,
+                })
+              }}
+              onSubmitEditing={(event) => {
+                this.refs.number.focus();
+              }}
+            />
+          </View>
+
+          <View style={styles.inputs}>
+            <View style={{width: 30}}>
+              <Icon
+                size={30}
+                name='phone'
+                type='font-awesome'
+                color='#ffffff'
+                underlayColor='transparent'
+              />
             </View>
+
+            <TextInput
+              ref='number'
+              style={styles.input}
+              placeholder="Phone Number"
+              placeholderTextColor="#fff"
+              underlineColorAndroid='rgba(0,0,0,0)'
+
+              value={this.state.phonenumber}
+
+              onChangeText={(text) => {
+                this.setState({
+                  phonenumber: text,
+                })
+              }}
+              onSubmitEditing={(event) => {
+                this.refs.pass.focus();
+              }}
+            />
+          </View>
+
+          <View style={styles.inputs}>
+            <View style={{width: 30}}>
+              <Icon
+                size={30}
+                name='lock'
+                type='font-awesome'
+                color='#ffffff'
+                underlayColor='transparent'
+              />
+            </View>
+
+            <TextInput
+              ref='pass'
+              secureTextEntry={true}
+              style={styles.input}
+              placeholder="Password"
+              placeholderTextColor="#fff"
+              underlineColorAndroid='rgba(0,0,0,0)'
+
+              value={this.state.password}
+
+              onChangeText={(text) => {
+                this.setState({
+                  password: text
+                })
+              }}
+            />
+          </View>
+
+
+
+
+
+
+
+
+          <View style={styles.nickInfoContainer}>
+            <Text style={{color: '#fff', opacity: 0.67, fontSize: 16,}}>
+              Nick Must Contain 3 - 13 Characters
+            </Text>
+          </View>
+
+
+
+
+
+
+          <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              onPress={() => {
+                this.registerUser();
+              }}
+            >
+              <View style={styles.signin}>
+                  <Text style={{color: '#fff'}}>Finish</Text>
+              </View>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+            onPress = {() => {
+              Actions.pop();
+            }}>
+            <View style={styles.signup}>
+                <Text style={{color: '#fff'}}>Back</Text>
+            </View>
+            </TouchableHighlight>
+          </View>
         </View>
     );
   }
