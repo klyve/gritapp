@@ -77,7 +77,7 @@ export default class LeadBlock extends Component {
 
     } else {
       iconOrText = [
-        <View style={{paddingLeft: 10, PaddingRight: 10}}>
+        <View style={{paddingLeft: 10, paddingRight: 10}}>
           <Icon
             name={this.props.trophy}
             type='font-awesome'
