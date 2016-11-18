@@ -33,13 +33,11 @@ class GroupName extends Component {
   }
 
   createGroup() {
-    console.log(this.props)
     let data = {
       name: this.state.text,
       type: this.props.data,
       owner: this.props.user.token
     }
-    console.log(data);
   }
 
   render() {

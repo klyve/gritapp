@@ -9,3 +9,31 @@ export function getUserGroups() {
       .catch((error) => console.warn("fetch error:", error))
   }
 }
+
+export function createGroup(data) {
+  return function(dispatch) {
+    dispatch({type: "CREATE_GROUP_START"})
+    console.log("Creating group")
+    fetch('https://dd25c333.ngrok.io/api/groups', {
+
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...data
+      })
+    })
+    .then((data) => data.json())
+    .then((json) => {
+      if(json.status && json.status == 200) {
+        dispatch({type: "CREATE_GROUP_SUCCESS", payload: json})
+        console.log(json)
+      }else {
+        dispatch({type: "USER_REGISTER_ERROR", payload: json})
+      }
+    })
+
+  }
+}
