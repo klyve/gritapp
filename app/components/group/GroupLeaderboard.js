@@ -13,7 +13,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   Blocks,
   FriendBlock,
-  TopBlock,
+  LeadBlock,
 } from '../modules';
 import styles from './styles/groupchallenges';
 
@@ -70,7 +70,7 @@ export default class GroupLeaderboard extends Component {
       <View>
         <View style={{padding: 23}}/>
 
-          <TopBlock
+          <LeadBlock
             onPress={() => {
               Actions.profile()
             }}
@@ -82,7 +82,7 @@ export default class GroupLeaderboard extends Component {
             large
           />
 
-          <TopBlock
+          <LeadBlock
             onPress={() => {
               Actions.profile()
             }}
@@ -94,12 +94,12 @@ export default class GroupLeaderboard extends Component {
             large
           />
 
-          <TopBlock
+          <LeadBlock
             onPress={() => {
               Actions.profile()
             }}
             trophy='trophy'
-            trophyColor='#A75B10'
+            trophyColor='#cd8c32'
             image={lead[2].picturePath}
             name={lead[2].name}
             points={lead[2].score}

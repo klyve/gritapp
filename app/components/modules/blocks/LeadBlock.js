@@ -12,10 +12,10 @@ import {
   Blocks
 } from '../'
 
-import styles from './styles/top';
+import styles from './styles/lead';
 import { Icon } from 'react-native-elements';
 
-export default class TopBlock extends Component {
+export default class LeadBlock extends Component {
 
   constructor(props) {
     super(props);
