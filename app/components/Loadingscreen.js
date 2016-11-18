@@ -7,7 +7,7 @@ import * as User from '../actions/user';
 
 class Loadingscreen extends Component {
   componentWillMount() {
-    this.props.dispatch(User.getToken());
+      this.props.dispatch(User.getToken());
     //this.props.dispatch(Route.to("swipeview"));
   }
   render() {
