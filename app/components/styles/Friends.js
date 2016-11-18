@@ -29,6 +29,8 @@ export default styles = StyleSheet.create({
   },
 
   me: {
+    flex: 1,
+    justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#ffffff',
@@ -51,8 +53,7 @@ export default styles = StyleSheet.create({
     borderRadius: 50,
   },
   meText: {
-    padding: 5,
-    paddingLeft: 20,
+    marginLeft: -10,
     width: 200,
     fontSize: 25,
   },
@@ -81,5 +82,8 @@ export default styles = StyleSheet.create({
     position: 'absolute',
     right: 20,
     top: 20,
+  },
+  cogIcon: {
+    marginRight: MARGIN * 3.25,
   },
 })
