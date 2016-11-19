@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  CameraRoll,
   AppRegistry,
   StyleSheet,
   Text,
@@ -23,6 +24,7 @@ import {
   MainHeader,
 } from '../modules';
 import styles from './styles/ProfileSettingsMain';
+
 
 // Blueprints
 function Profile(){
@@ -54,14 +56,32 @@ class ProfileSettingsMain extends Component {
       <View style={styles.container}>
       <MainHeader
         color="green"
-        title="Profile"
         leftBtn="chevron-left"
         left={() => { Actions.pop() }}
        />
         <View style={styles.body}>
-          <View style={styles.groupImageView}>
+          <TouchableHighlight
+          onPress = {() => {
+            Alert.alert(
+              'Get photo from:',
+              '',
+              [
+                {text: 'Camera', onPress: () => {
+                  Actions.challengecamera({camera: (picture) => {this.handlePicture(picture)}})
+                }},
+                {text: 'Library', onPress: () => {
+                  Actions.profilecameraroll();
+                }},
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed')},
+              ]
+            )
+          }}
+          activeOpacity={71 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          style={styles.groupImageView}>
+
             <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
-          </View>
+          </TouchableHighlight>
           <Text style = {styles.headerText}>Profile Settings</Text>
         </View>
         <ScrollView style = {styles.settingsContainer}>
