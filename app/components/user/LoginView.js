@@ -62,7 +62,7 @@ class LoginView extends Component {
 
 
           <View style={styles.logoView}>
-              <Image style={styles.logo} source={{uri: 'https://i.imgur.com/da4G0Io.png'}} />
+              <Image style={styles.logo} source={require('../../../images/login.png')} />
           </View>
 
 

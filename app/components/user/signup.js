@@ -54,7 +54,7 @@ class Signup extends Component {
 
 
           <View style={styles.logoView}>
-              <Image style={styles.logo} source={{uri: 'https://i.imgur.com/da4G0Io.png'}} />
+              <Image style={styles.logo} source={require('../../../images/login.png')} />
           </View>
 
 
@@ -159,11 +159,6 @@ class Signup extends Component {
 
 
 
-          <View style={styles.nickInfoContainer}>
-            <Text style={{color: '#fff', opacity: 0.67, fontSize: 16,}}>
-              Nick Must Contain 3 - 13 Characters
-            </Text>
-          </View>
 
 
 
@@ -177,7 +172,7 @@ class Signup extends Component {
               }}
             >
               <View style={styles.signin}>
-                  <Text style={{color: '#fff'}}>Finish</Text>
+                  <Text style={{color: '#fff'}}>Sign up</Text>
               </View>
             </TouchableHighlight>
 
@@ -186,7 +181,7 @@ class Signup extends Component {
               Actions.pop();
             }}>
             <View style={styles.signup}>
-                <Text style={{color: '#fff'}}>Back</Text>
+                <Text style={{color: '#fff'}}>Log in</Text>
             </View>
             </TouchableHighlight>
           </View>
