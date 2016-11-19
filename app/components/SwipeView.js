@@ -19,6 +19,7 @@ import { MainHeader }from './modules';
 import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
+import * as Groups from '../actions/groups';
 
 
 import * as Route from '../actions/route';
@@ -29,11 +30,24 @@ class SwipeView extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.fetchDataInterval();
+  }
+
 
   btnPress(index) {
     //console.log(this._swiper.scrollBy(1))
     this.refs.swiper.scrollBy(index)
   }
+
+  fetchDataInterval() {
+    this.props.dispatch(Groups.getUserGroups());
+    // Add more data gets
+    setTimeout(() => {
+      return this.fetchDataInterval();
+    },5000);
+  }
+
 
   render() {
     //const { state, actions } = this.props;
