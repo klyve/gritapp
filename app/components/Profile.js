@@ -35,6 +35,12 @@ var currentPerson = new person();
 
 
 export default class Profile extends Component {
+
+  constructor(props) {
+    super(props)
+
+    console.log(this.props.user)
+  }
   render() {
 
 
@@ -50,14 +56,14 @@ export default class Profile extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: currentPerson.picturePath}}></Image>
+            <Image style={styles.groupImage} source={{uri: this.props.user.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{currentPerson.name}</Text>
+              <Text style={styles.groupTitleText}>{this.props.user.name}</Text>
 
-              <Text style={styles.groupDescriptionText}>{currentPerson.description}</Text>
+              <Text style={styles.groupDescriptionText}>{this.props.user.bio}</Text>
             </View>
 
             <View style={styles.tabs}>

@@ -31,7 +31,6 @@ import ProfileSettingsMain from '../components/myprofile/ProfileSettingsMain';
 import ProfileBioEdit from '../components/myprofile/ProfileBioEdit';
 
 import LoginView from '../components/user/LoginView';
-import RegisterView from '../components/user/RegisterView';
 
 import Signup from '../components/user/signup';
 import DescriptionEdit from '../components/group/groupsettings/DescriptionEdit';
@@ -46,7 +45,6 @@ const scenes = Actions.create(
     <Scene key="swipeview" hideNavBar component={SwipeView}/>
 
     <Scene key="loginview" hideNavBar component={LoginView}/>
-    <Scene key="registerview" hideNavBar component={RegisterView} />
 
 
     <Scene key="groupsearch" hideNavBar component={GroupSearch} />

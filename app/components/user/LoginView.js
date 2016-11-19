@@ -83,6 +83,7 @@ class LoginView extends Component {
 
             <TextInput
               style={styles.input}
+              maxLength={8}
               placeholder="Phone Number"
               placeholderTextColor="#fff"
               underlineColorAndroid='rgba(0,0,0,0)'
