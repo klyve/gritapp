@@ -154,17 +154,6 @@ class Signup extends Component {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
           <View style={styles.buttonContainer}>
             <TouchableHighlight
               onPress={() => {
