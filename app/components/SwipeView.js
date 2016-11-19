@@ -8,6 +8,7 @@ import {
   Switch,
   TouchableHighlight,
   AsyncStorage,
+  StatusBar,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -38,6 +39,11 @@ class SwipeView extends Component {
     //const { state, actions } = this.props;
     return (
       <View>
+
+       <StatusBar
+         backgroundColor="blue"
+         barStyle="light-content"
+       />
       <Swiper
         ref={"swiper"}
         style={styles.wrapper}
