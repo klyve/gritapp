@@ -25,11 +25,12 @@ import styles from './styles/NewChallenge';
 
 export default class NewChallenge extends Component {
   render() {
-    let timeLimit = "24h"
+    let groupColor = (this.props.grouptype == "public") ? 'blue' : 'red';
+    let timeLimit = "24h";
     return (
       <View style = {styles.container}>
         <MainHeader
-          color='#2ecc71'
+          color='groupColor'
           title="Create Challenge"
           rightBtn="plus"
           leftBtn="chevron-left"

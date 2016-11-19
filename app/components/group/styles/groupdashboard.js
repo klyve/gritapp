@@ -80,7 +80,4 @@ export default styles = StyleSheet.create({
   tabText: {
     fontSize: 16,
   },
-  newChallengeButton: {
-    backgroundColor: groupColor,
-  }
 })
