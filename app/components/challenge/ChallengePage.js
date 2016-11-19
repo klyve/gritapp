@@ -184,13 +184,23 @@ export default class ChallengePage extends Component {
             Actions.challengecamera({camera: (picture) => {this.handlePicture(picture)}})
           }}
           activeOpacity={71 / 100}
-          underlayColor={"rgb(210,210,210)"}
+          underlayColor={"rgba(0,0,0,0)"}
           >
             <View>
+              <View style={{paddingBottom: 5, paddingTop: 2}}>
+                <Icon
+                  name='chevron-up'
+                  type='font-awesome'
+                  color='#fff'
+                  underlayColor='transparent'
+                  size={20}
+                />
+              </View>
+
               <Icon
                 name='camera'
                 type='font-awesome'
-                color='#888888'
+                color='#fff'
                 underlayColor='transparent'
                 size={40}
               />
