@@ -59,6 +59,7 @@ export default styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     alignItems: 'center',
+    justifyContent: 'center',
     flex: 1/9,
   },
 cameraButton: {
