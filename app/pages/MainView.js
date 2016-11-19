@@ -39,6 +39,7 @@ import DescriptionEdit from '../components/group/groupsettings/DescriptionEdit';
 
 import Loadingscreen from '../components/Loadingscreen';
 
+import ConfirmPictureView from '../components/myprofile/ConfirmPictureView';
 
 
 const scenes = Actions.create(
@@ -73,6 +74,7 @@ const scenes = Actions.create(
     <Scene key="newchallenge" hideNavBar component={NewChallenge}/>
 
     <Scene key="profilecameraroll" hideNavBar component={ProfileCameraRoll}/>
+    <Scene key ="confirmpictureview" hideNavBar component={ConfirmPictureView}/>
 
   </Scene>
 );
