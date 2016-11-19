@@ -46,11 +46,12 @@ var closed =[chall1, chall1, chall1, chall1];
 
 export default class GroupChallenges extends Component {
   render() {
+
     let showOpen = open.map((a,b) => {
         return (
           <FriendBlock
             onPress={() => {
-              Actions.challengepage()
+              Actions.challengepage({grouptype: this.props.grouptype})
             }}
             image={a.picturePath}
             name={a.name}
