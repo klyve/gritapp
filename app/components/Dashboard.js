@@ -112,6 +112,10 @@ export default class Dashboard extends Component {
       <View style={styles.container}>
         {this.renderNotifications()}
         <ScrollView>
+          <Text style={{fontSize: 20, textAlign: 'center', padding: 10,}}>
+            {this.props.groups.message}
+          </Text>
+
           {showLoading}
 
           <Blocks>
