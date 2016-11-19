@@ -146,7 +146,9 @@ class GroupDashboard extends Component {
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
 
                     <ScrollView>
-                      <GroupChallenges />
+                      <GroupChallenges
+                        grouptype={this.props.grouptype}
+                      />
 
                       <TouchableHighlight
                       onPress = {() => { Actions.newchallenge({grouptype: this.props.grouptype}); }}

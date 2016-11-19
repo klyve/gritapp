@@ -69,8 +69,12 @@ var fisk = new Challenge();
 var challenges = [elefant, hund, katt, slange, mus, fisk];
 var showSinglePictureTag = [];
 
-var groupColor = (currentGroup.public) ? 'blue' : 'red';
-var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
+/*
+
+let groupColor = (this.props.grouptype == "public") ? 'blue' : 'red';
+let groupColorHex = (this.props.grouptype == "public") ? '#2574a9' : '#c0392b';
+
+*/
 
 export default class ChallengePage extends Component {
 
@@ -124,8 +128,10 @@ export default class ChallengePage extends Component {
       */
   }
 
-
   render() {
+
+    let groupColor = (this.props.grouptype == 'public') ? 'blue' : 'red';
+    let groupColorHex = (this.props.grouptype == 'public') ? '#2574a9' : '#c0392b';
 
     let all = this.state.pictures.map((challenge, i) => {
     return (
