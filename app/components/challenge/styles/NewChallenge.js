@@ -37,9 +37,14 @@ export default styles = StyleSheet.create({
     fontSize: 24,
     color: 'black',
   },
-  textInput: {
+  smallTextInput: {
     fontSize: 14,
-    height: 80,
+    height: 40,
+    width: 380,
+  },
+  largeTextInput: {
+    fontSize: 14,
+    height: 400,
     width: 380,
   },
   timeLimitText: {
@@ -48,6 +53,19 @@ export default styles = StyleSheet.create({
     width: 350,
     fontSize: 22,
     padding: MARGIN,
-  }
-
+  },
+  createButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 60,
+    backgroundColor: 'blue',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 22,
+  },
 })

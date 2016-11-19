@@ -40,8 +40,6 @@ class GroupDashboard extends Component {
     }
   }
 
-
-
   onMomentumScrollEnd(e, state, context) {
     this.setState({
       activeTab: state.index
@@ -146,11 +144,12 @@ class GroupDashboard extends Component {
                   </View>
 
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
+
                     <ScrollView>
                       <GroupChallenges />
 
                       <TouchableHighlight
-                      onPress = {() => { Actions.newchallenge(); }}
+                      onPress = {() => { Actions.newchallenge({grouptype: this.props.grouptype}); }}
                       activeOpacity={71 / 100}
                       underlayColor={"rgb(210,210,210)"}
                       style = {{backgroundColor: groupColorHex, marginTop: 20}}>

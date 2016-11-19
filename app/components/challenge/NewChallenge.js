@@ -4,35 +4,45 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   TouchableHighlight,
   Image,
   ScrollView,
-  Switch,
-  Alert,
   TextInput,
 } from 'react-native';
+import Swiper from 'react-native-swiper';
+import { connect } from 'react-redux';
 
-import { Actions } from 'react-native-router-flux';
 import {
   MainHeader,
   Blocks,
-  FriendBlock,
-} from '../modules';
+  FriendBlock
+} from '../modules'
+
+import {
+  MARGIN,
+  HEADER_HEIGHT
+} from '../constants';
+
+import { Actions } from 'react-native-router-flux';
+
 
 import styles from './styles/NewChallenge';
 
 
 export default class NewChallenge extends Component {
+
+
   render() {
+    let groupBannerColor = (this.props.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (this.props.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
     let groupColor = (this.props.grouptype == "public") ? 'blue' : 'red';
-    let timeLimit = "24h";
+    let groupColorHex = (this.props.grouptype == "public") ? '#2574a9' : '#c0392b';
+
     return (
       <View style = {styles.container}>
         <MainHeader
-          color='groupColor'
+          color = {groupColor}
           title="Create Challenge"
-          rightBtn="plus"
           leftBtn="chevron-left"
           left={() => { Actions.pop() }}
           right={() => {  }}
@@ -41,7 +51,8 @@ export default class NewChallenge extends Component {
           <View style = {styles.name}>
             <Text style = {styles.headerText}>Challenge name: </Text>
             <TextInput
-             style={styles.textInput}
+             style={styles.smallTextInput}
+             underlineColorAndroid='rgba(0,0,0,0)'
              maxLength = {22}
              placeholder={'Type here'}
              placeholderTextColor={"black"}
@@ -53,7 +64,8 @@ export default class NewChallenge extends Component {
           <View style = {styles.description}>
             <Text style = {styles.headerText}>Description: </Text>
             <TextInput
-             style={styles.textInput}
+             style={styles.largeTextInput}
+             underlineColorAndroid='rgba(0,0,0,0)'
              maxLength = {255}
              numberOfLines = {10}
              multiline = {true}
@@ -63,12 +75,18 @@ export default class NewChallenge extends Component {
              value={(this.state && this.state.text2) || ''}
              />
           </View>
-          <View style = {styles.time}>
-            <Text style = {styles.headerText}>Time limit (optional)</Text>
-            <Text style = {styles.timeLimitText}>{timeLimit}</Text>
+          <View>
+            <TouchableHighlight
+            style = {[styles.createButton, {backgroundColor: groupColorHex}]}
+            activeOpacity={71 / 100}
+            underlayColor={"rgb(210,210,210)"}
+            onPress = {() => {
+              Actions.pop();
+            }}
+            >
+              <Text style = {styles.buttonText}>Create</Text>
+            </TouchableHighlight>
           </View>
-
-
         </View>
       </View>
 
