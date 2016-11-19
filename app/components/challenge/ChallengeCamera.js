@@ -29,7 +29,7 @@ export default class ChallengeCamera extends Component {
               this.camera = cam;
             }}
             style={styles.preview}
-            aspect={Camera.constants.Aspect.fill}
+            aspect={Camera.constants.Aspect.fit}
             captureTarget={Camera.constants.CaptureTarget.temp}
             captureAudio={false}
 
@@ -140,7 +140,8 @@ export default class ChallengeCamera extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#000',
   },
   preview: {
     flex: 1,
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
     bottom: 24,
     left: 0,
     right: 0,
-    opacity: 0.5,
+    opacity: 0.4,
     backgroundColor: '#000',
     paddingTop: 20,
     paddingBottom: 20,
