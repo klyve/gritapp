@@ -148,7 +148,14 @@ export default class SinglePictureView extends Component {
 
             <View style={{flex: 7,}}>
               <ScrollView style={styles.scroll}>
-                <Image style={styles.currentImage} source={{uri: this.props.picture}}></Image>
+
+                <View style={styles.currentImage}>
+                  <Image
+                    style={{width: 400, height: 400}}
+                    resizeMode={'contain'}
+                    source={{uri: this.props.picture}}
+                  />
+                </View>
 
                 <View style={styles.likeBar}>
                   <Text style={{fontSize: 30}}> {pst.likes.length}</Text>

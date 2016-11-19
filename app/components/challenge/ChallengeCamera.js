@@ -54,11 +54,11 @@ export default class ChallengeCamera extends Component {
 
               <View style={{flex: 1}}>
                 <Icon
-                  name='camera'
+                  name='circle-o'
                   type='font-awesome'
                   color='white'
                   underlayColor='transparent'
-                  size={80}
+                  size={100}
 
                   onPress={() => {
                     this.takePicture();
@@ -140,11 +140,12 @@ const styles = StyleSheet.create({
   capture: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    opacity: 0.4,
+    opacity: 0.5,
     backgroundColor: '#000',
     height: (Dimensions.get('window').height / 4),
     width: Dimensions.get('window').width

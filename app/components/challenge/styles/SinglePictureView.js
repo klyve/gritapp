@@ -65,8 +65,9 @@ export default styles = StyleSheet.create({
     borderRadius: 30,
   },
   currentImage: {
-    height: 400,
-    width: 400,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
 
