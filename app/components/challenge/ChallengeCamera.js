@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Camera from 'react-native-camera';
 import { Icon } from 'react-native-elements';
+import { Actions } from 'react-native-router-flux';
 
 export default class ChallengeCamera extends Component {
   constructor(props) {
@@ -103,10 +104,12 @@ export default class ChallengeCamera extends Component {
     console.log("!!")
     this.camera.capture()
       .then((data) => {
-        this.props.camera(data.path)
+        Actions.confirmpictureview({camera: this.props.camera, picture: data.path})
+
         console.log(data)
       })
       .catch(err => console.error(err));
+
   }
 
   typeToggle() {
