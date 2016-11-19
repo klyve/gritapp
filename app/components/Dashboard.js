@@ -32,14 +32,7 @@ export default class Dashboard extends Component {
       loading: false,
     }
   }
-  fetchGroupsInterval() {
-    this.props.dispatch(Groups.getUserGroups());
-    setTimeout(() => {
-      return this.fetchGroupsInterval();
-    },5000);
-  }
   componentWillMount() {
-    this.fetchGroupsInterval();
     this.props.dispatch(User.getNotifications());
   }
 
