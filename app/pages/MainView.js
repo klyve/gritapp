@@ -29,6 +29,8 @@ import NewChallenge from '../components/challenge/NewChallenge';
 
 import ProfileSettingsMain from '../components/myprofile/ProfileSettingsMain';
 import ProfileBioEdit from '../components/myprofile/ProfileBioEdit';
+import ProfileCameraRoll from '../components/myprofile/ProfileCameraRoll';
+
 
 import LoginView from '../components/user/LoginView';
 
@@ -67,10 +69,10 @@ const scenes = Actions.create(
     <Scene key="profilebioedit" hideNavBar component={ProfileBioEdit}/>
 
     <Scene key="signup" hideNavBar component={Signup}/>
-
     <Scene key="descriptionedit" hideNavBar component={DescriptionEdit}/>
-
     <Scene key="newchallenge" hideNavBar component={NewChallenge}/>
+
+    <Scene key="profilecameraroll" hideNavBar component={ProfileCameraRoll}/>
 
   </Scene>
 );

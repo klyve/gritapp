@@ -62,5 +62,7 @@
 	<string>Taking pictures</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Test</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string></string>
 </dict>
 </plist>
