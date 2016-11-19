@@ -38,8 +38,6 @@ class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
-
-
   }
 
 
@@ -152,7 +150,7 @@ class GroupDashboard extends Component {
                   onPress = {() => { Actions.newchallenge(); }}
                   activeOpacity={71 / 100}
                   underlayColor={"rgb(210,210,210)"}
-                  style = {styles.newChallengeButton}>
+                  style = {{backgroundColor: groupColor}}>
                     <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
                       NEW CHALLENGE
                     </Text>

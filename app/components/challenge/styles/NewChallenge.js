@@ -9,7 +9,6 @@ import {
   MARGIN,
 } from '../../constants'
 
-
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
