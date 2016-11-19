@@ -30,7 +30,6 @@ import {
 import styles from './styles/ProfileCameraRoll';
 
 export default class ProfileCameraRoll extends Component {
-
   render() {
     return (
       <View style={styles.container}>
@@ -44,7 +43,8 @@ export default class ProfileCameraRoll extends Component {
          />
         <View style={styles.body}>
           <CameraRollPicker
-            callback={this.getSelectedImages}
+            callback={(images) => this.getSelectedImages(images)}
+            maximum={1}
             />
         </View>
       </View>
