@@ -25,18 +25,14 @@ import {
 } from '../modules';
 import styles from './styles/ProfileSettingsMain';
 
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
 
-// Blueprints
-function Profile(){
-  this.name = "";
-  this.picturePath = "";
-  this.description = "";
+
+var myProfile = {
+  name: "Morten",
+  profilepicture: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg",
+  description: "Keeping it real since 1997",
 }
-
-var currentGroup = new Profile();
-  currentGroup.name = "Henrik6969";
-  currentGroup.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/1484606_10204683850909326_7450466084526933181_n.jpg?oh=36174d2356a1d6d7c8685bcd4c367103&oe=589633B4";
-  currentGroup.description = "Stor og lang";
 
 class ProfileSettingsMain extends Component {
   constructor(props) {
@@ -49,6 +45,12 @@ class ProfileSettingsMain extends Component {
   }
   logOut() {
       this.props.dispatch(User.logoutUser());
+  }
+
+  handlePicture(picture) {
+    Actions.pop({popNum: 2})
+    console.log("Image is",picture)
+    myProfile.profilepicture = picture;
   }
 
   render() {
@@ -80,7 +82,7 @@ class ProfileSettingsMain extends Component {
           underlayColor={"rgb(210,210,210)"}
           style={styles.groupImageView}>
 
-            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+            <Image style={styles.groupImage} source={{uri: myProfile.profilepicture}}></Image>
           </TouchableHighlight>
           <Text style = {styles.headerText}>Profile Settings</Text>
         </View>
@@ -93,7 +95,7 @@ class ProfileSettingsMain extends Component {
               borderBottomWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Username</Text>
-            <Text style = {styles.settingsTextRight}>{currentGroup.name}</Text>
+            <Text style = {styles.settingsTextRight}>{myProfile.name}</Text>
 
           </View>
           {/*Settings nr 2*/}
