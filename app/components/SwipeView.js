@@ -41,7 +41,6 @@ class SwipeView extends Component {
       <View>
 
        <StatusBar
-         backgroundColor="blue"
          barStyle="light-content"
          translucent={true}
        />
