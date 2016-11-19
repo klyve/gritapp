@@ -87,11 +87,37 @@ export function loginUser(username, pwd) {
       if(json.status && json.status == 200) {
         AsyncStorage.setItem("@accesstoken:key", json.token).then(() => {
           dispatch({type: "USER_CHANGED", payload: json})
-          
+
         })
       }else {
         dispatch({type: "USER_LOGIN_ERROR", payload: json})
       }
     })
   }
+}
+
+
+
+export function getNotifications() {
+  return function(dispatch) {
+    dispatch({type: "USER_GET_NOTIFICATIONS_START"})
+      AsyncStorage.getItem("@accesstoken:key").then((token) => {
+
+      fetch('https://dd25c333.ngrok.io/api/user/notifications', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+        })
+      })
+      .then((data) => data.json())
+      .then((json) => {
+        dispatch({type: "USER_NOTIFICATIONS_CHANGED", payload: json})
+      })
+    })
+  }
+
 }

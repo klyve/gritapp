@@ -10,7 +10,6 @@ import {
   AsyncStorage,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
-
 import { connect } from 'react-redux';
 
 import Swiper from 'react-native-swiper';
@@ -98,6 +97,7 @@ class SwipeView extends Component {
 
 
 export default connect(state => ({
-    groups: state.groups.groups
+    groups: state.groups,
+    user: state.user
   })
 )(SwipeView);
