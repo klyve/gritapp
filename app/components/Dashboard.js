@@ -14,6 +14,8 @@ import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Groups from '../actions/groups';
+import * as User from '../actions/user';
+
 import styles from './styles/Dashboard';
 import {
   MainHeader,
@@ -30,9 +32,15 @@ export default class Dashboard extends Component {
       loading: false,
     }
   }
-  componentWillMount() {
+  fetchGroupsInterval() {
     this.props.dispatch(Groups.getUserGroups());
-    this.setState({loading: true})
+    setTimeout(() => {
+      return this.fetchGroupsInterval();
+    },5000);
+  }
+  componentWillMount() {
+    this.fetchGroupsInterval();
+    this.props.dispatch(User.getNotifications());
   }
 
   gotoGroup(groupId) {
@@ -45,9 +53,10 @@ export default class Dashboard extends Component {
   }
 
   renderNotifications() {
-    let notifications = 3;
 
-    if(notifications <= 0)
+    let notifications = this.props.user.notifications;
+
+    if(!notifications > 0)
       return false;
 
     return (
@@ -63,7 +72,7 @@ export default class Dashboard extends Component {
     let showGroups  = [];
     let showLoading = [];
 
-    if (showGroups.length == 0 && this.state.loading){
+    if (this.props.groups.loading){
       showLoading =
                     <ActivityIndicator
                       animating={true}
@@ -77,11 +86,11 @@ export default class Dashboard extends Component {
                       color="#2ecc71"
                     /> ;
     } else {
-      showGroups = [];
+      showGroups = false;
     }
 
-    if(this.props.groups.length > 0) {
-       showGroups = this.props.groups.map((a,b) => {
+    if(this.props.groups.groups.length > 0) {
+       showGroups = this.props.groups.groups.map((a,b) => {
 
         let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
         return (
@@ -95,11 +104,8 @@ export default class Dashboard extends Component {
         )
       })
 
-      if (showLoading.length != 0)
-        this.setState({loading: false})
-
     } else {
-      showGroups = [];
+      showGroups = false;
     }
 
     return (

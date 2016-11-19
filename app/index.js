@@ -20,7 +20,7 @@ import MainView from './pages/MainView'
 
 //, logger()
 // Create store with middleware function with thunk
-const createStoreWithMiddleware = applyMiddleware(thunk, middleware.redirectAuth, logger())(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk, middleware.redirectAuth)(createStore);
 const reducer = combineReducers(reducers); // Register all reducers
 const store = createStoreWithMiddleware(reducer); // Create the store middleware
 

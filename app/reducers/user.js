@@ -4,6 +4,7 @@ import {
 const initialState = {
   user: [],
   token: false,
+  notifications: 0,
 };
 
 
@@ -15,6 +16,12 @@ export default function groups(state = initialState, action = {}) {
       return {
         ...state,
         ...action.payload
+      }
+    break;
+    case 'USER_NOTIFICATIONS_CHANGED':
+      return {
+        ...state,
+        notifications: action.payload.notifications
       }
     break;
     case 'USER_LOGIN_START':
