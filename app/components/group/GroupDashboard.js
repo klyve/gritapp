@@ -63,8 +63,6 @@ class GroupDashboard extends Component {
 
     tabStyles[this.state.activeTab].push({color: groupColorHex})
 
-    console.log(this.props)
-
     return (
       <View style={styles.container}>
 
