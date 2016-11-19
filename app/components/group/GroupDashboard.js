@@ -154,7 +154,7 @@ class GroupDashboard extends Component {
                       activeOpacity={71 / 100}
                       underlayColor={"rgb(210,210,210)"}
                       style = {{backgroundColor: groupColorHex, marginTop: 20}}>
-                        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+                        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20, color: '#fff'}}>
                           NEW CHALLENGE
                         </Text>
                       </TouchableHighlight>
