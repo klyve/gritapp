@@ -26,7 +26,7 @@ export default function groups(state = initialState, action = {}) {
         state.initialFetch = true;
 
       if (!(state.groups.length > 0) && !(action.payload.groups.length > 0))
-        state.message = 'You are not member of any group 😶 \n Want to join one? Swipe left ➡️'
+        state.message = 'No groups to show 😶 \n Want to join one? Swipe left ➡️'
 
       return {
         ...state,

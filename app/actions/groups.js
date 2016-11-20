@@ -10,7 +10,7 @@ export function getUserGroups() {
       .then(request => request.json())
       .then(json => {
 
-    dispatch({type: "FETCH_USERGROUPS_FULLFILLED", payload: json})
+        dispatch({type: "FETCH_USERGROUPS_FULLFILLED", payload: json})
       })
       .catch((error) => console.warn("fetch error:", error))
   }

@@ -10,9 +10,15 @@ const initialState = {
 
 
 
-export default function groups(state = initialState, action = {}) {
+export default function user(state = initialState, action = {}) {
   switch (action.type) {
     case 'USER_CHANGED':
+      return {
+        ...state,
+        ...action.payload
+      }
+    break;
+    case 'USER_DATA_CHANGED':
       return {
         ...state,
         ...action.payload

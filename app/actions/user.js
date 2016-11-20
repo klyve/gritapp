@@ -95,8 +95,31 @@ export function loginUser(username, pwd) {
     })
   }
 }
+export function getUserData() {
+  return function(dispatch) {
 
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
+    fetch('https://dd25c333.ngrok.io/api/user/data', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token,
+      })
+    })
+      .then((data) => data.json())
+      .then((json) => {
+        dispatch({type: "USER_DATA_CHANGED", payload: json})
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    })
+  }
+}
 
 export function getNotifications() {
   return function(dispatch) {
