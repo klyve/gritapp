@@ -141,7 +141,7 @@ export default class SinglePictureView extends Component {
                   type='font-awesome'
                   color='#000'
                   underlayColor='transparent'
-                  onPress={()=>{this.props.close()}}
+                  onPress={()=>{Actions.pop()}}
                 />
               </View>
             </View>

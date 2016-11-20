@@ -30,7 +30,7 @@ function person(){
 }
 var me = new person();
   me.nick = "Jørgen";
-  me.image = "http://facebookcraze.com/wp-content/uploads/2009/12/funny_profile_pic_for_facebook_rape.jpg";
+  me.image = "https://pbs.twimg.com/profile_images/468243670626742272/MD4LISrb.jpeg";
   me.bio = "RIP - døde av stack overflow"
 
 var f1 = new person();

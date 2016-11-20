@@ -11,7 +11,8 @@ import {
   ScrollView,
   Switch,
   Alert,
-  AsyncStorage
+  AsyncStorage,
+  TextInput
 } from 'react-native';
 //import * as Route from '../../actions/route';
 import * as User from '../../actions/user';
@@ -108,7 +109,10 @@ class ProfileSettingsMain extends Component {
           style = {styles.setting}>
             <View style = {{flexDirection: 'row',}}>
               <Text style = {styles.settingsTextLeft}>Bio</Text>
-              <Text style = {styles.settingsTextRight}>Bio preview</Text>
+              <TextInput
+              value = {myProfile.description}
+              editable = {false}
+              style = {styles.settingsTextRight}/>
             </View>
           </TouchableHighlight>
 
