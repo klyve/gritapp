@@ -71,7 +71,7 @@ class SwipeView extends Component {
         <View style={styles.slide1}>
           <MainHeader
             color="green"
-            title="Profile"
+            title="Profiles"
             rightBtn="chevron-right"
             right={() => { this.btnPress(1) }}
            />
@@ -84,7 +84,7 @@ class SwipeView extends Component {
 
         <View style={styles.slide2}>
           <MainHeader
-            leftBtn="user"
+            leftBtn="users"
             rightBtn="plus"
             logo
             right={() => { this.btnPress(1) }}
@@ -100,7 +100,7 @@ class SwipeView extends Component {
         <View style={styles.slide3}>
           <MainHeader
             color="green"
-            title="Group"
+            title="Add Group"
             leftBtn="chevron-left"
             left={() => { this.btnPress(-1) }}
           />
