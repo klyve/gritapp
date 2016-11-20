@@ -80,7 +80,7 @@ class GroupName extends Component {
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
 
-          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Next</Text>
+          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8, marginTop: 15,}}>Next</Text>
         </TouchableHighlight>
         <TouchableHighlight style={styles.previous}
           onPress={() =>{
@@ -89,17 +89,8 @@ class GroupName extends Component {
           activeOpacity={75 / 100}
           underlayColor={"rgb(210,210,210)"}>
 
-          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8,}}>Previous</Text>
+          <Text style={{fontSize:20, color: '#eeeeee', paddingRight: 8, marginTop: 15,}}>Previous</Text>
         </TouchableHighlight>
-        <View style={styles.bottomTextView}>
-        <Text style={styles.bottomText}>
-          Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Curabitur
-          id elementum turpis, elementum convallis elit.
-          Ut interdum porttitor consequat. Cras sagittis
-          auctor libero sit amet viverra.
-        </Text>
-        </View>
 
       </View>
     );

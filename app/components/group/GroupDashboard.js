@@ -85,6 +85,15 @@ class GroupDashboard extends Component {
               <Text style={styles.groupDescriptionText}>{this.props.bio}</Text>
             </View>
 
+            <TouchableHighlight
+            onPress = {() => { Actions.newchallenge({grouptype: this.props.grouptype}); }}
+            activeOpacity={71 / 100}
+            underlayColor={"rgb(210,210,210)"}
+            style = {{backgroundColor: groupColorHex, marginBottom: MARGIN}}>
+              <Text style={{alignSelf: 'center', padding: MARGIN, fontSize: 22, color: '#fff',}}>
+                NEW CHALLENGE
+              </Text>
+            </TouchableHighlight>
 
             <View style={styles.tabs}>
               <View style={{flex: 1, flexDirection: 'row'}}>
@@ -125,8 +134,6 @@ class GroupDashboard extends Component {
               </View>
 
 
-
-
               <View style={{flex: 12, backgroundColor: '#f0f0f0'}}>
 
                 <Swiper
@@ -149,16 +156,6 @@ class GroupDashboard extends Component {
                       <GroupChallenges
                         grouptype={this.props.grouptype}
                       />
-
-                      <TouchableHighlight
-                      onPress = {() => { Actions.newchallenge({grouptype: this.props.grouptype}); }}
-                      activeOpacity={71 / 100}
-                      underlayColor={"rgb(210,210,210)"}
-                      style = {{backgroundColor: groupColorHex, marginTop: 20}}>
-                        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20, color: '#fff'}}>
-                          NEW CHALLENGE
-                        </Text>
-                      </TouchableHighlight>
                     </ScrollView>
                   </View>
 
