@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import * as Route from '../actions/route';
+import * as User from '../actions/user';
 
 import { Actions } from 'react-native-router-flux';
 
@@ -31,7 +32,8 @@ export default class Friends extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchbar: false
+      searchbar: false,
+      finding: false
     }
   }
   changeBar(state) {
@@ -43,7 +45,10 @@ export default class Friends extends Component {
     if(!this.state.searchbar) {
       return (
           <TouchableHighlight style={styles.addButton}
-            onPress={() => this.changeBar(true)}
+            onPress={() => {
+              this.changeBar(true)
+              this.setState({finding: true});
+            }}
           >
             <View style={styles.add}>
               <Text style={styles.addText}> ADD FRIEND </Text>
@@ -64,12 +69,17 @@ export default class Friends extends Component {
             style: styles.searchIcon
           }}
           lightTheme
-          onChangeText={() => console.log("this.refs")}
+          onChangeText={(text) => {
+            this.props.dispatch(User.findUser({text}))
+          }}
           placeholder='Type Here...' />
 
           <View style={styles.searchClose}>
             <Icon
-              onPress={() => this.changeBar(false)}
+              onPress={() => {
+                this.changeBar(false)
+                this.setState({finding: false})
+              }}
               color={'#999'}
               name='close' />
           </View>
@@ -84,10 +94,16 @@ export default class Friends extends Component {
 
   render() {
 
-    let showFriends = (this.props.user.friends || []).map((a,b) => {
+    let displayUsers = (!this.state.finding) ?
+                          this.props.user.friends
+                        : this.props.user.users;
+
+    let showUsers = (displayUsers || []).map((a,b) => {
         return <FriendBlock
                 onPress={() => {
-                  Actions.profile({user: a})
+                  Actions.profile({user: a});
+                  this.changeBar(false);
+                  this.setState({finding: false});
                 }}
                 image={a.image}
                 name={a.nick}
@@ -127,7 +143,7 @@ export default class Friends extends Component {
             </View>
 
             <Blocks>
-              {showFriends}
+              {showUsers}
             </Blocks>
           </ScrollView>
         </View>
