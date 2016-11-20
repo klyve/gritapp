@@ -68,7 +68,7 @@ export default styles = StyleSheet.create({
   titleLogoContainer: {
     position: 'absolute',
     right: 0,
-    bottom: 5,
+    bottom: 8,
     left: 0,
     flex: 1,
     padding: MARGIN / 2,

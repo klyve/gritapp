@@ -104,7 +104,7 @@ export default class MainHeader extends Component {
       return (
         <View style={styles.titleLogoContainer}>
           <Image
-            style={{height: 60, width: 60}}
+            style={{height: 50, width: 50}}
             source={require('../../../../images/grit.png')}
           />
         </View>
