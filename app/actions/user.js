@@ -95,6 +95,7 @@ export function loginUser(username, pwd) {
     })
   }
 }
+
 export function getUserData() {
   return function(dispatch) {
 
@@ -110,15 +111,34 @@ export function getUserData() {
         token,
       })
     })
-      .then((data) => data.json())
-      .then((json) => {
-        dispatch({type: "USER_DATA_CHANGED", payload: json})
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    .then((data) => data.json())
+    .then((json) => {
+      dispatch({type: "USER_DATA_CHANGED", payload: json})
+    })
+    .catch(err => {
+      console.log(err);
+    })
     })
   }
+}
+
+export function findUser(search) {
+return function (dispatch) {
+  fetch('https://dd25c333.ngrok.io/api/user/find', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      search,
+    })
+  })
+  .then((data) => data.json())
+  .then((json) => {
+    dispatch({type: "USER_FIND", payload: json})
+  })
+}
 }
 
 export function getNotifications() {

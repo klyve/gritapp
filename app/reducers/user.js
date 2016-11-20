@@ -17,6 +17,11 @@ export default function user(state = initialState, action = {}) {
         ...state,
         ...action.payload
       }
+    case 'USER_FIND':
+      return {
+        ...state,
+        ...action.payload
+      }
     break;
     case 'USER_DATA_CHANGED':
       return {

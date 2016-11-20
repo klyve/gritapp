@@ -31,10 +31,9 @@ class SwipeView extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchDataInterval();
   }
-
 
   btnPress(index) {
     //console.log(this._swiper.scrollBy(1))
@@ -47,9 +46,8 @@ class SwipeView extends Component {
     // Add more data gets
     setTimeout(() => {
       return this.fetchDataInterval();
-    },15000);
+    },10000);
   }
-
 
   render() {
     //const { state, actions } = this.props;
@@ -61,6 +59,7 @@ class SwipeView extends Component {
          barStyle="light-content"
          translucent={true}
        />
+
       <Swiper
         ref={"swiper"}
         style={styles.wrapper}
@@ -92,6 +91,7 @@ class SwipeView extends Component {
             right={() => { this.btnPress(1) }}
             left={() => { this.btnPress(-1) }}
           />
+
           <View style={[styles.contentView, styles.noPadding]}>
             <Dashboard
               {...this.props}
@@ -110,8 +110,6 @@ class SwipeView extends Component {
             <CreateOrJoinGroup />
           </View>
         </View>
-
-
       </Swiper>
       </View>
     );
