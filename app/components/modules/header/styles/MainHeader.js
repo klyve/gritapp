@@ -65,6 +65,15 @@ export default styles = StyleSheet.create({
     padding: MARGIN / 2,
     alignItems: 'center',
   },
+  titleLogoContainer: {
+    position: 'absolute',
+    right: 0,
+    bottom: 5,
+    left: 0,
+    flex: 1,
+    padding: MARGIN / 2,
+    alignItems: 'center',
+  },
   titleText: {
     color: '#fff',
     fontSize: 20,
