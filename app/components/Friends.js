@@ -100,7 +100,10 @@ export default class Friends extends Component {
     let showUsers = (displayUsers || []).map((a,b) => {
         return <FriendBlock
                 onPress={() => {
-                  Actions.profile({user: a});
+                  Actions.profile({
+                                    mainUser: this.props.user,
+                                    thisUser: a,
+                                  });
                   this.changeBar(false);
                   this.setState({finding: false});
                 }}
