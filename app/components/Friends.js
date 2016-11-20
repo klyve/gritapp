@@ -25,7 +25,6 @@ import {
 
 import styles from './styles/Friends';
 
-
 export default class Friends extends Component {
 
   constructor(props) {

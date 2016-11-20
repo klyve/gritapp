@@ -54,7 +54,7 @@ export default styles = StyleSheet.create({
     width: 200,
   },
   settingsTextRight: {
-    width: 180,
+    width: MARGIN * 13,
     color: 'grey',
     fontSize: 18,
   },

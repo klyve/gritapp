@@ -34,7 +34,7 @@ function Group(){
 var currentGroup = new Group();
   currentGroup.name = "Pølsefest";
   currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
-  currentGroup.description = "Vi liker pølser";
+  currentGroup.description = "Vi liker pølser og fordi det er godt. mhm ";
   currentGroup.public = false;
 
 export default class GroupSettingsMain extends Component {
