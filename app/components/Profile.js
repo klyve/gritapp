@@ -10,7 +10,10 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles/profile';
+
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
 import { Icon } from 'react-native-elements';
 import * as Friends from '../actions/friends';
 
@@ -29,7 +32,7 @@ function person(){
   this.description;
 }
 
-export default class Profile extends Component {
+class Profile extends Component {
 
   constructor(props) {
     super(props)
@@ -47,11 +50,10 @@ export default class Profile extends Component {
         }}
       >
         <Text style={{fontSize: 22, color: '#2ecc71', fontWeight: 'bold'}}>
-          ADD FRIEND
+          REMOVE FRIEND
         </Text>
       </TouchableHighlight>
 
-    )
 
     let removeAction = (
 
@@ -62,22 +64,13 @@ export default class Profile extends Component {
       >
         <Text style={{fontSize: 22, color: '#c0392b', fontWeight: 'bold'}}>
           REMOVE FRIEND
-        </Text>;
+        </Text>
       </TouchableHighlight>
 
     )
 
-    let userAction = [addAction, removeAction];
+    let userAction = (mainUser.friends.indexOf(thisUser) < 0) ? addAction : removeAction;
 
-    let actionIndex = 0;
-
-    /*
-
-      MYE SPAGHETTI OG DRITT HER, PROBLEMET OG SELVE BUGGEN ER AT NÅR MAN SETTER INN
-      NOE I VARIABELEN USERACTION SOM ET ANDRE ALTERNATIV SÅ FÅR BRÅTT OBJECTET
-      ET ARRAY MED EN JÆVLA STYGG SEMIKOLON SOM IKKE GIR MENING OG SÅNN. FML
-
-    */
 
     console.log(userAction);
 
@@ -109,7 +102,7 @@ export default class Profile extends Component {
               </View>
 
               <View style={{flex: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                {userAction[actionIndex]}
+                {userAction}
               </View>
             </View>
           </View>
@@ -118,3 +111,8 @@ export default class Profile extends Component {
     );
   }
 }
+
+export default connect(state => ({
+    state,
+  })
+)(Profile);
