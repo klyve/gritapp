@@ -1,37 +1,44 @@
-export function addFriend(friend) {
+import * as Route from './route';
+import { Actions } from 'react-native-router-flux';
+
+export function add(friend) {
   return function(dispatch) {
 
-    fetch('https://dd25c333.ngrok.io/api/user/addFriend', {
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        _id: friend._id
-      })
-    })
-  };
-}
-
-export function removeFriend(friend) {
-  return {
-    return function(dispatch) {
-
-      fetch('https://dd25c333.ngrok.io/api/user/removeFriend', {
-
+      fetch('https://dd25c333.ngrok.io/api/user/addFriend', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          token,
           _id: friend._id
         })
       })
-    };
-  };
+    })
+  }
+}
+
+export function remove(friend) {
+  return function(dispatch) {
+
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+
+      fetch('https://dd25c333.ngrok.io/api/user/removeFriend', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          _id: friend._id
+        })
+      })
+    })
+  }
 }
 
 export function showFriends(){
@@ -42,6 +49,6 @@ export function showFriends(){
       .then(json => {
 
         dispatch({type: "SHOW_FRIENDS", payload: json.friends})
-    }
+    })
   }
 }

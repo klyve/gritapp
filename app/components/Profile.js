@@ -12,6 +12,7 @@ import {
 import styles from './styles/profile';
 import { Actions } from 'react-native-router-flux';
 import { Icon } from 'react-native-elements';
+import * as Friends from '../actions/friends';
 
 import {
   MainHeader,
@@ -32,31 +33,53 @@ export default class Profile extends Component {
 
   constructor(props) {
     super(props)
+
   }
   render() {
     let mainUser = this.props.mainUser;
     let thisUser = this.props.thisUser;
 
-    let userAction = (mainUser.friends.indexOf(thisUser) < 0) ?
+    let addAction = (
 
-                      <Text
-                        style={{fontSize: 22, color: '#2ecc71', fontWeight: 'bold'}}
-                        onPress={() => {}}
-                      >
-                        ADD FRIEND
-                      </Text>
+      <TouchableHighlight
+        onPress={() => {
+          this.props.dispatch(Friends.add(thisUser))
+        }}
+      >
+        <Text style={{fontSize: 22, color: '#2ecc71', fontWeight: 'bold'}}>
+          ADD FRIEND
+        </Text>
+      </TouchableHighlight>
 
-                :
-                      <Text
-                        style={{fontSize: 22, color: '#c0392b', fontWeight: 'bold'}}
-                        onPress={() => {}}
-                      >
-                        REMOVE FRIEND
-                      </Text>;
+    )
 
+    let removeAction = (
 
-    console.log(mainUser.friends.indexOf(thisUser));
+      <TouchableHighlight
+        onPress={() => {
+          this.props.dispatch(Friends.remove(thisUser))
+        }}
+      >
+        <Text style={{fontSize: 22, color: '#c0392b', fontWeight: 'bold'}}>
+          REMOVE FRIEND
+        </Text>;
+      </TouchableHighlight>
 
+    )
+
+    let userAction = [addAction, removeAction];
+
+    let actionIndex = 0;
+
+    /*
+
+      MYE SPAGHETTI OG DRITT HER, PROBLEMET OG SELVE BUGGEN ER AT NÅR MAN SETTER INN
+      NOE I VARIABELEN USERACTION SOM ET ANDRE ALTERNATIV SÅ FÅR BRÅTT OBJECTET
+      ET ARRAY MED EN JÆVLA STYGG SEMIKOLON SOM IKKE GIR MENING OG SÅNN. FML
+
+    */
+
+    console.log(userAction);
 
     return (
       <View style={styles.container}>
@@ -70,14 +93,14 @@ export default class Profile extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: this.props.thisUser.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: thisUser.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{this.props.thisUser.nick}</Text>
+              <Text style={styles.groupTitleText}>{thisUser.nick}</Text>
 
-              <Text style={styles.groupDescriptionText}>{this.props.thisUser.bio}</Text>
+              <Text style={styles.groupDescriptionText}>{thisUser.bio}</Text>
             </View>
 
             <View style={styles.tabs}>
@@ -86,7 +109,7 @@ export default class Profile extends Component {
               </View>
 
               <View style={{flex: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                {userAction}
+                {userAction[actionIndex]}
               </View>
             </View>
           </View>
