@@ -20,6 +20,7 @@ import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
 import * as Groups from '../actions/groups';
+import * as User from '../actions/user';
 
 
 import * as Route from '../actions/route';
@@ -42,10 +43,11 @@ class SwipeView extends Component {
 
   fetchDataInterval() {
     this.props.dispatch(Groups.getUserGroups());
+    this.props.dispatch(User.getUserData());
     // Add more data gets
     setTimeout(() => {
       return this.fetchDataInterval();
-    },5000);
+    },15000);
   }
 
 

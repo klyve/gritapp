@@ -9,11 +9,22 @@ export default function friends(state = initialState, action = {}) {
         ...state,
         count: state.count + 1
       };
+    break;
+
     case 'REMOVE_FRIEND':
       return {
         ...state,
         count: state.count - 1
       };
+    break;
+
+    case 'SHOW_FRIENDS':
+      return{
+        ...action.payload
+      }
+    break;
+
+
     default:
       return state;
   }
