@@ -123,6 +123,29 @@ export function getUserData() {
   }
 }
 
+export function updateUserSettings(data) {
+  return function (dispatch) {
+    dispatch({type: "USER_UPDATE", payload: data})
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+      fetch(SERVER+'/user/update', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          data
+        })
+      })
+      .then((data) => data.json())
+      .then((json) => {
+        dispatch({type: "USER_UPDATE", payload: data})
+      })
+    })
+  }
+}
+
 export function findUser(search) {
   return function (dispatch) {
     fetch(SERVER+'/user/find', {
