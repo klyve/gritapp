@@ -23,14 +23,17 @@ export default class GroupLeaderboard extends Component {
   }
 
   render() {
-    
+
     let lead = this.props.group.leaderboard;
 
     if (lead.length > 0) {
       lead.push(
         <LeadBlock
           onPress={() => {
-            Actions.profile()
+            Actions.profile({
+              thisUser: lead[0],
+              mainUser: this.props.user
+            })
           }}
           trophy='trophy'
           trophyColor='gold'
@@ -47,7 +50,10 @@ export default class GroupLeaderboard extends Component {
       lead.push(
         <LeadBlock
           onPress={() => {
-            Actions.profile()
+            Actions.profile({
+              thisUser: lead[1],
+              mainUser: this.props.user
+            })
           }}
           trophy='trophy'
           trophyColor='silver'
@@ -63,7 +69,10 @@ export default class GroupLeaderboard extends Component {
     if (lead.length > 2) {
       <LeadBlock
         onPress={() => {
-          Actions.profile()
+          Actions.profile({
+            thisUser: lead[0],
+            mainUser: this.props.user
+          })
         }}
         trophy='trophy'
         trophyColor='#cd8c32'
@@ -81,7 +90,10 @@ export default class GroupLeaderboard extends Component {
       other.push(
         <LeadBlock
           onPress={() => {
-            Actions.profile()
+            Actions.profile({
+              thisUser: lead[i],
+              mainUser: this.props.user,
+            })
           }}
           image={lead[i].picturePath}
           name={lead[i].name}
