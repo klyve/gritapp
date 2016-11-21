@@ -56,7 +56,7 @@ export default class Dashboard extends Component {
       <TouchableHighlight style={styles.notifications}
         onPress={() => this.showNotifications()}
       >
-        <Text style={styles.notificationsText}>New: {notifications}</Text>
+        <Text style={styles.notificationsText}>{notifications} 📬</Text>
       </TouchableHighlight>
     )
   }
