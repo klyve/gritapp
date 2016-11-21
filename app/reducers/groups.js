@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   message: false,
   initialFetch: false,
+  challenges: [],
 };
 
 export default function groups(state = initialState, action = {}) {

@@ -41,17 +41,27 @@ var chall4 = new Challenge();
   chall4.timeLeft = "3d";
   chall4.picturePath = "https://a2ua.com/hello/hello-009.jpg";
 
-var open =[chall1, chall2, chall3, chall4];
-var closed =[chall1, chall1, chall1, chall1];
 
 export default class GroupChallenges extends Component {
   render() {
+
+    for (let i = 0; i < this.props.group.challenges.length; i++) {
+
+      // ADD CODE FOR CHECKING IF OPEN OR CLOSED
+
+    }
+
+    var open =[];
+
+    var closed =[];
+
+
 
     let showOpen = open.map((a,b) => {
         return (
           <FriendBlock
             onPress={() => {
-              Actions.challengepage({grouptype: this.props.grouptype})
+              Actions.challengepage({grouptype: this.props.group.grouptype})
             }}
             image={a.picturePath}
             name={a.name}

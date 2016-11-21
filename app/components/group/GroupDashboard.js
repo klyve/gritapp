@@ -40,21 +40,10 @@ class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
-
-    console.log(this.props);
   }
 
-  componentDidMount() {
-    this.fetchGroupDataInterval();
-  }
-
-  fetchGroupDataInterval() {
-
+  componentWillMount() {
     this.props.dispatch(Groups.getGroupData(this.props.group));
-    // Add more data gets
-    setTimeout(() => {
-      return this.fetchDataInterval();
-    },20000);
   }
 
   onMomentumScrollEnd(e, state, context) {
@@ -69,14 +58,16 @@ class GroupDashboard extends Component {
 
   render() {
 
-    let groupBannerColor = (this.props.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
-    let groupTitleColor = (this.props.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
-    let groupColor = (this.props.grouptype == "public") ? 'blue' : 'red';
-    let groupColorHex = (this.props.grouptype == "public") ? '#2574a9' : '#c0392b';
+    let groupBannerColor = (this.props.groups.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (this.props.groups.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
+    let groupColor = (this.props.groups.grouptype == "public") ? 'blue' : 'red';
+    let groupColorHex = (this.props.groups.grouptype == "public") ? '#2574a9' : '#c0392b';
 
     let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
     tabStyles[this.state.activeTab].push({color: groupColorHex})
+
+    console.log(groupColor);
 
     return (
       <View style={styles.container}>
@@ -103,7 +94,7 @@ class GroupDashboard extends Component {
             </View>
 
             <TouchableHighlight
-            onPress = {() => { Actions.newchallenge({grouptype: this.props.group.grouptype}); }}
+            onPress = {() => { Actions.newchallenge({grouptype: this.props.groups.grouptype}); }}
             activeOpacity={71 / 100}
             underlayColor={"rgb(210,210,210)"}
             style = {{backgroundColor: groupColorHex, marginBottom: MARGIN}}>
@@ -173,14 +164,16 @@ class GroupDashboard extends Component {
 
                     <ScrollView>
                       <GroupChallenges
-                        grouptype={this.props.grouptype}
+                        group={this.props.groups}
                       />
                     </ScrollView>
                   </View>
 
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
-                      <GroupMembers />
+                      <GroupMembers
+                        group={this.props.groups}
+                      />
                     </ScrollView>
                   </View>
                 </Swiper>

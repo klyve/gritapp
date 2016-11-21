@@ -24,7 +24,58 @@ export default class GroupLeaderboard extends Component {
 
   render() {
 
-    var lead = this.props.group.leaderboard;
+    console.log(this.props.group.leaderboard)
+    //var lead = this.props.group.leaderboard;
+    let lead = [];
+
+    if (lead.length > 0) {
+      lead.push(
+        <LeadBlock
+          onPress={() => {
+            Actions.profile()
+          }}
+          trophy='trophy'
+          trophyColor='gold'
+          image={lead[0].picturePath}
+          name={lead[0].name}
+          points={lead[0].score}
+          large
+          key={0}
+        />
+      )
+    }
+
+    if (lead.length > 1) {
+      lead.push(
+        <LeadBlock
+          onPress={() => {
+            Actions.profile()
+          }}
+          trophy='trophy'
+          trophyColor='silver'
+          image={lead[1].picturePath}
+          name={lead[1].name}
+          points={lead[1].score}
+          key={1}
+          large
+        />
+      )
+    }
+
+    if (lead.length > 2) {
+      <LeadBlock
+        onPress={() => {
+          Actions.profile()
+        }}
+        trophy='trophy'
+        trophyColor='#cd8c32'
+        image={lead[2].picturePath}
+        name={lead[2].name}
+        points={lead[2].score}
+        key={2}
+        large
+      />
+    }
 
     let other = [];
 
@@ -48,44 +99,7 @@ export default class GroupLeaderboard extends Component {
       <View>
         <View style={{padding: 23}}/>
 
-          <LeadBlock
-            onPress={() => {
-              Actions.profile()
-            }}
-            trophy='trophy'
-            trophyColor='gold'
-            image={lead[0].picturePath}
-            name={lead[0].name}
-            points={lead[0].score}
-            large
-            key={0}
-          />
-
-          <LeadBlock
-            onPress={() => {
-              Actions.profile()
-            }}
-            trophy='trophy'
-            trophyColor='silver'
-            image={lead[1].picturePath}
-            name={lead[1].name}
-            points={lead[1].score}
-            key={1}
-            large
-          />
-
-          <LeadBlock
-            onPress={() => {
-              Actions.profile()
-            }}
-            trophy='trophy'
-            trophyColor='#cd8c32'
-            image={lead[2].picturePath}
-            name={lead[2].name}
-            points={lead[2].score}
-            key={2}
-            large
-          />
+          {lead}
 
         <View style={{padding: 23}}/>
 

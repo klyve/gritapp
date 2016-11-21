@@ -105,6 +105,7 @@ export function getGroupData(group) {
     })
     .then((data) => data.json())
     .then((json) => {
+      console.log(json);
       dispatch({type: "GROUP_DATA_CHANGED", payload: json})
     })
   }
