@@ -90,3 +90,22 @@ export function joinGroup(group) {
     })
   }
 }
+
+export function getGroupData(group) {
+  return function (dispatch) {
+    fetch(SERVER+'/groups/getData', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        _id: group._id
+      })
+    })
+    .then((data) => data.json())
+    .then((json) => {
+      dispatch({type: "GROUP_DATA_CHANGED", payload: json})
+    })
+  }
+}

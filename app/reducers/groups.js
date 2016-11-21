@@ -48,6 +48,13 @@ export default function groups(state = initialState, action = {}) {
       }
     break;
 
+    case 'GROUP_DATA_CHANGED':
+      return {
+        ...state,
+        ...action.payload,
+      }
+    break;
+
     default:
       return state;
   }

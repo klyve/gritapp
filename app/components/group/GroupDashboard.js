@@ -28,6 +28,8 @@ import GroupLeaderboard from './GroupLeaderboard';
 import GroupMembers from './GroupMembers';
 import styles from './styles/groupdashboard';
 
+import * as Groups from '../../actions/groups';
+
 
 
 class GroupDashboard extends Component {
@@ -38,6 +40,21 @@ class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
+
+    console.log(this.props);
+  }
+
+  componentDidMount() {
+    this.fetchGroupDataInterval();
+  }
+
+  fetchGroupDataInterval() {
+
+    this.props.dispatch(Groups.getGroupData(this.props.group));
+    // Add more data gets
+    setTimeout(() => {
+      return this.fetchDataInterval();
+    },20000);
   }
 
   onMomentumScrollEnd(e, state, context) {
@@ -75,18 +92,18 @@ class GroupDashboard extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: this.props.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: this.props.groups.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.name}</Text>
+              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.groups.name}</Text>
 
-              <Text style={styles.groupDescriptionText}>{this.props.bio}</Text>
+              <Text style={styles.groupDescriptionText}>{this.props.groups.bio}</Text>
             </View>
 
             <TouchableHighlight
-            onPress = {() => { Actions.newchallenge({grouptype: this.props.grouptype}); }}
+            onPress = {() => { Actions.newchallenge({grouptype: this.props.group.grouptype}); }}
             activeOpacity={71 / 100}
             underlayColor={"rgb(210,210,210)"}
             style = {{backgroundColor: groupColorHex, marginBottom: MARGIN}}>
@@ -146,7 +163,9 @@ class GroupDashboard extends Component {
                 >
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
-                      <GroupLeaderboard />
+                      <GroupLeaderboard
+                        group={this.props.groups}
+                      />
                     </ScrollView>
                   </View>
 
@@ -179,6 +198,7 @@ class GroupDashboard extends Component {
   }
 }
 export default connect(state => ({
-    state
+    state,
+    groups: state.groups,
   })
 )(GroupDashboard);
