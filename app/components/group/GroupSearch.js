@@ -32,10 +32,16 @@ class GroupSearch extends Component {
     super(props);
   }
 
+  gotoGroup(groupId) {
+    Actions.groupdashboard({group: this.props.user.groups[groupId]})
+  }
+
   render() {
     let searchedGroups = this.props.groups.searchResults.map((a,b) => {
         return <FriendBlock
-                  onPress={() => {Actions.groupjoin({group: a})}}
+                  onPress={() => {
+                    Actions.groupjoin({group: a});
+                  }}
                   image={a.image}
                   name={a.name}
                   key={b}
