@@ -64,3 +64,27 @@ export function findGroup(search) {
     })
   }
 }
+
+export function joinGroup(group) {
+  return function(dispatch) {
+
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+
+    fetch(SERVER+'/user/data', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token,
+        _id: group._id
+      })
+    })
+    .then((data) => data.json())
+    .then((json) => {
+      dispatch({type: "JOIN_GROUP", payload: json})
+    })
+    })
+  }
+}

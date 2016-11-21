@@ -42,6 +42,12 @@ export default function groups(state = initialState, action = {}) {
       }
     break;
 
+    case 'JOIN_GROUP':
+      return {
+        ...state,
+      }
+    break;
+
     default:
       return state;
   }
