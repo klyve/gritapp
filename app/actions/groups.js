@@ -47,7 +47,7 @@ export function createGroup(data) {
 
 export function findGroup(search) {
   return function (dispatch) {
-    fetch(SERVER+'/groups/find', {
+    fetch(SERVER+'/groups/search', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -59,6 +59,7 @@ export function findGroup(search) {
     })
     .then((data) => data.json())
     .then((json) => {
+      console.log(json)
       dispatch({type: "GROUP_FIND", payload: json})
     })
   }

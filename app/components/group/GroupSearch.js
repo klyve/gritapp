@@ -33,9 +33,7 @@ class GroupSearch extends Component {
   }
 
   render() {
-
-
-    let searchedGroups = this.props.groups.groups.map((a,b) => {
+    let searchedGroups = this.props.groups.searchResults.map((a,b) => {
         return <FriendBlock
                   onPress={() => {Actions.groupjoin(b)}}
                   image={a.image}
@@ -64,7 +62,7 @@ class GroupSearch extends Component {
             placeholder='Enter Group name...'
             lightTheme
             onChangeText={(text) => {
-              this.props.dispatch(Groups.findGroup(text))
+              this.props.dispatch(Groups.findGroup({text}))
               this.setState({finding: true})
             }}
           />
@@ -82,5 +80,6 @@ class GroupSearch extends Component {
 
 export default connect(state => ({
     state,
+    groups: state.groups,
   })
 )(GroupSearch);
