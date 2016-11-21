@@ -54,6 +54,7 @@ class Profile extends Component {
         </Text>
       </TouchableHighlight>
 
+    )
 
     let removeAction = (
 
