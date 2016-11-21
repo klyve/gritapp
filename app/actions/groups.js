@@ -1,12 +1,13 @@
 import * as Route from './route';
 import { Actions } from 'react-native-router-flux';
+import { SERVER } from '../components/constants';
 
 
 export function getUserGroups() {
   return function(dispatch) {
     dispatch({type: "FETCH_USERGROUPS_STARTED"})
 
-    fetch('https://dd25c333.ngrok.io/api/groups')
+    fetch(SERVER+'/groups')
       .then(request => request.json())
       .then(json => {
 
@@ -20,7 +21,7 @@ export function createGroup(data) {
   return function(dispatch) {
     dispatch({type: "CREATE_GROUP_START"})
     console.log("Creating group")
-    fetch('https://dd25c333.ngrok.io/api/groups', {
+    fetch(SERVER+'/groups', {
 
       method: 'POST',
       headers: {

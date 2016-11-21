@@ -1,5 +1,6 @@
 import hash from 'hash.js';
 import { Actions } from 'react-native-router-flux';
+import { SERVER } from '../components/constants';
 import {
   AsyncStorage,
 } from 'react-native';
@@ -9,7 +10,7 @@ export function registerUser(data) {
     dispatch({type: "USER_REGISTER_START"})
     data.password = hash.sha256().update(data.password).digest('hex');
     console.log("REgister user:",data);
-    fetch('https://dd25c333.ngrok.io/api/user', {
+    fetch(SERVER+'/user', {
 
       method: 'POST',
       headers: {
@@ -72,7 +73,7 @@ export function loginUser(username, pwd) {
     dispatch({type: "USER_LOGIN_START"})
     console.log(username, pwd)
     let password = hash.sha256().update(pwd).digest('hex');
-    fetch('https://dd25c333.ngrok.io/api/user/auth', {
+    fetch(SERVER+'/user/auth', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -101,7 +102,7 @@ export function getUserData() {
 
     AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
-    fetch('https://dd25c333.ngrok.io/api/user/data', {
+    fetch(SERVER+'/user/data', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -124,7 +125,7 @@ export function getUserData() {
 
 export function findUser(search) {
 return function (dispatch) {
-  fetch('https://dd25c333.ngrok.io/api/user/find', {
+  fetch(SERVER+'/user/find', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -146,7 +147,7 @@ export function getNotifications() {
     dispatch({type: "USER_GET_NOTIFICATIONS_START"})
       AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
-      fetch('https://dd25c333.ngrok.io/api/user/notifications', {
+      fetch(SERVER+'/user/notifications', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
