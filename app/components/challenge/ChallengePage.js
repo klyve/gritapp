@@ -130,8 +130,10 @@ export default class ChallengePage extends Component {
 
   render() {
 
-    let groupColor = (this.props.grouptype == 'public') ? 'blue' : 'red';
-    let groupColorHex = (this.props.grouptype == 'public') ? '#2574a9' : '#c0392b';
+    console.log(this.props)
+
+    let groupColor = (this.props.group.grouptype == 'public') ? 'blue' : 'red';
+    let groupColorHex = (this.props.group.grouptype == 'public') ? '#2574a9' : '#c0392b';
 
     let all = this.state.pictures.map((challenge, i) => {
     return (

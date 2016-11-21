@@ -40,8 +40,6 @@ class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
-    console.log("DASHBOARD")
-    console.log(this.props)
   }
 
   componentWillMount() {
@@ -68,8 +66,6 @@ class GroupDashboard extends Component {
     let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
     tabStyles[this.state.activeTab].push({color: groupColorHex})
-
-    console.log(groupColor);
 
     return (
       <View style={styles.container}>
