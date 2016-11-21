@@ -10,8 +10,12 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles/profile';
+
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
 import { Icon } from 'react-native-elements';
+import * as Friends from '../actions/friends';
 
 import {
   MainHeader,
@@ -28,19 +32,48 @@ function person(){
   this.description;
 }
 
-var currentPerson = new person();
-  currentPerson .name = "ArabBeauty95";
-  currentPerson.picturePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/13450786_1166169403435324_6701603115698877888_n.jpg?oh=8deb29a29e5d8a0a74a7bf5527317fea&oe=588AD4EE";
-  currentPerson.description = "Hei jeg heter Atbin, jeg liker det meste så kom som du er. Du finner meg på din lokale fest";
-
-
-export default class Profile extends Component {
+class Profile extends Component {
 
   constructor(props) {
     super(props)
+
   }
   render() {
+    let mainUser = this.props.mainUser;
+    let thisUser = this.props.thisUser;
 
+    let addAction = (
+
+      <TouchableHighlight
+        onPress={() => {
+          this.props.dispatch(Friends.add(thisUser))
+        }}
+      >
+        <Text style={{fontSize: 22, color: '#2ecc71', fontWeight: 'bold'}}>
+          REMOVE FRIEND
+        </Text>
+      </TouchableHighlight>
+
+    )
+
+    let removeAction = (
+
+      <TouchableHighlight
+        onPress={() => {
+          this.props.dispatch(Friends.remove(thisUser))
+        }}
+      >
+        <Text style={{fontSize: 22, color: '#c0392b', fontWeight: 'bold'}}>
+          REMOVE FRIEND
+        </Text>
+      </TouchableHighlight>
+
+    )
+
+    let userAction = (mainUser.friends.indexOf(thisUser) < 0) ? addAction : removeAction;
+
+
+    console.log(userAction);
 
     return (
       <View style={styles.container}>
@@ -54,14 +87,14 @@ export default class Profile extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: this.props.user.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: thisUser.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={styles.groupTitleText}>{this.props.user.nick}</Text>
+              <Text style={styles.groupTitleText}>{thisUser.nick}</Text>
 
-              <Text style={styles.groupDescriptionText}>{this.props.user.bio}</Text>
+              <Text style={styles.groupDescriptionText}>{thisUser.bio}</Text>
             </View>
 
             <View style={styles.tabs}>
@@ -70,14 +103,7 @@ export default class Profile extends Component {
               </View>
 
               <View style={{flex: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                  <Icon
-                    name='user-plus'
-                    type='font-awesome'
-                    size={50}
-                    color='#2ecc71'
-                    underlayColor='transparent'
-                    onPress={() => {}}
-                  />
+                {userAction}
               </View>
             </View>
           </View>
@@ -86,3 +112,8 @@ export default class Profile extends Component {
     );
   }
 }
+
+export default connect(state => ({
+    state,
+  })
+)(Profile);
