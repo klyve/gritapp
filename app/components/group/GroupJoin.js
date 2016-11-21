@@ -24,7 +24,6 @@ const MARGIN = 10;
 
 
 export default class GroupJoin extends Component {
-
   constructor(props) {
     super(props)
   }
@@ -32,7 +31,6 @@ export default class GroupJoin extends Component {
   render() {
     let groupColor = (this.props.group.grouptype == "public") ? 'blue' : 'red';
     let groupColorHex = (this.props.group.grouptype == "public") ? '#2574a9' : '#c0392b';
-
 
     return (
       <View style={styles.container}>
