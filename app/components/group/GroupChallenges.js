@@ -43,17 +43,13 @@ var chall4 = new Challenge();
 
 
 export default class GroupChallenges extends Component {
-
-  constructor(props){
-    super(props)
-  }
   render() {
 
-    var open = [];
-    var closed = [];
+    var open =[];
+    var closed =[];
 
     for (let i = 0; i < this.props.group.challenges.length; i++) {
-      if (this.props.challenges.time.getTime < Date.now())
+      if (this.props.group.challenges[i].time.getTime < Date.now())
         open.push(this.props.group.challenges[i]);
       else
         open.push(this.props.group.challenges[i]);
