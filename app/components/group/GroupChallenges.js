@@ -45,7 +45,7 @@ var chall4 = new Challenge();
 export default class GroupChallenges extends Component {
 
   constructor(props){
-    super(super)
+    super(props)
   }
   render() {
 
