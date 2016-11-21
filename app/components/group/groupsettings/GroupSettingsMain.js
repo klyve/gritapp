@@ -19,6 +19,7 @@ import {
   Blocks,
   FriendBlock
 } from '../../modules';
+import * as Groups from '../../../actions/groups';
 
 import styles from './styles/groupsettingsmain';
 
@@ -46,6 +47,12 @@ export default class GroupSettingsMain extends Component {
     this.state2 = {
       text: currentGroup.description,
     };
+  }
+
+  leaveGroup() {
+    console.log("Leaving group!")
+    this.props.dispatch(Groups.leaveGroup({groupid:this.props.groupid}));
+    Actions.swipeview({type: 'reset'})
   }
   render() {
     return (
@@ -157,7 +164,7 @@ export default class GroupSettingsMain extends Component {
             'Warning',
             'Are you sure you want to leave this group?',
             [
-              {text: 'Yes', onPress: () => console.log('Yes pressed')},
+              {text: 'Yes', onPress: () => this.leaveGroup()},
               {text: 'No', onPress: () => console.log('No Pressed')},
             ]
           )
