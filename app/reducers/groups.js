@@ -5,6 +5,8 @@ const initialState = {
   message: false,
   initialFetch: false,
   challenges: [],
+  leaderboard: [],
+  members: [],
 };
 
 export default function groups(state = initialState, action = {}) {

@@ -23,10 +23,8 @@ export default class GroupLeaderboard extends Component {
   }
 
   render() {
-
-    console.log(this.props.group.leaderboard)
-    //var lead = this.props.group.leaderboard;
-    let lead = [];
+    
+    let lead = this.props.group.leaderboard;
 
     if (lead.length > 0) {
       lead.push(
