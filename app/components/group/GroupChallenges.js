@@ -43,10 +43,15 @@ var chall4 = new Challenge();
 
 
 export default class GroupChallenges extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
   render() {
 
-    var open =[];
-    var closed =[];
+    var open = [];
+    var closed = [];
 
     for (let i = 0; i < this.props.group.challenges.length; i++) {
       if (this.props.group.challenges[i].time.getTime < Date.now())
@@ -60,7 +65,10 @@ export default class GroupChallenges extends Component {
         return (
           <FriendBlock
             onPress={() => {
-              Actions.challengepage({grouptype: this.props.group.grouptype})
+              Actions.challengepage({
+                group: this.props.group,
+                user: this.props.user,
+              })
             }}
             image={a.picturePath}
             name={a.name}
