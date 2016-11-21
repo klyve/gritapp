@@ -40,6 +40,8 @@ class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
+    console.log("DASHBOARD")
+    console.log(this.props)
   }
 
   componentWillMount() {
@@ -76,8 +78,9 @@ class GroupDashboard extends Component {
           color={groupColor}
           leftBtn="chevron-left"
           rightBtn="cog"
+
           left={() => { Actions.swipeview({type: 'reset'}) }}
-          right={() => {Actions.groupsettingsmain()}}
+          right={() => {Actions.groupsettingsmain({groupid: this.props.group._id, grouptype: this.props.group.type, dispatch: this.props.dispatch})}}
         />
 
         <View style={styles.body}>
@@ -94,7 +97,7 @@ class GroupDashboard extends Component {
             </View>
 
             <TouchableHighlight
-            onPress = {() => { Actions.newchallenge({grouptype: this.props.grouptype, dispatch: this.props.dispatch, groupid: this.props._id}); }}
+            onPress = {() => { Actions.newchallenge({groupid: this.props.group._id, grouptype: this.props.group.grouptype, dispatch: this.props.dispatch}); }}
             activeOpacity={71 / 100}
             underlayColor={"rgb(210,210,210)"}
             style = {{backgroundColor: groupColorHex, marginBottom: MARGIN}}>

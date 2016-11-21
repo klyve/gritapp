@@ -38,7 +38,6 @@ export default class NewChallenge extends Component {
       text: '',
       text2: ''
     }
-    console.log(this.props)
   }
 
   createChallenge() {
@@ -46,7 +45,7 @@ export default class NewChallenge extends Component {
       name: this.state.text,
       description: this.state.text2,
       time: +new Date + 60 * 60 * 24 * 1000,
-      _id: this.props.groupid
+      groupid: this.props.groupid
     }))
     Actions.pop();
   }
