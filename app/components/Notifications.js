@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableHighlight,
   Image,
+  Alert,
 } from 'react-native';
 import {
   MainHeader,
@@ -57,9 +58,19 @@ class Notifications extends Component {
           friendreqs.push(
             <FriendBlock
               onPress={() => {
-                this.props.dispatch(Friends.add(a.sender))
-                this.props.dispatch(User.getUserData())
-                this.props.dispatch(User.getNotifications())
+                Alert.alert(
+                  'Warning',
+                  'Do you want to accept this friend request? ',
+                  [
+                    {text: 'Accept', onPress: () => {
+                      this.props.dispatch(Friends.add(a.sender))
+                      this.props.dispatch(User.getUserData())
+                      this.props.dispatch(User.getNotifications())
+                    }},
+                    {text: 'Decline', onPress: () => console.log('Deleted request')},
+                  ]
+                )
+
               }}
               image={a.sender.image}
               name={title}

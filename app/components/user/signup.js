@@ -74,7 +74,7 @@ class Signup extends Component {
             <TextInput
               style={styles.input}
               placeholder="Nickname"
-              maxLength={13}
+              maxLength={16}
               placeholderTextColor="#fff"
               underlineColorAndroid='rgba(0,0,0,0)'
 

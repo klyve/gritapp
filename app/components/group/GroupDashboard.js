@@ -94,7 +94,7 @@ class GroupDashboard extends Component {
             </View>
 
             <TouchableHighlight
-            onPress = {() => { Actions.newchallenge({grouptype: this.props.groups.grouptype}); }}
+            onPress = {() => { Actions.newchallenge({grouptype: this.props.grouptype, dispatch: this.props.dispatch, groupid: this.props._id}); }}
             activeOpacity={71 / 100}
             underlayColor={"rgb(210,210,210)"}
             style = {{backgroundColor: groupColorHex, marginBottom: MARGIN}}>
@@ -177,15 +177,10 @@ class GroupDashboard extends Component {
                     </ScrollView>
                   </View>
                 </Swiper>
-
-
               </View>
-
             </View>
           </View>
-
         </View>
-
       </View>
     );
   }

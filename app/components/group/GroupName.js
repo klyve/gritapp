@@ -33,6 +33,7 @@ class GroupName extends Component {
       type: this.props.data,
       token: this.props.user.token
     }
+    Actions.swipeview({type: 'reset'})
     let cool = this.props.dispatch(Groups.createGroup(data));
 
   }
