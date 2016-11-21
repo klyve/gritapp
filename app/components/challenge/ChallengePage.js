@@ -19,67 +19,15 @@ import {
 import styles from './styles/challengePage';
 import SinglePictureView from './SinglePictureView';
 
-// Blueprints
-function Challenge(){
-  this.comment = "";
-  this.commentSender = "";
-  this.pictureUrl = "";
-  this.id = "";
-}
-function Group(){
-  this.name = "";
-  this.picturePath = "";
-  this.description = "";
-  this.currentChallenges = [];
-  this.public;
-}
-
-
-var currentGroup = new Group();
-  currentGroup.name = "Pølsefest";
-  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
-  currentGroup.description = "Vi liker pølser, de er best";
-  currentGroup.public = false;
-
-
-var elefant = new Challenge();
-  elefant.pictureUrl = "http://knysnaelephantpark.co.za/wp-content/uploads/2015/02/Elephant.png";
-  elefant.id = Math.floor(Math.random() * 100000);
-
-var hund = new Challenge();
-  hund.pictureUrl = "http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg";
-  hund.id = Math.floor(Math.random() * 100000);
-
-var katt = new Challenge();
-  katt.pictureUrl = "http://www.agria.no/imagevault/publishedmedia/zfl838orwjwg72jkzerz/gra-katt-vit-bakgrund.jpg";
-  katt.id = Math.floor(Math.random() * 100000);
-
-var slange = new Challenge();
-  slange.pictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Gonyosoma_oxycephalum_Oslo.JPG/220px-Gonyosoma_oxycephalum_Oslo.JPG";
-  slange.id = Math.floor(Math.random() * 100000);
-
-var mus = new Challenge();
-  mus.pictureUrl = "http://gfx.dagbladet.no/pub/artikkel/5/51/517/517186/musXcopy_1194184162_1194184177.jpg";
-  mus.id = Math.floor(Math.random() * 100000);
-
-var fisk = new Challenge();
-  fisk.pictureUrl = "http://i.imgur.com/prm1a8l.jpg";
-  fisk.id = Math.floor(Math.random() * 100000);
-
-var challenges = [elefant, hund, katt, slange, mus, fisk];
 var showSinglePictureTag = [];
-
-/*
-
-let groupColor = (this.props.grouptype == "public") ? 'blue' : 'red';
-let groupColorHex = (this.props.grouptype == "public") ? '#2574a9' : '#c0392b';
-
-*/
 
 export default class ChallengePage extends Component {
 
   constructor(props){
     super(props)
+
+    //let challenges = [elefant, hund, katt, slange, mus, fisk];
+    var challenges = this.props.challenge.images;
 
     showSinglePictureTag = [];
 
@@ -114,7 +62,7 @@ export default class ChallengePage extends Component {
       showSinglePictureTag =
       <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
       <SinglePictureView
-        picture={challenge.pictureUrl}
+        picture={challenge.image}
       />
       </View> ;
 
@@ -129,8 +77,6 @@ export default class ChallengePage extends Component {
   }
 
   render() {
-
-    console.log(this.props)
 
     let groupColor = (this.props.group.grouptype == 'public') ? 'blue' : 'red';
     let groupColorHex = (this.props.group.grouptype == 'public') ? '#2574a9' : '#c0392b';
@@ -149,7 +95,7 @@ export default class ChallengePage extends Component {
         <Image
               key = {i}
               style = {styles.image}
-              source={{uri: challenge.pictureUrl}}></Image>
+              source={{uri: challenge.image}}></Image>
       </TouchableHighlight>
     )
   })

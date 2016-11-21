@@ -67,6 +67,7 @@ export default class GroupChallenges extends Component {
             onPress={() => {
               Actions.challengepage({
                 group: this.props.group,
+                challenge: a,
                 user: this.props.user,
               })
             }}
