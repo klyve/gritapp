@@ -47,6 +47,8 @@ export default class Dashboard extends Component {
 
   renderNotifications() {
 
+    console.log(this.props.user.notifications);
+
     let notifications = this.props.user.notifications.length;
 
     if(!notifications > 0)
@@ -56,7 +58,7 @@ export default class Dashboard extends Component {
       <TouchableHighlight style={styles.notifications}
         onPress={() => this.showNotifications()}
       >
-        <Text style={styles.notificationsText}>New: {notifications}</Text>
+        <Text style={styles.notificationsText}>{notifications} 📬</Text>
       </TouchableHighlight>
     )
   }
