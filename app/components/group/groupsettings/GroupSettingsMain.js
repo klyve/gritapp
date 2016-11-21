@@ -47,6 +47,10 @@ export default class GroupSettingsMain extends Component {
       text: currentGroup.description,
     };
   }
+
+  leaveGroup() {
+    console.log("Leaving group!")
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -157,7 +161,7 @@ export default class GroupSettingsMain extends Component {
             'Warning',
             'Are you sure you want to leave this group?',
             [
-              {text: 'Yes', onPress: () => console.log('Yes pressed')},
+              {text: 'Yes', onPress: () => this.leaveGroup()},
               {text: 'No', onPress: () => console.log('No Pressed')},
             ]
           )
