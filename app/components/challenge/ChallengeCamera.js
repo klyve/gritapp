@@ -5,126 +5,50 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
-  Image
+  View
 } from 'react-native';
 import Camera from 'react-native-camera';
 import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 
-
-
-
 export default class ChallengeCamera extends Component {
-
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state={
       camType: Camera.constants.Type.back,
       torch: Camera.constants.TorchMode.off,
       boltColor: '#fff',
-      arrowColor: '#fff',
-      pictureTaken: false,
-      picture: '',
+      arrowColor: '#fff'
     }
   }
   render() {
-    if(this.state.pictureTaken == false){
-      return (
-        <View style={styles.container}>
-          <Camera
-              ref={(cam) => {
-                this.camera = cam;
-              }}
-              style={styles.preview}
-              aspect={Camera.constants.Aspect.fit}
-              captureTarget={Camera.constants.CaptureTarget.temp}
-              captureAudio={false}
+    return (
+      <View style={styles.container}>
+        <Camera
+            ref={(cam) => {
+              this.camera = cam;
+            }}
+            style={styles.preview}
+            aspect={Camera.constants.Aspect.fit}
+            captureTarget={Camera.constants.CaptureTarget.temp}
+            captureAudio={false}
 
-              type={this.state.camType}
-              torchMode={this.state.torch}
-            >
-            <View style={styles.capture}>
-              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <TouchableHighlight
-                  underlayColor={'transparent'}
-                  style={{flex: 1, paddingTop: 15, paddingBottom: 15, marginLeft: 30, marginRight: 30}}
-                  onPress={() => {
-                    this.lightToggle();
-                  }}
-                >
-                  <View>
-                    <Icon
-                      name='bolt'
-                      type='font-awesome'
-                      color={this.state.boltColor}
-                      underlayColor='transparent'
-                      size={30}
-                    />
-                  </View>
-                </TouchableHighlight>
-
-                <TouchableHighlight
-                  underlayColor={'transparent'}
-                  style={{flex: 1}}
-                  onPress={() => {
-                    this.setState({pictureTaken: true});
-                    this.takePicture();
-                  }}
-                >
-                  <View>
-                    <Icon
-                      name='circle-o'
-                      type='font-awesome'
-                      color='white'
-                      underlayColor='transparent'
-                      size={100}
-                    />
-                  </View>
-                </TouchableHighlight>
-
-                <TouchableHighlight
-                  underlayColor={'transparent'}
-                  style={{flex: 1, paddingTop: 15, paddingBottom: 15, marginLeft: 30, marginRight: 30}}
-                  onPress={() => {
-                    this.typeToggle()
-                  }}
-                >
-                  <View>
-                    <Icon
-                      name='mail-forward'
-                      type='font-awesome'
-                      color={this.state.arrowColor}
-                      underlayColor='transparent'
-                      size={30}
-                    />
-                  </View>
-                </TouchableHighlight>
-              </View>
-            </View>
-          </Camera>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          <Image
-          style = {styles.preview}
-          source = {{uri: this.state.picture}}
-          />
+            type={this.state.camType}
+            torchMode={this.state.torch}
+          >
           <View style={styles.capture}>
             <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
               <TouchableHighlight
                 underlayColor={'transparent'}
                 style={{flex: 1, paddingTop: 15, paddingBottom: 15, marginLeft: 30, marginRight: 30}}
                 onPress={() => {
-                  this.setState({pictureTaken: false});
+                  this.lightToggle();
                 }}
               >
                 <View>
                   <Icon
-                    name='repeat'
+                    name='bolt'
                     type='font-awesome'
                     color={this.state.boltColor}
                     underlayColor='transparent'
@@ -137,7 +61,7 @@ export default class ChallengeCamera extends Component {
                 underlayColor={'transparent'}
                 style={{flex: 1}}
                 onPress={() => {
-
+                  this.takePicture();
                 }}
               >
                 <View>
@@ -155,7 +79,7 @@ export default class ChallengeCamera extends Component {
                 underlayColor={'transparent'}
                 style={{flex: 1, paddingTop: 15, paddingBottom: 15, marginLeft: 30, marginRight: 30}}
                 onPress={() => {
-                  Actions.pop()
+                  this.typeToggle()
                 }}
               >
                 <View>
@@ -170,19 +94,22 @@ export default class ChallengeCamera extends Component {
               </TouchableHighlight>
             </View>
           </View>
-        </View>
-      )
-    }
+        </Camera>
+
+      </View>
+    );
   }
 
   takePicture() {
     console.log("!!")
     this.camera.capture()
       .then((data) => {
-      this.setState({picture: data.path})
-      console.log(data)
+        Actions.confirmpictureview({camera: this.props.camera, picture: data.path})
+
+        console.log(data)
       })
       .catch(err => console.error(err));
+
   }
 
   typeToggle() {

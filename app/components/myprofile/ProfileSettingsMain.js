@@ -42,8 +42,7 @@ class ProfileSettingsMain extends Component {
   }
 
   handlePicture(picture) {
-    Actions.pop()
-    myProfile.profilepicture = picture;
+
   }
   updateUserSettings(obj) {
     this.props.dispatch(User.updateUserSettings(obj))
