@@ -4,6 +4,32 @@ import { AsyncStorage } from 'react-native';
 import { SERVER } from '../components/constants';
 
 
+export function createChallenge(data) {
+  return function(dispatch) {
+    dispatch({type: "CREATE_GROUP_CHALLENGE_STARTED"})
+
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+      fetch(SERVER+'/groups/challenge', {
+
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...data,
+          token
+        })
+      })
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        dispatch({type: "CHALLENGE_CREATED", payload: json})
+      })
+    })
+  }
+}
+
 export function getUserGroups() {
   return function(dispatch) {
     dispatch({type: "FETCH_USERGROUPS_STARTED"})

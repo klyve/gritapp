@@ -35,6 +35,13 @@ export default function groups(state = initialState, action = {}) {
       };
     break;
 
+    case 'CHALLENGE_CREATED':
+      console.log(action.payload)
+      return {
+        ...state
+      }
+    break;
+
     case 'GROUP_FIND':
       return {
         ...state,

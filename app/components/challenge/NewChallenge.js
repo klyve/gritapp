@@ -26,11 +26,30 @@ import {
 import { Actions } from 'react-native-router-flux';
 
 
+import * as Groups from '../../actions/groups';
 import styles from './styles/NewChallenge';
 
 
 export default class NewChallenge extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      text: '',
+      text2: ''
+    }
+    console.log(this.props)
+  }
+
+  createChallenge() {
+    this.props.dispatch(Groups.createChallenge({
+      name: this.state.text,
+      description: this.state.text2,
+      time: +new Date + 60 * 60 * 24 * 1000,
+      _id: this.props.groupid
+    }))
+    Actions.pop();
+  }
 
   render() {
     let groupBannerColor = (this.props.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
@@ -81,7 +100,7 @@ export default class NewChallenge extends Component {
             activeOpacity={71 / 100}
             underlayColor={"rgb(210,210,210)"}
             onPress = {() => {
-              Actions.pop();
+              this.createChallenge();
             }}
             >
               <Text style = {styles.buttonText}>Create</Text>
