@@ -1,12 +1,14 @@
 import * as Route from './route';
 import { Actions } from 'react-native-router-flux';
 
+import { AsyncStorage } from 'react-native';
+
 export function add(friend) {
   return function(dispatch) {
 
     AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
-      fetch('https://dd25c333.ngrok.io/api/user/addFriend', {
+      fetch('https://dd25c333.ngrok.io/api/user/addfriend', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -26,7 +28,7 @@ export function remove(friend) {
 
     AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
-      fetch('https://dd25c333.ngrok.io/api/user/removeFriend', {
+      fetch('https://dd25c333.ngrok.io/api/user/removefriend', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
