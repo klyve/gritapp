@@ -69,6 +69,7 @@ export default class ConfirmPictureView extends Component {
               style={{flex: 1, paddingTop: 15, paddingBottom: 15, marginLeft: 30, marginRight: 30}}
               onPress={() => {
                 this.props.camera(this.props.picture)
+                Actions.pop({popNum: 2})
               }}>
               <View>
                 <Icon
