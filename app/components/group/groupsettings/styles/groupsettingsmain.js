@@ -15,9 +15,9 @@ export default styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   body: {
-    flex: 1/4,
-    alignItems: 'center',
     marginTop: HEADER_HEIGHT,
+    flex: .5,
+    alignItems: 'center',
   },
   groupImageView: {
     alignItems: 'center',

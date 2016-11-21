@@ -54,6 +54,10 @@ export default class GroupSettingsMain extends Component {
     this.props.dispatch(Groups.leaveGroup({groupid:this.props.groupid}));
     Actions.swipeview({type: 'reset'})
   }
+
+  handlePicture(picture) {
+
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -64,9 +68,27 @@ export default class GroupSettingsMain extends Component {
       />
         <View style={styles.body}>
 
-          <View style={styles.groupImageView}>
+        <TouchableHighlight
+        onPress = {() => {
+          Alert.alert(
+              'Get photo from:',
+              '',
+              [
+                {text: 'Camera', onPress: () => {
+                  Actions.challengecamera({camera: (picture) => {this.handlePicture(picture)}})
+                }},
+                {text: 'Library', onPress: () => {
+                  Actions.profilecameraroll();
+                }},
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed')},
+              ]
+            )
+          }}
+          activeOpacity={71 / 100}
+          underlayColor={"rgb(210,210,210)"}
+          style={styles.groupImageView}>
             <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
-          </View>
+          </TouchableHighlight>
           <Text style={styles.headerText}>Settings</Text>
         </View>
         <ScrollView style = {styles.settingsContainer}>
