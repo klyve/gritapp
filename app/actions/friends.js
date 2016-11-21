@@ -20,6 +20,10 @@ export function add(friend) {
           _id: friend._id
         })
       })
+      .then((data) => data.json())
+      .then((json) => {
+        console.log(json);
+      })
     })
   }
 }
@@ -39,6 +43,10 @@ export function remove(friend) {
           token,
           _id: friend._id
         })
+      })
+      .then((data) => data.json())
+      .then((json) => {
+        console.log(json);
       })
     })
   }
