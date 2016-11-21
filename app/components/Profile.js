@@ -50,7 +50,7 @@ class Profile extends Component {
         }}
       >
         <Text style={{fontSize: 22, color: '#2ecc71', fontWeight: 'bold'}}>
-          REMOVE FRIEND
+          ADD FRIEND
         </Text>
       </TouchableHighlight>
 
