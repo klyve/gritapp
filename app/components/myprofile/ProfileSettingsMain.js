@@ -43,6 +43,7 @@ class ProfileSettingsMain extends Component {
       payload: {
       }
     })
+    console.log(this.props)
   }
   logOut() {
       this.props.dispatch(User.logoutUser());
@@ -53,8 +54,12 @@ class ProfileSettingsMain extends Component {
     console.log("Image is",picture)
     myProfile.profilepicture = picture;
   }
+  updateUserSettings(obj) {
+    this.props.dispatch(User.updateUserSettings(obj))
+  }
 
   render() {
+
     return (
       <View style={styles.container}>
       <MainHeader
@@ -83,7 +88,7 @@ class ProfileSettingsMain extends Component {
           underlayColor={"rgb(210,210,210)"}
           style={styles.groupImageView}>
 
-            <Image style={styles.groupImage} source={{uri: myProfile.profilepicture}}></Image>
+            <Image style={styles.groupImage} source={{uri: this.props.user.image}}></Image>
           </TouchableHighlight>
           <Text style = {styles.headerText}>Profile Settings</Text>
         </View>
@@ -96,7 +101,7 @@ class ProfileSettingsMain extends Component {
               borderBottomWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Username</Text>
-            <Text style = {styles.settingsTextRight}>{myProfile.name}</Text>
+            <Text style = {styles.settingsTextRight}>{this.props.user.nick}</Text>
 
           </View>
           {/*Settings nr 2*/}
@@ -110,7 +115,7 @@ class ProfileSettingsMain extends Component {
             <View style = {{flexDirection: 'row',}}>
               <Text style = {styles.settingsTextLeft}>Bio</Text>
               <TextInput
-              value = {myProfile.description}
+              value = {this.props.user.bio}
               editable = {false}
               style = {styles.settingsTextRight}/>
             </View>
@@ -127,9 +132,9 @@ class ProfileSettingsMain extends Component {
             <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style = {styles.settingsTextLeft}>Friend requests</Text>
               <Switch
-              value={(this.state && this.state.switchValue3) || false}
+              value={this.props.user.options.friendRequest}
               onValueChange={(value) => {
-                this.setState({switchValue3: value})
+                this.updateUserSettings({type: 'friendRequest', value})
               }}
               // Color props are iOS-only
               // thumbTintColor={'white'} // Removes shadow
@@ -143,9 +148,9 @@ class ProfileSettingsMain extends Component {
           <View style = {styles.setting}>
             <Text style = {styles.settingsTextLeft}>Group invites</Text>
             <Switch
-            value={(this.state && this.state.switchValue) || false}
+            value={this.props.user.options.groupRequest}
             onValueChange={(value) => {
-              this.setState({switchValue: value})
+              this.updateUserSettings({type: 'groupRequest', value})
             }}
             // Color props are iOS-only
             // thumbTintColor={'white'} // Removes shadow
@@ -163,9 +168,9 @@ class ProfileSettingsMain extends Component {
             }]}>
             <Text style = {styles.settingsTextLeft}>Push notifications</Text>
             <Switch
-            value={(this.state && this.state.switchValue2) || false}
+            value={this.props.user.options.pushNotifications}
             onValueChange={(value) => {
-              this.setState({switchValue2: value})
+              this.updateUserSettings({type: 'pushNotifications', value})
             }}
             // Color props are iOS-only
             // thumbTintColor={'white'} // Removes shadow
@@ -200,6 +205,7 @@ class ProfileSettingsMain extends Component {
 }
 
 export default connect(state => ({
+    user: state.user,
     state
 })
 )(ProfileSettingsMain);

@@ -46,7 +46,7 @@ class SwipeView extends Component {
     // Add more data gets
     setTimeout(() => {
       return this.fetchDataInterval();
-    },10000);
+    },20000);
   }
 
   render() {
