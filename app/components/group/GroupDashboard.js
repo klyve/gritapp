@@ -165,15 +165,10 @@ class GroupDashboard extends Component {
                     </ScrollView>
                   </View>
                 </Swiper>
-
-
               </View>
-
             </View>
           </View>
-
         </View>
-
       </View>
     );
   }

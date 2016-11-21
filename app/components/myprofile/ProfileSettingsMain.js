@@ -26,14 +26,6 @@ import {
 } from '../modules';
 import styles from './styles/ProfileSettingsMain';
 
-var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-
-
-var myProfile = {
-  name: "Morten",
-  profilepicture: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg",
-  description: "Keeping it real since 1997",
-}
 
 class ProfileSettingsMain extends Component {
   constructor(props) {
@@ -50,8 +42,7 @@ class ProfileSettingsMain extends Component {
   }
 
   handlePicture(picture) {
-    Actions.pop({popNum: 2})
-    console.log("Image is",picture)
+    Actions.pop()
     myProfile.profilepicture = picture;
   }
   updateUserSettings(obj) {
