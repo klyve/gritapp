@@ -4,7 +4,7 @@ import {
 const initialState = {
   user: [],
   token: false,
-  notifications: 0,
+  notifications: [],
 };
 
 

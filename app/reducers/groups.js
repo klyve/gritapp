@@ -34,6 +34,16 @@ export default function groups(state = initialState, action = {}) {
       };
     break;
 
+    case 'GROUP_FIND':
+    let empty = [];
+
+      return {
+        ...state,
+        ...action.payload,
+        groups: empty,
+      }
+    break;
+
     default:
       return state;
   }

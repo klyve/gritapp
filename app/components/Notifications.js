@@ -54,17 +54,14 @@ var requests = [ntnu, ntnu2, ntnu3];
 export default class Notifications extends Component {
   constructor() {
     super();
-    this.state = {
-      requests
-    }
   }
   render() {
-    let showRequests = this.state.requests.map((a, b) => {
+    let showRequests = this.props.notifications.map((a, b) => {
       return (
         <FriendBlock
           onPress={() => {}}
-          image={a.senderImgPath}
-          name={a.called}
+          image={a.sender.image}
+          name={a.type}
           key={b}
           small
         />
