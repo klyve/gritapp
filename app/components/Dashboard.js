@@ -47,6 +47,8 @@ export default class Dashboard extends Component {
 
   renderNotifications() {
 
+    console.log(this.props.user.notifications);
+
     let notifications = this.props.user.notifications.length;
 
     if(!notifications > 0)
