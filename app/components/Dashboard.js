@@ -32,9 +32,6 @@ export default class Dashboard extends Component {
       loading: false,
     }
   }
-  componentWillMount() {
-    this.props.dispatch(User.getNotifications());
-  }
 
   gotoGroup(groupId) {
     console.log(this.props.groups.groups[groupId]);
