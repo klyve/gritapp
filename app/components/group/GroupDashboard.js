@@ -78,7 +78,8 @@ class GroupDashboard extends Component {
           color={groupColor}
           leftBtn="chevron-left"
           rightBtn="cog"
-          left={() => { Actions.pop() }}
+
+          left={() => { Actions.swipeview({type: 'reset'}) }}
           right={() => {Actions.groupsettingsmain({groupid: this.props.group._id, grouptype: this.props.group.type, dispatch: this.props.dispatch})}}
         />
 

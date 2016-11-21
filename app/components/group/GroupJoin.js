@@ -60,7 +60,10 @@ class GroupJoin extends Component {
               <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}></View>
 
               <TouchableHighlight
-              onPress={() => {this.props.dispatch(Groups.joinGroup(this.props.group))}}
+              onPress={() => {
+                Actions.groupdashboard({group: this.props.group})
+                this.props.dispatch(Groups.joinGroup(this.props.group))
+              }}
               style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <Text style={{color: groupColorHex, fontSize: 22, fontWeight: 'bold'}}> JOIN </Text>
               </TouchableHighlight>

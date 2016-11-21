@@ -84,8 +84,7 @@ export default class Dashboard extends Component {
         let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
         return (
           <FriendBlock
-            onPress={() => {this.gotoGroup(b)
-          }}
+            onPress={() => {this.gotoGroup(b)}}
             image={a.image}
             name={a.name}
             unread={a.unread}
