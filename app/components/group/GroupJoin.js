@@ -16,6 +16,7 @@ import {
 } from '../modules'
 import { Actions } from 'react-native-router-flux';
 import styles from './styles/groupjoin';
+import * as Groups from '../../actions/groups';
 
 //Constants
 const MARGIN = 10;
@@ -23,10 +24,11 @@ const MARGIN = 10;
 
 
 export default class GroupJoin extends Component {
+
   constructor(props) {
-    super(props);
-    console.log(this.props);
+    super(props)
   }
+
   render() {
     let groupColor = (this.props.group.grouptype == "public") ? 'blue' : 'red';
     let groupColorHex = (this.props.group.grouptype == "public") ? '#2574a9' : '#c0392b';
@@ -57,7 +59,7 @@ export default class GroupJoin extends Component {
               <View style={{flex: 2, backgroundColor: '#f0f0f0', paddingTop: MARGIN,}}></View>
 
               <TouchableHighlight
-              onPress={() => {alert(">INSERT JOIN-FUNCTION HERE<")}}
+              onPress={() => {this.props.dispatch(Groups.joinGroup(this.props.group))}}
               style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <Text style={{color: groupColorHex, fontSize: 22, fontWeight: 'bold'}}> JOIN </Text>
               </TouchableHighlight>

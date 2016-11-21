@@ -3,6 +3,7 @@ import {
 } from 'react-native';
 const initialState = {
   user: [],
+  groups: [],
   token: false,
   notifications: [],
   options: {

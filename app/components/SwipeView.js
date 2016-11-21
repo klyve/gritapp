@@ -41,7 +41,7 @@ class SwipeView extends Component {
   }
 
   fetchDataInterval() {
-    this.props.dispatch(Groups.getUserGroups());
+    // this.props.dispatch(Groups.getUserGroups());
     this.props.dispatch(User.getUserData());
     // Add more data gets
     setTimeout(() => {
