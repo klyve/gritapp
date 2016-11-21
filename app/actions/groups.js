@@ -1,5 +1,6 @@
 import * as Route from './route';
 import { Actions } from 'react-native-router-flux';
+import { AsyncStorage } from 'react-native';
 import { SERVER } from '../components/constants';
 
 
@@ -83,6 +84,7 @@ export function joinGroup(group) {
     })
     .then((data) => data.json())
     .then((json) => {
+      console.log(json);
       dispatch({type: "JOIN_GROUP", payload: json})
     })
     })
