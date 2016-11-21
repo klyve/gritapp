@@ -1,5 +1,6 @@
 const initialState = {
   groups: [],
+  searchResults : [],
   loading: false,
   message: false,
   initialFetch: false,
@@ -35,12 +36,9 @@ export default function groups(state = initialState, action = {}) {
     break;
 
     case 'GROUP_FIND':
-    let empty = [];
-
       return {
         ...state,
         ...action.payload,
-        groups: empty,
       }
     break;
 
