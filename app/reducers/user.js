@@ -6,6 +6,11 @@ const initialState = {
   groups: [],
   token: false,
   notifications: [],
+  options: {
+    pushNotifications: true,
+    groupRequest: true,
+    friendRequest: true
+  }
 };
 
 
@@ -47,6 +52,16 @@ export default function user(state = initialState, action = {}) {
         user: action.payload,
         token: action.payload.token
       };
+    break;
+    case 'USER_UPDATE':
+      state.options[action.payload.type] = action.payload.value;
+      console.log("USER CHANGE: ",state)
+      let obj = {};
+      //obj[actions.payload.type] = actions.payload.value;
+
+      return {
+        ...state,
+      }
     break;
 
     case 'USER_LOGOUT':
