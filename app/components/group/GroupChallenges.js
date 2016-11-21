@@ -45,16 +45,15 @@ var chall4 = new Challenge();
 export default class GroupChallenges extends Component {
   render() {
 
-    for (let i = 0; i < this.props.group.challenges.length; i++) {
-
-      // ADD CODE FOR CHECKING IF OPEN OR CLOSED
-
-    }
-
     var open =[];
-
     var closed =[];
 
+    for (let i = 0; i < this.props.group.challenges.length; i++) {
+      if (this.props.challenges.time.getTime < Date.now())
+        open.push(this.props.group.challenges[i]);
+      else
+        open.push(this.props.group.challenges[i]);
+    }
 
 
     let showOpen = open.map((a,b) => {
