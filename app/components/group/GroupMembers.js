@@ -27,6 +27,8 @@ export default class GroupMembers extends Component {
 
   render() {
 
+    console.log(this.props);
+
     var rest = this.props.group.members;
 
     let top = rest.map((a,b) => {
@@ -36,6 +38,12 @@ export default class GroupMembers extends Component {
             name={a.nick}
             key={b}
             small
+            onPress={() => {
+              Actions.profile({
+                                mainUser: this.props.user,
+                                thisUser: a,
+                              })
+            }}
           />
       )})
 

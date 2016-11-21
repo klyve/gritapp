@@ -176,6 +176,7 @@ class GroupDashboard extends Component {
                     <ScrollView>
                       <GroupMembers
                         group={this.props.groups}
+                        user={this.props.user}
                       />
                     </ScrollView>
                   </View>

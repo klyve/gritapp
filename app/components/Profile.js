@@ -77,10 +77,12 @@ class Profile extends Component {
 
     )
 
-    let userAction = (mainUser.friends.indexOf(thisUser) < 0) ? addAction : removeAction;
+    let userAction = addAction;
 
-
-    console.log(userAction);
+    for (let i = 0; i < mainUser.friends.length; i++){
+      if (mainUser.friends[i]._id == thisUser._id)
+        userAction = removeAction;
+    }
 
     return (
       <View style={styles.container}>

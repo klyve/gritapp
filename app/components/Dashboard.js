@@ -34,7 +34,10 @@ export default class Dashboard extends Component {
   }
 
   gotoGroup(groupId) {
-    Actions.groupdashboard({group: this.props.user.groups[groupId]})
+    Actions.groupdashboard({
+      group: this.props.user.groups[groupId],
+      user: this.props.user,
+    })
   }
 
   showNotifications() {
