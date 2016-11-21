@@ -2,6 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   AsyncStorage,
 } from 'react-native';
+import { SERVER } from '../components/constants';
 
 async function getToken() {
   try {
@@ -23,7 +24,7 @@ export function to(route, props = {}) {
   return function(dispatch) {
 
     if(typeof Actions[route] == 'function') {
-      
+
       Actions[route](props);
     }else {
       console.log("Not a function: ", route);
