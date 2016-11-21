@@ -32,6 +32,7 @@ export default class Dashboard extends Component {
       loading: false,
     }
     console.log(this.props)
+
   }
 
   gotoGroup(groupId) {
@@ -44,9 +45,6 @@ export default class Dashboard extends Component {
   }
 
   renderNotifications() {
-
-    console.log(this.props.user.notifications);
-
     let notifications = this.props.user.notifications.length;
 
     if(!notifications > 0)
@@ -81,9 +79,9 @@ export default class Dashboard extends Component {
     } else {
       showGroups = false;
     }
-
-    if(this.props.groups.groups.length > 0) {
-       showGroups = this.props.groups.groups.map((a,b) => {
+    
+    if(this.props.user.groups.length > 0) {
+       showGroups = this.props.user.groups.map((a,b) => {
 
         let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
         return (

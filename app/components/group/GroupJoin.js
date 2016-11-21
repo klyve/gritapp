@@ -15,6 +15,8 @@ import {
   FriendBlock
 } from '../modules'
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
 import styles from './styles/groupjoin';
 import * as Groups from '../../actions/groups';
 
@@ -23,12 +25,13 @@ const MARGIN = 10;
 
 
 
-export default class GroupJoin extends Component {
+class GroupJoin extends Component {
   constructor(props) {
     super(props)
   }
 
   render() {
+
     let groupColor = (this.props.group.grouptype == "public") ? 'blue' : 'red';
     let groupColorHex = (this.props.group.grouptype == "public") ? '#2574a9' : '#c0392b';
 
@@ -68,3 +71,8 @@ export default class GroupJoin extends Component {
     );
   }
 }
+
+export default connect(state => ({
+    state,
+  })
+)(GroupJoin);
