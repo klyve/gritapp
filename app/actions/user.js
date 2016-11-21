@@ -114,7 +114,6 @@ export function getUserData() {
     })
     .then((data) => data.json())
     .then((json) => {
-      console.log(json);
       if (json.groups.length > 0){
         dispatch({type: "FETCH_USERGROUPS_FULLFILLED", payload: json.groups})
       }
