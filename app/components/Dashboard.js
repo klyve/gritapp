@@ -31,8 +31,6 @@ export default class Dashboard extends Component {
       groups: [],
       loading: false,
     }
-    console.log(this.props)
-
   }
 
   gotoGroup(groupId) {
@@ -45,6 +43,10 @@ export default class Dashboard extends Component {
   }
 
   renderNotifications() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     let notifications = this.props.user.notifications.length;
 
     if(!notifications > 0)
@@ -79,7 +81,11 @@ export default class Dashboard extends Component {
     } else {
       showGroups = false;
     }
-    
+<<<<<<< HEAD
+
+=======
+
+>>>>>>> master
     if(this.props.user.groups.length > 0) {
        showGroups = this.props.user.groups.map((a,b) => {
 
