@@ -47,6 +47,7 @@ class Profile extends Component {
       <TouchableHighlight
         onPress={() => {
           this.props.dispatch(Friends.add(thisUser))
+          Actions.pop();
         }}
       >
         <Text style={{fontSize: 22, color: '#2ecc71', fontWeight: 'bold'}}>
@@ -60,7 +61,8 @@ class Profile extends Component {
 
       <TouchableHighlight
         onPress={() => {
-          this.props.dispatch(Friends.remove(thisUser))
+          this.props.dispatch(Friends.remove(thisUser));
+          Actions.pop();
         }}
       >
         <Text style={{fontSize: 22, color: '#c0392b', fontWeight: 'bold'}}>

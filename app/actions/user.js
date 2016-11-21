@@ -124,22 +124,22 @@ export function getUserData() {
 }
 
 export function findUser(search) {
-return function (dispatch) {
-  fetch(SERVER+'/user/find', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      search,
+  return function (dispatch) {
+    fetch(SERVER+'/user/find', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        search,
+      })
     })
-  })
-  .then((data) => data.json())
-  .then((json) => {
-    dispatch({type: "USER_FIND", payload: json})
-  })
-}
+    .then((data) => data.json())
+    .then((json) => {
+      dispatch({type: "USER_FIND", payload: json})
+    })
+  }
 }
 
 export function getNotifications() {

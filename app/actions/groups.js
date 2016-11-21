@@ -44,3 +44,22 @@ export function createGroup(data) {
 
   }
 }
+
+export function findGroup(search) {
+  return function (dispatch) {
+    fetch(SERVER+'/groups/find', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        search,
+      })
+    })
+    .then((data) => data.json())
+    .then((json) => {
+      dispatch({type: "GROUP_FIND", payload: json})
+    })
+  }
+}

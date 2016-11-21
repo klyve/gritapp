@@ -16,62 +16,33 @@ import {
   MainHeader
 } from '../modules';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import {
   SearchBar,
   Icon
 } from 'react-native-elements'
 import styles from './styles/groupsearch';
-
-var groups;
-var search;
-
-// Blueprints
-function Group(){
-  this.name = "";
-  this.picturePath = "";
-  this.description = "";
-}
-
-var ntnu = new Group();
-  ntnu.name = "NTNU TRONDHEIM";
-  ntnu.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
-  ntnu.description = "Offentlig gruppe for NTNU!";
-
-  var ntnu1 = new Group();
-    ntnu1.name = "NTNU GJØVIK";
-    ntnu1.picturePath = "https://pbs.twimg.com/profile_images/661115078964412416/T9t1CC_W.png";
-    ntnu1.description = "Offentlig gruppe for NTNU Gjøvik!";
-
-var gjovik = new Group();
-  gjovik.name = "GJØVIK";
-  gjovik.picturePath = "http://pilegrimsleden.no/uploads/made/uploads/images/Om/POI/Kommunevaapen/390px-Gjoevik_komm.svg_600_738_s.png";
-  gjovik.description = "Vi utfordrer Gjøvik!";
-
-var polse = new Group();
-  polse.name = "PØLSEFEST";
-  polse.picturePath = "http://blog.etundra.com/wp-content/Media/2013/09/sausage_2001253c.jpg";
-  polse.description = "Jeg liker milfs...";
+import * as Groups from '../../actions/groups';
 
 
-groups = [ntnu, ntnu1, gjovik, polse];
 
-export default class GroupSearch extends Component {
+class GroupSearch extends Component {
 
-  constructor(){
-    super();
-    this.state = {showGroups: []};
+  constructor(props){
+    super(props);
   }
 
   render() {
-    let searchedGroups = this.state.showGroups.map((a,b) => {
+
+
+    let searchedGroups = this.props.groups.groups.map((a,b) => {
         return <FriendBlock
                   onPress={() => {Actions.groupjoin(b)}}
-                  image={a.picturePath}
+                  image={a.image}
                   name={a.name}
                   key={b}
                 />
-
-      })
+    })
 
     return (
       <View style={styles.container}>
@@ -93,21 +64,10 @@ export default class GroupSearch extends Component {
             placeholder='Enter Group name...'
             lightTheme
             onChangeText={(text) => {
-              let match = [];
-
-              search = text.toUpperCase();
-
-              if (text == '') {
-                match = [];
-              } else {
-                groups.map((a) => {
-                  if ((a.name.search(search) != -1) && (match.indexOf(a) == -1)) {
-                    match.push(a);
-                  }
-                })
-              }
-              this.setState({showGroups: match});
-            }} />
+              this.props.dispatch(Groups.findGroup(text))
+              this.setState({finding: true})
+            }}
+          />
 
           <ScrollView style = {styles.results}>
             {searchedGroups}
@@ -119,3 +79,8 @@ export default class GroupSearch extends Component {
     );
   }
 }
+
+export default connect(state => ({
+    state,
+  })
+)(GroupSearch);

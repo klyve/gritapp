@@ -10,6 +10,7 @@ import {
 
 import * as Route from '../actions/route';
 import * as User from '../actions/user';
+import * as Groups from '../actions/groups';
 
 import { Actions } from 'react-native-router-flux';
 
