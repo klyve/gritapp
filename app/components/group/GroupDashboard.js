@@ -77,7 +77,7 @@ class GroupDashboard extends Component {
           leftBtn="chevron-left"
           rightBtn="cog"
           left={() => { Actions.pop() }}
-          right={() => {Actions.groupsettingsmain()}}
+          right={() => {Actions.groupsettingsmain({groupid: this.props.groups._id, dispatch: this.props.dispatch})}}
         />
 
         <View style={styles.body}>

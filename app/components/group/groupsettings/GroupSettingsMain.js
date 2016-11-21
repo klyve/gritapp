@@ -19,6 +19,7 @@ import {
   Blocks,
   FriendBlock
 } from '../../modules';
+import * as Groups from '../../../actions/groups';
 
 import styles from './styles/groupsettingsmain';
 
@@ -50,6 +51,8 @@ export default class GroupSettingsMain extends Component {
 
   leaveGroup() {
     console.log("Leaving group!")
+    this.props.dispatch(Groups.leaveGroup({groupid:this.props.groupid}));
+    Actions.swipeview({type: 'reset'})
   }
   render() {
     return (
