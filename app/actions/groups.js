@@ -70,7 +70,7 @@ export function joinGroup(group) {
 
     AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
-    fetch(SERVER+'/user/data', {
+    fetch(SERVER+'/groups/join', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
