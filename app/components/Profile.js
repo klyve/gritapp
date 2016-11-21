@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 
 import { Icon } from 'react-native-elements';
 import * as Friends from '../actions/friends';
+import * as User from '../actions/user';
 
 import {
   MainHeader,
@@ -47,6 +48,8 @@ class Profile extends Component {
       <TouchableHighlight
         onPress={() => {
           this.props.dispatch(Friends.add(thisUser))
+          this.props.dispatch(User.getUserData())
+          this.props.dispatch(User.getNotifications())
           Actions.pop();
         }}
       >
@@ -62,6 +65,8 @@ class Profile extends Component {
       <TouchableHighlight
         onPress={() => {
           this.props.dispatch(Friends.remove(thisUser));
+          this.props.dispatch(User.getUserData())
+          this.props.dispatch(User.getNotifications())
           Actions.pop();
         }}
       >
