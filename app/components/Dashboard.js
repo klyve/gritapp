@@ -31,6 +31,7 @@ export default class Dashboard extends Component {
       groups: [],
       loading: false,
     }
+    console.log(this.props)
   }
 
   gotoGroup(groupId) {
