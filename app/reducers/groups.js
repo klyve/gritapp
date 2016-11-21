@@ -26,12 +26,12 @@ export default function groups(state = initialState, action = {}) {
       if (!state.initialFetch)
         state.initialFetch = true;
 
-      if (!(state.groups.length > 0) && !(action.payload.groups.length > 0))
+      if (!(state.groups.length > 0) && !(action.payload.length > 0))
         state.message = 'No groups to show 😶 \n Want to join one? Swipe left ➡️'
 
       return {
         ...state,
-        groups: action.payload.groups,
+        groups: action.payload,
       };
     break;
 
