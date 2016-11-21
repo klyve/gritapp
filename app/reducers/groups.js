@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   message: false,
   initialFetch: false,
+  challenges: [],
 };
 
 export default function groups(state = initialState, action = {}) {
@@ -52,6 +53,13 @@ export default function groups(state = initialState, action = {}) {
     case 'JOIN_GROUP':
       return {
         ...state,
+      }
+    break;
+
+    case 'GROUP_DATA_CHANGED':
+      return {
+        ...state,
+        ...action.payload,
       }
     break;
 

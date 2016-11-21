@@ -28,6 +28,8 @@ import GroupLeaderboard from './GroupLeaderboard';
 import GroupMembers from './GroupMembers';
 import styles from './styles/groupdashboard';
 
+import * as Groups from '../../actions/groups';
+
 
 
 class GroupDashboard extends Component {
@@ -38,6 +40,10 @@ class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
+  }
+
+  componentWillMount() {
+    this.props.dispatch(Groups.getGroupData(this.props.group));
   }
 
   onMomentumScrollEnd(e, state, context) {
@@ -52,14 +58,16 @@ class GroupDashboard extends Component {
 
   render() {
 
-    let groupBannerColor = (this.props.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
-    let groupTitleColor = (this.props.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
-    let groupColor = (this.props.grouptype == "public") ? 'blue' : 'red';
-    let groupColorHex = (this.props.grouptype == "public") ? '#2574a9' : '#c0392b';
+    let groupBannerColor = (this.props.groups.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (this.props.groups.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
+    let groupColor = (this.props.groups.grouptype == "public") ? 'blue' : 'red';
+    let groupColorHex = (this.props.groups.grouptype == "public") ? '#2574a9' : '#c0392b';
 
     let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
     tabStyles[this.state.activeTab].push({color: groupColorHex})
+
+    console.log(groupColor);
 
     return (
       <View style={styles.container}>
@@ -75,14 +83,14 @@ class GroupDashboard extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: this.props.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: this.props.groups.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.name}</Text>
+              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.groups.name}</Text>
 
-              <Text style={styles.groupDescriptionText}>{this.props.bio}</Text>
+              <Text style={styles.groupDescriptionText}>{this.props.groups.bio}</Text>
             </View>
 
             <TouchableHighlight
@@ -146,7 +154,9 @@ class GroupDashboard extends Component {
                 >
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
-                      <GroupLeaderboard />
+                      <GroupLeaderboard
+                        group={this.props.groups}
+                      />
                     </ScrollView>
                   </View>
 
@@ -154,14 +164,16 @@ class GroupDashboard extends Component {
 
                     <ScrollView>
                       <GroupChallenges
-                        grouptype={this.props.grouptype}
+                        group={this.props.groups}
                       />
                     </ScrollView>
                   </View>
 
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
-                      <GroupMembers />
+                      <GroupMembers
+                        group={this.props.groups}
+                      />
                     </ScrollView>
                   </View>
                 </Swiper>
@@ -174,6 +186,7 @@ class GroupDashboard extends Component {
   }
 }
 export default connect(state => ({
-    state
+    state,
+    groups: state.groups,
   })
 )(GroupDashboard);

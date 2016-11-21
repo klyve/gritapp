@@ -34,8 +34,7 @@ export default class Dashboard extends Component {
   }
 
   gotoGroup(groupId) {
-    console.log(this.props.groups.groups[groupId]);
-    Actions.groupdashboard(this.props.groups.groups[groupId])
+    Actions.groupdashboard({group: this.props.user.groups[groupId]})
   }
 
   showNotifications() {
@@ -85,7 +84,8 @@ export default class Dashboard extends Component {
         let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
         return (
           <FriendBlock
-            onPress={() => {this.gotoGroup(b)}}
+            onPress={() => {this.gotoGroup(b)
+          }}
             image={a.image}
             name={a.name}
             unread={a.unread}
