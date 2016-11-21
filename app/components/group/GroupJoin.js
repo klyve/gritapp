@@ -20,28 +20,16 @@ import styles from './styles/groupjoin';
 //Constants
 const MARGIN = 10;
 
-// Blueprints
-function Group(){
-  this.name = "";
-  this.picturePath = "";
-  this.description = "";
-  this.currentChallenges = [];
-  this.public;
-}
-
-var currentGroup = new Group();
-  currentGroup.name = "Gjøvik";
-  currentGroup.picturePath = "https://cdn.pixabay.com/photo/2015/09/18/11/37/rustic-945421_960_720.jpg";
-  currentGroup.description = "Vi utfordrer Gjøvik!";
-  currentGroup.public = true;
-
-
-  var groupColor = (currentGroup.public) ? 'blue' : 'red';
-  var groupColorHex = (currentGroup.public) ? '#2574a9' : '#c0392b';
 
 
 export default class GroupJoin extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+  }
   render() {
+    let groupColor = (this.props.group.grouptype == "public") ? 'blue' : 'red';
+    let groupColorHex = (this.props.group.grouptype == "public") ? '#2574a9' : '#c0392b';
 
 
     return (
@@ -55,13 +43,13 @@ export default class GroupJoin extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+            <Image style={styles.groupImage} source={{uri: this.props.group.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={{fontSize: 30, color: groupColorHex}}>{currentGroup.name}</Text>
-              <Text style={styles.groupDescriptionText}>{currentGroup.description}</Text>
+              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.group.name}</Text>
+              <Text style={styles.groupDescriptionText}>{this.props.group.bio}</Text>
             </View>
 
             <View style={styles.tabs}>
