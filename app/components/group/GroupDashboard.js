@@ -159,6 +159,7 @@ class GroupDashboard extends Component {
                     <ScrollView>
                       <GroupLeaderboard
                         group={this.props.groups}
+                        user={this.props.user}
                       />
                     </ScrollView>
                   </View>
@@ -168,6 +169,7 @@ class GroupDashboard extends Component {
                     <ScrollView>
                       <GroupChallenges
                         group={this.props.groups}
+                        user={this.props.user}
                       />
                     </ScrollView>
                   </View>
