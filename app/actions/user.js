@@ -176,7 +176,7 @@ export function uploadPicture(file) {
       },
       body: JSON.stringify({
         token,
-        imageData: image,
+        imageData: file,
       }),
 
     })

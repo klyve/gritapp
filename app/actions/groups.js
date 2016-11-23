@@ -28,6 +28,39 @@ export function leaveGroup(data) {
     })
   }
 }
+export function uploadChallengePicture(groupid, file) {
+  return function(dispatch) {
+
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+
+
+    fetch(SERVER+'/groups/challengepicture', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        groupid: id,
+        token,
+        imageData: image,
+      }),
+
+    })
+    .then((data) => data.json())
+    .then((json) => {
+      console.log("REQUEST FULLFILLED");
+      if (json.groups.length > 0){
+        //dispatch({type: "UPLOAD_PICTURE_FULLFILLED", payload: json.groups})
+      }
+      //dispatch({type: "USER_DATA_CHANGED", payload: json})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    })
+  }
+}
 
 export function createChallenge(data) {
   return function(dispatch) {
