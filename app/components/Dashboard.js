@@ -15,6 +15,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Groups from '../actions/groups';
 import * as User from '../actions/user';
+import { SERVER } from './constants';
 
 import styles from './styles/Dashboard';
 import {
@@ -85,15 +86,15 @@ export default class Dashboard extends Component {
        showGroups = this.props.user.groups.map((a,b) => {
 
         let itemstyles = (a.unread == 0) ? styles.noUnreadDot : styles.unreadDot;
-        return (
-          <FriendBlock
-            onPress={() => {this.gotoGroup(b)}}
-            image={a.image}
-            name={a.name}
-            unread={a.unread}
-            key={b}
-          />
-        )
+          return (
+            <FriendBlock
+              onPress={() => {this.gotoGroup(b)}}
+              image={SERVER+a.image}
+              name={a.name}
+              unread={a.unread}
+              key={b}
+            />
+          )
       })
 
     } else {

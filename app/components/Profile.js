@@ -96,7 +96,7 @@ class Profile extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: IMAGEPATH+thisUser.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: SERVER+thisUser.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>

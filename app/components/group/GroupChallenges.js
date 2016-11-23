@@ -49,7 +49,6 @@ export default class GroupChallenges extends Component {
   }
 
   render() {
-
     var open = [];
     var closed = [];
 
@@ -60,6 +59,27 @@ export default class GroupChallenges extends Component {
         closed.push(this.props.group.challenges[i]);
     }
 
+    var activeLabel = (open.length == 0) ?
+
+                        []
+
+                        :
+
+                        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+                          ACTIVE CHALLENGES
+                        </Text>
+                        ;
+
+    var closedLabel = (closed.length == 0) ?
+
+                        []
+
+                        :
+
+                        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
+                          CLOSED CHALLENGES
+                        </Text>
+                        ;
 
     let showOpen = open.map((a,b) => {
 
@@ -92,20 +112,16 @@ export default class GroupChallenges extends Component {
               key={b}
             />
         )})
+
     return (
       <View>
+        {activeLabel}
 
-        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
-          ACTIVE CHALLENGES
-        </Text>
+          {showOpen}
 
-        {showOpen}
+        {closedLabel}
 
-        <Text style={{alignSelf: 'center', padding: 10, fontSize: 20}}>
-          CLOSED CHALLENGES
-        </Text>
-
-        {showClosed}
+          {showClosed}
       </View>
     );
   }
