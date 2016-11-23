@@ -13,7 +13,7 @@ import * as User from '../actions/user';
 import * as Groups from '../actions/groups';
 
 import { Actions } from 'react-native-router-flux';
-import { SEVER } from './constants';
+import { SERVER } from './constants';
 
 import {
   MainHeader,
@@ -122,7 +122,7 @@ export default class Friends extends Component {
           <ScrollView>
             <TouchableHighlight style={styles.meButton}>
               <View style={styles.me}>
-                <Image style={styles.myImage} source={{uri: this.props.user.image}}></Image>
+                <Image style={styles.myImage} source={{uri: SERVER+this.props.user.image}}></Image>
                 <Text style={styles.meText}> {this.props.user.nick}</Text>
                 <TouchableHighlight
                   onPress = {() => {
