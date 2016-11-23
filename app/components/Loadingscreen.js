@@ -12,7 +12,7 @@ class Loadingscreen extends Component {
   componentWillMount() {
     setTimeout(() => {
       this.props.dispatch(User.getToken())
-    }, 4000)
+    }, 100)
     //this.props.dispatch(Route.to("swipeview"));
   }
 
@@ -20,7 +20,6 @@ class Loadingscreen extends Component {
     return (
       <View style={{
         flex: 1,
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#2ecc71',
