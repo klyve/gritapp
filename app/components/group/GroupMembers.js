@@ -27,8 +27,6 @@ export default class GroupMembers extends Component {
 
   render() {
 
-    console.log(this.props);
-
     var rest = this.props.group.members;
 
     let top = rest.map((a,b) => {
