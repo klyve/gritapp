@@ -21,7 +21,7 @@ import { connect } from 'react-redux';
 import * as Friends from '../actions/friends';
 import * as User from '../actions/user'
 
-import { SEVER } from './constants';
+import { SERVER } from './constants';
 
 class Notifications extends Component {
   constructor() {
