@@ -17,6 +17,7 @@ import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import * as Friends from '../actions/friends';
 import * as User from '../actions/user';
+import { SERVER } from './constants';
 
 import { IMAGEPATH } from './constants';
 import {
