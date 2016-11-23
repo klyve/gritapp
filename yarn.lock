@@ -3844,6 +3844,10 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+react-native-camera-roll-picker@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/react-native-camera-roll-picker/-/react-native-camera-roll-picker-1.1.9.tgz#99bad3a9c117ad79e67044c420ce463ee18f29d3"
+
 "react-native-camera@git+https://github.com/lwansbrough/react-native-camera.git":
   version "0.3.8"
   resolved "git+https://github.com/lwansbrough/react-native-camera.git#b16ec4ab754a05f18a7954b5cadb39d8edc8130b"
@@ -3887,6 +3891,10 @@ react-native-tab-navigator@^0.3.3:
 react-native-tabs@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/react-native-tabs/-/react-native-tabs-1.0.9.tgz#75d3c35e8b5b6970869eab282372cb32e2a782cd"
+
+react-native-uploader@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-uploader/-/react-native-uploader-0.0.9.tgz#5f8e4a67cacec4e924535366b4a6964b7df26f7b"
 
 react-native-vector-icons@^2.1.0:
   version "2.1.0"

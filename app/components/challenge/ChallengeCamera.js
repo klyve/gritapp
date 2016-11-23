@@ -21,6 +21,7 @@ export default class ChallengeCamera extends Component {
       boltColor: '#fff',
       arrowColor: '#fff'
     }
+    //Camera.constants.CaptureTarget.memory = true;
   }
   render() {
     return (
@@ -28,10 +29,11 @@ export default class ChallengeCamera extends Component {
         <Camera
             ref={(cam) => {
               this.camera = cam;
+
             }}
             style={styles.preview}
             aspect={Camera.constants.Aspect.fit}
-            captureTarget={Camera.constants.CaptureTarget.temp}
+            captureTarget={Camera.constants.CaptureTarget.memory}
             captureAudio={false}
 
             type={this.state.camType}
@@ -103,10 +105,10 @@ export default class ChallengeCamera extends Component {
   takePicture() {
     console.log("!!")
     this.camera.capture()
-      .then((data) => {
-        Actions.confirmpictureview({camera: this.props.camera, picture: data.path})
-
-        console.log(data)
+      .then((data, ...x) => {
+        console.log(data);
+        Actions.confirmpictureview({camera: this.props.camera, image: data.data})
+        //console.log(data.data)
       })
       .catch(err => console.error(err));
 

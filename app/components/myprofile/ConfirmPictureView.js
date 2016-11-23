@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableHighlight,
   Image,
+  NativeModules,
 } from 'react-native';
 
 import styles from './styles/ConfirmPictureView';
@@ -23,12 +24,12 @@ export default class ConfirmPictureView extends Component {
   }
 
   render() {
-
+    let path = 'data:image/jpg;base64,'+this.props.image;
     return (
       <View style={styles.container}>
         <Image
         style = {styles.preview}
-        source = {{uri: this.props.picture}}
+        source = {{uri: path}}
         />
         <View style = {styles.bottomBar}>
           <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
@@ -68,7 +69,7 @@ export default class ConfirmPictureView extends Component {
               underlayColor={'transparent'}
               style={{flex: 1, paddingTop: 15, paddingBottom: 15, marginLeft: 30, marginRight: 30}}
               onPress={() => {
-                this.props.camera(this.props.picture)
+                this.props.camera(path)
                 Actions.pop({popNum: 2})
               }}>
               <View>

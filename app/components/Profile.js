@@ -18,6 +18,7 @@ import { Icon } from 'react-native-elements';
 import * as Friends from '../actions/friends';
 import * as User from '../actions/user';
 
+import { IMAGEPATH } from './constants';
 import {
   MainHeader,
   Blocks,
@@ -42,7 +43,6 @@ class Profile extends Component {
   render() {
     let mainUser = this.props.mainUser;
     let thisUser = this.props.thisUser;
-
     let addAction = (
 
       <TouchableHighlight
@@ -96,7 +96,7 @@ class Profile extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: thisUser.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: IMAGEPATH+thisUser.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>

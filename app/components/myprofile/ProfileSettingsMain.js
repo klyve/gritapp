@@ -42,7 +42,7 @@ class ProfileSettingsMain extends Component {
   }
 
   handlePicture(picture) {
-
+    this.props.dispatch(User.uploadPicture(picture));
   }
   updateUserSettings(obj) {
     this.props.dispatch(User.updateUserSettings(obj))
