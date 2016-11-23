@@ -1,8 +1,11 @@
 import hash from 'hash.js';
 import { Actions } from 'react-native-router-flux';
+import React from 'react';
 import { SERVER } from '../components/constants';
 import {
   AsyncStorage,
+  NativeModules,
+  ReadImageData
 } from 'react-native';
 
 export function registerUser(data) {
@@ -116,6 +119,41 @@ export function getUserData() {
     .then((json) => {
       if (json.groups.length > 0){
         dispatch({type: "FETCH_USERGROUPS_FULLFILLED", payload: json.groups})
+      }
+      dispatch({type: "USER_DATA_CHANGED", payload: json})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    })
+  }
+}
+
+export function uploadPicture(file) {
+  return function(dispatch) {
+
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
+    // let data = new FormData()
+    // data.append('image', {uri: fileURL, name: 'image.jpg', type: 'file'})
+    // data.append('token', token)
+    // console.log(data);
+
+    fetch(SERVER+'/user/picture', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token,
+        imageData: image,
+      }),
+
+    })
+    .then((data) => data.json())
+    .then((json) => {
+      if (json.groups.length > 0){
+        dispatch({type: "UPLOAD_PICTURE_FULLFILLED", payload: json.groups})
       }
       dispatch({type: "USER_DATA_CHANGED", payload: json})
     })
