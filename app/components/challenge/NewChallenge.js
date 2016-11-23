@@ -85,7 +85,7 @@ export default class NewChallenge extends Component {
              style={styles.largeTextInput}
              underlineColorAndroid='rgba(0,0,0,0)'
              maxLength = {255}
-             numberOfLines = {10}
+             numberOfLines = {5}
              multiline = {true}
              placeholder={'Type here'}
              placeholderTextColor={"black"}
@@ -93,6 +93,7 @@ export default class NewChallenge extends Component {
              value={(this.state && this.state.text2) || ''}
              />
           </View>
+          <View style = {{flex: 7}}/>
           <View>
             <TouchableHighlight
             style = {[styles.createButton, {backgroundColor: groupColorHex}]}

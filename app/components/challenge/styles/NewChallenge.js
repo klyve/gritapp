@@ -18,14 +18,14 @@ export default styles = StyleSheet.create({
     marginTop: HEADER_HEIGHT,
   },
   name: {
+    flex: 1.5,
     padding: MARGIN,
-    flex: .1,
     borderBottomWidth: 1,
     borderColor: 'black',
   },
   description: {
+    flex: 3,
     padding: MARGIN,
-    flex: .4,
     borderBottomWidth: 1,
     borderColor: 'black',
   },
@@ -38,13 +38,16 @@ export default styles = StyleSheet.create({
     color: 'black',
   },
   smallTextInput: {
+
     fontSize: 14,
     height: 40,
     width: 380,
   },
   largeTextInput: {
+
+    textAlign: 'auto',
     fontSize: 14,
-    height: 400,
+    height: 100,
     width: 380,
   },
   timeLimitText: {
