@@ -14,6 +14,7 @@ import {
   LeadBlock,
 } from '../modules';
 import styles from './styles/groupchallenges';
+import { SERVER } from '../constants';
 
 
 export default class GroupLeaderboard extends Component {
@@ -37,7 +38,7 @@ export default class GroupLeaderboard extends Component {
           }}
           trophy='trophy'
           trophyColor='gold'
-          image={lead[0].picturePath}
+          image={SERVER+lead[0].image}
           name={lead[0].name}
           points={lead[0].score}
           large
@@ -57,7 +58,7 @@ export default class GroupLeaderboard extends Component {
           }}
           trophy='trophy'
           trophyColor='silver'
-          image={lead[1].picturePath}
+          image={SERVER+lead[1].image}
           name={lead[1].name}
           points={lead[1].score}
           key={1}
@@ -76,7 +77,7 @@ export default class GroupLeaderboard extends Component {
         }}
         trophy='trophy'
         trophyColor='#cd8c32'
-        image={lead[2].picturePath}
+        image={SERVER+lead[2].image}
         name={lead[2].name}
         points={lead[2].score}
         key={2}
@@ -95,7 +96,7 @@ export default class GroupLeaderboard extends Component {
               mainUser: this.props.user,
             })
           }}
-          image={lead[i].picturePath}
+          image={SERVER+lead[i].image}
           name={lead[i].name}
           points={lead[i].score}
           key={i}
