@@ -1,5 +1,6 @@
 import {
   AsyncStorage,
+  Alert
 } from 'react-native';
 const initialState = {
   user: [],
@@ -51,6 +52,12 @@ export default function user(state = initialState, action = {}) {
         token: action.payload.token
       };
     break;
+    case 'USER_LOGIN_ERROR':
+    Alert.alert('Login failed 😞', 'Wrong username or password')
+        return {
+          ...state,
+        };
+    break;
     case 'USER_UPDATE':
       state.options[action.payload.type] = action.payload.value;
       console.log("USER CHANGE: ",state)
@@ -60,6 +67,12 @@ export default function user(state = initialState, action = {}) {
       return {
         ...state,
       }
+    break;
+    case 'USER_REGISTER_ERROR':
+    Alert.alert('Registration failed 😞', action.payload.error_msg)
+        return {
+          ...state,
+        };
     break;
 
     case 'USER_LOGOUT':
