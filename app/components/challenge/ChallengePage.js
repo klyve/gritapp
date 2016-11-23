@@ -26,14 +26,13 @@ export default class ChallengePage extends Component {
   constructor(props){
     super(props)
 
-    //let challenges = [elefant, hund, katt, slange, mus, fisk];
-    var challenges = this.props.challenge.images;
+    var images = this.props.challenge.images;
 
     showSinglePictureTag = [];
 
     this.state={
       showSingleOrNot: false,
-      pictures: challenges,
+      pictures: images,
     }
   }
 
@@ -43,9 +42,9 @@ export default class ChallengePage extends Component {
     var fisk = new Challenge();
       fisk.pictureUrl = picture;
       fisk.id = Math.floor(Math.random() * 100000);
-    challenges.push(fisk)
+    images.push(fisk)
     this.setState({
-      pictures: challenges
+      pictures: images
     })
   }
 
@@ -81,13 +80,13 @@ export default class ChallengePage extends Component {
     let groupColor = (this.props.group.grouptype == 'public') ? 'blue' : 'red';
     let groupColorHex = (this.props.group.grouptype == 'public') ? '#2574a9' : '#c0392b';
 
-    let all = this.state.pictures.map((challenge, i) => {
+    let all = this.state.pictures.map((image, i) => {
     return (
       <TouchableHighlight
       style = {styles.imageButton}
       key = {i}
       onPress = {() => {
-        this.showSinglePictureView(challenge)
+        this.showSinglePictureView(image)
       }}
       activeOpacity={71 / 100}
       underlayColor={"rgb(210,210,210)"}
