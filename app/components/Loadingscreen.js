@@ -8,13 +8,7 @@ import * as Route from '../actions/route';
 import * as User from '../actions/user';
 
 
-class Loadingscreen extends Component {
-  componentWillMount() {
-    setTimeout(() => {
-      this.props.dispatch(User.getToken())
-    }, 100)
-    //this.props.dispatch(Route.to("swipeview"));
-  }
+export default class Loadingscreen extends Component {
 
   render() {
     return (
@@ -33,8 +27,3 @@ class Loadingscreen extends Component {
     );
   }
 };
-
-export default connect(state => ({
-    state
-  })
-)(Loadingscreen);
