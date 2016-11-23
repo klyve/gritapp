@@ -88,7 +88,6 @@ class ProfileSettingsMain extends Component {
             styles.setting,
             {
               borderTopWidth: 1,
-              borderBottomWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Username</Text>
             <Text style = {styles.settingsTextRight}>{this.props.user.nick}</Text>
@@ -101,7 +100,11 @@ class ProfileSettingsMain extends Component {
           }}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
-          style = {styles.setting}>
+          style = {[
+            styles.setting,
+            {
+              borderTopWidth: 1,
+            }]}>
             <View style = {{flexDirection: 'row',}}>
               <Text style = {styles.settingsTextLeft}>Bio</Text>
               <TextInput
@@ -116,8 +119,7 @@ class ProfileSettingsMain extends Component {
           style = {[
             styles.setting,
             {
-              borderTopWidth: 3,
-              borderBottomWidth: 1,
+              borderTopWidth: 1,
             }]}>
               <Text style = {styles.settingsTextLeft}>Friend requests</Text>
               <Switch
@@ -136,8 +138,7 @@ class ProfileSettingsMain extends Component {
           <View style = {[
             styles.setting,
             {
-              borderTopWidth: 3,
-              borderBottomWidth: 1,
+              borderTopWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Group invites</Text>
             <Switch
@@ -156,8 +157,7 @@ class ProfileSettingsMain extends Component {
           <View style = {[
             styles.setting,
             {
-              borderTopWidth: 3,
-              borderBottomWidth: 1,
+              borderTopWidth: 1,
             }]}>
             <Text style = {styles.settingsTextLeft}>Push notifications</Text>
             <Switch

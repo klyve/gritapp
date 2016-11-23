@@ -44,6 +44,7 @@ export default styles = StyleSheet.create({
     flex: .9,
   },
   setting: {
+    justifyContent: 'space-between',
     height: 60,
     alignItems: 'center',
     paddingLeft: MARGIN,
@@ -56,17 +57,12 @@ export default styles = StyleSheet.create({
     fontSize: 18,
   },
   settingsTextRight: {
-    position: 'absolute',
-    right: 0,
     color: 'grey',
     fontSize: 18,
     paddingRight: MARGIN*10
   },
   switch: {
-    paddingRight: MARGIN*10,
-    position: 'absolute',
-    right: MARGIN*3,
-    padding: MARGIN*1.5,
+    marginRight: MARGIN*2,
   },
   logout: {
     height: 60,
