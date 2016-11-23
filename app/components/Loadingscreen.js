@@ -8,6 +8,7 @@ import * as Route from '../actions/route';
 import * as User from '../actions/user';
 
 
+
 export default class Loadingscreen extends Component {
 
   render() {
