@@ -12,7 +12,7 @@ class Loadingscreen extends Component {
   componentWillMount() {
     setTimeout(() => {
       this.props.dispatch(User.getToken())
-    }, 4000)
+    }, 1000)
     //this.props.dispatch(Route.to("swipeview"));
   }
 

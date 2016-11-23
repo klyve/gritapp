@@ -132,7 +132,7 @@ export default class GroupSettingsMain extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           onPress = {() => {
-            Actions.managemembers();
+            Actions.managemembers({members: this.props.groupmembers});
           }}
           >
             <View style = {styles.setting}>

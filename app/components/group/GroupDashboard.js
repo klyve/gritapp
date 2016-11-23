@@ -76,7 +76,7 @@ class GroupDashboard extends Component {
           rightBtn="cog"
 
           left={() => { Actions.swipeview({type: 'reset'}) }}
-          right={() => {Actions.groupsettingsmain({groupid: this.props.group._id, grouptype: this.props.group.type, dispatch: this.props.dispatch})}}
+          right={() => {Actions.groupsettingsmain({groupid: this.props.group._id, grouptype: this.props.group.type, dispatch: this.props.dispatch, groupmembers: this.props.group.members })}}
         />
 
         <View style={styles.body}>
