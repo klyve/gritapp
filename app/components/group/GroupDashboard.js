@@ -44,7 +44,20 @@ class GroupDashboard extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(Groups.getGroupData(this.props.group));
+    this.fetchDataInterval();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.fetchDataInterval);
+  }
+
+  fetchDataInterval() {
+    // this.props.dispatch(Groups.getUserGroups());
+    this.props.dispatch(Groups.getGroupData(this.props.groupID));
+    // Add more data gets
+    setTimeout(() => {
+      return this.fetchDataInterval();
+    } , 20000);
   }
 
   onMomentumScrollEnd(e, state, context) {
@@ -68,8 +81,6 @@ class GroupDashboard extends Component {
 
     tabStyles[this.state.activeTab].push({color: groupColorHex})
 
-    console.log(groupColor);
-
     return (
       <View style={styles.container}>
 
@@ -79,7 +90,7 @@ class GroupDashboard extends Component {
           rightBtn="cog"
 
           left={() => { Actions.swipeview({type: 'reset'}) }}
-          right={() => {Actions.groupsettingsmain({groupid: this.props.group._id, grouptype: this.props.group.type, dispatch: this.props.dispatch})}}
+          right={() => {Actions.groupsettingsmain({groupid: this.props.groups.groups._id, grouptype: this.props.group.type, dispatch: this.props.dispatch})}}
         />
 
         <View style={styles.body}>

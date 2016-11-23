@@ -124,8 +124,37 @@ export function getUserData() {
       dispatch({type: "USER_DATA_CHANGED", payload: json})
     })
     .catch(err => {
-      console.log(err);
+      AsyncStorage.removeItem("@accesstoken:key").then(() => {
+
+        dispatch({
+          type: 'USER_LOGOUT',
+          payload: {
+            token: false,
+          }
+        })
+      })
     })
+    })
+  }
+}
+
+export function hideNotification(notification) {
+  return function(dispatch) {
+
+    fetch(SERVER+'/user/data', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token,
+        _id: notification._id
+      })
+    })
+    .then((data) => data.json())
+    .then((json) => {
+
     })
   }
 }

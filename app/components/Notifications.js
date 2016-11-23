@@ -68,7 +68,11 @@ class Notifications extends Component {
                       this.props.dispatch(User.getUserData())
                       this.props.dispatch(User.getNotifications())
                     }},
-                    {text: 'Decline', onPress: () => console.log('Deleted request')},
+                    {text: 'Decline', onPress: () => {
+                      this.props.dispatch(User.hideNotification(a))
+                      this.props.dispatch(User.getUserData())
+                      this.props.dispatch(User.getNotifications())
+                    }},
                   ]
                 )
 
