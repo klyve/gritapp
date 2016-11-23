@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import {View } from 'react-native';
+import {
+  View,
+  Image,
+} from 'react-native';
 import { connect } from 'react-redux';
 import * as Route from '../actions/route';
 import * as User from '../actions/user';
@@ -7,9 +10,12 @@ import * as User from '../actions/user';
 
 class Loadingscreen extends Component {
   componentWillMount() {
-      this.props.dispatch(User.getToken());
+    setTimeout(() => {
+      this.props.dispatch(User.getToken())
+    }, 4000)
     //this.props.dispatch(Route.to("swipeview"));
   }
+
   render() {
     return (
       <View style={{
@@ -17,10 +23,13 @@ class Loadingscreen extends Component {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#2ecc71',
       }}>
-        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
+        <Image
+        source={require('../../images/loading.gif')}
+        style = {{height: 360, width: 360}}
+        resizeMode={Image.resizeMode.contain}
+        />
       </View>
     );
   }
