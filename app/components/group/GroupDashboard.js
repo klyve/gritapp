@@ -114,7 +114,6 @@ class GroupDashboard extends Component {
                   >
                     <Text style={tabStyles[0]}>Leaderboard</Text>
                   </TouchableHighlight>
-
                 </View>
 
 

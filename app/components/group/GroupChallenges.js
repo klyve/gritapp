@@ -54,14 +54,15 @@ export default class GroupChallenges extends Component {
     var closed = [];
 
     for (let i = 0; i < this.props.group.challenges.length; i++) {
-      if (this.props.group.challenges[i].time.getTime < Date.now())
+      if (((new Date(this.props.group.challenges[i].time)).getTime()) > Date.now())
         open.push(this.props.group.challenges[i]);
       else
-        open.push(this.props.group.challenges[i]);
+        closed.push(this.props.group.challenges[i]);
     }
 
 
     let showOpen = open.map((a,b) => {
+
         return (
           <FriendBlock
             onPress={() => {
@@ -73,7 +74,8 @@ export default class GroupChallenges extends Component {
             }}
             image={a.picturePath}
             name={a.name}
-            points={a.timeLeft}
+            points={Math.ceil(((((new Date(a.time)).getTime()/1000)) - (Date.now()/1000))/3600)}
+            deadline
             key={b}
           />
       )})

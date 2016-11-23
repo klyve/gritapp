@@ -38,16 +38,19 @@ export default class FriendBlock extends Component {
     if(!this.props.points || !this.props.points > 0)
       return false;
 
+    let timeLeft = (this.props.deadline) ? ' h' : false;
+
     return(
       <View style={styles.numberContainer}>
         <View style={styles.numberItem}>
           <Text style={styles.number}>
-            {this.props.points}
+            {this.props.points} {timeLeft}
           </Text>
         </View>
       </View>
     )
   }
+
   renderMeta() {
     if(this.props.unread)
       return this.renderUnread();
