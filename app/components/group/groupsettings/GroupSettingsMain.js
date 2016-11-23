@@ -42,10 +42,10 @@ export default class GroupSettingsMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: currentGroup.name,
+
     };
     this.state2 = {
-      text: currentGroup.description,
+      text: 'Description',
     };
   }
 
@@ -87,7 +87,7 @@ export default class GroupSettingsMain extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: currentGroup.picturePath}}></Image>
+            <Image style={styles.groupImage} source={{uri: this.props.groupimage}}></Image>
           </TouchableHighlight>
           <Text style={styles.headerText}>Settings</Text>
         </View>
@@ -102,7 +102,7 @@ export default class GroupSettingsMain extends Component {
             <Text style = {styles.settingsTextLeft}>Group Name</Text>
             <TextInput
             style = {styles.settingsTextRight}
-            value = {this.state.text}
+            value = {this.props.groupname}
             onChangeText={(text) => this.setState({text})}
             editable = {true}
             maxLength = {16}
@@ -132,7 +132,7 @@ export default class GroupSettingsMain extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           onPress = {() => {
-            Actions.managemembers({members: this.props.groupmembers});
+            Actions.managemembers({members: this.props.groupmembers, user: this.props.user, group: this.props.group});
           }}
           >
             <View style = {styles.setting}>

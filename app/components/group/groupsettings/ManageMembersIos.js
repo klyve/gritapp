@@ -43,14 +43,12 @@ export default class ManageMembers extends Component {
           left={() => { Actions.pop() }}
           right={() => { Actions.addmembers() }}
         />
-        <View style={styles.body}>
-
-        <ScrollView>
-          <GroupMembers
-            group={this.props.groups}
-            user={this.props.user}
-          />
-        </ScrollView>
+        <View style={{marginTop: 90, backgroundColor: '#FFF'}}>
+          <ScrollView>
+            <GroupMembers
+              group={this.props.group}
+              user={this.props.user} />
+          </ScrollView>
         </View>
       </View>
 
