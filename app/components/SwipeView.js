@@ -51,12 +51,10 @@ class SwipeView extends Component {
     // Add more data gets
     setTimeout(() => {
       return this.fetchDataInterval();
-    },20000);
+    } , 20000);
   }
 
   render() {
-    //const { state, actions } = this.props;
-
     let loadingscreen = false;
 
     if(this.props.user.loadingscreen) {
