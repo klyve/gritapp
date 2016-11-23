@@ -102,6 +102,7 @@ export function loginUser(username, pwd) {
 
 export function getUserData() {
   return function(dispatch) {
+    dispatch({type: "USER_DATA_GETSTART"})
 
     AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
@@ -146,7 +147,7 @@ export function uploadPicture(file) {
       },
       body: JSON.stringify({
         token,
-        imageData: image,
+        imageData: file,
       }),
 
     })

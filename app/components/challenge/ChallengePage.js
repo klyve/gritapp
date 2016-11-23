@@ -19,6 +19,8 @@ import {
 import styles from './styles/challengePage';
 import SinglePictureView from './SinglePictureView';
 
+import * as Groups from '../../actions/groups';
+
 var showSinglePictureTag = [];
 
 export default class ChallengePage extends Component {
@@ -36,16 +38,9 @@ export default class ChallengePage extends Component {
     }
   }
 
+
   handlePicture(picture) {
-    Actions.pop()
-    console.log("Image is",picture)
-    var fisk = new Challenge();
-      fisk.pictureUrl = picture;
-      fisk.id = Math.floor(Math.random() * 100000);
-    images.push(fisk)
-    this.setState({
-      pictures: images
-    })
+    this.props.dispatch(Groups.uploadChallengePicture(this.props.challenge._id, picture));
   }
 
   showSinglePictureView(challenge){

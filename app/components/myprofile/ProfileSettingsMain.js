@@ -18,6 +18,7 @@ import {
 import * as User from '../../actions/user';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import { SERVER } from '../constants';
 
 import {
   Blocks,
@@ -78,7 +79,7 @@ class ProfileSettingsMain extends Component {
           underlayColor={"rgb(210,210,210)"}
           style={styles.groupImageView}>
 
-            <Image style={styles.groupImage} source={{uri: this.props.user.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: SERVER+this.props.user.image}}></Image>
           </TouchableHighlight>
           <Text style = {styles.headerText}>Profile Settings</Text>
         </View>

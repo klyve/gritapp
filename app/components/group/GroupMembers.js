@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { MARGIN } from '../constants';
+import { MARGIN, SERVER } from '../constants';
 
 
 import {
@@ -27,14 +27,12 @@ export default class GroupMembers extends Component {
 
   render() {
 
-    console.log(this.props);
-
     var rest = this.props.group.members;
 
     let top = rest.map((a,b) => {
         return (
           <FriendBlock
-            image={a.image}
+            image={SERVER+a.image}
             name={a.nick}
             key={b}
             small

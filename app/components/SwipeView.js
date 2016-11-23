@@ -19,6 +19,7 @@ import { MainHeader }from './modules';
 import Dashboard from './Dashboard';
 import Friends from './Friends';
 import CreateOrJoinGroup from './CreateOrJoinGroup';
+import Loadingscreen from './Loadingscreen';
 import * as Groups from '../actions/groups';
 import * as User from '../actions/user';
 
@@ -29,6 +30,10 @@ class SwipeView extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    this.props.dispatch(User.getToken());
   }
 
   componentDidMount() {
@@ -46,11 +51,19 @@ class SwipeView extends Component {
     // Add more data gets
     setTimeout(() => {
       return this.fetchDataInterval();
-    },20000);
+    } , 20000);
   }
 
   render() {
-    //const { state, actions } = this.props;
+    let loadingscreen = false;
+
+    if(this.props.user.loadingscreen) {
+      loadingscreen =
+        <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
+          <Loadingscreen/>
+        </View>
+    }
+
     return (
       <View>
 
@@ -111,6 +124,9 @@ class SwipeView extends Component {
           </View>
         </View>
       </Swiper>
+
+      {loadingscreen}
+
       </View>
     );
   }

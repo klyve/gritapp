@@ -19,7 +19,8 @@ import {
 
 import {
   MARGIN,
-  HEADER_HEIGHT
+  HEADER_HEIGHT,
+  SERVER
 } from '../constants';
 
 import { Actions } from 'react-native-router-flux';
@@ -67,6 +68,8 @@ class GroupDashboard extends Component {
 
     tabStyles[this.state.activeTab].push({color: groupColorHex})
 
+    console.log(groupColor);
+
     return (
       <View style={styles.container}>
 
@@ -92,7 +95,7 @@ class GroupDashboard extends Component {
         <View style={styles.body}>
 
           <View style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: this.props.groups.image}}></Image>
+            <Image style={styles.groupImage} source={{uri: SERVER+this.props.groups.image}}></Image>
           </View>
 
           <View style={{flex: 1, marginTop: -60,}}>

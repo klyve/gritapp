@@ -1,12 +1,17 @@
+import React from 'react';
 import {
   AsyncStorage,
-  Alert
+  Alert,
+  View
 } from 'react-native';
+
+
 const initialState = {
   user: [],
   groups: [],
   token: false,
   notifications: [],
+  loadingscreen: true,
   options: {
     pushNotifications: true,
     groupRequest: true,
@@ -28,7 +33,15 @@ export default function user(state = initialState, action = {}) {
         ...action.payload
       }
     break;
+    case 'USER_DATA_GETSTART':
+      if (state.loadingscreen)
+        state.loadingscreen = true;
+
+      return {
+        ...state,
+      }
     case 'USER_DATA_CHANGED':
+      state.loadingscreen = false;
       return {
         ...state,
         ...action.payload

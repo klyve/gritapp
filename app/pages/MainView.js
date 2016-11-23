@@ -44,8 +44,8 @@ import ConfirmPictureView from '../components/myprofile/ConfirmPictureView';
 
 const scenes = Actions.create(
   <Scene key="root">
-    <Scene key="loading" hideNavBar component={Loadingscreen} initial={true}/>
-    <Scene key="swipeview" hideNavBar component={SwipeView}/>
+    <Scene key="loading" hideNavBar component={Loadingscreen}/>
+    <Scene key="swipeview" hideNavBar component={SwipeView} initial={true}/>
 
     <Scene key="loginview" hideNavBar component={LoginView}/>
 

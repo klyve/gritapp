@@ -21,6 +21,7 @@ import { connect } from 'react-redux';
 import * as Friends from '../actions/friends';
 import * as User from '../actions/user'
 
+import { SERVER } from './constants';
 
 class Notifications extends Component {
   constructor() {
@@ -72,7 +73,7 @@ class Notifications extends Component {
                 )
 
               }}
-              image={a.sender.image}
+              image={SERVER+a.sender.image}
               name={title}
               key={b}
               small
@@ -86,7 +87,7 @@ class Notifications extends Component {
           friendreqs.push(
             <FriendBlock
               onPress={() => {}}
-              image={a.sender.image}
+              image={SERVER+a.sender.image}
               name={title}
               key={b}
               small
