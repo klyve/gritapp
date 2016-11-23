@@ -119,7 +119,6 @@ class ProfileSettingsMain extends Component {
               borderTopWidth: 3,
               borderBottomWidth: 1,
             }]}>
-            <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style = {styles.settingsTextLeft}>Friend requests</Text>
               <Switch
               value={this.props.user.options.friendRequest}
@@ -128,14 +127,18 @@ class ProfileSettingsMain extends Component {
               }}
               // Color props are iOS-only
               // thumbTintColor={'white'} // Removes shadow
-              tintColor={"rgba(230,230,230,1)"}
-              onTintColor={"rgba(68,219,94,1)"}
+              //tintColor={"rgba(230,230,230,1)"}
+              //onTintColor={"rgba(68,219,94,1)"}
               style = {styles.switch}
             />
-            </View>
           </View>
           {/*Settings nr 4*/}
-          <View style = {styles.setting}>
+          <View style = {[
+            styles.setting,
+            {
+              borderTopWidth: 3,
+              borderBottomWidth: 1,
+            }]}>
             <Text style = {styles.settingsTextLeft}>Group invites</Text>
             <Switch
             value={this.props.user.options.groupRequest}
@@ -144,8 +147,8 @@ class ProfileSettingsMain extends Component {
             }}
             // Color props are iOS-only
             // thumbTintColor={'white'} // Removes shadow
-            tintColor={"rgba(230,230,230,1)"}
-            onTintColor={"rgba(68,219,94,1)"}
+            //tintColor={"rgba(230,230,230,1)"}
+            //onTintColor={"rgba(68,219,94,1)"}
             style = {styles.switch}
           />
           </View>
@@ -164,8 +167,8 @@ class ProfileSettingsMain extends Component {
             }}
             // Color props are iOS-only
             // thumbTintColor={'white'} // Removes shadow
-            tintColor={"rgba(230,230,230,1)"}
-            onTintColor={"rgba(68,219,94,1)"}
+            //tintColor={"rgba(230,230,230,1)"}
+            //onTintColor={"rgba(68,219,94,1)"}
             style = {styles.switch}
           />
 

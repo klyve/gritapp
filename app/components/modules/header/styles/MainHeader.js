@@ -10,6 +10,7 @@ import {HEADER_HEIGHT, HEADER_PADDING, MARGIN} from '../../../constants'
 export default styles = StyleSheet.create({
   header: {
     position: 'absolute',
+    zIndex: 0,
     top: 0,
     left: 0,
     right: 0,

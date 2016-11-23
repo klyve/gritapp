@@ -14,13 +14,16 @@ export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    zIndex: 0,
   },
   body: {
     alignItems: 'center',
     marginTop: HEADER_HEIGHT,
+    zIndex: 1,
   },
   groupImageView: {
     alignItems: 'center',
+
   },
   groupImage: {
     height: 160,
@@ -51,16 +54,19 @@ export default styles = StyleSheet.create({
   settingsTextLeft: {
     color: 'grey',
     fontSize: 18,
-    width: 200,
   },
   settingsTextRight: {
-    width: MARGIN * 13,
+    position: 'absolute',
+    right: 0,
     color: 'grey',
     fontSize: 18,
+    paddingRight: MARGIN*10
   },
   switch: {
-    width: 200,
-    marginLeft: MARGIN * 9,
+    paddingRight: MARGIN*10,
+    position: 'absolute',
+    right: MARGIN*3,
+    padding: MARGIN*1.5,
   },
   logout: {
     height: 60,
