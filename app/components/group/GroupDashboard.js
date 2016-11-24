@@ -117,16 +117,6 @@ class GroupDashboard extends Component {
               <Text style={styles.groupDescriptionText}>{this.props.groups.bio}</Text>
             </View>
 
-            <TouchableHighlight
-            onPress = {() => { Actions.newchallenge({groupid: this.props.group._id, grouptype: this.props.group.grouptype, dispatch: this.props.dispatch}); }}
-            activeOpacity={71 / 100}
-            underlayColor={"rgb(210,210,210)"}
-            style = {{backgroundColor: groupColorHex, marginBottom: MARGIN}}>
-              <Text style={{alignSelf: 'center', padding: MARGIN, fontSize: 22, color: '#fff',}}>
-                NEW CHALLENGE
-              </Text>
-            </TouchableHighlight>
-
             <View style={styles.tabs}>
               <View style={{flex: 1, flexDirection: 'row'}}>
 
