@@ -72,10 +72,10 @@ class GroupDashboard extends Component {
 
   render() {
 
-    let groupBannerColor = (this.props.groups.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
-    let groupTitleColor = (this.props.groups.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
-    let groupColor = (this.props.groups.grouptype == "public") ? 'blue' : 'red';
-    let groupColorHex = (this.props.groups.grouptype == "public") ? '#2574a9' : '#c0392b';
+    let groupBannerColor = (this.props.group.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
+    let groupTitleColor = (this.props.group.grouptype == "public") ? styles.blueTextColor : styles.redTextColor;
+    let groupColor = (this.props.group.grouptype == "public") ? 'blue' : 'red';
+    let groupColorHex = (this.props.group.grouptype == "public") ? '#2574a9' : '#c0392b';
 
     let tabStyles = [[styles.tabText], [styles.tabText], [styles.tabText]];
 
@@ -113,9 +113,9 @@ class GroupDashboard extends Component {
 
           <View style={{flex: 1, marginTop: -60,}}>
             <View style={styles.groupInfo}>
-              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.groups.name}</Text>
+              <Text style={{fontSize: 30, color: groupColorHex}}>{this.props.group.name}</Text>
 
-              <Text style={styles.groupDescriptionText}>{this.props.groups.bio}</Text>
+              <Text style={styles.groupDescriptionText}>{this.props.group.bio}</Text>
             </View>
 
             <View style={styles.tabs}>
@@ -169,7 +169,7 @@ class GroupDashboard extends Component {
                   <View style={{marginBottom: 315 /* spaghetti bolognese */}}>
                     <ScrollView>
                       <GroupLeaderboard
-                        group={this.props.groups}
+                        group={this.props.group}
                         user={this.props.user}
                       />
                     </ScrollView>
@@ -179,8 +179,9 @@ class GroupDashboard extends Component {
 
                     <ScrollView>
                       <GroupChallenges
-                        group={this.props.groups}
+                        group={this.props.group}
                         user={this.props.user}
+                        dispatch={this.props.dispatch}
                       />
                     </ScrollView>
                   </View>
