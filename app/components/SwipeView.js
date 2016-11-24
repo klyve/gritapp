@@ -35,7 +35,6 @@ class SwipeView extends Component {
   componentWillMount() {
     this.props.dispatch(User.getToken());
     this.props.dispatch(User.getUserData());
-    this.fetchDataInterval();
   }
 
   componentWillUnmount() {
@@ -60,6 +59,9 @@ class SwipeView extends Component {
     let loadingscreen = false;
 
     if(this.props.user.loadingscreen) {
+
+      this.fetchDataInterval;
+
       loadingscreen =
         <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
           <Loadingscreen/>
