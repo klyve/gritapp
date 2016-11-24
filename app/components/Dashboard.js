@@ -37,6 +37,7 @@ export default class Dashboard extends Component {
   gotoGroup(groupId) {
     Actions.groupdashboard({
       groupID: this.props.user.groups[groupId]._id,
+      group: this.props.user.groups[groupId],
       user: this.props.user,
     })
   }
