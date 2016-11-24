@@ -141,20 +141,24 @@ export function getUserData() {
 export function hideNotification(notification) {
   return function(dispatch) {
 
-    fetch(SERVER+'/user/data', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token,
-        _id: notification._id
-      })
-    })
-    .then((data) => data.json())
-    .then((json) => {
+    AsyncStorage.getItem("@accesstoken:key").then((token) => {
 
+      fetch(SERVER+'/user/hidenotifications', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          _id: notification._id
+        })
+      })
+      .then((data) => data.json())
+      .then((json) => {
+        console.log(json);
+        dispatch({type: 'NOTIFICATIONS_CHANGED', payload: json})
+      })
     })
   }
 }
@@ -182,9 +186,8 @@ export function uploadPicture(file) {
     })
     .then((data) => data.json())
     .then((json) => {
-      if (json.groups.length > 0){
-        dispatch({type: "UPLOAD_PICTURE_FULLFILLED", payload: json.groups})
-      }
+      console.log(json);
+      dispatch({type: "UPLOAD_PICTURE_FULLFILLED", payload: json})
       dispatch({type: "USER_DATA_CHANGED", payload: json})
     })
     .catch(err => {
