@@ -93,15 +93,16 @@ class GroupDashboard extends Component {
 
           right={() => {
             Actions.groupsettingsmain({
-              groupid: this.props.group._id,
-              grouptype: this.props.group.type,
+              groupid: this.props.groups._id,
+              grouptype: this.props.groups.type,
               dispatch: this.props.dispatch,
-              groupmembers: this.props.group.members,
+              groupmembers: this.props.groups.members,
               group: this.props.groups,
               user: this.props.user,
               groupimage: this.props.groups.image,
               groupname: this.props.groups.name,
-            })}}
+            })}
+          }
         />
 
         <View style={styles.body}>
