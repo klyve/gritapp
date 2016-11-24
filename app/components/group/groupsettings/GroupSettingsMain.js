@@ -19,24 +19,13 @@ import {
   Blocks,
   FriendBlock
 } from '../../modules';
+
+import { SERVER } from '../../constants';
+
 import * as Groups from '../../../actions/groups';
 
 import styles from './styles/groupsettingsmain';
 
-// Blueprints
-function Group(){
-  this.name = "";
-  this.picturePath = "";
-  this.description = "";
-  this.currentChallenges = [];
-  this.public;
-}
-
-var currentGroup = new Group();
-  currentGroup.name = "Pølsefest";
-  currentGroup.picturePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Reunion_sausages_dsc07796.jpg/220px-Reunion_sausages_dsc07796.jpg";
-  currentGroup.description = "Vi liker pølser og fordi det er godt. mhm ";
-  currentGroup.public = false;
 
 export default class GroupSettingsMain extends Component {
   constructor(props) {
@@ -56,7 +45,7 @@ export default class GroupSettingsMain extends Component {
   }
 
   handlePicture(picture) {
-
+    this.props.dispatch(User.uploadPicture(picture));
   }
   render() {
     return (
@@ -87,7 +76,7 @@ export default class GroupSettingsMain extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: this.props.groupimage}}></Image>
+            <Image style={styles.groupImage} source={{uri: SERVER+this.props.groupimage}}></Image>
           </TouchableHighlight>
           <Text style={styles.headerText}>Settings</Text>
         </View>

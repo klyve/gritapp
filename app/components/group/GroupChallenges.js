@@ -103,7 +103,7 @@ export default class GroupChallenges extends Component {
           {showClosed}
 
           <TouchableHighlight
-          onPress = {() => { Actions.newchallenge({groupid: this.props.group._id, grouptype: this.props.group.grouptype, dispatch: this.props.dispatch}); }}
+          onPress = {() => { Actions.newchallenge({groupid: this.props.group._id, grouptype: this.props.grouptype, grouptype: this.props.group.grouptype, dispatch: this.props.dispatch}); }}
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           style = {{backgroundColor: 'blue', marginBottom: MARGIN}}>

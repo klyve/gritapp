@@ -64,7 +64,12 @@ export default function groups(state = initialState, action = {}) {
         ...action.payload,
       }
     break;
-
+    case 'UPLOAD_GROUP_PICTURE_FULLFILLED':
+      return {
+        ...state,
+        ...action.payload
+      }
+    break;
     default:
       return state;
   }
