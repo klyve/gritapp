@@ -36,7 +36,6 @@ class ProfileSettingsMain extends Component {
       payload: {
       }
     })
-    console.log(this.props)
   }
   logOut() {
       this.props.dispatch(User.logoutUser());

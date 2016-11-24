@@ -34,10 +34,12 @@ class SwipeView extends Component {
 
   componentWillMount() {
     this.props.dispatch(User.getToken());
+    this.props.dispatch(User.getUserData());
+    this.fetchDataInterval();
   }
 
-  componentDidMount() {
-    this.fetchDataInterval();
+  componentWillUnmount() {
+    clearTimeout(this.fetchDataInterval);
   }
 
   btnPress(index) {

@@ -175,7 +175,7 @@ export function joinGroup(group) {
   }
 }
 
-export function getGroupData(group) {
+export function getGroupData(id) {
   return function (dispatch) {
     fetch(SERVER+'/groups/getData', {
       method: 'POST',
@@ -184,12 +184,11 @@ export function getGroupData(group) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        _id: group._id
+        _id: id,
       })
     })
     .then((data) => data.json())
     .then((json) => {
-      console.log(json);
       dispatch({type: "GROUP_DATA_CHANGED", payload: json})
     })
   }

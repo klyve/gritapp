@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   user: [],
+  image: '',
   groups: [],
   token: false,
   notifications: [],
@@ -87,13 +88,24 @@ export default function user(state = initialState, action = {}) {
           ...state,
         };
     break;
-
     case 'USER_LOGOUT':
       return {
         ...state,
         user: [],
         token: false
       };
+    break;
+    case 'UPLOAD_PICTURE_FULLFILLED':
+      return {
+        ...state,
+        ...action.payload
+      }
+    break;
+    case 'NOTIFICATIONS_CHANGED':
+      return {
+        ...state,
+        ...action.payload
+      }
     break;
     default:
       return state;
