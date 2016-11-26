@@ -41,6 +41,7 @@ class GroupDashboard extends Component {
     this.state = {
       activeTab: 1,
     }
+    console.log(this.props)
   }
 
   componentWillMount() {
@@ -70,6 +71,11 @@ class GroupDashboard extends Component {
     this.refs.swiper.scrollBy(index - this.state.activeTab)
   }
 
+
+
+
+
+
   render() {
 
     let groupBannerColor = (this.props.group.grouptype == "public") ? styles.blueBannerColor : styles.redBannerColor;
@@ -92,6 +98,7 @@ class GroupDashboard extends Component {
           left={() => { Actions.swipeview({type: 'reset'}) }}
 
           right={() => {
+            console.log(this.props.groups);
             Actions.groupsettingsmain({
               groupid: this.props.groups._id,
               grouptype: this.props.groups.type,
@@ -182,6 +189,7 @@ class GroupDashboard extends Component {
                         group={this.props.group}
                         user={this.props.user}
                         dispatch={this.props.dispatch}
+
                       />
                     </ScrollView>
                   </View>

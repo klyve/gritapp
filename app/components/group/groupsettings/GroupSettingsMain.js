@@ -19,9 +19,13 @@ import {
   Blocks,
   FriendBlock
 } from '../../modules';
+
+import { SERVER } from '../../constants';
+
 import * as Groups from '../../../actions/groups';
 
 import styles from './styles/groupsettingsmain';
+
 
 export default class GroupSettingsMain extends Component {
   constructor(props) {
@@ -41,7 +45,7 @@ export default class GroupSettingsMain extends Component {
   }
 
   handlePicture(picture) {
-
+    this.props.dispatch(User.uploadPicture(picture));
   }
   render() {
     return (
@@ -72,7 +76,7 @@ export default class GroupSettingsMain extends Component {
           activeOpacity={71 / 100}
           underlayColor={"rgb(210,210,210)"}
           style={styles.groupImageView}>
-            <Image style={styles.groupImage} source={{uri: this.props.groupimage}}></Image>
+            <Image style={styles.groupImage} source={{uri: SERVER+this.props.groupimage}}></Image>
           </TouchableHighlight>
           <Text style={styles.headerText}>Settings</Text>
         </View>
